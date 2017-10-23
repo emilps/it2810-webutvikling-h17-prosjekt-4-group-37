@@ -15,13 +15,13 @@ apt:
     - google-chrome-beta
 
 before_install:
+  - cd my-app
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
 
 before_script:
-- cd my-app
-- npm install -g angular-cli
+- npm install -g @angular/cli
 - npm install -g karma
 - npm install
 - ng build
