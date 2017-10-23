@@ -2,21 +2,37 @@ language: node_js
 node_js:
   - "7"
 
-before_script:
-  - cd my-app
-
 cache:
   directories:
      - ./node_modules
 
-install:
-  - npm install
+addons:
+apt:
+  sources:
+    - google-chrome
+  packages:
+    - google-chrome-stable
+    - google-chrome-beta
+
+before_install:
+  - export CHROME_BIN=chromium-browser
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+
+before_script:
+- cd my-app
+- npm install -g angular-cli
+- npm install -g karma
+- npm install
+- ng build
 
 script:
-  # Use Chromium instead of Chrome.
-  - export CHROME_BIN=chromium-browser
-  - xvfb-run -a npm run test -- --single-run --no-progress --browser=ChromeNoSandbox
-  - xvfb-run -a npm run e2e -- --no-progress --config=protractor-ci.conf.js
+- karma start config/karma.conf.js --single-run
+# Use Chromium instead of Chrome.
+- export CHROME_BIN=chromium-browser
+- xvfb-run -a npm run test -- --single-run --no-progress --browser=ChromeNoSandbox
+- xvfb-run -a npm run e2e -- --no-progress --config=protractor-ci.conf.js
+
 
 notifications:
   email: false
