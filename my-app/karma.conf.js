@@ -22,13 +22,6 @@ module.exports = function (config) {
     angularCli: {
       environment: 'dev'
     },
-    browsers: ['Chrome'],
-    customLaunchers: {
-      ChromeNoSandbox: {
-        base: 'Chrome',
-        flags: ['--no-sandbox']
-        }
-    },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,
@@ -37,6 +30,4 @@ module.exports = function (config) {
     browsers: ['Chrome'],
     singleRun: false
   });
-
-
 };
