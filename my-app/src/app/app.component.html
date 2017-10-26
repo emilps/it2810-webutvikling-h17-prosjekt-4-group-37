@@ -1,7 +1,13 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<app-navbar></app-navbar>
+
 <h1>Our MongoDB is Workings!</h1>
 
 
-<ul>
-  <li *ngFor="let wine of wines">{{ wine.Varenavn }}</li>
-</ul>
+
+<div *ngFor="let wine of wines">
+  <h3>{{ wine.Varenavn }}</h3>
+  <p>{{ wine.Pris }}</p>
+  <p>{{ wine.Vareurl }}</p>
+
+</div>
