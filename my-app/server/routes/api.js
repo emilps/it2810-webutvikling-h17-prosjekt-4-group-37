@@ -32,6 +32,7 @@ router.get('/users', (req, res) => {
     connection((db) => {
         db.collection('users')
             .find()
+            .limit( 5 )
             .toArray()
             .then((users) => {
                 response.data = users;
@@ -47,6 +48,7 @@ router.get('/wines', (req, res) => {
     connection((db) => {
         db.collection('wines')
             .find()
+            .limit( 5 )
             .toArray()
             .then((wines) => {
                 response.data = wines;
