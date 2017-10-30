@@ -1,0 +1,22 @@
+@import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
+
+.wineDiv {
+  width: 400px;
+  height: 100%;
+  border: 1px solid black;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.wineDiv > img {
+  height: 300px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

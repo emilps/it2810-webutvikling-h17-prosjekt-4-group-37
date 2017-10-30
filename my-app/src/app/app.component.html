@@ -4,10 +4,11 @@
 <h1>Our MongoDB is Workings!</h1>
 
 
+<div class="container">
+  <div class="wineDiv"  *ngFor="let wine of wines">
+    <h3>{{ wine.Varenavn }}</h3>
+    <p>{{ wine.Pris }}</p>
+    <img src="{{ wine.Vareurl }}" />
 
-<div *ngFor="let wine of wines">
-  <h3>{{ wine.Varenavn }}</h3>
-  <p>{{ wine.Pris }}</p>
-  <p>{{ wine.Vareurl }}</p>
-
+  </div>
 </div>

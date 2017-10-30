@@ -48,7 +48,7 @@ router.get('/wines', (req, res) => {
     connection((db) => {
         db.collection('wines')
             .find()
-            .limit( 5 )
+            .limit( 95 )
             .toArray()
             .then((wines) => {
                 response.data = wines;
