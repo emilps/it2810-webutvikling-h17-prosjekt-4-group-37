@@ -21,4 +21,9 @@ export class UserService {
           return Observable.throw(error.json ? error.json().error : error || 'server error');
         })
     }
+    getUsers() {
+      return this._http.get("/api/getUser")
+        .map(result => this.result = result.json().data);
+    }
+
 }

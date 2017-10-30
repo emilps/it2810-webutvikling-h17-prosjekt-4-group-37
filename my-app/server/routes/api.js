@@ -59,6 +59,15 @@ router.get('/wines', (req, res) => {
     });
 });
 
+router.get('/getUser', (req, res) => {
+  var username = req.body.name;
+  connection((db) => {
+    db.collection('users')
+        .find({name: username})
+        .then(res.json(response))
+  })
+})
+
 router.post('/users',(req, res) => {
   var newUser = new User();
   newUser.name = req.body.name;
