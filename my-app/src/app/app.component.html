@@ -1,9 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <app-navbar></app-navbar>
 
-<h1>Our MongoDB is Workings!</h1>
-
-
 <div class="container">
   <mat-card class="wineDiv"  *ngFor="let wine of wines">
     <h3>{{ wine.Varenavn }}</h3>
@@ -12,3 +9,5 @@
 
   </mat-card>
 </div>
+
+<router-outlet></router-outlet>
