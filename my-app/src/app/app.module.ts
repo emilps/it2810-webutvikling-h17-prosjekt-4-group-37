@@ -15,6 +15,10 @@ import { WineSearchComponent } from './wine-search/wine-search.component';
 
 const appRoutes: Routes = [
   {
+    path: '',
+    component: WineSearchComponent
+  },
+  {
     path: 'navbar',
     component: NavbarComponent
   },
@@ -22,6 +26,7 @@ const appRoutes: Routes = [
     path: '**',
     component: PageNotFoundComponent
   }
+
 ];
 
 @NgModule({

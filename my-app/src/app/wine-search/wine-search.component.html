@@ -1,3 +1,8 @@
-<p>
-  wine-search works!
-</p>
+<div class="container">
+  <mat-card class="wineDiv"  *ngFor="let wine of wines">
+    <h3>{{ wine.Varenavn }}</h3>
+    <p>{{ wine.Pris }}</p>
+    <img src="{{ wine.Vareurl }}" />
+
+  </mat-card>
+</div>
