@@ -1,3 +1,16 @@
+<div class="buttonContainer">
+  <button mat-raised-button color="accent" (click)="noSort()">No Sorting</button>
+  <button mat-raised-button color="accent" (click)="sortLetterASC()">Letter ASC</button>
+  <button mat-raised-button color="accent" (click)="sortLetterDESC()">Letter DESC</button>
+  <button mat-raised-button color="accent" (click)="sortPriceASC()">Pris: Lav -> Høy</button>
+  <button mat-raised-button color="accent" (click)="sortPriceDESC()">Pris: Høy -> Lav</button>
+</div>
+<div class="buttonContainer">
+  <button mat-raised-button color="accent" (click)="noSort()">No Filter</button>
+  <button mat-raised-button color="accent" (click)="filterRed()">Filter Redwine</button>
+  <button mat-raised-button color="accent" (click)="filterWhite()">Filter Whitewine</button>
+</div>
+
 <div class="container">
   <mat-card class="wineDiv"  *ngFor="let wine of wines">
     <h3>{{ wine.Varenavn }}</h3>

@@ -25,6 +25,41 @@ export class WineSearchComponent implements OnInit {
         .subscribe(res => this.wines = res);
   }
 
+  filterRed() {
+    this._dataService.getRedWines()
+        .subscribe(res => this.wines = res);
+  }
+
+  filterWhite() {
+    this._dataService.getWhiteWines()
+        .subscribe(res => this.wines = res);
+  }
+
+  sortLetterASC() {
+    this._dataService.getSortedWinesASC()
+        .subscribe(res => this.wines = res);
+  }
+
+  sortPriceASC() {
+    this._dataService.getSortedWinesPriceASC()
+        .subscribe(res => this.wines = res);
+  }
+
+  sortLetterDESC() {
+    this._dataService.getSortedWinesDESC()
+        .subscribe(res => this.wines = res);
+  }
+
+  sortPriceDESC() {
+    this._dataService.getSortedWinesPriceDESC()
+        .subscribe(res => this.wines = res);
+  }
+
+  noSort() {
+    this._dataService.getWines()
+        .subscribe(res => this.wines = res);
+  }
+
   ngOnInit() {
   }
 

@@ -18,3 +18,12 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.buttonContainer > button{
+  margin: 10px;
+}
