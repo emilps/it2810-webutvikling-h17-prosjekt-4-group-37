@@ -32,7 +32,7 @@ router.get('/users', (req, res) => {
     connection((db) => {
         db.collection('users')
             .find()
-            .limit( 5 )
+            .limit( 100 )
             .toArray()
             .then((users) => {
                 response.data = users;
