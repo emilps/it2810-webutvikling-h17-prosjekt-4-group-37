@@ -8,6 +8,7 @@ import { HttpModule } from '@angular/http';
 import { DataService } from './data.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     HttpModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatIconModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
