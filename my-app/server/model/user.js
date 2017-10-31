@@ -11,7 +11,8 @@ var userSchema = new mongoose.Schema({
       required: true
   },
   hash: String,
-  salt: String
+  salt: String,
+  _id: String
 });
 // function that encrypts password. Both salting and hasing.
 userSchema.methods.setPassword = function(password){
@@ -32,7 +33,6 @@ userSchema.methods.generateJwt = function() {
 
   return jwt.sign({
     _id: this._id,
-    email: this.email,
     name: this.name,
     exp: parseInt(expiry.getTime() / 1000),
   }, "MY_SECRET"); // DO NOT KEEP YOUR SECRET IN THE CODE!
