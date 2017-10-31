@@ -53,10 +53,12 @@ router.post('/wines', (req, res) => {
     let filterName = null;
     let filterVariable = null;
 
+    var liste = [ { Varetype: "Hvitvin" },{ Varetype: "Rødvin" } ]
+
     if (req.body.priceSort === 1 || req.body.priceSort === -1 ){
       sortName = 'Pris';
       sortVariabel = req.body.priceSort;
-    }else if (req.body.letterSort === 1 || req.body.letterSort === -1) {
+    } else if (req.body.letterSort === 1 || req.body.letterSort === -1) {
       sortName = 'Varenavn';
       sortVariabel = req.body.letterSort;
     }
@@ -64,17 +66,36 @@ router.post('/wines', (req, res) => {
     if (req.body.wineFilter.length > 0) {
       filterName = req.body.wineFilter;
       filterVariable = req.body.wineFilterValue;
+      liste = req.body.wineFilter
     }
+
+    //var liste = [ { Varetype: "Hvitvin" } ]
 
 
     connection((db) => {
         db.collection('wines')
-            .find({[filterName]:filterVariable})
+            .find({ $or: liste })
             .sort({ [sortName]: sortVariabel })
             .limit( 95 )
             .toArray()
             .then((wines) => {
                 response.data = wines;
+                res.json(response);
+            })
+            .catch((err) => {
+                sendError(err, res);
+            });
+    });
+});
+
+router.get('/wines', (req, res) => {
+    connection((db) => {
+        db.collection('wines')
+            .find()
+            .limit( 100 )
+            .toArray()
+            .then((users) => {
+                response.data = users;
                 res.json(response);
             })
             .catch((err) => {

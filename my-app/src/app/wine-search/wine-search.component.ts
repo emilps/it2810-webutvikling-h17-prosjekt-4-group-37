@@ -17,7 +17,7 @@ export class WineSearchComponent implements OnInit {
   wines: Array<any>;
 
   newFilter: Filter = {
-    wineFilter: "",
+    wineFilter: [],
     wineFilterValue: "",
     priceSort: 0,
     letterSort: 0,
@@ -36,15 +36,21 @@ export class WineSearchComponent implements OnInit {
         .subscribe(res => this.wines = res);
   }
 
+  checkbox(arg){
+    var el = document.getElementById('mat-checkbox-1');
+    console.log(el);
+    console.log(arg.source.id);
+
+  }
 
   filterRed() {
-    this.newFilter.wineFilter = "Varetype";
+    this.newFilter.wineFilter = [ {"Varetype":"Rødvin"} ];
     this.newFilter.wineFilterValue = "Rødvin";
     this.sortAndFilter();
   }
 
   filterWhite() {
-    this.newFilter.wineFilter = "Varetype";
+    this.newFilter.wineFilter = [{"Varetype":"Hvitvin"}];
     this.newFilter.wineFilterValue = "Hvitvin";
     this.sortAndFilter();
   }
@@ -85,7 +91,7 @@ export class WineSearchComponent implements OnInit {
   }
 
   noFilter() {
-    this.newFilter.wineFilter = "";
+    this.newFilter.wineFilter = [];
     this.newFilter.wineFilterValue = "";
     this.sortAndFilter();
   }
