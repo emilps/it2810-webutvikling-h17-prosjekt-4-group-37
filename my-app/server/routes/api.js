@@ -2,7 +2,14 @@ const express = require('express');
 const router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
-const User = require('../model/user');
+const mongoose = require('mongoose');
+var User = require('../model/User');
+
+
+//mongoose.connect('mongodb://alvise:mypass@129.241.97.47:27017/mydb');
+//require('./../model/user');
+
+
 // Connect
 const connection = (closure) => {
     return MongoClient.connect('mongodb://alvise:mypass@129.241.97.47:27017/mydb', (err, db) => {
@@ -27,7 +34,6 @@ let response = {
 };
 
 // Get users
-
 router.get('/users', (req, res) => {
     connection((db) => {
         db.collection('users')
@@ -58,17 +64,28 @@ router.get('/wines', (req, res) => {
             });
     });
 });
-
-router.get('/getUser', (req, res) => {
+// Query for username(username is unice) if a match runs validPassowrd to check if user password meets the input password.
+router.post('/getUser', (req, res) => {
   var username = req.body.name;
+  console.log(username);
   connection((db) => {
     db.collection('users')
-        .find({name: username})
-        .then(res.json(response))
+        .findOne({ name: username}, function (err, user){
+          var userLogin = new User();
+          userLogin.name = user.name;
+          userLogin.hash = user.hash;
+          userLogin.salt = user.salt;
+          console.log(user);
+          if(userLogin && userLogin.validPassword(req.body.password)){
+            response.date = "true";
+            res.json(response);
+          }
+         if (err) { return done(err); }
+        })
   })
 })
-
-router.post('/users',(req, res) => {
+//Handles input from client. Insert register input after password is secured with salt and hash.
+router.post('/register',(req, res) => {
   var newUser = new User();
   newUser.name = req.body.name;
   newUser.setPassword(req.body.password);
