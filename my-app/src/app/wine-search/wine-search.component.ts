@@ -17,8 +17,10 @@ export class WineSearchComponent implements OnInit {
   wines: Array<any>;
 
   newFilter: Filter = {
-    wineFilter: "Hvitvin",
+    wineFilter: "",
+    wineFilterValue: "",
     priceSort: 0,
+    letterSort: 0,
   };
 
 
@@ -36,33 +38,39 @@ export class WineSearchComponent implements OnInit {
 
 
   filterRed() {
-    this._dataService.getRedWines()
-        .subscribe(res => this.wines = res);
+    this.newFilter.wineFilter = "Varetype";
+    this.newFilter.wineFilterValue = "Rødvin";
+    this.sortAndFilter();
   }
 
   filterWhite() {
-    this._dataService.getWhiteWines()
-        .subscribe(res => this.wines = res);
+    this.newFilter.wineFilter = "Varetype";
+    this.newFilter.wineFilterValue = "Hvitvin";
+    this.sortAndFilter();
   }
 
   sortLetterASC() {
-    this._dataService.getSortedWinesASC()
-        .subscribe(res => this.wines = res);
+    this.newFilter.priceSort = 0;
+    this.newFilter.letterSort = 1;
+    this.sortAndFilter();
   }
 
   sortPriceASC() {
-    this._dataService.getSortedWinesPriceASC()
-        .subscribe(res => this.wines = res);
+    this.newFilter.priceSort = 1;
+    this.newFilter.letterSort = 0;
+    this.sortAndFilter();
   }
 
   sortLetterDESC() {
-    this._dataService.getSortedWinesDESC()
-        .subscribe(res => this.wines = res);
+    this.newFilter.priceSort = 0;
+    this.newFilter.letterSort = -1;
+    this.sortAndFilter();
   }
 
   sortPriceDESC() {
-    this._dataService.getSortedWinesPriceDESC()
-        .subscribe(res => this.wines = res);
+    this.newFilter.priceSort = -1;
+    this.newFilter.letterSort = 0;
+    this.sortAndFilter();
   }
 
   sortAndFilter(){
@@ -71,8 +79,15 @@ export class WineSearchComponent implements OnInit {
   }
 
   noSort() {
-    this._dataService.getWines(this.newFilter)
-        .subscribe(res => this.wines = res);
+    this.newFilter.priceSort = 0;
+    this.newFilter.letterSort = 0;
+    this.sortAndFilter();
+  }
+
+  noFilter() {
+    this.newFilter.wineFilter = "";
+    this.newFilter.wineFilterValue = "";
+    this.sortAndFilter();
   }
 
   ngOnInit() {

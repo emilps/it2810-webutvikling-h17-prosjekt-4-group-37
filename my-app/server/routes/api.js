@@ -45,10 +45,32 @@ router.get('/users', (req, res) => {
 });
 
 router.post('/wines', (req, res) => {
-    console.log(req.body.wine);
+    console.log(req.body.wineFilter);
+
+    let sortName = '$natural';
+    let sortVariabel = 1;
+
+    let filterName = null;
+    let filterVariable = null;
+
+    if (req.body.priceSort === 1 || req.body.priceSort === -1 ){
+      sortName = 'Pris';
+      sortVariabel = req.body.priceSort;
+    }else if (req.body.letterSort === 1 || req.body.letterSort === -1) {
+      sortName = 'Varenavn';
+      sortVariabel = req.body.letterSort;
+    }
+
+    if (req.body.wineFilter.length > 0) {
+      filterName = req.body.wineFilter;
+      filterVariable = req.body.wineFilterValue;
+    }
+
+
     connection((db) => {
         db.collection('wines')
-            .find({"Varetype": req.body.wineFilter})
+            .find({[filterName]:filterVariable})
+            .sort({ [sortName]: sortVariabel })
             .limit( 95 )
             .toArray()
             .then((wines) => {
