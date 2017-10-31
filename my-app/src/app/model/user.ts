@@ -6,7 +6,4 @@ export class User {
 
     ){}
 
-    static CreateDefault(): User {
-        return new User( '', '');
-    }
 }
