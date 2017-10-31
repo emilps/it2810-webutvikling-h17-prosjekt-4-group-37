@@ -66,7 +66,7 @@ router.get('/wines', (req, res) => {
     });
 });
 // Query for username(username is unice) if a match runs validPassowrd to check if user password meets the input password.
-router.post('/getUser', (req, res) => {
+/*router.post('/getUser', (req, res) => {
   var username = req.body.name;
   console.log(username);
   connection((db) => {
@@ -84,7 +84,7 @@ router.post('/getUser', (req, res) => {
          if (err) { return done(err); }
         })
   })
-})
+})*/
 //Handles input from client. Insert register input after password is secured with salt and hash.
 router.post('/register',(req, res) => {
   var newUser = new User();
@@ -103,6 +103,40 @@ router.post('/register',(req, res) => {
         console.log("Doc inserted")
       });
   });
+});
+
+//Will eventually be renamed login (and all beloning references)
+router.post('/getUser', (req, res) => {
+
+  // if(!req.body.email || !req.body.password) {
+  //   sendJSONresponse(res, 400, {
+  //     "message": "All fields required"
+  //   });
+  //   return;
+  // }
+
+  passport.authenticate('local', function(err, user, info){
+    var token;
+
+    // If Passport throws/catches an error
+    if (err) {
+      res.status(404).json(err);
+      return;
+    }
+
+    // If a user is found
+    if(user){
+      token = user.generateJwt();
+      res.status(200);
+      res.json({
+        "token" : token
+      });
+    } else {
+      // If user is not found
+      res.status(401).json(info);
+    }
+  })(req, res);
+
 });
 
 module.exports = router;
