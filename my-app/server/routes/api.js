@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 var User = require('../model/User');
 
 
+
 //mongoose.connect('mongodb://alvise:mypass@129.241.97.47:27017/mydb');
 //require('./../model/user');
 
@@ -90,6 +91,12 @@ router.post('/register',(req, res) => {
   newUser.name = req.body.name;
   newUser.setPassword(req.body.password);
   connection((db) => {
+    var token;
+    token = user.generateJwt();
+    res.status(200);
+    res.json({
+      "token" : token
+    });
     db.collection('users')
       .insertOne(newUser, function(err, res){
         if (err) throw err;
