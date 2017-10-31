@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user';
 import { UserService} from '../services/users.service';
-import { FormsModule } from '@angular/forms';
 
 
 @Component({
@@ -12,14 +11,16 @@ import { FormsModule } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  newUser: User;
+  newUser: User= {
+    name:"",
+    password:""
+  };
 
   constructor(
     private userService: UserService
   ) { }
 
   ngOnInit() {
-    this.newUser = User.CreateDefault();
   }
 
   insertNewUser() {
@@ -28,8 +29,7 @@ export class RegisterComponent implements OnInit {
     .insertNewUser(this.newUser)
     .subscribe(
       data => {
-         this.newUser = User.CreateDefault();
-
+            
          console.log("Added user.");
       }
     )
