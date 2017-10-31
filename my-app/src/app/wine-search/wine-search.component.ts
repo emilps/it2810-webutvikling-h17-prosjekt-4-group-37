@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 // Import the DataService
 import { DataService } from './../data.service';
 
+import { Filter } from './filter';
+
 @Component({
   selector: 'app-wine-search',
   templateUrl: './wine-search.component.html',
@@ -14,6 +16,13 @@ export class WineSearchComponent implements OnInit {
   users: Array<any>;
   wines: Array<any>;
 
+  newFilter: Filter = {
+    wineFilter: "Hvitvin",
+    priceSort: 0,
+  };
+
+
+
   // Create an instance of the DataService through dependency injection
   constructor(private _dataService: DataService) {
 
@@ -21,9 +30,10 @@ export class WineSearchComponent implements OnInit {
     this._dataService.getUsers()
         .subscribe(res => this.users = res);
 
-    this._dataService.getWines()
+    this._dataService.getWines(this.newFilter)
         .subscribe(res => this.wines = res);
   }
+
 
   filterRed() {
     this._dataService.getRedWines()
@@ -55,8 +65,13 @@ export class WineSearchComponent implements OnInit {
         .subscribe(res => this.wines = res);
   }
 
+  sortAndFilter(){
+    this._dataService.getWines(this.newFilter)
+        .subscribe(res => this.wines = res);
+  }
+
   noSort() {
-    this._dataService.getWines()
+    this._dataService.getWines(this.newFilter)
         .subscribe(res => this.wines = res);
   }
 

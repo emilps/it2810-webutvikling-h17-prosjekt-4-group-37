@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+import { Filter } from './wine-search/filter';
+
 @Injectable()
 export class DataService {
 
@@ -15,8 +17,9 @@ export class DataService {
       .map(result => this.result = result.json().data);
   }
 
-  getWines() {
-    return this._http.get("/api/wines")
+  getWines(arg:Filter) {
+    console.log(arg)
+    return this._http.post("/api/wines", arg)
       .map(result => this.result = result.json().data);
   }
 

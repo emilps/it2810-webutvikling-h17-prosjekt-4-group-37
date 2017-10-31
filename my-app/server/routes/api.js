@@ -44,10 +44,11 @@ router.get('/users', (req, res) => {
     });
 });
 
-router.get('/wines', (req, res) => {
+router.post('/wines', (req, res) => {
+    console.log(req.body.wine);
     connection((db) => {
         db.collection('wines')
-            .find()
+            .find({"Varetype": req.body.wineFilter})
             .limit( 95 )
             .toArray()
             .then((wines) => {
