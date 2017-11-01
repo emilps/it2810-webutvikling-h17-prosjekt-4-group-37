@@ -28,7 +28,7 @@ function drawRegionsMap() {
     ['Libanon', 14],
     ['Brazil', 4],
     ['Switzerland', 2],
-    ['MK', 7],
+    ['Macedonia', 7],
     ['Slovenia', 11],
     ['Morocco', 1],
     ['India', 5],
