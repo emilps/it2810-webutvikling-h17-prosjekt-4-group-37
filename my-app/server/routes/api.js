@@ -82,7 +82,7 @@ router.post('/wines', (req, res) => {
         db.collection('wines')
             .find({$and:newList})
             .sort({ [sortName]: sortVariabel })
-            .limit( 95 )
+            .limit( req.body.limit )
             .toArray()
             .then((wines) => {
                 response.data = wines;

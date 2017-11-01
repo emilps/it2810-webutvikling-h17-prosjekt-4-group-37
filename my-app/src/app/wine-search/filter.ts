@@ -4,6 +4,7 @@ export class Filter {
     public countryFilter: Array<Object>,
     public wineFilterValue: String,
     public priceSort: Number,
-    public letterSort: Number
+    public letterSort: Number,
+    public limit: Number,
   ){}
 }

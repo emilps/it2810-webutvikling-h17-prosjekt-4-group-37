@@ -23,6 +23,7 @@ export class WineSearchComponent implements OnInit {
     wineFilterValue: "",
     priceSort: 0,
     letterSort: 0,
+    limit: 12,
   };
 
 
@@ -174,6 +175,14 @@ export class WineSearchComponent implements OnInit {
   noFilter() {
     this.newFilter.wineFilter = [];
     this.newFilter.wineFilterValue = "";
+    this.sortAndFilter();
+  }
+
+  increaseLimit(){
+    var limitNumber: Number;
+    limitNumber = 12;
+
+    this.newFilter.limit =+ +limitNumber + +this.newFilter.limit;
     this.sortAndFilter();
   }
 
