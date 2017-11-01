@@ -19,6 +19,7 @@ export class WineSearchComponent implements OnInit {
 
   newFilter: Filter = {
     wineFilter: [],
+    countryFilter: [],
     wineFilterValue: "",
     priceSort: 0,
     letterSort: 0,
@@ -65,6 +66,36 @@ export class WineSearchComponent implements OnInit {
         }
       }
       this.newFilter.wineFilter = array
+    }
+  }
+
+  checkboxCountry(arg){
+    var obj = JSON.parse(arg.source.value)
+
+    if (arg.checked){
+      this.newFilter.countryFilter.push(obj)
+    } else if (!arg.checked){
+      this.checkIfObjectInArrayCountry(obj,this.newFilter.countryFilter)
+    }
+    this.sortAndFilter();
+  }
+
+  checkIfObjectInArrayCountry(obj, array){
+    if(Object.keys(obj)[0] == "Varetype"){
+      var newArray = array.map((item) => item.Varetype == obj.Varetype)
+    }else if(Object.keys(obj)[0] == "Land"){
+      var newArray = array.map((item) => item.Land == obj.Land)
+    }
+
+    if(array.length > 0){
+      for(var x = 0; x < newArray.length; x++){
+        if(newArray[x] && array.length == 1){
+          array = []
+        }else if(newArray[x]){
+          array.splice(x,1)
+        }
+      }
+      this.newFilter.countryFilter = array
     }
   }
 

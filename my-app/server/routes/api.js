@@ -45,7 +45,7 @@ router.get('/users', (req, res) => {
 });
 
 router.post('/wines', (req, res) => {
-    console.log(req.body.wineFilter);
+    console.log(req.body.countryFilter);
 
     let sortName = '$natural';
     let sortVariabel = 1;
@@ -69,14 +69,18 @@ router.post('/wines', (req, res) => {
       liste = req.body.wineFilter
     }
 
-    console.log(liste)
+    var newList = [{ $or: liste }]
+    if (req.body.countryFilter.length > 0) {
+      newList.push({ $or: req.body.countryFilter})
+    }
 
-    //var liste = [ { Varetype: "Hvitvin" } ]
+    console.log(newList)
+
 
 
     connection((db) => {
         db.collection('wines')
-            .find({ $or: liste })
+            .find({$and:newList})
             .sort({ [sortName]: sortVariabel })
             .limit( 95 )
             .toArray()
