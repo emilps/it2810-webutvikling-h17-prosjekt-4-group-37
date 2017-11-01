@@ -10,7 +10,6 @@ import { DataService } from './../data.service';
 })
 export class MapComponent implements OnInit {
 
-  // Define a users property to hold our user data
   wines: Array<any>;
 
   // Create an instance of the DataService through dependency injection

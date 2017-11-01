@@ -1,9 +1,20 @@
 <div class="mapViewItems">
   <div id="regions_div" style="width: 900px; height: 500px;"></div>
   <div id="winelist_div">
-    <ul class="wineDiv" style="list-style-type:none" *ngFor="let wine of wines">
-      <li>{{ wine.Varenavn }}</li>
-      <li>{{ wine.Pris }}</li>
-    </ul>
+    <table>
+      <tr>
+        <th> Name </th>
+        <th> Price </th>
+      </tr>
+      <tr *ngFor="let wine of wines">
+        <td>{{ wine.Varenavn }}</td>
+        <td>{{ wine.Pris }}</td>
+      </tr>
+    </table>
+
+
+
   </div>
+
+
 </div>
