@@ -58,6 +58,7 @@
         var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
         let title = document.getElementById('regionTitle');
+        let mapTitle = document.getElementById('mapTitle');
 
         google.visualization.events.addOneTimeListener(chart, 'regionClick', function (eventData) {
                   // maybe you want to change the data table here...
@@ -80,6 +81,7 @@
                     default:
                         title.innerHTML = eventData.region;
                 }
+                  mapTitle.innerHTML = "Click on a country to see wines from that area";
                   chart.draw(data, options);
             });
         google.visualization.events.addListener(chart, 'select', function() {
