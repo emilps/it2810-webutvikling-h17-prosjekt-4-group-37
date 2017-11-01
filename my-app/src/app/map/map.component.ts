@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 // Import the DataService
 import { DataService } from './../data.service';
 
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
