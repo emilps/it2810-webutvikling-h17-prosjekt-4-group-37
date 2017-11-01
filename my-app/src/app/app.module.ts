@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+
 import { AppComponent } from './app.component';
 
 // Import the Http Module and our Data Service
@@ -12,6 +13,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule } from '@angular/material';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WineSearchComponent } from './wine-search/wine-search.component';
+import { MapComponent } from './map/map.component';
 
 const appRoutes: Routes = [
   {
@@ -34,7 +36,8 @@ const appRoutes: Routes = [
     AppComponent,
     NavbarComponent,
     PageNotFoundComponent,
-    WineSearchComponent
+    WineSearchComponent,
+    MapComponent
   ],
   imports: [
     RouterModule.forRoot(
