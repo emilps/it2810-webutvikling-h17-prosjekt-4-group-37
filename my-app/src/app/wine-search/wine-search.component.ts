@@ -37,14 +37,54 @@ export class WineSearchComponent implements OnInit {
   }
 
   checkbox(arg){
-    var el = document.getElementById('mat-checkbox-1');
-    console.log(el);
-    console.log(arg.source.id);
+
+    var obj = JSON.parse(arg.source.value)
+    console.log(obj)
+
+    console.log(arg.checked, " : ",obj)
+    //console.log(red)
+    if (arg.checked){
+      console.log("Checked")
+      this.newFilter.wineFilter.push(obj)
+      console.log(this.newFilter.wineFilter)
+
+    }else if (!arg.checked){
+      this.checkIfObjectInArray(obj,this.newFilter.wineFilter)
+    }
+    console.log("filterlist: ",this.newFilter.wineFilter)
+    this.sortAndFilter();
+  }
+
+  checkIfObjectInArray(obj, array){
+    console.log(obj.Varetype)
+    var newArray = array.map((item) => item.Varetype == obj.Varetype)
+    console.log("NewArray: ", newArray)
+
+    if(array.length > 0){
+      console.log("With : ",array)
+      for(var x = 0; x < newArray.length; x++){
+        if(newArray[x] && array.length == 1){
+          console.log(newArray[x], " This shouldnt run")
+          array = []
+        }else if(newArray[x]){
+          array.splice(x,1)
+        }
+      }
+      this.newFilter.wineFilter = array
+      console.log("Without redwine: ",array)
+    }
+
 
   }
 
   filterRed() {
-    this.newFilter.wineFilter = [ {"Varetype":"Rødvin"} ];
+    //console.log(this.objectInList(this.newFilter.wineFilter))
+    var red = {"Varetype":"Rødvin"}
+    this.newFilter.wineFilter.push(red);
+    this.checkIfObjectInArray(red, this.newFilter.wineFilter)
+    if(Object.values(this.newFilter.wineFilter[0])[0] == red.Varetype){
+      console.log("Runs")
+    }
     this.newFilter.wineFilterValue = "Rødvin";
     this.sortAndFilter();
   }

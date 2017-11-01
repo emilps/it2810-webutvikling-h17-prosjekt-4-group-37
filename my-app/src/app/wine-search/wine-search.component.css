@@ -22,8 +22,18 @@
 .buttonContainer {
   display: flex;
   justify-content: center;
+  margin: 10px;
 }
 
 .buttonContainer > button{
   margin: 10px;
+}
+
+.checkbox-margin {
+  margin: 10px;
+}
+
+.filterContainer {
+  display: flex;
+  justify-content: center;
 }

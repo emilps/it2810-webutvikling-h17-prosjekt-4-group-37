@@ -54,7 +54,7 @@ router.post('/wines', (req, res) => {
     let filterVariable = null;
 
     var liste = [ { Varetype: "Hvitvin" },{ Varetype: "Rødvin" } ]
-
+    console.log(liste)
     if (req.body.priceSort === 1 || req.body.priceSort === -1 ){
       sortName = 'Pris';
       sortVariabel = req.body.priceSort;
@@ -68,6 +68,8 @@ router.post('/wines', (req, res) => {
       filterVariable = req.body.wineFilterValue;
       liste = req.body.wineFilter
     }
+
+    console.log(liste)
 
     //var liste = [ { Varetype: "Hvitvin" } ]
 

@@ -1,21 +1,32 @@
-<div class="buttonContainer">
+<mat-card class="buttonContainer">
   <button mat-raised-button color="accent" (click)="noSort()">No Sorting</button>
   <button mat-raised-button color="accent" (click)="sortLetterASC()">Letter ASC</button>
   <button mat-raised-button color="accent" (click)="sortLetterDESC()">Letter DESC</button>
   <button mat-raised-button color="accent" (click)="sortPriceASC()">Pris: Lav -> Høy</button>
   <button mat-raised-button color="accent" (click)="sortPriceDESC()">Pris: Høy -> Lav</button>
-</div>
-<div class="buttonContainer">
-  <button mat-raised-button color="accent" (click)="noFilter()">No Filter</button>
-  <button mat-raised-button color="accent" (click)="filterRed()">Filter Redwine</button>
-  <button mat-raised-button color="accent" (click)="filterWhite()">Filter Whitewine</button>
-</div>
-<div class="buttonContainer">
-  <h5>Filtrer på vin</h5>
-  <mat-checkbox class="example-margin" ng-model="rod" value="Rødvin" (change)="checkbox($event)">Rødvin</mat-checkbox>
-  <mat-checkbox class="example-margin" ng-model="hvit" value="Hvitvin" (change)="checkbox($event)">Hvitvin</mat-checkbox>
-</div>
+</mat-card>
 
+<div class="filterContainer">
+  <mat-card class="buttonContainer">
+    <mat-card-content>
+      <mat-card-title>Filtrer på vintype</mat-card-title>
+      <mat-checkbox class="checkbox-margin" ng-model="rod" value='{"Varetype":"Rødvin"}' (change)="checkbox($event)">Rødvin</mat-checkbox>
+      <mat-checkbox class="checkbox-margin" ng-model="hvit" value='{"Varetype":"Hvitvin"}' (change)="checkbox($event)">Hvitvin</mat-checkbox>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="buttonContainer">
+    <mat-card-content>
+      <mat-card-title>Filtrer på Land</mat-card-title>
+      <mat-checkbox class="checkbox-margin" ng-model="hvit" value='{"Land":"Frankrike"}' (change)="checkbox($event)">Frankrike</mat-checkbox>
+      <mat-checkbox class="checkbox-margin" ng-model="hvit" value='{"Land":"Tyskland"}' (change)="checkbox($event)">Tyskland</mat-checkbox>
+      <mat-checkbox class="checkbox-margin" ng-model="hvit" value='{"Land":"Brasil"}' (change)="checkbox($event)">Brasil</mat-checkbox>
+      <mat-checkbox class="checkbox-margin" ng-model="hvit" value='{"Land":"Spania"}' (change)="checkbox($event)">Spania</mat-checkbox>
+      <mat-checkbox class="checkbox-margin" ng-model="hvit" value='{"Land":"Italia"}' (change)="checkbox($event)">Italia</mat-checkbox>
+      <mat-checkbox class="checkbox-margin" ng-model="hvit" value='{"Land":"Australia"}' (change)="checkbox($event)">Australia</mat-checkbox>
+    </mat-card-content>
+  </mat-card>
+</div>
 
 <div class="container">
   <mat-card class="wineDiv"  *ngFor="let wine of wines">
