@@ -57,11 +57,29 @@
 
         var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
+        let title = document.getElementById('regionTitle');
+
         google.visualization.events.addOneTimeListener(chart, 'regionClick', function (eventData) {
                   // maybe you want to change the data table here...
                   options['region'] = eventData.region;
                   console.log("Clicked Region!" + eventData.region);
                   options['resolution'] = 'countries';
+                  switch(eventData.region) {
+                    case "150":
+                        title.innerHTML = "Europe";
+                        break;
+                    case "002":
+                        title.innerHTML = "Africa";
+                        break;
+                    case "019":
+                        title.innerHTML = "Americas";
+                        break;
+                    case "142":
+                        title.innerHTML = "Asia";
+                        break;
+                    default:
+                        title.innerHTML = eventData.region;
+                }
                   chart.draw(data, options);
             });
         google.visualization.events.addListener(chart, 'select', function() {
@@ -69,6 +87,7 @@
           if (selectedItem) {
             var country = data.getValue(selectedItem.row, 0);
               console.log(country);
+              title.innerHTML = country;
           }
         });
 
