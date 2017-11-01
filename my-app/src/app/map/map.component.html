@@ -4,20 +4,22 @@
     <div id="regions_div" style="width: 900px; height: 500px;"></div>
   </div>
 
-  <div id="winelist_div">
+  <div class="listArea">
     <span id="regionTitle">Worldwide</span>
-    <table>
-      <tr>
-        <th> Name </th>
-        <th> Country </th>
-        <th> Price </th>
-      </tr>
-      <tr *ngFor="let wine of wines">
-        <td>{{ wine.Varenavn }}</td>
-        <td>{{ wine.Land }}</td>
-        <td>{{ wine.Pris }}</td>
-      </tr>
-    </table>
+    <div id="winelist_div" style="height: 500px; overflow-y:auto;">
+      <table>
+        <tr>
+          <th> Name </th>
+          <th> Country </th>
+          <th> Price </th>
+        </tr>
+          <tr *ngFor="let wine of wines">
+            <td>{{ wine.Varenavn }}</td>
+            <td>{{ wine.Land }}</td>
+            <td>{{ wine.Pris }}</td>
+          </tr>
+      </table>
+    </div>
   </div>
 
 
