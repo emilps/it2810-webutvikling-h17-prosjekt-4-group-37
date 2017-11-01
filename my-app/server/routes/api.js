@@ -46,10 +46,7 @@ router.get('/users', (req, res) => {
     connection((db) => {
         db.collection('users')
             .find()
-<<<<<<< HEAD
-=======
             .limit( 100 )
->>>>>>> 6204656bd744fd3cdf1d6962499128f788729b0b
             .toArray()
             .then((users) => {
                 response.data = users;
@@ -98,12 +95,12 @@ router.post('/register', (req, res) => {
 
 
 //Will eventually be renamed login (and all beloning references)
-router.post('/getUser', 
+router.post('/getUser',
   passport.authenticate( 'local-login', {} ),
   function( req, res ) {
       console.log('hello!')
       console.log(req.user )
-      res.send( 'Logged in!' )
+      //res.send( 'Logged in!' )
 })
 
 
