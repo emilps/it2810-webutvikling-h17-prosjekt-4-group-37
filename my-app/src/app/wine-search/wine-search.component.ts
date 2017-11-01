@@ -11,6 +11,7 @@ import { Filter } from './filter';
   styleUrls: ['./wine-search.component.css']
 })
 export class WineSearchComponent implements OnInit {
+  name: string;
 
   // Define a users property to hold our user data
   users: Array<any>;
@@ -22,6 +23,7 @@ export class WineSearchComponent implements OnInit {
     priceSort: 0,
     letterSort: 0,
   };
+
 
 
 
@@ -37,43 +39,51 @@ export class WineSearchComponent implements OnInit {
   }
 
   checkbox(arg){
-
     var obj = JSON.parse(arg.source.value)
-    console.log(obj)
 
-    console.log(arg.checked, " : ",obj)
-    //console.log(red)
     if (arg.checked){
-      console.log("Checked")
       this.newFilter.wineFilter.push(obj)
-      console.log(this.newFilter.wineFilter)
-
-    }else if (!arg.checked){
+    } else if (!arg.checked){
       this.checkIfObjectInArray(obj,this.newFilter.wineFilter)
     }
-    console.log("filterlist: ",this.newFilter.wineFilter)
     this.sortAndFilter();
   }
 
   checkIfObjectInArray(obj, array){
-    console.log(obj.Varetype)
-    var newArray = array.map((item) => item.Varetype == obj.Varetype)
-    console.log("NewArray: ", newArray)
+    if(Object.keys(obj)[0] == "Varetype"){
+      var newArray = array.map((item) => item.Varetype == obj.Varetype)
+    }else if(Object.keys(obj)[0] == "Land"){
+      var newArray = array.map((item) => item.Land == obj.Land)
+    }
 
     if(array.length > 0){
-      console.log("With : ",array)
       for(var x = 0; x < newArray.length; x++){
         if(newArray[x] && array.length == 1){
-          console.log(newArray[x], " This shouldnt run")
           array = []
         }else if(newArray[x]){
           array.splice(x,1)
         }
       }
       this.newFilter.wineFilter = array
-      console.log("Without redwine: ",array)
     }
+  }
 
+  checkSelection(arg){
+    if(arg.source._selected){
+      if(arg.source.value == "ASC"){
+        this.sortPriceASC()
+      }else if(arg.source.value == "DESC"){
+        this.sortPriceDESC()
+      }else if(arg.source.value == "LDESC"){
+        this.sortLetterDESC()
+      }else if(arg.source.value == "LASC"){
+        this.sortLetterASC()
+
+      }else{
+        this.noSort()
+      }
+      console.log("This list: ",this.newFilter.wineFilter)
+    }
 
   }
 
