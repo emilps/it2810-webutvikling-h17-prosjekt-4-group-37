@@ -46,6 +46,10 @@ router.get('/users', (req, res) => {
     connection((db) => {
         db.collection('users')
             .find()
+<<<<<<< HEAD
+=======
+            .limit( 100 )
+>>>>>>> 6204656bd744fd3cdf1d6962499128f788729b0b
             .toArray()
             .then((users) => {
                 response.data = users;
@@ -62,7 +66,7 @@ router.get('/wines', loggedIn, (req, res) => {
     connection((db) => {
         db.collection('wines')
             .find()
-            .limit( 5 )
+            .limit( 95 )
             .toArray()
             .then((wines) => {
                 response.data = wines;
