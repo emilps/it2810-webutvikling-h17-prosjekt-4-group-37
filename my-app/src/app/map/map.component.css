@@ -1,0 +1,4 @@
+.mapViewItems {
+  display: flex;
+  flex-direction: row;
+}

@@ -22,12 +22,38 @@
 
       function drawRegionsMap() {
         var data = google.visualization.arrayToDataTable([
-          ['Country', 'Popularity'],
-          ['Norway', 300],
-          ['Sweden', 400]
+          ['Country', 'Number of Wines'],
+          ['France', 3177],
+          ['Italy', 3010],
+          ['Portugal', 237],
+          ['Spain', 904],
+          ['Germany', 888],
+          ['Chile', 146],
+          ['USA', 424],
+          ['Australia', 280],
+          ['South Africa', 267],
+          ['Austria', 259],
+          ['Hungary', 39],
+          ['Argentina', 137],
+          ['New Zealand', 104],
+          ['Moldova', 2],
+          ['Greece', 30],
+          ['Georgia', 7],
+          ['Libanon', 14],
+          ['Brazil', 4],
+          ['Switzerland', 2],
+          ['MK', 7],
+          ['Slovenia', 11],
+          ['Morocco', 1],
+          ['India', 5],
+          ['Mexico', 2],
+          ['Bulgaria', 3],
+          ['Canada', 11],
+          ['Romania', 10],
+          ['Czechia', 4]
         ]);
 
-        var options = { resolution:'continents', colors: ['green', 'blue'] };
+        var options = { resolution:'continents', colors: ['green', 'blue'], legend: 'none'};
 
         var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
