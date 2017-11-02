@@ -59,7 +59,7 @@ router.get('/users', (req, res) => {
 });
 
 //get wines
-router.get('/wines', loggedIn, (req, res) => {
+router.get('/wines', (req, res) => {
     connection((db) => {
         db.collection('wines')
             .find()
@@ -96,11 +96,11 @@ router.post('/register', (req, res) => {
 
 //Will eventually be renamed login (and all beloning references)
 router.post('/getUser',
-  passport.authenticate( 'local-login', {} ),
+  passport.authenticate( 'local-login', {}),
   function( req, res ) {
-      console.log('hello!')
-      console.log(req.user )
+      //res.redirect('/');
       //res.send( 'Logged in!' )
+      router.navigate(['/']);
 })
 
 
