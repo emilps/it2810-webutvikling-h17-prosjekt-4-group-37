@@ -1,15 +1,17 @@
 .wineDiv {
-  width: 400px;
+  width: 300px;
   height: 100%;
+  min-height: 160px;
   padding: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 10px;
+  font-size: 15px;
 }
 
 .wineDiv > img {
-  height: 300px;
+  max-height: 150px;
 }
 
 .container {
