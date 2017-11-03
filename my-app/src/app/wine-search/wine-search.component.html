@@ -1,4 +1,10 @@
 <mat-card class="buttonContainer sortContainer">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Søk etter vin">
+  </mat-form-field>
+</mat-card>
+
+<mat-card class="buttonContainer sortContainer">
   <mat-form-field>
     <mat-select placeholder="Sorter etter pris" [(ngModel)]="name">
       <mat-option value="ASC" (onSelectionChange)="checkSelection($event)">
