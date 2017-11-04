@@ -41,9 +41,8 @@
 }
 
 .sortContainer {
-  flex-direction: column;
+  justify-content: space-around;
   margin: 0 auto;
-  width: 20%;
 }
 
 .searchContainer {

@@ -55,7 +55,7 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatSelectModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
