@@ -102,6 +102,6 @@
   </mat-card>
 </div>
 
-<div class="buttonContainer">
+<div  *ngIf="numberOfWines >= newFilter.limit" class="buttonContainer">
  <button mat-raised-button color="accent" (click)="increaseLimit()">Load more..</button>
 </div>

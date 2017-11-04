@@ -13,6 +13,7 @@ import { Filter } from './filter';
 export class WineSearchComponent implements OnInit {
   name: string;
   searchVisible = false;
+  numberOfWines = 12;
 
   // Define a users property to hold our user data
   users: Array<any>;
@@ -40,6 +41,7 @@ export class WineSearchComponent implements OnInit {
 
     this._dataService.getWines(this.newFilter)
         .subscribe(res => this.wines = res);
+
   }
 
   checkbox(arg){
@@ -50,6 +52,7 @@ export class WineSearchComponent implements OnInit {
     } else if (!arg.checked){
       this.checkIfObjectInArray(obj,this.newFilter.wineFilter)
     }
+    this.newFilter.limit = 12;
     this.sortAndFilter();
   }
 
@@ -80,6 +83,7 @@ export class WineSearchComponent implements OnInit {
     } else if (!arg.checked){
       this.checkIfObjectInArrayCountry(obj,this.newFilter.countryFilter)
     }
+    this.newFilter.limit = 12;
     this.sortAndFilter();
   }
 
@@ -123,6 +127,7 @@ export class WineSearchComponent implements OnInit {
 
   onEnter(value){
       this.newFilter.searchValue = value
+      this.newFilter.limit = 12;
       this.sortAndFilter();
 
       if(value.length){
@@ -135,6 +140,7 @@ export class WineSearchComponent implements OnInit {
   updateSearch(value){
       if(!value.length){
         this.newFilter.searchValue = value
+        this.newFilter.limit = 12;
         this.sortAndFilter();
         this.searchVisible = false;
       }
@@ -167,6 +173,8 @@ export class WineSearchComponent implements OnInit {
   sortAndFilter(){
     this._dataService.getWines(this.newFilter)
         .subscribe(res => this.wines = res);
+    this._dataService.getWines(this.newFilter)
+        .subscribe(res => this.numberOfWines = res.length);
   }
 
   noSort() {
@@ -182,11 +190,14 @@ export class WineSearchComponent implements OnInit {
   }
 
   increaseLimit(){
+    console.log("Before Wines: ", this.wines.length, " + ", "limit: ",this.newFilter.limit)
     var limitNumber: Number;
     limitNumber = 12;
 
     this.newFilter.limit =+ +limitNumber + +this.newFilter.limit;
     this.sortAndFilter();
+    console.log("After Wines: ", this.wines.length, " + ", "limit: ",this.newFilter.limit)
+    this.numberOfWines = this.wines.length;
   }
 
   ngOnInit() {
