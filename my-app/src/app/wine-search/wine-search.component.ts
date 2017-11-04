@@ -24,6 +24,7 @@ export class WineSearchComponent implements OnInit {
     priceSort: 0,
     letterSort: 0,
     limit: 12,
+    searchValue: "",
   };
 
 
@@ -119,22 +120,13 @@ export class WineSearchComponent implements OnInit {
 
   }
 
-  filterRed() {
-    //console.log(this.objectInList(this.newFilter.wineFilter))
-    var red = {"Varetype":"Rødvin"}
-    this.newFilter.wineFilter.push(red);
-    this.checkIfObjectInArray(red, this.newFilter.wineFilter)
-    if(Object.values(this.newFilter.wineFilter[0])[0] == red.Varetype){
-      console.log("Runs")
-    }
-    this.newFilter.wineFilterValue = "Rødvin";
-    this.sortAndFilter();
+  onEnter(value){
+      this.newFilter.searchValue = value
+      this.sortAndFilter();
   }
 
-  filterWhite() {
-    this.newFilter.wineFilter = [{"Varetype":"Hvitvin"}];
-    this.newFilter.wineFilterValue = "Hvitvin";
-    this.sortAndFilter();
+  updateSearch(value){
+      this.newFilter.searchValue = value
   }
 
   sortLetterASC() {
