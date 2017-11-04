@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 
 const connection = (closure) => {
-    return MongoClient.connect('mongodb://alvise:mypass@129.241.97.47:27017/mydb', (err, db) => {
+    return MongoClient.connect('mongodb://emilps:testpass@129.241.97.47:27017/mydb', (err, db) => {
         if (err) return console.log(err);
 
         closure(db);
@@ -92,17 +92,11 @@ router.post('/register', (req, res) => {
     })
   })
 
-
-
 //Will eventually be renamed login (and all beloning references)
-router.post('/getUser',
-  passport.authenticate( 'local-login', {}),
-  function( req, res ) {
-      //res.redirect('/');
-      //res.send( 'Logged in!' )
-      router.navigate(['/']);
-})
-
-
+router.post('/getUser', passport.authenticate('local-login'),
+  function(req, res) {
+    console.log('User: ' + req.user)
+    req.user ? res.send(req.user) : res.status(404).send()
+  });
 
 module.exports = router;

@@ -22,14 +22,23 @@ const appRoutes: Routes = [
     path: '',
     component: LoginComponent
   },
+
   {
     path: 'navbar',
     component: NavbarComponent
   },
+
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
+
   {
     path: '**',
     component: PageNotFoundComponent
-  }
+  },
+
+
 
 ];
 

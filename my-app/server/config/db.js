@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const DB_EXTERNAL = 'mongodb://alvise:mypass@129.241.97.47:27017/mydb'
+const DB_EXTERNAL = 'mongodb://emilps:testpass@129.241.97.47:27017/mydb'
 const DB_LOCAL = 'mongodb://127.0.0.1:27017/mydb'
 
 mongoose.Promise = global.Promise

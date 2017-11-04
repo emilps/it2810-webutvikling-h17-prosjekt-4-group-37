@@ -23,11 +23,19 @@ export class UserService {
     }
 
     getUser(user:User){
-      return this._http.post("/api/getUser", user).map(result => this.result = result.json().data)
+      return this._http.post("/api/getUser", user).map(result => this.result = result.json())
     }
+
     //getUsers() {
       //return this._http.get("/api/getUser")
         //.map(result => this.result = result.json().data);
     //}
+    public async getUserAsync(user: User) {
+      try {
+        const response = await this._http.post('/api/getUser', user).toPromise()
+        return response.json()
+      } catch (err) {
+      }
+    }
 
 }
