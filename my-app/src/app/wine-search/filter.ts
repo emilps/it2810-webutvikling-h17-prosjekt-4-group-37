@@ -6,5 +6,6 @@ export class Filter {
     public priceSort: Number,
     public letterSort: Number,
     public limit: Number,
+    public searchValue: String,
   ){}
 }

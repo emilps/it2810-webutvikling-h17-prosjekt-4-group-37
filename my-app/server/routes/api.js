@@ -45,7 +45,7 @@ router.get('/users', (req, res) => {
 });
 
 router.post('/wines', (req, res) => {
-    console.log(req.body.countryFilter);
+    //console.log(req.body.searchValue);
 
     let sortName = '$natural';
     let sortVariabel = 1;
@@ -72,6 +72,17 @@ router.post('/wines', (req, res) => {
     var newList = [{ $or: liste }]
     if (req.body.countryFilter.length > 0) {
       newList.push({ $or: req.body.countryFilter})
+    }
+
+    if(req.body.searchValue.length){
+      console.log(req.body.searchValue)
+      let search = { $search: ('\"' + req.body.searchValue + '\"') }
+      console.log(search);
+      newList.unshift({ $text: search })
+      if (req.body.letterSort === 0) {
+        sortName = 'Varenavn';
+        sortVariabel = 1;
+      }
     }
 
     console.log(newList)

@@ -1,7 +1,8 @@
-<mat-card class="buttonContainer sortContainer">
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Søk etter vin">
+<mat-card class="buttonContainer searchContainer">
+  <mat-form-field class="searchField">
+    <input #search (keyup.enter)="onEnter(search.value)" (keyup)="updateSearch(search.value)" matInput placeholder="Søk etter vin">
   </mat-form-field>
+  <button mat-raised-button color="accent" (click)="onEnter(search.value)">Søk</button>
 </mat-card>
 
 <mat-card class="buttonContainer sortContainer">
