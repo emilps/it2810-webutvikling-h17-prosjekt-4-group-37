@@ -127,6 +127,9 @@ export class WineSearchComponent implements OnInit {
 
   updateSearch(value){
       this.newFilter.searchValue = value
+      if(!value.length){
+        this.sortAndFilter();
+      }
   }
 
   sortLetterASC() {
