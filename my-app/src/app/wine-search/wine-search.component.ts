@@ -12,6 +12,7 @@ import { Filter } from './filter';
 })
 export class WineSearchComponent implements OnInit {
   name: string;
+  searchVisible = false;
 
   // Define a users property to hold our user data
   users: Array<any>;
@@ -123,12 +124,19 @@ export class WineSearchComponent implements OnInit {
   onEnter(value){
       this.newFilter.searchValue = value
       this.sortAndFilter();
+
+      if(value.length){
+        this.searchVisible = true;
+      }else{
+        this.searchVisible = false;
+      }
   }
 
   updateSearch(value){
-      this.newFilter.searchValue = value
       if(!value.length){
+        this.newFilter.searchValue = value
         this.sortAndFilter();
+        this.searchVisible = false;
       }
   }
 

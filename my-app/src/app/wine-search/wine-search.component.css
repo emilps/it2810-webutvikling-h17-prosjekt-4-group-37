@@ -43,13 +43,25 @@
 .sortContainer {
   justify-content: space-around;
   margin: 0 auto;
+
 }
 
 .searchContainer {
+  flex-direction: column;
+  justify-content: center;
   width: 60%;
   margin: 10px auto;
 }
 
- .searchField {
-  width: 80%;
+.searchField {
+  width: 100%;
+}
+
+.searchInput > button{
+  width: 100%;
+}
+
+.searchBold{
+  font-weight: bold;
+  font-family: Roboto, sans-serif;
 }
