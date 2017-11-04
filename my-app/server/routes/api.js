@@ -79,7 +79,7 @@ router.post('/wines', (req, res) => {
       let search = { $search: ('\"' + req.body.searchValue + '\"') }
       console.log(search);
       newList.unshift({ $text: search })
-      if (req.body.letterSort === 0) {
+      if (req.body.letterSort === 0 && req.body.priceSort === 0) {
         sortName = 'Varenavn';
         sortVariabel = 1;
       }
