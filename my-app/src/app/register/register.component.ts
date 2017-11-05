@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user';
 import { UserService} from '../services/users.service';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -10,6 +12,7 @@ import { UserService} from '../services/users.service';
   providers: [UserService]
 })
 export class RegisterComponent implements OnInit {
+  state = false;
 
   newUser: User= {
     name:"",
@@ -17,23 +20,23 @@ export class RegisterComponent implements OnInit {
   };
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
+
   ) { }
 
   ngOnInit() {
   }
 
-  insertNewUser() {
-    console.log(this.newUser.password);
-    this.userService
-    .insertNewUser(this.newUser)
-    .subscribe(
-      data => {
-            
-         console.log("Added user.");
-      }
-    )
-  }
+  async insertNewUser() {
+    this.state = await this.userService.insertNewUserAsync(this.newUser);
+    this.state ? this.router.navigate(['/']) : this.router.navigate(['/register']);
+  };
+
+  /*async getUser() {
+    this.state = await this.userService.getUserAsync(this.newUser);
+    this.state ? this.router.navigate(['/navbar']) : this.router.navigate(['/register']);
+  }*/
 
 
 }

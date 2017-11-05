@@ -38,4 +38,11 @@ export class UserService {
       }
     }
 
+    public async insertNewUserAsync(user: User) {
+      try {
+        const response = await this._http.post("/api/register", user).toPromise()
+        return response.json()
+      } catch (err) {
+      }
+    }
 }

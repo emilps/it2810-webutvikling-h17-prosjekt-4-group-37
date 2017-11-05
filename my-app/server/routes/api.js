@@ -76,7 +76,7 @@ router.get('/wines', (req, res) => {
 });
 
 //Handles input from client. Insert register input after password is secured with salt and hash.
-router.post('/register', (req, res) => {
+/*router.post('/register', (req, res) => {
     user = new User({
       name: req.body.name
     })
@@ -90,7 +90,13 @@ router.post('/register', (req, res) => {
     }).catch((err) => {
       console.error(err)
     })
-  })
+  })*/
+
+router.post('/register', passport.authenticate('local-signup'),
+  function(req,res) {
+    req.user ? res.send(req.user) : res.status(404).send()
+  }
+  );
 
 //Will eventually be renamed login (and all beloning references)
 router.post('/getUser', passport.authenticate('local-login'),
@@ -98,5 +104,15 @@ router.post('/getUser', passport.authenticate('local-login'),
     console.log('User: ' + req.user)
     req.user ? res.send(req.user) : res.status(404).send()
   });
+
+router.get('', function(req, res) {
+  console.log("redirectrrer")
+    if(req.user){
+        res.redirect("/dashboard");
+    }else{
+    // Display the Login page with any flash message, if any
+    res.render('index', { message: req.flash('message') });
+    }
+});
 
 module.exports = router;
