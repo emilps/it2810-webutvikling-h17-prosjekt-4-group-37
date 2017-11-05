@@ -94,6 +94,11 @@
   </div>
 </mat-expansion-panel>
 <div class="container">
+  <mat-card *ngIf="numberOfWines == 0">
+    <p>
+      Søket ditt gir ingen resultater..
+    </p>
+  </mat-card>
   <mat-card class="wineDiv"  *ngFor="let wine of wines">
     <h3>{{ wine.Varenavn }}</h3>
     <p>{{ wine.Pris }}</p>
