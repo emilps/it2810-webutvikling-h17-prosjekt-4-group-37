@@ -14,7 +14,6 @@ import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIco
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WineSearchComponent } from './wine-search/wine-search.component';
 import { MapComponent } from './map/map.component';
-//import { GoogleChart } from 'angular2-google-chart/directives/angular2-google-chart.directive';
 
 const appRoutes: Routes = [
   {
