@@ -33,7 +33,6 @@ export class MapComponent implements OnInit {
   countryChange() {
     const illegalCountries = ["Verden", "Afrika", "Europa", "Asia", "Amerika"];
     let country = document.getElementById('regionTitle').innerHTML;
-    console.log("event: ", country);
     if(!illegalCountries.includes(country)){
       this.newMapFilter.mapFilterValue = country;
       this._dataService.getCountries(this.newMapFilter)

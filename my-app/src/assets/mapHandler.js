@@ -27,11 +27,9 @@ function drawRegionsMap() {
     ['Georgia', 7],
     ['Libanon', 14],
     ['Brazil', 4],
-    ['Switzerland', 2],
     ['Macedonia', 7],
     ['Slovenia', 11],
     ['Morocco', 1],
-    ['India', 5],
     ['Mexico', 2],
     ['Bulgaria', 3],
     ['Canada', 11],
@@ -49,7 +47,6 @@ function drawRegionsMap() {
   google.visualization.events.addOneTimeListener(chart, 'regionClick', function (eventData) {
             // maybe you want to change the data table here...
             options['region'] = eventData.region;
-            console.log("Clicked Region!" + eventData.region);
             options['resolution'] = 'countries';
             switch(eventData.region) {
               case "150":
@@ -74,7 +71,6 @@ function drawRegionsMap() {
     var selectedItem = chart.getSelection()[0];
     if (selectedItem) {
       var country = data.getValue(selectedItem.row, 0);
-        console.log(country);
         switch(country) {
           case "France":
               title.innerHTML = "Frankrike";
@@ -87,6 +83,72 @@ function drawRegionsMap() {
               break;
           case "Spain":
               title.innerHTML = "Spania";
+              break;
+          case "Germany":
+              title.innerHTML = "Tyskland";
+              break;
+          case "Chile":
+              title.innerHTML = "Chile";
+              break;
+          case "USA":
+              title.innerHTML = "USA";
+              break;
+          case "Australia":
+              title.innerHTML = "Australia";
+              break;
+          case "South Africa":
+              title.innerHTML = "Sør-Afrika";
+              break;
+          case "Austria":
+              title.innerHTML = "Østerrike";
+              break;
+          case "Hungary":
+              title.innerHTML = "Ungarn";
+              break;
+          case "Argentina":
+              title.innerHTML = "Argentina";
+              break;
+          case "New Zealand":
+              title.innerHTML = "New Zealand";
+              break;
+          case "Moldova":
+              title.innerHTML = "Moldova";
+              break;
+          case "Greece":
+              title.innerHTML = "Hellas";
+              break;
+          case "Georgia":
+              title.innerHTML = "Georgia";
+              break;
+          case "Libanon":
+              title.innerHTML = "Libanon";
+              break;
+          case "Brazil":
+              title.innerHTML = "Brasil";
+              break;
+          case "Macedonia":
+              title.innerHTML = "Makedonia";
+              break;
+          case "Slovenia":
+              title.innerHTML = "Slovenia";
+              break;
+          case "Morocco":
+              title.innerHTML = "Marokko";
+              break;
+          case "Mexico":
+              title.innerHTML = "Mexico";
+              break;
+          case "Bulgaria":
+              title.innerHTML = "Bulgaria";
+              break;
+          case "Canada":
+              title.innerHTML = "Canada";
+              break;
+          case "Romania":
+              title.innerHTML = "Romania";
+              break;
+          case "Czechia":
+              title.innerHTML = "Tsjekkia";
               break;
           default:
               title.innerHTML = country;
