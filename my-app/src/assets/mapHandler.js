@@ -8,7 +8,7 @@ google.charts.setOnLoadCallback(drawRegionsMap);
 
 function drawRegionsMap() {
   var data = google.visualization.arrayToDataTable([
-    ['Country', 'Number of Wines'],
+    ['Country', 'Antall viner'],
     ['France', 3177],
     ['Italy', 3010],
     ['Portugal', 237],
@@ -53,13 +53,13 @@ function drawRegionsMap() {
             options['resolution'] = 'countries';
             switch(eventData.region) {
               case "150":
-                  title.innerHTML = "Europe";
+                  title.innerHTML = "Europa";
                   break;
               case "002":
-                  title.innerHTML = "Africa";
+                  title.innerHTML = "Afrika";
                   break;
               case "019":
-                  title.innerHTML = "Americas";
+                  title.innerHTML = "Amerika";
                   break;
               case "142":
                   title.innerHTML = "Asia";
@@ -67,7 +67,7 @@ function drawRegionsMap() {
               default:
                   title.innerHTML = eventData.region;
           }
-            mapTitle.innerHTML = "Click on a country to see wines from that area";
+            mapTitle.innerHTML = "Trykk på ett land for å se viner fra det området";
             chart.draw(data, options);
       });
   google.visualization.events.addListener(chart, 'select', function() {
@@ -75,7 +75,22 @@ function drawRegionsMap() {
     if (selectedItem) {
       var country = data.getValue(selectedItem.row, 0);
         console.log(country);
-        title.innerHTML = country;
+        switch(country) {
+          case "France":
+              title.innerHTML = "Frankrike";
+              break;
+          case "Italy":
+              title.innerHTML = "Italia";
+              break;
+          case "Portugal":
+              title.innerHTML = "Portugal";
+              break;
+          case "Spain":
+              title.innerHTML = "Spania";
+              break;
+          default:
+              title.innerHTML = country;
+      }
     }
   });
 

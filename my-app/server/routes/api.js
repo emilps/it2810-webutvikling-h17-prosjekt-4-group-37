@@ -60,5 +60,31 @@ router.get('/wines', (req, res) => {
     });
 });
 
+router.post('/countries', (req, res) => {
+  console.log("Logging countries: ", req.body);
+
+    let filterName = null;
+    let filterValue = null;
+
+    if (req.body.mapFilterValue.length) {
+      filterName = "Land";
+      filterValue = req.body.mapFilterValue;
+    }
+
+
+    connection((db) => {
+        db.collection('wines')
+            .find({[filterName]:filterValue})
+            .toArray()
+            .then((wines) => {
+                response.data = wines;
+                res.json(response);
+            })
+            .catch((err) => {
+                sendError(err, res);
+            });
+    });
+});
+
 
 module.exports = router;

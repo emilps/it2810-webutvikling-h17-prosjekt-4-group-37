@@ -1,17 +1,17 @@
 <div class="mapViewItems">
-  <div class="mapArea">
-    <span id="mapTitle">Click on a continent to see wines from that area</span>
+  <div class="mapArea" (click)="countryChange()">
+    <span id="mapTitle">Trykk på ett kontinent for å se viner fra det området</span>
     <div id="regions_div" style="width: 900px; height: 500px;"></div>
   </div>
 
   <div class="listArea">
-    <span id="regionTitle">Worldwide</span>
+    <span id="regionTitle">Verden</span>
     <div id="winelist_div" style="height: 500px; overflow-y:auto;">
       <table>
         <tr>
-          <th> Name </th>
-          <th> Country </th>
-          <th> Price </th>
+          <th> Navn </th>
+          <th> Land </th>
+          <th> Pris </th>
         </tr>
           <tr *ngFor="let wine of wines">
             <td>{{ wine.Varenavn }}</td>
