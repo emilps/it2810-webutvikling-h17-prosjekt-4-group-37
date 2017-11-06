@@ -42,7 +42,7 @@ global.loggedIn = (req, res, next) => {
 }
 
 // Get users
-router.get('/users', (req, res) => {
+router.get('/users', loggedIn, (req, res) => {
     connection((db) => {
         db.collection('users')
             .find()
@@ -57,6 +57,17 @@ router.get('/users', (req, res) => {
             });
     });
 });
+
+router.get('/loginstatus', (req,res) =>{
+    console.log("heyhey")
+    if (req.user) {
+    response.data = true;
+    } else {
+        response.data = false;
+    }
+
+    res.json(response)
+})
 
 //get wines
 router.get('/wines', (req, res) => {
@@ -73,6 +84,11 @@ router.get('/wines', (req, res) => {
                 sendError(err, res);
             });
     });
+});
+
+router.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
 });
 
 //Handles input from client. Insert register input after password is secured with salt and hash.
@@ -105,14 +121,6 @@ router.post('/getUser', passport.authenticate('local-login'),
     req.user ? res.send(req.user) : res.status(404).send()
   });
 
-router.get('', function(req, res) {
-  console.log("redirectrrer")
-    if(req.user){
-        res.redirect("/dashboard");
-    }else{
-    // Display the Login page with any flash message, if any
-    res.render('index', { message: req.flash('message') });
-    }
-});
+
 
 module.exports = router;

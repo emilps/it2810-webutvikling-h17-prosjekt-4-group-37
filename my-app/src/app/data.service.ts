@@ -24,5 +24,12 @@ export class DataService {
       .map(result => this.result = result.json().data);
   }
 
+  getLoginStatus () {
+      return this._http.get("/api/loginstatus").map(result => this.result = result.json().data)
+
+  }
+
+  
+
 
 }

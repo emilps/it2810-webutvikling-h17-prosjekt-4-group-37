@@ -15,6 +15,8 @@ import { WineSearchComponent } from './wine-search/wine-search.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
+import { AuthGuard } from './auth-guard.service';
+import { AuthService } from './auth.service';
 
 import { UserService} from './services/users.service';
 const appRoutes: Routes = [
@@ -25,7 +27,9 @@ const appRoutes: Routes = [
 
   {
     path: 'navbar',
-    component: NavbarComponent
+    component: NavbarComponent,
+    //canActivate: [AuthGuard]
+    //Not full functional yet. Make it async maybe?
   },
 
   {
@@ -54,7 +58,7 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      { enableTracing: false } // <-- debugging purposes only
     ),
     BrowserModule,
     HttpModule,
@@ -69,7 +73,9 @@ const appRoutes: Routes = [
 
   providers: [
     DataService,
-    UserService],
+    UserService,
+    AuthGuard,
+    AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
