@@ -46,7 +46,6 @@ router.get('/users', loggedIn, (req, res) => {
     connection((db) => {
         db.collection('users')
             .find()
-            .limit( 100 )
             .toArray()
             .then((users) => {
                 response.data = users;

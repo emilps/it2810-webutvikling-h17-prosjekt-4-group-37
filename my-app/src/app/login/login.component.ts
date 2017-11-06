@@ -1,7 +1,9 @@
-  import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user';
 import { UserService} from '../services/users.service';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,7 @@ import { Router } from '@angular/router'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  state = "false";
+  state = "";
 
   newUser: User= {
     name:"",
