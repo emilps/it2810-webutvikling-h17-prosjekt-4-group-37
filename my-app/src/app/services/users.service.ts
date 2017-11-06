@@ -8,7 +8,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class UserService {
 
-    result: any;
+    public user: any;
     constructor(private _http: Http) {
     }
 
@@ -23,7 +23,7 @@ export class UserService {
     }
 
     getUser(user:User){
-      return this._http.post("/api/getUser", user).map(result => this.result = result.json())
+      return this._http.post("/api/getUser", user).map(result => this.user = result.json())
     }
 
     //getUsers() {
@@ -33,7 +33,17 @@ export class UserService {
     public async getUserAsync(user: User) {
       try {
         const response = await this._http.post('/api/getUser', user).toPromise()
-        return response.json()
+        this.user = response.json()
+        return this.user
+      } catch (err) {
+      }
+    }
+
+    public async fetchUserAsync() {
+      try {
+        const response = await this._http.get('/api/me').toPromise()
+        this.user = response.json()
+        return this.user
       } catch (err) {
       }
     }
@@ -41,8 +51,13 @@ export class UserService {
     public async insertNewUserAsync(user: User) {
       try {
         const response = await this._http.post("/api/register", user).toPromise()
-        return response.json()
+        this.user = response.json()
+        return this.user
       } catch (err) {
       }
+    }
+
+    public isLoggedIn(): boolean {
+      return this.user ? true : false
     }
 }

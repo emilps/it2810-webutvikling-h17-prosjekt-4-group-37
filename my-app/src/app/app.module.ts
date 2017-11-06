@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -28,7 +28,7 @@ const appRoutes: Routes = [
   {
     path: 'navbar',
     component: NavbarComponent,
-    //canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
     //Not full functional yet. Make it async maybe?
   },
 
@@ -41,10 +41,11 @@ const appRoutes: Routes = [
     path: '**',
     component: PageNotFoundComponent
   },
-
-
-
 ];
+
+export function startupServiceFactory(userService: UserService): Function {
+    return () => userService.fetchUserAsync();
+}
 
 @NgModule({
   declarations: [
@@ -81,7 +82,14 @@ const appRoutes: Routes = [
     DataService,
     UserService,
     AuthGuard,
-    AuthService],
+    AuthService,
+    {
+      // Provider for APP_INITIALIZER
+      provide: APP_INITIALIZER,
+      useFactory: startupServiceFactory,
+      deps: [UserService],
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

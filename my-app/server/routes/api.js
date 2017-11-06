@@ -120,6 +120,9 @@ router.post('/getUser', passport.authenticate('local-login'),
     req.user ? res.send(req.user) : res.status(404).send()
   });
 
-
+router.get('/me', (req, res) => {
+    console.log('Getting logged in user')
+    req.user ? res.json(req.user) : res.status(404).send()
+})
 
 module.exports = router;
