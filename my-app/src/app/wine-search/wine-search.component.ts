@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 // Import the DataService
 import { DataService } from './../data.service';
+import { MatDialog } from '@angular/material';
+import { SingleWineComponent } from './../single-wine/single-wine.component';
 
 import { Filter } from './filter';
 
@@ -33,7 +35,7 @@ export class WineSearchComponent implements OnInit {
 
 
   // Create an instance of the DataService through dependency injection
-  constructor(private _dataService: DataService) {
+  constructor(private _dataService: DataService, public dialog: MatDialog) {
 
     // Access the Data Service's getUsers() method we defined
     this._dataService.getUsers()
@@ -41,6 +43,17 @@ export class WineSearchComponent implements OnInit {
 
     this._dataService.getWines(this.newFilter)
         .subscribe(res => this.wines = res);
+
+  }
+
+  openDialog(arg){
+    console.log(arg)
+    let dialogRef = this.dialog.open(SingleWineComponent, {
+      width: '600px',
+      data: arg,
+    })
+
+    dialogRef.afterClosed().subscribe(result => console.log(result))
 
   }
 

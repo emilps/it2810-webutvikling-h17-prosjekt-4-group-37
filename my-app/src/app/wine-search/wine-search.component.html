@@ -99,7 +99,7 @@
       Søket ditt gir ingen resultater..
     </p>
   </mat-card>
-  <mat-card class="wineDiv"  *ngFor="let wine of wines">
+  <mat-card class="wineDiv" (click)="openDialog(wine)" *ngFor="let wine of wines">
     <h3>{{ wine.Varenavn }}</h3>
     <p>{{ wine.Pris }}</p>
     <img src="{{ wine.Vareurl }}" />
@@ -109,4 +109,8 @@
 
 <div  *ngIf="numberOfWines >= newFilter.limit" class="buttonContainer">
  <button mat-raised-button color="accent" (click)="increaseLimit()">Load more..</button>
+</div>
+
+<div   class="buttonContainer">
+ <button mat-raised-button color="accent" (click)="openDialog()">Dialog</button>
 </div>

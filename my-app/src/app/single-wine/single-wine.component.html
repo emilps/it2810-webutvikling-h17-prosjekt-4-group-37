@@ -1,0 +1,12 @@
+<div class="">
+  <h2 mat-dialog-title>{{data.Varenavn}}</h2>
+  <mat-dialog-content>
+    <p>{{ data.Pris }}</p>
+    <img src="{{ data.Vareurl }}" />
+  </mat-dialog-content>
+  <hr>
+  <mat-dialog-actions>
+    <button mat-raised-button color="accent" (click)="onCloseConfirm()">Dialogbutton</button>
+    <button mat-raised-button color="accent" (click)="onCloseCancel()">Dialogbutton</button>
+  </mat-dialog-actions>
+</div>
