@@ -13,7 +13,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatDialogModule, MatTabsModule } from '@angular/material';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WineSearchComponent } from './wine-search/wine-search.component';
-<<<<<<< HEAD
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
@@ -21,10 +20,8 @@ import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { UserService} from './services/users.service';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
-=======
 import { MapComponent } from './map/map.component';
 
->>>>>>> 0cdb82aabd6e9def01e4f48586a5b059d25991c2
 const appRoutes: Routes = [
   {
     path: '',
