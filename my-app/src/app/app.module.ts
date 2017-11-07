@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+
 import { AppComponent } from './app.component';
 
 // Import the Http Module and our Data Service
@@ -12,6 +13,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatDialogModule, MatTabsModule } from '@angular/material';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WineSearchComponent } from './wine-search/wine-search.component';
+<<<<<<< HEAD
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
@@ -19,6 +21,10 @@ import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { UserService} from './services/users.service';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
+=======
+import { MapComponent } from './map/map.component';
+
+>>>>>>> 0cdb82aabd6e9def01e4f48586a5b059d25991c2
 const appRoutes: Routes = [
   {
     path: '',
@@ -55,7 +61,8 @@ export function startupServiceFactory(userService: UserService): Function {
     WineSearchComponent,
     LoginComponent,
     RegisterComponent,
-    LoginDialogComponent
+    LoginDialogComponent,
+    MapComponent
   ],
   imports: [
     RouterModule.forRoot(

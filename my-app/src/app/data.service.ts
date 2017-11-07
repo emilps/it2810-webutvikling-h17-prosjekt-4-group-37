@@ -24,6 +24,7 @@ export class DataService {
       .map(result => this.result = result.json().data);
   }
 
+
   getLoginStatus () {
       return this._http.get("/api/loginstatus").map(result => this.result = result.json().data)
 
@@ -31,5 +32,10 @@ export class DataService {
 
   
 
+
+  getCountries(arg) {
+    return this._http.post("/api/countries",arg)
+      .map(result => this.result = result.json().data);
+  }
 
 }
