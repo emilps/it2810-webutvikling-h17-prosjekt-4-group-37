@@ -25,7 +25,7 @@ import { MapComponent } from './map/map.component';
 const appRoutes: Routes = [
   {
     path: '',
-    component: LoginComponent
+    component: MapComponent,
   },
 
   {
