@@ -10,6 +10,13 @@
   font-size: 15px;
 }
 
+.wineDiv:hover {
+  cursor: pointer;
+  -webkit-box-shadow: -1px 11px 42px 9px rgba(0,0,0,0.75);
+  -moz-box-shadow: -1px 11px 42px 9px rgba(0,0,0,0.75);
+  box-shadow: -1px 11px 42px 9px rgba(0,0,0,0.75);
+}
+
 .wineDiv > img {
   max-height: 150px;
 }
