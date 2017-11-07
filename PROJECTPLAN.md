@@ -97,7 +97,7 @@ Beskrivelse av våre services:
 
 Det er nok veldig sannsynlig at vi lager flere services for mer ryddighet og bedre uthenting og behandling av forskjellig data.
 
-## Overordnet arkitektur til systemer
+## Overordnet arkitektur til systemet
 Vi har som mange andre grupper valgt å bruke "MEAN Stack" [wikipedia](https://en.wikipedia.org/wiki/MEAN_(software_bundle)).
 
 Denne "stakken" består av MongoDB, Express.js, Angular og Node.js. Dataflyten og bruken av disse "lagene" er illustrert i bildet under.
