@@ -1,0 +1,16 @@
+<div class="container">
+
+
+      <h1 class="form-signin-heading">Sign in</h1>
+
+        <div class="form-group">
+          <label for="username">username</label>
+          <input type="text" class="form-control" id="username" placeholder="Enter username" [(ngModel)]="this.newUser.name">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="this.newUser.password">
+        </div>
+        <button (click)="getUser()" class="btn btn-default">Sign in!</button>
+
+</div>
