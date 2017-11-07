@@ -1,0 +1,14 @@
+.mapViewItems {
+  display: flex;
+  flex-direction: row;
+}
+
+#regionTitle {
+  font-size: 3em;
+  text-align: center;
+}
+
+#mapTitle {
+  font-size: 2em;
+  text-align: center;
+}

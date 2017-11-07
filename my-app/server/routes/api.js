@@ -5,7 +5,7 @@ const ObjectID = require('mongodb').ObjectID;
 
 // Connect
 const connection = (closure) => {
-    return MongoClient.connect('mongodb://alvise:mypass@129.241.97.47:27017/mydb', (err, db) => {
+    return MongoClient.connect('mongodb://emilps:testpass@129.241.97.47:27017/mydb', (err, db) => {
         if (err) return console.log(err);
 
         closure(db);
@@ -49,6 +49,32 @@ router.get('/wines', (req, res) => {
         db.collection('wines')
             .find()
             .limit( 95 )
+            .toArray()
+            .then((wines) => {
+                response.data = wines;
+                res.json(response);
+            })
+            .catch((err) => {
+                sendError(err, res);
+            });
+    });
+});
+
+router.post('/countries', (req, res) => {
+  console.log("Logging countries: ", req.body);
+
+    let filterName = null;
+    let filterValue = null;
+
+    if (req.body.mapFilterValue.length) {
+      filterName = "Land";
+      filterValue = req.body.mapFilterValue;
+    }
+
+
+    connection((db) => {
+        db.collection('wines')
+            .find({[filterName]:filterValue})
             .toArray()
             .then((wines) => {
                 response.data = wines;

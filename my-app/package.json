@@ -23,6 +23,7 @@
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
+    "angular2-google-chart": "^2.3.0",
     "body-parser": "^1.18.2",
     "core-js": "^2.4.1",
     "express": "^4.16.2",
