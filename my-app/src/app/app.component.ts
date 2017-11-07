@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
     this._dataService.getWines()
         .subscribe(res => this.wines = res);
     */
-  } 
+  }
 
   async ngOnInit() {
     await this.userService.fetchUserAsync()

@@ -57,23 +57,72 @@ router.get('/users', loggedIn, (req, res) => {
     });
 });
 
-router.get('/loginstatus', (req,res) =>{
-    console.log("heyhey")
-    if (req.user) {
-    response.data = true;
-    } else {
-        response.data = false;
-    }
-
-    res.json(response)
-})
-
-//get wines
 router.get('/wines', (req, res) => {
     connection((db) => {
         db.collection('wines')
             .find()
-            .limit( 95 )
+            .limit(100)
+            .toArray()
+            .then((users) => {
+                response.data = users;
+                res.json(response);
+            })
+            .catch((err) => {
+                sendError(err, res);
+            });
+    });
+});
+
+router.post('/wines', (req, res) => {
+    //console.log(req.body.searchValue);
+
+    let sortName = '$natural';
+    let sortVariabel = 1;
+
+    let filterName = null;
+    let filterVariable = null;
+
+    var liste = [ { Varetype: "Hvitvin" },{ Varetype: "Rødvin" } ]
+    console.log(liste)
+    if (req.body.priceSort === 1 || req.body.priceSort === -1 ){
+      sortName = 'Pris';
+      sortVariabel = req.body.priceSort;
+    } else if (req.body.letterSort === 1 || req.body.letterSort === -1) {
+      sortName = 'Varenavn';
+      sortVariabel = req.body.letterSort;
+    }
+
+    if (req.body.wineFilter.length > 0) {
+      filterName = req.body.wineFilter;
+      filterVariable = req.body.wineFilterValue;
+      liste = req.body.wineFilter
+    }
+
+    var newList = [{ $or: liste }]
+    if (req.body.countryFilter.length > 0) {
+      newList.push({ $or: req.body.countryFilter})
+    }
+
+    if(req.body.searchValue.length){
+      console.log(req.body.searchValue)
+      let search = { $search: ('\"' + req.body.searchValue + '\"') }
+      console.log(search);
+      newList.unshift({ $text: search })
+      if (req.body.letterSort === 0 && req.body.priceSort === 0) {
+        sortName = 'Varenavn';
+        sortVariabel = 1;
+      }
+    }
+
+    console.log(newList)
+
+
+
+    connection((db) => {
+        db.collection('wines')
+            .find({$and:newList})
+            .sort({ [sortName]: sortVariabel })
+            .limit( req.body.limit )
             .toArray()
             .then((wines) => {
                 response.data = wines;
@@ -84,6 +133,17 @@ router.get('/wines', (req, res) => {
             });
     });
 });
+
+router.get('/loginstatus', (req,res) =>{
+    console.log("heyhey")
+    if (req.user) {
+    response.data = true;
+    } else {
+        response.data = false;
+    }
+
+    res.json(response)
+})
 
 router.get('/logout', function(req, res){
   req.logout();
@@ -123,7 +183,7 @@ router.post('/getUser', passport.authenticate('local-login'),
 router.get('/me', (req, res) => {
     console.log('Getting logged in user')
     req.user ? res.json(req.user) : res.status(404).send()
-})
+});
 router.post('/countries', (req, res) => {
   console.log("Logging countries: ", req.body);
 

@@ -10,22 +10,24 @@ import { HttpModule } from '@angular/http';
 import { DataService } from './data.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatDialogModule, MatTabsModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatCheckboxModule, MatExpansionModule, MatSelectModule, MatFormFieldModule, MatInputModule, MatDialogModule, MatButtonToggleModule, MatSnackBarModule, MatTooltipModule, MatTabsModule } from '@angular/material';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WineSearchComponent } from './wine-search/wine-search.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { UserService} from './services/users.service';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { MapComponent } from './map/map.component';
+import { SingleWineComponent } from './single-wine/single-wine.component';
+
 
 const appRoutes: Routes = [
   {
     path: '',
-    component: MapComponent,
+    component: WineSearchComponent,
   },
 
   {
@@ -59,7 +61,8 @@ export function startupServiceFactory(userService: UserService): Function {
     LoginComponent,
     RegisterComponent,
     LoginDialogComponent,
-    MapComponent
+    MapComponent,
+    SingleWineComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -74,11 +77,20 @@ export function startupServiceFactory(userService: UserService): Function {
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
+    MatCheckboxModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatSelectModule,
     FormsModule,
+    MatInputModule,
     MatDialogModule,
+    MatButtonToggleModule,
+    MatSnackBarModule,
+    MatTooltipModule,
     MatTabsModule
   ],
   entryComponents: [
+    SingleWineComponent,
     LoginDialogComponent
   ],
 
