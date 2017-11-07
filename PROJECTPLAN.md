@@ -59,8 +59,8 @@ import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIco
 Dette er modulene vi foreløpig har/har planlagt å ta i bruk. Kort beskrivelse av modulene som ikke er standard i AngularCLI:
 - RouterModule: Tillater routing
 - HttpModule: Tillater HTTP request og responses
-- FormsModule: ØYSTEIN
-- BrowserAnimationsModule: ØYSTEIN
+- FormsModule: Module for input handling
+- BrowserAnimationsModule: Dependency for Angular Material
 - Mat***Module(s): Moduler for å ta i bruk Angular Material komponenter/design.
 
 ### Komponenter
