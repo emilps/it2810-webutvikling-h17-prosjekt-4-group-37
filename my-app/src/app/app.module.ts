@@ -9,7 +9,7 @@ import { HttpModule } from '@angular/http';
 import { DataService } from './data.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatCheckboxModule, MatExpansionModule, MatSelectModule, MatFormFieldModule, MatInputModule, MatDialogModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatCheckboxModule, MatExpansionModule, MatSelectModule, MatFormFieldModule, MatInputModule, MatDialogModule, MatButtonToggleModule, MatSnackBarModule, MatTooltipModule } from '@angular/material';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WineSearchComponent } from './wine-search/wine-search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -59,7 +59,10 @@ const appRoutes: Routes = [
     MatSelectModule,
     FormsModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonToggleModule,
+    MatSnackBarModule,
+    MatTooltipModule
   ],
   entryComponents: [
     SingleWineComponent
