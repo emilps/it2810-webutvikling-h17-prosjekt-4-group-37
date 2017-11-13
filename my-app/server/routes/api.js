@@ -162,7 +162,10 @@ router.post('/updatefavoritewines', (req, res) => {
                 {userID: req.body.username},
                 {$push: {wineID: req.body.wine}},
                 {upsert: true})
-              .then(console.log("Added wine"))
+              .then((data) => {
+                  response.data = data;
+                  res.json(response);
+              })
               .catch((err) => {
                   sendError(err, res);
               });
@@ -173,7 +176,10 @@ router.post('/updatefavoritewines', (req, res) => {
               .update(
                 {userID: req.body.username},
                 {$pull: {wineID: req.body.wine}})
-              .then(console.log("Removed wine"))
+              .then((data) => {
+                  response.data = data;
+                  res.json(response);
+              })
               .catch((err) => {
                   sendError(err, res);
               });

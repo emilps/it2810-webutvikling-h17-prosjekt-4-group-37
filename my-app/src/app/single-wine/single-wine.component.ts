@@ -129,7 +129,7 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
 
   updateWine(){
     this.favoriteWineService.updateFavoriteWine(this.newFilter)
-        .subscribe(res => this.result = res);
+        .subscribe(res => console.log(res));
   }
 
 
