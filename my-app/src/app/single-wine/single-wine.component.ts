@@ -79,13 +79,13 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
         this.icon = "star_border";
         this.newFilter.remove = 1;
         this.snackBar.open((wine + " er fjernet fra favoritter"),"OK", {
-          duration: 500,
+          duration: 1000,
         });
       }else{
         this.icon = "star";
         this.newFilter.remove = 0;
         this.snackBar.open((wine + " er lagret i favoritter"),"OK", {
-          duration: 500,
+          duration: 1000,
         });
       }
       this.updateWine();
