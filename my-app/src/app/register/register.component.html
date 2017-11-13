@@ -4,14 +4,15 @@
     <div class="col-md-6">
       <h1>Register</h1>
         <div class="form-group">
-          <label for="name">Full name</label>
+          <label for="name">Brukernavn</label>
           <input type="text" class="form-control" placeholder="Enter your name" [(ngModel)]="this.newUser.name">
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
+          <label for="password">Passord</label>
           <input type="password" class="form-control" placeholder="Password" [(ngModel)]="this.newUser.password">
         </div>
         <button (click)="insertNewUser()" class="btn btn-default">Register!</button>
+        <div *ngIf="wrongCheck">Brukernavn allerede i bruk.</div>
     </div>
   </div>
 
