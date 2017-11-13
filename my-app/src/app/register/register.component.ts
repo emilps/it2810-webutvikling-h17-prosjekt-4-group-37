@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   state = false;
-
+  wrongCheck= false;
   newUser: User= {
     name:"",
     password:""
@@ -30,6 +30,9 @@ export class RegisterComponent implements OnInit {
 
   async insertNewUser() {
     this.state = await this.userService.insertNewUserAsync(this.newUser);
+    if(!this.state){
+      this.wrongCheck = true;
+    }
     this.state ? this.router.navigate(['/']) : this.router.navigate(['/register']);
   };
 
