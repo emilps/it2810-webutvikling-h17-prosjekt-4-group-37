@@ -46,7 +46,7 @@ export class WineSearchComponent implements OnInit {
   openDialog(arg){
     console.log(arg)
     let dialogRef = this.dialog.open(SingleWineComponent, {
-      width: '600px',
+      //width: '600px',
       data: arg,
     })
 
