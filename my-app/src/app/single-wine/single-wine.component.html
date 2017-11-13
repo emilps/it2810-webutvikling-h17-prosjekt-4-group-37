@@ -15,10 +15,11 @@
   </mat-dialog-content>
   <hr>
   <mat-dialog-actions class="wineDialogActions">
-    <mat-icon class="starIcon" (click)="changeIcon(wineTitle.innerHTML)" matTooltip="Lagre i favoritter" [matTooltipPosition]="position">{{ icon }}</mat-icon>
+    <mat-icon class="starIcon" (click)="changeIcon(wineTitle.innerHTML, data.Varenummer)" matTooltip="Lagre i favoritter" [matTooltipPosition]="position">{{ icon }}</mat-icon>
     <mat-icon class="closeIcon" (click)="onCloseConfirm()" matTooltip="Lukk denne vinen" [matTooltipPosition]="position">close</mat-icon>
-    <!--
-    <button mat-raised-button color="accent" (click)="onCloseConfirm()">Dialogbutton</button>
+
+    <button mat-raised-button color="accent" (click)="checkResult()">Dialogbutton</button>
+<!--
     <button mat-raised-button color="accent" (click)="onCloseCancel()">Dialogbutton</button>
   -->
   </mat-dialog-actions>
