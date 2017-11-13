@@ -50,9 +50,6 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
       //this.checkWine();
       //console.log(this.result)
 
-      if(this.result.length){
-        console.log("works")
-      }
       this.checkWine();
     }
 
