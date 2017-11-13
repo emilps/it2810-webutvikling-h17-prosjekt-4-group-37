@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user';
 import { UserService} from '../services/users.service';
 import { Router } from '@angular/router';
-
+import { NavbarComponent } from './../navbar/navbar.component';
 
 
 @Component({
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   state = "";
-
+  wrongCheck= false;
   newUser: User= {
     name:"",
     password:""
@@ -28,6 +28,10 @@ export class LoginComponent implements OnInit {
 
   async getUser() {
     this.state = await this.userService.getUserAsync(this.newUser);
-    this.state ? this.router.navigate(['/navbar']) : this.router.navigate(['/register']);
+    if(!this.state){
+      this.wrongCheck= true;
+    }
+    this.state ? this.router.navigate(['/']) : this.router.navigate([]);
+    //NavbarComponent.loggedInNavbar();
   }
 }
