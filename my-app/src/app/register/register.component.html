@@ -1,8 +1,5 @@
 <div class="container">
 
-  <div class="row">
-    <div class="col-md-6">
-      <h1>Register</h1>
         <div class="form-group">
           <label for="name">Brukernavn</label>
           <input type="text" class="form-control" placeholder="Enter your name" [(ngModel)]="this.newUser.name">
@@ -13,7 +10,5 @@
         </div>
         <button (click)="insertNewUser()" class="btn btn-default">Register!</button>
         <div *ngIf="wrongCheck">Brukernavn allerede i bruk.</div>
-    </div>
-  </div>
 
 </div>
