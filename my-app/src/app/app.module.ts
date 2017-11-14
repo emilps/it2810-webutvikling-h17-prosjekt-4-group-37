@@ -23,7 +23,6 @@ import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { MapComponent } from './map/map.component';
 import { SingleWineComponent } from './single-wine/single-wine.component';
 
-
 const appRoutes: Routes = [
   {
     path: '',
