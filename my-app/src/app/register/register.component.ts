@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user';
 import { UserService} from '../services/users.service';
 import { Router } from '@angular/router';
-
+import {MatSnackBar} from '@angular/material';
 
 
 @Component({
@@ -21,7 +21,9 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    public snackBar: MatSnackBar
+
 
   ) { }
 
@@ -33,6 +35,9 @@ export class RegisterComponent implements OnInit {
     if(!this.state){
       this.wrongCheck = true;
     }
+    this.snackBar.open(this.newUser.name + ' er registrert. Du kan nå logge inn.', 'Undo', {
+      duration: 3000
+    })
     this.state ? this.router.navigate(['/']) : this.router.navigate(['/register']);
   };
 
