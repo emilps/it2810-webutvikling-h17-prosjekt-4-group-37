@@ -9,6 +9,7 @@
           <input type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="this.newUser.password">
         </div>
         <div *ngIf="wrongCheck">Feil brukernavn eller passord, prøv igjen.</div>
+        <div *ngIf="wrongName">Brukernavn eller passord mangler.</div>
         <button (click)="getUser()" class="btn btn-default">Sign in!</button>
 
 </div>
