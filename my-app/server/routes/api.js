@@ -58,6 +58,7 @@ router.get('/users', loggedIn, (req, res) => {
 });
 
 router.get('/wines', (req, res) => {
+  console.log("hello");
     connection((db) => {
         db.collection('wines')
             .find()
@@ -135,7 +136,6 @@ router.post('/wines', (req, res) => {
 });
 
 router.get('/loginstatus', (req,res) =>{
-    console.log("heyhey")
     if (req.user) {
     response.data = true;
     } else {
@@ -146,6 +146,7 @@ router.get('/loginstatus', (req,res) =>{
 })
 
 router.get('/logout', function(req, res){
+  console.log("wowow: ");
   req.logout();
   res.redirect('/');
 });
@@ -176,8 +177,9 @@ router.post('/register', passport.authenticate('local-signup'),
 //Will eventually be renamed login (and all beloning references)
 router.post('/getUser', passport.authenticate('local-login'),
   function(req, res) {
+    console.log("Message " );
     console.log('User: ' + req.user)
-    req.user ? res.send(req.user) : res.status(404).send()
+    req.user ? res.send(req.user) : res.send(404,{"result": false})
   });
 
 router.get('/me', (req, res) => {
