@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
     if(!this.state){
       this.wrongCheck= true;
     }
+
     this.state ? this.router.navigate(['/']) : this.router.navigate([]);
     //NavbarComponent.loggedInNavbar();
   }
