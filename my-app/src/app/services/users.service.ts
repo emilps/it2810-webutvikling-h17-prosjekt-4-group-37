@@ -60,4 +60,9 @@ export class UserService {
     public isLoggedIn(): boolean {
       return this.user ? true : false
     }
+
+    public logOutUser(){
+      this._http.get('/api/logout').toPromise()
+    }
+
 }
