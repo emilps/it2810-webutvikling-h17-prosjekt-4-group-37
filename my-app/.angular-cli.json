@@ -22,7 +22,7 @@
         "styles.css"
       ],
       "scripts": [
-        "./assets/mapHandler.js"
+        
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

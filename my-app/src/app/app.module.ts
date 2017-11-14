@@ -41,7 +41,10 @@ const appRoutes: Routes = [
     path: 'register',
     component: RegisterComponent
   },
-
+  {
+    path: 'map',
+    component: MapComponent
+  },
   {
     path: '**',
     component: PageNotFoundComponent
