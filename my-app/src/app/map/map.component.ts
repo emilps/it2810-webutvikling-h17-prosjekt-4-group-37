@@ -5,7 +5,6 @@ import { DataService } from './../data.service';
 
 import { MapFilter } from './mapFilter';
 
-
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
