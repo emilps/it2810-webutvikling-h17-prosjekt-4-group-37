@@ -38,5 +38,15 @@ export class AppComponent implements OnInit {
     } else {
       console.log('User not logged in')
     }
+    this.playSound()
+  }
+
+  playSound(){
+    const audio = new Audio();
+    audio.src = '../../assets/lounge.mp3';
+    audio.load();
+    // auto-start
+    audio.play();
+    audio.addEventListener('ended',this.playSound);
   }
 }
