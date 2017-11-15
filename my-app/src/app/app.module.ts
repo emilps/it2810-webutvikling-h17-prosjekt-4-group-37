@@ -10,7 +10,7 @@ import { HttpModule } from '@angular/http';
 import { DataService } from './data.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatCheckboxModule, MatExpansionModule, MatSelectModule, MatFormFieldModule, MatInputModule, MatDialogModule, MatButtonToggleModule, MatSnackBarModule, MatTooltipModule, MatTabsModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatCheckboxModule, MatExpansionModule, MatSelectModule, MatFormFieldModule, MatInputModule, MatDialogModule, MatButtonToggleModule, MatSnackBarModule, MatTooltipModule, MatTabsModule, MatTableModule } from '@angular/material';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WineSearchComponent } from './wine-search/wine-search.component';
 import { LoginComponent } from './login/login.component';
@@ -23,6 +23,9 @@ import { FavoriteWineService } from './services/favoritewine.service';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { MapComponent } from './map/map.component';
 import { SingleWineComponent } from './single-wine/single-wine.component';
+
+import { MapWineService } from './services/mapwine.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 const appRoutes: Routes = [
@@ -91,7 +94,9 @@ export function startupServiceFactory(userService: UserService): Function {
     MatButtonToggleModule,
     MatSnackBarModule,
     MatTooltipModule,
-    MatTabsModule
+    MatTabsModule,
+    MatTableModule,
+    HttpClientModule
   ],
   entryComponents: [
     SingleWineComponent,
@@ -104,6 +109,7 @@ export function startupServiceFactory(userService: UserService): Function {
     AuthGuard,
     AuthService,
     FavoriteWineService,
+    MapWineService,
     {
       // Provider for APP_INITIALIZER
       provide: APP_INITIALIZER,
