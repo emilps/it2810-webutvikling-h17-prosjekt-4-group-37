@@ -2,12 +2,11 @@
 
     <span routerLink="/">A Glass of Wine</span>
     <span class="example-spacer"></span>
-
-    <button *ngIf="loggedInOptions" mat-button [matMenuTriggerFor]="appMenu"><mat-icon>menu</mat-icon> Profile</button>
-    <button *ngIf="!loggedInOptions" (click)="openDialog()"> login</button>
+    <div *ngIf="loggedInOptions; else loginButton"> <button mat-button [matMenuTriggerFor]="appMenu"><mat-icon>menu</mat-icon> Profil</button></div>
+    <ng-template #loginButton><button (click)="openDialog()"> logg in</button></ng-template>
 </mat-toolbar>
 
 <mat-menu #appMenu="matMenu">
-  <button mat-menu-item routerLink="/navbar"> Settings </button>
-  <button mat-menu-item (click)="logOut()"> Logout </button>
+  <button mat-menu-item routerLink="/navbar"> Profil </button>
+  <button mat-menu-item (click)="logOut()"> Logg ut </button>
 </mat-menu>
