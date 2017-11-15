@@ -1,15 +1,12 @@
 <div class="container">
-
-        <div class="form-group">
-          <label for="username">Brukernavn</label>
-          <input type="text" class="form-control" id="username" placeholder="Enter username" [(ngModel)]="this.newUser.name">
-        </div>
-        <div class="form-group">
-          <label for="password">Passord</label>
-          <input type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="this.newUser.password">
-        </div>
-        <div *ngIf="wrongCheck">Feil brukernavn eller passord, prøv igjen.</div>
-        <div *ngIf="wrongName">Brukernavn eller passord mangler.</div>
-        <button (click)="getUser()" class="btn btn-default">Sign in!</button>
+  <mat-form-field class="searchField">
+    <input type="text" class="form-control" id="username" matInput placeholder="Brukernavn" [(ngModel)]="this.newUser.name">
+  </mat-form-field>
+  <mat-form-field class="searchField">
+    <input type="password" class="form-control" id="password" matInput placeholder="Passord" [(ngModel)]="this.newUser.password">
+  </mat-form-field>
+  <div *ngIf="wrongCheck" class="errorMessage">Feil brukernavn eller passord, prøv igjen.</div>
+  <div *ngIf="wrongName" class="errorMessage">Brukernavn eller passord mangler.</div>
+  <button color="accent" mat-raised-button (click)="getUser()" class="btn btn-default">Logg inn!</button>
 
 </div>
