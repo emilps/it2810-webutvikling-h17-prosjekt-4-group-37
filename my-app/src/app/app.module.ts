@@ -98,6 +98,8 @@ export function startupServiceFactory(userService: UserService): Function {
     UserService,
     AuthGuard,
     AuthService,
+    NavbarComponent,
+
     {
       // Provider for APP_INITIALIZER
       provide: APP_INITIALIZER,
