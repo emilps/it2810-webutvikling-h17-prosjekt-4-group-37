@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
     if(!this.state){
       this.wrongCheck = true;
     }
-    this.snackBar.open(this.newUser.name + ' er registrert. Du kan nå logge inn.', 'Undo', {
+    this.snackBar.open(this.newUser.name + ' er registrert. Du kan nå logge inn.', ' ', {
       duration: 3000
     })
     this.state ? this.router.navigate(['/']) : this.router.navigate(['/register']);
