@@ -4,6 +4,8 @@ import { UserService} from '../services/users.service';
 import { Router } from '@angular/router';
 import { NavbarComponent } from './../navbar/navbar.component';
 import {MatSnackBar} from '@angular/material';
+import {MatDialogRef} from '@angular/material';
+import {LoginDialogComponent} from './../login-dialog/login-dialog.component';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +24,10 @@ export class LoginComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    public navbarComponent : NavbarComponent,
+    public dialogRef: MatDialogRef<LoginDialogComponent>
+
   ) { }
 
   ngOnInit() {
@@ -37,11 +42,12 @@ export class LoginComponent implements OnInit {
         this.wrongCheck = true;
         this.wrongName = false;
       }
-      this.snackBar.open(this.newUser.name + ' er logget inn.', 'Undo', {
+      this.snackBar.open(this.newUser.name + ' er logget inn.', ' ', {
         duration: 3000
       })
+      this.dialogRef.close('Closed!');
       this.state ? this.router.navigate(['/']) : this.router.navigate([]);
-      //NavbarComponent.loggedInNavbar();
+      this.navbarComponent.loggedInNavbar();
     }
 
   }
