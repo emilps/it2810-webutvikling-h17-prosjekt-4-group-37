@@ -1,13 +1,13 @@
-import { Injectable } from '@angular/core';
+import { Component, Injectable } from '@angular/core'; //added input to EventEmitter
 import { Http, URLSearchParams } from '@angular/http';
 import { Subject } from 'rxjs/Subject';
 import { User } from '../model/user';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { NavbarComponent } from './../navbar/navbar.component';
 
 @Injectable()
 export class UserService {
-
     public user: any;
     constructor(private _http: Http) {
     }
@@ -65,5 +65,6 @@ export class UserService {
       console.log("heihei her eg jeg")
       this._http.get('/api/logout').toPromise()
     }
+
 
 }
