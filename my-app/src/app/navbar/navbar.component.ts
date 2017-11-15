@@ -33,9 +33,12 @@ export class NavbarComponent implements OnInit {
   public async loggedInNavbar() {
     await this.userService.fetchUserAsync()
     if (this.userService.isLoggedIn()) {
-      this.loggedInOptions = true;
+      console.log("Things working1!");
+      this.login();
+      console.log("This has changed to: " + this.loggedInOptions);
     } else {
       this.loggedInOptions = false;
+      console.log("Logged out navbar")
     }
   }
 
@@ -48,9 +51,14 @@ export class NavbarComponent implements OnInit {
 
 }
 
+  login(){
+    this.loggedInOptions = true;
+  }
+
   logOut(){
     console.log("Test for logout");
     this.userService.logOutUser();
+    this.loggedInOptions = false;
   }
 
 }
