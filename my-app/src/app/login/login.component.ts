@@ -41,14 +41,14 @@ export class LoginComponent implements OnInit {
       if(!this.state){
         this.wrongCheck = true;
         this.wrongName = false;
+      }else{
+        this.snackBar.open(this.newUser.name + ' er logget inn.', ' ', {
+          duration: 3000
+        })
+        this.dialogRef.close('Closed!');
+        this.state ? this.router.navigate(['/']) : this.router.navigate([]);
+        this.navbarComponent.loggedInNavbar();
       }
-      this.snackBar.open(this.newUser.name + ' er logget inn.', ' ', {
-        duration: 3000
-      })
-      this.dialogRef.close('Closed!');
-      this.state ? this.router.navigate(['/']) : this.router.navigate([]);
-      this.navbarComponent.loggedInNavbar();
     }
-
   }
 }
