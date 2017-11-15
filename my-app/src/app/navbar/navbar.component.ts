@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { LoginDialogComponent } from './../login-dialog/login-dialog.component';
 import { UserService} from '../services/users.service';
@@ -16,10 +16,7 @@ export class NavbarComponent implements OnInit {
   public loggedInOptions = false;
 
   constructor(public dialog: MatDialog,private userService: UserService,){
-
-
    }
-
 
   async ngOnInit() {
     await this.userService.fetchUserAsync()
@@ -47,9 +44,7 @@ export class NavbarComponent implements OnInit {
       width: '500px',
       data: "Test tekst"
     });
-
-
-}
+  }
 
   login(){
     this.loggedInOptions = true;
@@ -60,5 +55,4 @@ export class NavbarComponent implements OnInit {
     this.userService.logOutUser();
     this.loggedInOptions = false;
   }
-
 }
