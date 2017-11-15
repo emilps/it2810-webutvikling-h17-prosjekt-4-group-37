@@ -14,6 +14,7 @@ import {MatSnackBar} from '@angular/material';
 export class RegisterComponent implements OnInit {
   state = false;
   wrongCheck= false;
+  wrongName=false;
   newUser: User= {
     name:"",
     password:""
@@ -31,14 +32,20 @@ export class RegisterComponent implements OnInit {
   }
 
   async insertNewUser() {
+    if(this.newUser.name == "" || this.newUser.password == ""){
+      this.wrongName = true;
+    }else{
     this.state = await this.userService.insertNewUserAsync(this.newUser);
     if(!this.state){
+      this.wrongName= false;
       this.wrongCheck = true;
+    }else{
+      this.snackBar.open(this.newUser.name + ' er registrert. Du kan nå logge inn.', ' ', {
+        duration: 3000
+      })
+      this.state ? this.router.navigate(['/']) : this.router.navigate(['/register']);
     }
-    this.snackBar.open(this.newUser.name + ' er registrert. Du kan nå logge inn.', ' ', {
-      duration: 3000
-    })
-    this.state ? this.router.navigate(['/']) : this.router.navigate(['/register']);
+    }
   };
 
   /*async getUser() {
