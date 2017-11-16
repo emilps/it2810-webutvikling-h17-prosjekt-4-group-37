@@ -59,8 +59,8 @@ import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIco
 Dette er modulene vi foreløpig har/har planlagt å ta i bruk. Kort beskrivelse av modulene som ikke er standard i AngularCLI:
 - RouterModule: Tillater routing
 - HttpModule: Tillater HTTP request og responses
-- FormsModule: ØYSTEIN
-- BrowserAnimationsModule: ØYSTEIN
+- FormsModule: Module for input handling
+- BrowserAnimationsModule: Dependency for Angular Material
 - Mat***Module(s): Moduler for å ta i bruk Angular Material komponenter/design.
 
 ### Komponenter
@@ -97,7 +97,7 @@ Beskrivelse av våre services:
 
 Det er nok veldig sannsynlig at vi lager flere services for mer ryddighet og bedre uthenting og behandling av forskjellig data.
 
-## Overordnet arkitektur til systemer
+## Overordnet arkitektur til systemet
 Vi har som mange andre grupper valgt å bruke "MEAN Stack" [wikipedia](https://en.wikipedia.org/wiki/MEAN_(software_bundle)).
 
 Denne "stakken" består av MongoDB, Express.js, Angular og Node.js. Dataflyten og bruken av disse "lagene" er illustrert i bildet under.

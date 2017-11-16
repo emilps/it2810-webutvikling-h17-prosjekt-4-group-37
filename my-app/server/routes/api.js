@@ -135,6 +135,54 @@ router.post('/wines', (req, res) => {
     });
 });
 
+router.post('/getfavoritewines', (req, res) => {
+    console.log("------TEST------", req.body.username);
+    console.log("------TEST------", req.body.wine);
+    connection((db) => {
+        db.collection('favoritewines')
+            .find({$and: [{"userID": req.body.username}, {"wineID": {$in: [req.body.wine]}}]})
+            .limit( 10 )
+            .toArray()
+            .then((wines) => {
+                response.data = wines;
+                res.json(response);
+            })
+            .catch((err) => {
+                sendError(err, res);
+            });
+    });
+});
+
+router.post('/updatefavoritewines', (req, res) => {
+    console.log("------TEST------", req.body.username);
+    console.log("------TEST------", req.body.remove);
+    if (!req.body.remove) {
+      connection((db) => {
+          db.collection('favoritewines')
+              .update(
+                {userID: req.body.username},
+                {$push: {wineID: req.body.wine}},
+                {upsert: true})
+              .then(console.log("Added wine"))
+              .catch((err) => {
+                  sendError(err, res);
+              });
+      });
+    }else{
+      connection((db) => {
+          db.collection('favoritewines')
+              .update(
+                {userID: req.body.username},
+                {$pull: {wineID: req.body.wine}})
+              .then(console.log("Removed wine"))
+              .catch((err) => {
+                  sendError(err, res);
+              });
+      });
+    }
+
+});
+
 router.get('/loginstatus', (req,res) =>{
     if (req.user) {
     response.data = true;

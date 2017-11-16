@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { UserService} from './services/users.service';
+import { FavoriteWineService } from './services/favoritewine.service';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { MapComponent } from './map/map.component';
 import { SingleWineComponent } from './single-wine/single-wine.component';
@@ -109,7 +110,7 @@ export function startupServiceFactory(userService: UserService): Function {
     AuthService,
     NavbarComponent,
     MessageService,
-
+    FavoriteWineService,
     {
       // Provider for APP_INITIALIZER
       provide: APP_INITIALIZER,

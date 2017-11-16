@@ -18,7 +18,6 @@ export class WineSearchComponent implements OnInit {
   numberOfWines = 12;
 
   // Define a users property to hold our user data
-  users: Array<any>;
   wines: Array<any>;
 
   newFilter: Filter = {
@@ -38,8 +37,6 @@ export class WineSearchComponent implements OnInit {
   constructor(private _dataService: DataService, public dialog: MatDialog) {
 
     // Access the Data Service's getUsers() method we defined
-    this._dataService.getUsers()
-        .subscribe(res => this.users = res);
 
     this._dataService.getWines(this.newFilter)
         .subscribe(res => this.wines = res);
@@ -49,7 +46,7 @@ export class WineSearchComponent implements OnInit {
   openDialog(arg){
     console.log(arg)
     let dialogRef = this.dialog.open(SingleWineComponent, {
-      width: '600px',
+      //width: '600px',
       data: arg,
     })
 
