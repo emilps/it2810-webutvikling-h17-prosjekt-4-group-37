@@ -6,6 +6,6 @@
     <input type="password" matInput class="form-control" placeholder="Passord" [(ngModel)]="this.newUser.password">
   </mat-form-field>
   <div *ngIf="wrongCheck" class="errorMessage">Brukernavn allerede i bruk.</div>
-  <div *ngIf="wrongName" class="errorMessage">Brukernavn eller passord mangler.</div>
+  <div *ngIf="wrongName" class="errorMessage">Alle felter må være fylt inn.</div>
   <button color="accent" mat-raised-button (click)="insertNewUser()" class="btn btn-default">Registrer ny bruker!</button>
 </div>
