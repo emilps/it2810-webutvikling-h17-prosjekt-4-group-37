@@ -1,18 +1,11 @@
 <div class="container">
-
-  <div class="row">
-    <div class="col-md-6">
-      <h1>Register</h1>
-        <div class="form-group">
-          <label for="name">Full name</label>
-          <input type="text" class="form-control" placeholder="Enter your name" [(ngModel)]="this.newUser.name">
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" class="form-control" placeholder="Password" [(ngModel)]="this.newUser.password">
-        </div>
-        <button (click)="insertNewUser()" class="btn btn-default">Register!</button>
-    </div>
-  </div>
-
+  <mat-form-field class="searchField">
+    <input type="text" matInput class="form-control" placeholder="Brukernavn" [(ngModel)]="this.newUser.name">
+  </mat-form-field>
+  <mat-form-field class="searchField">
+    <input type="password" matInput class="form-control" placeholder="Passord" [(ngModel)]="this.newUser.password">
+  </mat-form-field>
+  <div *ngIf="wrongCheck" class="errorMessage">Brukernavn allerede i bruk.</div>
+  <div *ngIf="wrongName" class="errorMessage">Alle felter må være fylt inn.</div>
+  <button color="accent" mat-raised-button (click)="insertNewUser()" class="btn btn-default">Registrer ny bruker!</button>
 </div>

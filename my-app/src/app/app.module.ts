@@ -23,7 +23,9 @@ import { FavoriteWineService } from './services/favoritewine.service';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { MapComponent } from './map/map.component';
 import { SingleWineComponent } from './single-wine/single-wine.component';
-
+import { ProfileComponent } from './profile/profile.component';
+import { UsersWinesComponent } from './users-wines/users-wines.component';
+import { MessageService } from './services/message.service';
 
 const appRoutes: Routes = [
   {
@@ -42,11 +44,15 @@ const appRoutes: Routes = [
     path: 'register',
     component: RegisterComponent
   },
-
+  {
+    path: 'profile',
+    component: ProfileComponent
+  },
   {
     path: '**',
     component: PageNotFoundComponent
   },
+
 ];
 
 export function startupServiceFactory(userService: UserService): Function {
@@ -63,7 +69,9 @@ export function startupServiceFactory(userService: UserService): Function {
     RegisterComponent,
     LoginDialogComponent,
     MapComponent,
-    SingleWineComponent
+    SingleWineComponent,
+    ProfileComponent,
+    UsersWinesComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -100,6 +108,8 @@ export function startupServiceFactory(userService: UserService): Function {
     UserService,
     AuthGuard,
     AuthService,
+    NavbarComponent,
+    MessageService,
     FavoriteWineService,
     {
       // Provider for APP_INITIALIZER
