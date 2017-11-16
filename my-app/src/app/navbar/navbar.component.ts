@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { LoginDialogComponent } from './../login-dialog/login-dialog.component';
 import { UserService} from '../services/users.service';
@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
 
   public loggedInOptions = false;
 
-  constructor(public dialog: MatDialog,private userService: UserService, private zone: NgZone){
+  constructor(public dialog: MatDialog,private userService: UserService){
    }
 
   async ngOnInit() {
@@ -40,9 +40,8 @@ export class NavbarComponent implements OnInit {
   }
 
   login(){
-    this.zone.run(() => {
       this.loggedInOptions = true;
-    })
+
   }
 
   logOut(){
