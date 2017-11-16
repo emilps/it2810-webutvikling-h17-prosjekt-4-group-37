@@ -37,12 +37,12 @@ global.loggedIn = (req, res, next) => {
         next()
     } else {
         console.log('Protected route access attempted by a not logged in user')
-        res.status(401).json({authorization: 'Must be logged in'})
+        res.status(200).json({authorization: 'Must be logged in'})
     }
 }
 
 // Get users
-router.get('/users', loggedIn, (req, res) => {
+router.get('/users', (req, res) => {
     connection((db) => {
         db.collection('users')
             .find()
@@ -170,7 +170,7 @@ router.get('/logout', function(req, res){
 
 router.post('/register', passport.authenticate('local-signup'),
   function(req,res) {
-    req.user ? res.send(req.user) : res.status(404).send()
+    req.user ? res.send(req.user) : res.status(200).send()
   }
   );
 
@@ -179,12 +179,12 @@ router.post('/getUser', passport.authenticate('local-login'),
   function(req, res) {
     console.log("Message " );
     console.log('User: ' + req.user)
-    req.user ? res.send(req.user) : res.send(404,{"result": false})
+    req.user ? res.send(req.user) : res.send(200,{"result": false})
   });
 
 router.get('/me', (req, res) => {
     console.log('Getting logged in user')
-    req.user ? res.json(req.user) : res.status(404).send()
+    req.user ? res.json(req.user) : res.status(200).send()
 });
 router.post('/countries', (req, res) => {
   console.log("Logging countries: ", req.body);
