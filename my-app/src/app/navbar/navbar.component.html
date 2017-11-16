@@ -1,6 +1,7 @@
 <mat-toolbar color="primary">
 
     <span routerLink="/">A Glass of Wine</span>
+    <span>{{count}}</span>
     <span class="example-spacer"></span>
     <div *ngIf="loggedInOptions; else loginButton"> <button mat-button [matMenuTriggerFor]="appMenu"><mat-icon>account_box</mat-icon> Profil</button></div>
     <ng-template #loginButton><button color="basic" mat-button (click)="openDialog()">Logg inn <mat-icon>lock_open</mat-icon></button></ng-template>

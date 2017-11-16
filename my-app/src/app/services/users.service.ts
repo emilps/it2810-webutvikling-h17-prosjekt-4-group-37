@@ -62,7 +62,6 @@ export class UserService {
     }
 
     public logOutUser(){
-      console.log("heihei her eg jeg")
       this._http.get('/api/logout').toPromise()
     }
 

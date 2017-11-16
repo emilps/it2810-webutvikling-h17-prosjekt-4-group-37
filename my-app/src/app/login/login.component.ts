@@ -6,6 +6,7 @@ import { NavbarComponent } from './../navbar/navbar.component';
 import {MatSnackBar} from '@angular/material';
 import {MatDialogRef} from '@angular/material';
 import {LoginDialogComponent} from './../login-dialog/login-dialog.component';
+import {MessageService} from './../services/message.service';
 
 @Component({
   selector: 'app-login',
@@ -26,11 +27,17 @@ export class LoginComponent implements OnInit {
     private router: Router,
     public snackBar: MatSnackBar,
     public navbarComponent : NavbarComponent,
-    public dialogRef: MatDialogRef<LoginDialogComponent>
+    public dialogRef: MatDialogRef<LoginDialogComponent>,
+    private MessageService: MessageService
 
   ) { }
 
   ngOnInit() {
+  }
+    
+  changeButton(): void {
+      // send message to subscribers via observable subject
+      this.MessageService.changeButton();
   }
 
   async getUser() {
@@ -46,8 +53,8 @@ export class LoginComponent implements OnInit {
           duration: 3000
         })
         this.dialogRef.close('Closed!');
+        this.changeButton();
         this.state ? this.router.navigate(['/']) : this.router.navigate([]);
-        this.navbarComponent.loggedInNavbar();
       }
     }
   }

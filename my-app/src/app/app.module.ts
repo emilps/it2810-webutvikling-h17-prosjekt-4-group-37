@@ -22,6 +22,7 @@ import { UserService} from './services/users.service';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { MapComponent } from './map/map.component';
 import { SingleWineComponent } from './single-wine/single-wine.component';
+import { MessageService } from './services/message.service';
 
 const appRoutes: Routes = [
   {
@@ -99,6 +100,7 @@ export function startupServiceFactory(userService: UserService): Function {
     AuthGuard,
     AuthService,
     NavbarComponent,
+    MessageService,
 
     {
       // Provider for APP_INITIALIZER

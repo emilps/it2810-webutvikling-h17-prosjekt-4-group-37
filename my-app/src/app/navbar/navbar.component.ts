@@ -1,8 +1,10 @@
-import { Component, OnInit, NgZone} from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { LoginDialogComponent } from './../login-dialog/login-dialog.component';
 import { UserService} from '../services/users.service';
 import { User } from '../model/user';
+import { MessageService } from './../services/message.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-navbar',
@@ -11,11 +13,18 @@ import { User } from '../model/user';
   providers: [UserService]
 
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
 
   public loggedInOptions = false;
 
-  constructor(public dialog: MatDialog,private userService: UserService, private zone: NgZone){
+  private subscription: Subscription;
+
+
+  constructor(public dialog: MatDialog,private userService: UserService, private zone: NgZone, private messageService: MessageService){
+      // subscribe to home component messages
+      this.subscription = this.messageService.getMessage().subscribe(message => { 
+        //console.log(message);
+        this.login() });
    }
 
   async ngOnInit() {
@@ -27,26 +36,28 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+
+
+  ngOnDestroy() {
+      // unsubscribe to ensure no memory leaks
+      this.subscription.unsubscribe();
+  }
+
   public async loggedInNavbar() {
     await this.userService.fetchUserAsync()
     if (this.userService.isLoggedIn()) {
-      console.log("Things working1!");
       this.login();
-      console.log("This has changed to: " + this.loggedInOptions);
     } else {
       this.loggedInOptions = false;
-      console.log("Logged out navbar")
     }
+
   }
 
   login(){
-    this.zone.run(() => {
-      this.loggedInOptions = true;
-    })
+    this.loggedInOptions = true;
   }
 
   logOut(){
-    console.log("Test for logout");
     this.userService.logOutUser();
     this.loggedInOptions = false;
   }
