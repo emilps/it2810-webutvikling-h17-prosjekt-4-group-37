@@ -24,6 +24,7 @@ import { MapComponent } from './map/map.component';
 import { SingleWineComponent } from './single-wine/single-wine.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UsersWinesComponent } from './users-wines/users-wines.component';
+import { MessageService } from './services/message.service';
 
 const appRoutes: Routes = [
   {
@@ -107,6 +108,7 @@ export function startupServiceFactory(userService: UserService): Function {
     AuthGuard,
     AuthService,
     NavbarComponent,
+    MessageService,
 
     {
       // Provider for APP_INITIALIZER
