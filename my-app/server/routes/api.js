@@ -156,7 +156,6 @@ router.post('/getfavoritewines', (req, res) => {
 router.get('/getFavoriteWinesIds', (req,res) =>{
   var listID=[];
   connection((db) => {
-    console.log("_____TEST______OYST", req.user.name);
     db.collection('favoritewines')
     .find({"userID": req.user.name})
     .toArray()
@@ -165,13 +164,11 @@ router.get('/getFavoriteWinesIds', (req,res) =>{
         listID = winesIds[0].wineID;
 
         //console.log("This is an element of listId: ", listID[0]);
-        console.log("Going to the next section search in wine collection!  A check of listID: ", listID)
 
         db.collection('wines')
         .find({"Varenummer": {$in: listID}})
         .toArray()
         .then((wines) => {
-          console.log("____&Test&____: Wines: ", wines);
           response.data = wines;
           res.json(response);
 
@@ -187,6 +184,58 @@ router.get('/getFavoriteWinesIds', (req,res) =>{
 
   });
 });
+
+router.get('/getwineslog',(req, res) => {
+  console.log(", LOG IS WORKING FIRST");
+  var listID=[];
+  connection((db) => {
+    db.collection('log')
+    .find({"userID": req.user.name})
+    .toArray()
+    .then((winesIds) => {
+        console.log(winesIds);
+        listID = winesIds[0].wineID;
+
+        //console.log("This is an element of listId: ", listID[0]);
+        console.log("THIS IS A TEST FOR LOG DB!  A check of listID CONNECTED TO LOG DB: ", listID)
+
+        db.collection('wines')
+        .find({"Varenummer": {$in: listID}})
+        .limit(3)
+        .toArray()
+        .then((wines) => {
+        console.log("____&LOG&____: Wines: LOG", wines);
+        response.data = wines;
+        res.json(response);
+
+        })
+        .catch((err) => {
+          sendError(err, res);
+        })
+    })
+    .catch((err) => {
+      sendError(err, res);
+    });
+  });
+});
+
+router.post('/addtolog', (req, res) => {
+  console.log("This is the name added to log: ", req.body.username);
+  console.log("This is the wineID added to log: ", req.body.wine);
+  connection((db) => {
+    db.collection('log')
+      .update(
+        {userID: req.body.username},
+        {$push: {wineID: req.body.wine}},
+        {upsert: true})
+        .then(console.log("Added to log"))
+        .catch((err) => {
+          sendError(err, res);
+          console.log(err)
+        });
+  })
+});
+
 
 router.post('/updatefavoritewines', (req, res) => {
     console.log("------TEST------", req.body.username);
