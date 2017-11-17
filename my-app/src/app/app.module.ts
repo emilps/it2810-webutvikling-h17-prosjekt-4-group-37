@@ -10,7 +10,7 @@ import { HttpModule } from '@angular/http';
 import { DataService } from './data.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatCheckboxModule, MatExpansionModule, MatSelectModule, MatFormFieldModule, MatInputModule, MatDialogModule, MatButtonToggleModule, MatSnackBarModule, MatTooltipModule, MatTabsModule, MatTableModule, MatPaginatorModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatCheckboxModule, MatExpansionModule, MatSelectModule, MatFormFieldModule, MatInputModule, MatDialogModule, MatButtonToggleModule, MatSnackBarModule, MatTooltipModule, MatTabsModule, MatTableModule} from '@angular/material';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WineSearchComponent } from './wine-search/wine-search.component';
 import { LoginComponent } from './login/login.component';
@@ -95,8 +95,7 @@ export function startupServiceFactory(userService: UserService): Function {
     MatSnackBarModule,
     MatTooltipModule,
     MatTabsModule,
-    MatTableModule,
-    MatPaginatorModule
+    MatTableModule
   ],
   entryComponents: [
     SingleWineComponent,
