@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-// Import the DataService
-import { DataService } from './../data.service';
-
 import { MapWineService } from './../services/mapwine.service';
 import { Observable } from 'rxjs/Observable';
 import { DataSource } from '@angular/cdk/collections';
-import { DataUser } from './../models/DataUser.model';
+
 
 import { MapFilter } from './mapFilter';
+import 'rxjs/add/observable/of';
 
 @Component({
   selector: 'app-map',
@@ -22,40 +20,50 @@ export class MapComponent implements OnInit {
   newMapFilter: MapFilter = {
     mapFilterValue: "",
   }
-
-  dataSource = new UserDataSource(this.mapWineService);
-  displayedColumns = ['name', 'email', 'phone', 'company'];
+  dataSource = new WineDataSource();
+  displayedColumns = ['name', 'country', 'price'];
 
   // Create an instance of the DataService through dependency injection
   constructor(private mapWineService: MapWineService) {
 
-    // Access the Data Service's getWines() method we defined
-    //this._dataService.getCountries(this.newMapFilter)
-      //  .subscribe(res => this.wines = res);
+     //Access the WineService's geCountriess() method we defined
+     this.mapWineService.getCountries(this.newMapFilter)
+      .subscribe(res => this.loadArray(res));
+  }
+
+  loadArray(res){
+    data = res;
+    this.dataSource = new WineDataSource();
   }
 
   ngOnInit() {
   }
 
+
   countryChange() {
     const illegalCountries = ["Verden", "Afrika", "Europa", "Asia", "Amerika"];
     let country = document.getElementById('regionTitle').innerHTML;
     if(!illegalCountries.includes(country)){
-    //  this.newMapFilter.mapFilterValue = country;
-      //this._dataService.getCountries(this.newMapFilter)
-        //  .subscribe(res => this.wines = res);
+      this.newMapFilter.mapFilterValue = country;
+      this.mapWineService.getCountries(this.newMapFilter)
+      .subscribe(res => this.loadArray(res));
     }
   }
 
 }
 
-export class UserDataSource extends DataSource<any> {
-  constructor(private mapWineService: MapWineService) {
-    super();
-  }
-  connect(): Observable<DataUser []> {
-    return this.mapWineService.getUser();
-  }
-
-  disconnect() {}
+export interface Wine {
+  Varenavn: string;
+  Land: string;
+  Pris: number;
 }
+
+let data: Wine[];
+
+export class WineDataSource extends DataSource<any> {
+   /** Connect function called by the table to retrieve one stream containing the data to render. */
+   connect(): Observable<Wine[]> {
+    return Observable.of(data);
+    }
+    disconnect() {}
+ }

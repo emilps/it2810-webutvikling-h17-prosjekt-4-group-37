@@ -1,27 +1,23 @@
 import { Injectable } from '@angular/core';
 
-import { Http, URLSearchParams } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
 
 import { User } from '../model/user';
+import { Http, Headers, RequestOptions, URLSearchParams } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-
-import { Filter } from './../single-wine/winefilter';
-
-import { DataUser } from '../models/DataUser.model';
 
 @Injectable()
 export class MapWineService {
 
-  private serviceURL = 'https://jsonplaceholder.typicode.com/users';
+  result:any;
 
-  constructor(private http: HttpClient) { }
-
-  getUser(): Observable<DataUser []> {
-    return this.http.get<DataUser []>(this.serviceURL);
+  constructor(private _http: Http) { }
+  getCountries(arg) {
+    return this._http.post("/api/countries",arg)
+      .map(result => this.result = result.json().data);
   }
 
 }

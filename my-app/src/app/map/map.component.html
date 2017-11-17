@@ -4,49 +4,28 @@
     <div id="regions_div" style="width: 900px; height: 500px;"></div>
   </div>
 
-
-<div class="">
-  <mat-table [dataSource]="dataSource">
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-      <mat-cell *matCellDef="let user"> {{user.name}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="email">
-      <mat-header-cell *matHeaderCellDef> E-mail </mat-header-cell>
-      <mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="phone">
-      <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>
-      <mat-cell *matCellDef="let user"> {{user.phone}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="company">
-      <mat-header-cell *matHeaderCellDef> Company </mat-header-cell>
-      <mat-cell *matCellDef="let user"> {{user.company.name}} </mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
-</div>
-
   <div class="listArea">
     <span id="regionTitle">Verden</span>
-    <div id="winelist_div" style="height: 500px; overflow-y:auto;">
-      <table>
-        <tr>
-          <th> Navn </th>
-          <th> Land </th>
-          <th> Pris </th>
-        </tr>
-          <tr *ngFor="let wine of wines">
-            <td>{{ wine.Varenavn }}</td>
-            <td>{{ wine.Land }}</td>
-            <td>{{ wine.Pris }}</td>
-          </tr>
-      </table>
-    </div>
+    <mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Navn </mat-header-cell>
+        <mat-cell *matCellDef="let wine"> {{wine.Varenavn}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="country">
+        <mat-header-cell *matHeaderCellDef> Land </mat-header-cell>
+        <mat-cell *matCellDef="let wine"> {{wine.Land}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef> Pris </mat-header-cell>
+        <mat-cell *matCellDef="let wine"> {{wine.Pris}} </mat-cell>
+      </ng-container>
+
+
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
   </div>
 </div>

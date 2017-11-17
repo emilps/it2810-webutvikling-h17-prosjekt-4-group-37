@@ -63,9 +63,6 @@ export class DataService {
 
   }
 
-  
-
-
   getCountries(arg) {
     return this._http.post("/api/countries",arg)
       .map(result => this.result = result.json().data);
