@@ -41,7 +41,11 @@ function checkForMap() {
         ['Czechia', 4]
       ]);
 
-      var options = { resolution:'continents', colors: ['green', 'blue'], legend: 'none'};
+      var options = {
+        resolution:'continents',
+        colorAxis: {values: [1, 10, 100, 1000], colors: ['green', 'yellow', 'orange' ,'red'],},
+        legend: 'none'
+      };
 
       var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 

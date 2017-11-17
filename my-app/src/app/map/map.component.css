@@ -9,6 +9,10 @@
   height: 45%;
   width: 45%;
   margin: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .listCard {
@@ -21,11 +25,13 @@
   padding: 10px;
   overflow-y: auto;
   max-height: 80vh;
-  min-width: 450px;
+  min-height: 30%;
+  min-width: 55vh;
 }
 
 .mat-table {
 }
+
 
 #regionTitle {
   text-align: center;
