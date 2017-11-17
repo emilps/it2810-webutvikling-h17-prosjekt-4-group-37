@@ -17,12 +17,18 @@
   min-height: 160px;
   padding: 10px;
   display: flex;
+
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: 10px;
   font-size: 15px;
+  font-family: 'Playfair Display', serif;
 }
 
+.wineDivInside > h3 {
+  width: 60%;
+  text-align: center;
+}
 
 .wineDiv:hover {
   cursor: pointer;
@@ -31,8 +37,18 @@
   box-shadow: 0px 4px 31px -10px rgba(0,0,0,0.75);
 }
 
+.imgContainer {
+   width: 100px;
+   height: 100px;
+   position: relative;
+   overflow: hidden;
+   border-radius: 50%;
+}
+
 .wineDivInside > img {
-  max-height: 150px;
+  display: inline;
+  box-sizing: border-box;
+  max-height: 180px;
 }
 
 .winePrice {
