@@ -27,6 +27,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { UsersWinesComponent } from './users-wines/users-wines.component';
 import { MessageService } from './services/message.service';
 import { LogComponent } from './log/log.component';
+import { ProfileService } from './services/profile.service';
+
+
 
 const appRoutes: Routes = [
   {
@@ -113,6 +116,7 @@ export function startupServiceFactory(userService: UserService): Function {
     NavbarComponent,
     MessageService,
     FavoriteWineService,
+    ProfileService,
     {
       // Provider for APP_INITIALIZER
       provide: APP_INITIALIZER,
