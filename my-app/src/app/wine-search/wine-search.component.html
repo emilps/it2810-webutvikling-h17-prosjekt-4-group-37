@@ -23,7 +23,7 @@
     </mat-panel-description>
   </mat-expansion-panel-header>
   <mat-card class="buttonContainer sortContainer">
-    <mat-card>
+    <div>
       <mat-form-field>
         <mat-select placeholder="Sorter etter pris" [(ngModel)]="name">
           <mat-option value="ASC" (onSelectionChange)="checkSelection($event)">
@@ -37,8 +37,8 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-    </mat-card>
-    <mat-card>
+    </div>
+    <div>
       <mat-form-field>
         <mat-select placeholder="Sorter alfabetisk" [(ngModel)]="name">
           <mat-option value="LASC" (onSelectionChange)="checkSelection($event)">
@@ -52,7 +52,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-    </mat-card>
+    </div>
   </mat-card>
 </mat-expansion-panel>
 <mat-expansion-panel class="searchContainer">
@@ -74,7 +74,7 @@
     </mat-card>
 
     <mat-card class="buttonContainer">
-      <mat-card-content>
+      <mat-card-content class="countryFilter">
         <mat-card-title>Land</mat-card-title>
         <mat-checkbox class="checkbox-margin" ng-model="hvit" value='{"Land":"Frankrike"}' (change)="checkboxCountry($event)">Frankrike</mat-checkbox>
         <mat-checkbox class="checkbox-margin" ng-model="hvit" value='{"Land":"Tyskland"}' (change)="checkboxCountry($event)">Tyskland</mat-checkbox>
