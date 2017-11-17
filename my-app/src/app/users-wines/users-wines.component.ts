@@ -12,7 +12,8 @@ export class UsersWinesComponent implements OnInit {
   username = "";
 
   wines: any;
-  constructor(private favoriteWineService: FavoriteWineService,
+  constructor(
+    private favoriteWineService: FavoriteWineService,
     public userService: UserService,
   ) { }
 
