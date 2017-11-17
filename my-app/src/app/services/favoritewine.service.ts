@@ -15,6 +15,7 @@ import { Filter } from './../single-wine/winefilter';
 export class FavoriteWineService {
 
     result:any;
+    wineIDS:any;
 
     constructor(private _http: Http) { }
 
@@ -28,6 +29,11 @@ export class FavoriteWineService {
       console.log("API runs", arg)
       return this._http.post("/api/updatefavoritewines", arg)
         .map(result => this.result = result.json().data);
+    }
+    getFavoriteWines() {
+      return this._http.get("api/getFavoriteWinesIds")
+      .map(result => this.result = result.json().data);
+
     }
 
 
