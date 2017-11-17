@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FavoriteWineService } from './../services/favoritewine.service';
+import { UserService } from './../services/users.service';
+import {ProfileService} from './../services/profile.service';
 
 @Component({
   selector: 'app-log',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogComponent implements OnInit {
 
-  constructor() { }
+  wines: any;
+  constructor(
+    private favoriteWineService: FavoriteWineService,
+    public userService: UserService,
+    private profileService: ProfileService
+  ) { }
 
   ngOnInit() {
+    this.gatherWinesLog();
   }
 
+  async gatherWinesLog(){
+    this.wines = await this.profileService.getWinesLog()
+  }
 }
