@@ -102,7 +102,9 @@
   <mat-card class="wineDiv" (click)="openDialog(wine)" *ngFor="let wine of wines">
     <div class="wineDivInside">
       <h3>{{ wine.Varenavn }}</h3>
-      <img src="{{ wine.Vareurl }}" />
+
+        <img src="{{ wine.Vareurl }}" />
+
     </div>
 <hr>
     <div class="winePrice">
@@ -114,6 +116,6 @@
   </mat-card>
 </div>
 
-<div   class="buttonContainer">
+<div class="buttonContainer">
  <button *ngIf="numberOfWines >= newFilter.limit" mat-raised-button color="accent" (click)="increaseLimit()">Last inn..</button>
 </div>
