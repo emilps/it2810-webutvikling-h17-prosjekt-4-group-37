@@ -153,6 +153,41 @@ router.post('/getfavoritewines', (req, res) => {
     });
 });
 
+router.get('/getFavoriteWinesIds', (req,res) =>{
+  var listID=[];
+  connection((db) => {
+    console.log("_____TEST______OYST", req.user.name);
+    db.collection('favoritewines')
+    .find({"userID": req.user.name})
+    .toArray()
+    .then((winesIds) => {
+        console.log(winesIds);
+        listID = winesIds[0].wineID;
+
+        //console.log("This is an element of listId: ", listID[0]);
+        console.log("Going to the next section search in wine collection!  A check of listID: ", listID)
+
+        db.collection('wines')
+        .find({"Varenummer": {$in: listID}})
+        .toArray()
+        .then((wines) => {
+          console.log("____&Test&____: Wines: ", wines);
+          response.data = wines;
+          res.json(response);
+
+        })
+        .catch((err) => {
+          sendError(err, res);
+        })
+    })
+    .catch((err) => {
+        sendError(err, res);
+    });
+
+
+  });
+});
+
 router.post('/updatefavoritewines', (req, res) => {
     console.log("------TEST------", req.body.username);
     console.log("------TEST------", req.body.remove);
