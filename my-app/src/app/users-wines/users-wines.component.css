@@ -1,0 +1,31 @@
+.wineDiv {
+  width: 300px;
+  height: 100%;
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px;
+  font-size: 15px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
+  margin-left: 3%;
+  margin-right:3%;
+
+}
+
+.wineDiv > img {
+  max-height: 150px;
+}
+.title_favorite{
+  margin-left: 3%;
+  margin-top: 5%;
+}
