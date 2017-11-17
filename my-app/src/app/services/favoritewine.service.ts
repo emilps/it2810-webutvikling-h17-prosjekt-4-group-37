@@ -33,8 +33,8 @@ export class FavoriteWineService {
     getFavoriteWines() {
       return this._http.get("api/getFavoriteWinesIds")
       .map(result => this.result = result.json().data);
-
     }
+
 
 
 }
