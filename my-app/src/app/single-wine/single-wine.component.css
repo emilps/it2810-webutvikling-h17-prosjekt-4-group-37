@@ -17,6 +17,8 @@
 .wineInfoContainer {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
+  height: 100%;
 }
 
 .wineInfo {
@@ -24,18 +26,73 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: 20px;
+  font-size: 1.0em;
+  min-width: 50%;
+  overflow: auto;
 }
 
 .wineInfo > * {
-  margin: 2px;
+  margin: 5px;
+
 }
 
-.wineDiv > h2 {
+.wineInfo > p {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+}
+
+.wineInfo > p > mat-icon {
+  margin-right: 10px;
+}
+
+.wineDiv > h5  {
   text-align: center;
+  font-family: 'Playfair Display', serif;
+}
+
+.wineImg {
+  display: flex;
+  justify-content: center;
+  min-width: 50%;
 }
 
 .wineDialogActions {
   display: flex;
   justify-content: space-around;
+}
+
+.spinners {
+  height: 100px;
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+}
+
+
+.alcoholSpinnerText {
+  margin-top: -45px;
+  margin-left: 25px;
+}
+
+.volumSpinnerText {
+  margin-top: -45px;
+  margin-left: 30px;
+}
+
+mat-progress-spinner circle{
+  height: 30px !important;
+  width: 30px !important;
+}
+
+.singleWineTitle {
+  margin: 0 !important;
+  text-align: center;
+}
+
+.wineDiv {
+  max-height: 80vh !important;
+  min-width: 30vw !important;
 }
