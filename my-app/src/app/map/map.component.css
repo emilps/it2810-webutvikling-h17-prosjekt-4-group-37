@@ -3,12 +3,19 @@
   flex-direction: row;
 }
 
+.mapArea {
+  width: 45%;
+  min-width: 200px;
+}
+
+.listArea {
+  width: 45%;
+  min-width: 200px;
+}
 #regionTitle {
-  font-size: 3em;
   text-align: center;
 }
 
 #mapTitle {
-  font-size: 2em;
   text-align: center;
 }

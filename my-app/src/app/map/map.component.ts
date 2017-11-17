@@ -8,6 +8,9 @@ import { DataSource } from '@angular/cdk/collections';
 import { MapFilter } from './mapFilter';
 import 'rxjs/add/observable/of';
 
+import { SingleWineComponent } from './../single-wine/single-wine.component';
+import { MatDialog } from '@angular/material';
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -24,7 +27,7 @@ export class MapComponent implements OnInit {
   displayedColumns = ['name', 'country', 'price'];
 
   // Create an instance of the DataService through dependency injection
-  constructor(private mapWineService: MapWineService) {
+  constructor(private mapWineService: MapWineService, public dialog: MatDialog) {
 
      //Access the WineService's geCountriess() method we defined
      this.mapWineService.getCountries(this.newMapFilter)
@@ -49,7 +52,10 @@ export class MapComponent implements OnInit {
       .subscribe(res => this.loadArray(res));
     }
   }
-
+  onWineClick(wine){
+    console.log("Pressed wine: " + wine.Varenavn);
+    let dialogRef = this.dialog.open(SingleWineComponent, {data: wine,})
+  }
 }
 
 export interface Wine {
