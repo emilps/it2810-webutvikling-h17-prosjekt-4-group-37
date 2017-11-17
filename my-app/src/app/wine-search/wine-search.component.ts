@@ -49,7 +49,6 @@ export class WineSearchComponent implements OnInit {
       //width: '600px',
       data: arg,
     })
-
     dialogRef.afterClosed().subscribe(result => console.log(result))
 
   }
