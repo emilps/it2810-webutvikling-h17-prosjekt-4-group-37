@@ -26,6 +26,7 @@ import { SingleWineComponent } from './single-wine/single-wine.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UsersWinesComponent } from './users-wines/users-wines.component';
 import { MessageService } from './services/message.service';
+import { LogComponent } from './log/log.component';
 
 const appRoutes: Routes = [
   {
@@ -71,7 +72,8 @@ export function startupServiceFactory(userService: UserService): Function {
     MapComponent,
     SingleWineComponent,
     ProfileComponent,
-    UsersWinesComponent
+    UsersWinesComponent,
+    LogComponent
   ],
   imports: [
     RouterModule.forRoot(
