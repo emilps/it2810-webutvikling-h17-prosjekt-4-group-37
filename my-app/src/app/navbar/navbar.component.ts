@@ -24,7 +24,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       // subscribe to home component messages
       this.subscription = this.messageService.getMessage().subscribe(message => {
         //console.log(message);
-        this.login() });
+        this.loggedInNavbar() });
    }
 
   async ngOnInit() {
@@ -43,8 +43,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.subscription.unsubscribe();
   }
 
-  public async loggedInNavbar() {
-    await this.userService.fetchUserAsync()
+  public loggedInNavbar() {
     if (this.userService.isLoggedIn()) {
       this.login();
     } else {
