@@ -201,6 +201,7 @@ router.get('/getwineslog',(req, res) => {
 
         db.collection('wines')
         .find({"Varenummer": {$in: listID}})
+        .sort({$natural: -1})
         .limit(3)
         .toArray()
         .then((wines) => {
