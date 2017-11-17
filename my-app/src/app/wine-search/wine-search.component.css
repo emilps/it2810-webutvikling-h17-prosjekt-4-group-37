@@ -83,6 +83,7 @@
 .checkbox-margin {
   margin: 10px;
   flex: 1 0 25%;
+  min-width: 80px;
 }
 
 mat-card-title {
@@ -91,7 +92,6 @@ mat-card-title {
 
 .filterContainer {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
 }
 
