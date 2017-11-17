@@ -3,15 +3,29 @@
   flex-direction: row;
 }
 
-.mapArea {
-  width: 45%;
+.mapCard {
   min-width: 200px;
+  height: 45%;
+  width: 45%;
+  margin: 10px;
 }
 
-.listArea {
-  width: 45%;
+.listCard {
   min-width: 200px;
+  height: 45%;
+  width: 45%;
+  margin: 10px;
 }
+
+.mat-card {
+  padding: 10px;
+  overflow: auto;
+  max-height: 80vh;
+}
+
+.mat-table {
+}
+
 #regionTitle {
   text-align: center;
 }

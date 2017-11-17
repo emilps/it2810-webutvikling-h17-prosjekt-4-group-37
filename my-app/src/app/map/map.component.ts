@@ -10,6 +10,7 @@ import 'rxjs/add/observable/of';
 
 import { SingleWineComponent } from './../single-wine/single-wine.component';
 import { MatDialog } from '@angular/material';
+import { MatPaginator } from '@angular/material';
 
 @Component({
   selector: 'app-map',
@@ -17,7 +18,6 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
-
   wines: Array<any>;
 
   newMapFilter: MapFilter = {
@@ -25,6 +25,9 @@ export class MapComponent implements OnInit {
   }
   dataSource = new WineDataSource();
   displayedColumns = ['name', 'country', 'price'];
+
+  ngOnInit() {
+    }
 
   // Create an instance of the DataService through dependency injection
   constructor(private mapWineService: MapWineService, public dialog: MatDialog) {
@@ -37,9 +40,6 @@ export class MapComponent implements OnInit {
   loadArray(res){
     data = res;
     this.dataSource = new WineDataSource();
-  }
-
-  ngOnInit() {
   }
 
 

@@ -1,34 +1,29 @@
 <div class="mapViewItems">
-  <div class="mapArea" (click)="countryChange()">
-    <mat-card>
+    <mat-card class="mapCard" (click)="countryChange()">
     <mat-card-title id="mapTitle">Trykk på ett kontinent for å se viner fra det området</mat-card-title>
     <div id="regions_div"></div>
     </mat-card>
-  </div>
 
 
-  <div class="listArea">
-    <mat-card>
-    <mat-card-title id="regionTitle">Verden</mat-card-title>
-    <mat-table [dataSource]="dataSource">
-      <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef> Navn </mat-header-cell>
-        <mat-cell *matCellDef="let wine" (click)="onWineClick(wine)"> {{wine.Varenavn}} </mat-cell>
-      </ng-container>
 
-      <ng-container matColumnDef="country">
-        <mat-header-cell *matHeaderCellDef> Land </mat-header-cell>
-        <mat-cell *matCellDef="let wine" (click)="onWineClick(wine)"> {{wine.Land}} </mat-cell>
-      </ng-container>
+    <mat-card class="listCard">
+      <mat-card-title id="regionTitle">Verden</mat-card-title>
+      <mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Navn </mat-header-cell>
+            <mat-cell *matCellDef="let wine" (click)="onWineClick(wine)"> {{wine.Varenavn}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="country">
+            <mat-header-cell *matHeaderCellDef> Land </mat-header-cell>
+            <mat-cell *matCellDef="let wine" (click)="onWineClick(wine)"> {{wine.Land}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="price">
+            <mat-header-cell *matHeaderCellDef> Pris </mat-header-cell>
+            <mat-cell *matCellDef="let wine" (click)="onWineClick(wine)"> {{wine.Pris}} </mat-cell>
+          </ng-container>
 
-      <ng-container matColumnDef="price">
-        <mat-header-cell *matHeaderCellDef> Pris </mat-header-cell>
-        <mat-cell *matCellDef="let wine" (click)="onWineClick(wine)"> {{wine.Pris}} </mat-cell>
-      </ng-container>
-
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
     </mat-card>
-  </div>
 </div>
