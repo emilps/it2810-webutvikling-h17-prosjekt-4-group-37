@@ -1,12 +1,12 @@
 import { Component, OnInit, Inject, AfterViewInit } from '@angular/core';
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { MAT_DIALOG_DATA } from '@angular/material';
-import {MatSnackBar} from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { UserService } from './../services/users.service';
 import { FavoriteWineService } from './../services/favoritewine.service';
 import { Filter } from './winefilter';
 import { LoginDialogComponent } from './../login-dialog/login-dialog.component';
-
+import { ProfileService } from './../services/profile.service';
 
 @Component({
   selector: 'app-single-wine',
@@ -35,6 +35,7 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
     public snackBar: MatSnackBar,
     private userService: UserService,
     public dialog: MatDialog,
+    public profileService: ProfileService,
 
     ) {
       this.userLoggedIn = this.userService.isLoggedIn();
@@ -44,6 +45,7 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
         this.newFilter.wine = data["Varenummer"];
         console.log("Filter check", this.newFilter)
         this.result = []
+        this.addToLog(this.newFilter);
       }catch(err){
         console.log("Note loggeed in")
       }
@@ -54,10 +56,10 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
     }
 
   ngOnInit() {
-
   }
 
   ngAfterViewInit() {
+
     this.checkResult();
     if(document.querySelector('.starIcon').innerHTML == "star_border"){
       //this.checkWine();
@@ -68,6 +70,11 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
     }
   }
 
+  addToLog(arg){
+    console.log("AddToLog is working_____Sjekk_____");
+    this.profileService.addToLog(arg)
+    .subscribe(res => this.result =res);;
+  }
 
   async changeIcon(wine,id){
 
