@@ -45,7 +45,7 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
         this.newFilter.wine = data["Varenummer"];
         console.log("Filter check", this.newFilter)
         this.result = []
-        this.addToLog(this.newFilter);
+        //this.addToLog();
       }catch(err){
         console.log("Note loggeed in")
       }
@@ -70,10 +70,10 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
     }
   }
 
-  addToLog(arg){
-    console.log("AddToLog is working_____Sjekk_____");
-    this.profileService.addToLog(arg)
-    .subscribe(res => this.result =res);;
+  async addToLog(){
+    console.log("AddToLog is working_____Sjekk_____", this.newFilter);
+    await this.profileService.addToLog(this.newFilter)
+    .subscribe(res => this.result =res);
   }
 
   async changeIcon(wine,id){
@@ -110,9 +110,14 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
 
   async checkWine(){
     await this.userService.fetchUserAsync()
-    await this.favoriteWineService.getFavoriteWine(this.newFilter)
-        .subscribe(res => this.firstCheckIfFavorite(res));
-    console.log("This was called", this.result)
+    if(this.userService.isLoggedIn()){
+      await this.favoriteWineService.getFavoriteWine(this.newFilter)
+          .subscribe(res => this.firstCheckIfFavorite(res));
+      console.log("This was called", this.result)
+    }else{
+      this.result = ""
+    }
+
   }
 
   firstCheckIfFavorite(dbData){
