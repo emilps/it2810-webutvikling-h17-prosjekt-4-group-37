@@ -19,6 +19,7 @@ export class WineSearchComponent implements OnInit {
 
   // Define a users property to hold our user data
   wines: Array<any>;
+  countries: Array<any>;
 
   newFilter: Filter = {
     wineFilter: [],
@@ -41,6 +42,9 @@ export class WineSearchComponent implements OnInit {
 
     this._dataService.getWines(this.newFilter)
         .subscribe(res => this.wines = res);
+
+    this._dataService.getDistinctCountries()
+        .subscribe(res => this.countries = res);
 
   }
 
@@ -86,6 +90,7 @@ export class WineSearchComponent implements OnInit {
   }
 
   checkboxCountry(arg){
+    console.log("this arg:", arg)
     var obj = JSON.parse(arg.source.value)
 
     if (arg.checked){

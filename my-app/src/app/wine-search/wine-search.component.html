@@ -87,23 +87,17 @@
         <mat-checkbox class="checkbox-margin" ng-model="hvit" value='{"Varetype":"Hvitvin"}' (change)="checkbox($event)">Hvitvin</mat-checkbox>
       </mat-card-content>
     </mat-card>
-
     <mat-card class="buttonContainer">
       <mat-card-content class="countryFilter">
         <mat-card-title>Land</mat-card-title>
-        <mat-checkbox class="checkbox-margin" ng-model="hvit" value='{"Land":"Frankrike"}' (change)="checkboxCountry($event)">Frankrike</mat-checkbox>
-        <mat-checkbox class="checkbox-margin" ng-model="hvit" value='{"Land":"Tyskland"}' (change)="checkboxCountry($event)">Tyskland</mat-checkbox>
-        <mat-checkbox class="checkbox-margin" ng-model="hvit" value='{"Land":"Brasil"}' (change)="checkboxCountry($event)">Brasil</mat-checkbox>
-        <mat-checkbox class="checkbox-margin" ng-model="hvit" value='{"Land":"USA"}' (change)="checkboxCountry($event)">USA</mat-checkbox>
-        <mat-checkbox class="checkbox-margin" ng-model="hvit" value='{"Land":"Italia"}' (change)="checkboxCountry($event)">Italia</mat-checkbox>
-        <mat-checkbox class="checkbox-margin" ng-model="hvit" value='{"Land":"Australia"}' (change)="checkboxCountry($event)">Australia</mat-checkbox>
-        <mat-checkbox class="checkbox-margin" ng-model="hvit" value='{"Land":"Chile"}' (change)="checkboxCountry($event)">Chile</mat-checkbox>
-        <mat-checkbox class="checkbox-margin" ng-model="hvit" value='{"Land":"Østerrike"}' (change)="checkboxCountry($event)">Østerrike</mat-checkbox>
-        <mat-checkbox class="checkbox-margin" ng-model="hvit" value='{"Land":"Tsjekkia"}' (change)="checkboxCountry($event)">Tsjekkia</mat-checkbox>
-        <mat-checkbox class="checkbox-margin" ng-model="hvit" value='{"Land":"Canada"}' (change)="checkboxCountry($event)">Canada</mat-checkbox>
-        <mat-checkbox class="checkbox-margin" ng-model="hvit" value='{"Land":"Libanon"}' (change)="checkboxCountry($event)">Libanon</mat-checkbox>
-        <mat-checkbox class="checkbox-margin" ng-model="hvit" value='{"Land":"Øvrige"}' (change)="checkboxCountry($event)">Øvrige</mat-checkbox>
-
+        <mat-checkbox
+          class="checkbox-margin"
+          ng-model="hvit"
+          value='{"Land":"{{country}}"}'
+          *ngFor="let country of countries"
+          (change)="checkboxCountry($event)">
+            {{country}}
+        </mat-checkbox>
       </mat-card-content>
     </mat-card>
   </div>
@@ -117,11 +111,9 @@
   <mat-card class="wineDiv" (click)="openDialog(wine)" *ngFor="let wine of wines">
     <div class="wineDivInside">
       <h3>{{ wine.Varenavn }}</h3>
-
         <img src="{{ wine.Vareurl }}" />
-
     </div>
-<hr>
+    <hr>
     <div class="winePrice">
       <h3>{{ wine.Pris }},-</h3>
     </div>
