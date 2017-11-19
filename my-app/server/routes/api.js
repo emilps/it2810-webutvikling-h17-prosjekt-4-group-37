@@ -247,7 +247,7 @@ router.post('/countries', (req, res) => {
     connection((db) => {
         db.collection('wines')
             .find({[filterName]:filterValue})
-            .limit( 25 )
+            .limit( req.body.limit )
             .toArray()
             .then((wines) => {
                 response.data = wines;

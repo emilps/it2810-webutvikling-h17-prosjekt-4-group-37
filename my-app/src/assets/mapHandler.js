@@ -77,7 +77,7 @@ function checkForMap() {
                         title.innerHTML = eventData.region;
                 }
                 */
-                  mapTitle.innerHTML = "Velg ett land for å se viner derfra";
+                  mapTitle.innerHTML = "Velg land for å se nasjonens viner";
                   chart.draw(data, options);
             });
         google.visualization.events.addListener(chart, 'select', function() {

@@ -23,6 +23,6 @@
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;" matTooltip="Trykk for mer info" matTooltip="Trykk for mer info" [matTooltipPosition]="position"></mat-row>
       </mat-table>
-      <button mat-raised-button color="accent" id="loadMoreButton">Last flere..</button>
+      <button mat-raised-button color="accent" id="loadMoreButton" (click)="increaseLimit()">Last flere..</button>
     </mat-card>
 </div>
