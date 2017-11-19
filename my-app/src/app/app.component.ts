@@ -34,9 +34,7 @@ export class AppComponent implements OnInit {
   async ngOnInit() {
     await this.userService.fetchUserAsync()
     if (this.userService.isLoggedIn()) {
-      console.log('Got logged in user' + this.userService.user.name)
     } else {
-      console.log('User not logged in')
     }
     this.playSound()
   }

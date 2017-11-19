@@ -37,18 +37,20 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
     @Inject(MAT_DIALOG_DATA) public data: string,
     public snackBar: MatSnackBar,
     private userService: UserService,
-    public dialog: MatDialog,
+    public dialog: MatDialog
 
     ) {
-      this.userLoggedIn = this.userService.isLoggedIn();
+    console.log("this.userservice.user = " + this.userService.user.name)
+
+
       try{
         this.userService.fetchUserAsync()
         this.newFilter.username = this.userService.user.name;
         this.newFilter.wine = data["Varenummer"];
-        console.log("Filter check", this.newFilter)
+        //console.log("Filter check", this.newFilter)
         this.result = []
       }catch(err){
-        console.log("Note loggeed in")
+        //console.log("Note loggeed in")
       }
       //this.checkWine();
       //console.log(this.result)
@@ -57,11 +59,20 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
 
     }
 
-  ngOnInit() {
-    //this.alcohol = this.data["Alkohol"]
-    setTimeout(() => this.alcohol = ((100/22) * this.data["Alkohol"]), 500);
-    setTimeout(() => this.volumpercent = this.formatVolume(this.data["Volum"]), 500);
-  }
+     async ngOnInit() {
+       setTimeout(() => this.alcohol = ((100/22) * this.data["Alkohol"]), 500);
+       setTimeout(() => this.volumpercent = this.formatVolume(this.data["Volum"]), 500);
+
+      await this.userService.fetchUserAsync()
+        if (this.userService.isLoggedIn()){
+          this.userLoggedIn = true;
+
+        } else {
+          this.userLoggedIn = false;
+        }
+    }
+
+
 
   formatVolume(volume){
     if(volume == 0){
@@ -76,14 +87,18 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
     }
   }
 
+
+
+
+
   ngAfterViewInit() {
     this.checkResult();
     if(document.querySelector('.starIcon').innerHTML == "star_border"){
       //this.checkWine();
       //this.checkResult();
-      console.log(document.querySelector('.starIcon'))
+      //console.log(document.querySelector('.starIcon'))
       document.querySelector('.starIcon');
-      console.log(this.result)
+      //console.log(this.result)
     }
   }
 
@@ -110,20 +125,26 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
     }else{
       this.openDialog();
     }
-    console.log("result", this.result, " Newfilter ", this.newFilter)
+    //console.log("result", this.result, " Newfilter ", this.newFilter)
   }
 
 
 
   checkResult(){
-    console.log(this.result)
+    //console.log(this.result)
   }
 
   async checkWine(){
     await this.userService.fetchUserAsync()
+    if (this.userService.isLoggedIn()) {
     await this.favoriteWineService.getFavoriteWine(this.newFilter)
         .subscribe(res => this.firstCheckIfFavorite(res));
-    console.log("This was called", this.result)
+    }
+
+    else {
+      this.result = ""
+    }
+    //console.log("This was called", this.result)
   }
 
   firstCheckIfFavorite(dbData){
@@ -131,7 +152,7 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
     if(this.result.length){
       this.icon = "star";
     }
-    console.log("DB_DATA: ", dbData);
+    //console.log("DB_DATA: ", dbData);
   }
 
   openDialog(): void {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user';
 import { UserService} from '../services/users.service';
 import { Router } from '@angular/router';
-
+import {MatSnackBar} from '@angular/material';
 
 
 @Component({
@@ -13,7 +13,8 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   state = false;
-
+  wrongCheck= false;
+  wrongName=false;
   newUser: User= {
     name:"",
     password:""
@@ -21,7 +22,9 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    public snackBar: MatSnackBar
+
 
   ) { }
 
@@ -29,8 +32,20 @@ export class RegisterComponent implements OnInit {
   }
 
   async insertNewUser() {
+    if(this.newUser.name == "" || this.newUser.password == ""){
+      this.wrongName = true;
+    }else{
     this.state = await this.userService.insertNewUserAsync(this.newUser);
-    this.state ? this.router.navigate(['/']) : this.router.navigate(['/register']);
+    if(!this.state){
+      this.wrongName= false;
+      this.wrongCheck = true;
+    }else{
+      this.snackBar.open(this.newUser.name + ' er registrert. Du kan nå logge inn.', ' ', {
+        duration: 3000
+      })
+      this.state ? this.router.navigate(['/']) : this.router.navigate(['/register']);
+    }
+    }
   };
 
   /*async getUser() {
