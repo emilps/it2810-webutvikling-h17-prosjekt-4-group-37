@@ -19,6 +19,7 @@ import { MatPaginator } from '@angular/material';
 })
 export class MapComponent implements OnInit {
   wines: Array<any>;
+  public position = 'above';
 
   newMapFilter: MapFilter = {
     mapFilterValue: "",
