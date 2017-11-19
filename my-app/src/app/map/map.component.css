@@ -1,14 +1,42 @@
 .mapViewItems {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
+  justify-content: center;
 }
 
+.mapCard {
+  height: 45%;
+  width: 45%;
+  margin: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.listCard {
+  height: 45%;
+  width: 45%;
+  margin: 10px;
+}
+
+.mat-card {
+  padding: 10px;
+  overflow-y: auto;
+  max-height: 80vh;
+  min-height: 30%;
+  min-width: 55vh;
+}
+
+.mat-table {
+}
+
+
 #regionTitle {
-  font-size: 3em;
   text-align: center;
 }
 
 #mapTitle {
-  font-size: 2em;
   text-align: center;
 }

@@ -235,8 +235,6 @@ router.get('/me', (req, res) => {
     req.user ? res.json(req.user) : res.status(200).send()
 });
 router.post('/countries', (req, res) => {
-  console.log("Logging countries: ", req.body);
-
     let filterName = null;
     let filterValue = null;
 
@@ -249,6 +247,7 @@ router.post('/countries', (req, res) => {
     connection((db) => {
         db.collection('wines')
             .find({[filterName]:filterValue})
+            .limit( 25 )
             .toArray()
             .then((wines) => {
                 response.data = wines;

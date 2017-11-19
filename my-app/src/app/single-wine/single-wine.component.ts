@@ -8,7 +8,6 @@ import { Filter } from './winefilter';
 import { LoginDialogComponent } from './../login-dialog/login-dialog.component';
 
 
-
 @Component({
   selector: 'app-single-wine',
   templateUrl: './single-wine.component.html',
@@ -18,7 +17,7 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
 
   public icon = 'star_border';
   public position = 'above';
-  private userLoggedIn = false;
+  private userLoggedIn = false
 
   result: any;
 
@@ -63,13 +62,13 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
         } else {
           this.userLoggedIn = false;
         }
-      
+
 
   }
 
 
 
-  
+
 
   ngAfterViewInit() {
     this.checkResult();

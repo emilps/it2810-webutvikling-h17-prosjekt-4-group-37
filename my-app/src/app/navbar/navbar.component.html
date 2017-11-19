@@ -6,6 +6,12 @@
 </mat-toolbar>
 
 <mat-menu #appMenu="matMenu">
+  <button mat-menu-item routerLink="/map"> Map </button>
+  <button mat-menu-item (click)="openDialog()"> Login </button>
+  <button mat-menu-item routerLink="/profile"> Profil </button>
+  <button mat-menu-item (click)="logOut()"> Logg ut </button>
+  <button mat-menu-item routerLink="/map"> Map </button>
+  <button mat-menu-item (click)="openDialog()"> Login </button>
   <button mat-menu-item routerLink="/profile"> Profil </button>
   <button mat-menu-item (click)="logOut()"> Logg ut </button>
 </mat-menu>
