@@ -28,6 +28,9 @@ import { UsersWinesComponent } from './users-wines/users-wines.component';
 import { MessageService } from './services/message.service';
 import { LogComponent } from './log/log.component';
 import { ProfileService } from './services/profile.service';
+// chart for doughnut
+import { ChartsModule } from 'ng2-charts';
+import { ChartComponent } from './chart/chart.component';
 
 
 
@@ -76,7 +79,8 @@ export function startupServiceFactory(userService: UserService): Function {
     SingleWineComponent,
     ProfileComponent,
     UsersWinesComponent,
-    LogComponent
+    LogComponent,
+    ChartComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -101,7 +105,8 @@ export function startupServiceFactory(userService: UserService): Function {
     MatButtonToggleModule,
     MatSnackBarModule,
     MatTooltipModule,
-    MatTabsModule
+    MatTabsModule,
+    ChartsModule
   ],
   entryComponents: [
     SingleWineComponent,
