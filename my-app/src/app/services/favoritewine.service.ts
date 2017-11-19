@@ -9,6 +9,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 import { Filter } from './../single-wine/winefilter';
+import { UserService} from '../services/users.service';
+import {UserName} from '../model/userName'
 
 
 @Injectable()
@@ -16,8 +18,11 @@ export class FavoriteWineService {
 
     result:any;
     wineIDS:any;
+    thisUser: UserName = {
+      name : '',
+    };
 
-    constructor(private _http: Http) { }
+    constructor(private _http: Http, public userService: UserService) { }
 
     getFavoriteWine(arg:Filter) {
       console.log("API runs", arg)
@@ -31,8 +36,15 @@ export class FavoriteWineService {
         .map(result => this.result = result.json().data);
     }
     getFavoriteWines() {
-      return this._http.get("api/getFavoriteWinesIds")
+      this.userService.fetchUserAsync()
+      this.thisUser.name = this.userService.user.name;
+      return this._http.post("api/getfavoritewinesids", this.thisUser)
       .map(result => this.result = result.json().data);
+    }
+
+    getWineInfo(){
+      console.log(this.result)
+      return this.result
     }
 
 
