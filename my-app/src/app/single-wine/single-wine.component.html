@@ -1,18 +1,43 @@
 <div class="wineDiv">
-  <h2 mat-dialog-title #wineTitle>{{data.Varenavn}}</h2>
+  <p class="singleWineTitle" mat-dialog-title #wineTitle>{{data.Varenavn}}</p>
   <hr>
   <mat-dialog-content class="wineInfoContainer">
     <div class="wineInfo">
-      <p><strong>Pris:</strong> {{ data.Pris }}</p>
-      <p><strong>Land:</strong> {{ data.Land }}</p>
-      <p><strong>Distrikt:</strong> {{ data.Distrikt }}</p>
-      <p><strong>Varetype:</strong> {{ data.Varetype }}</p>
-      <p><strong>Argang:</strong> {{ data.Argang }}</p>
+      <p><mat-icon>attach_money</mat-icon> {{ data.Pris }},-</p>
+      <p><mat-icon>map</mat-icon> {{ data.Land }}</p>
+      <p><mat-icon>place</mat-icon> {{ data.Distrikt }}</p>
+      <p><mat-icon>local_bar</mat-icon> {{ data.Varetype }}</p>
+      <p><mat-icon>insert_invitation</mat-icon> {{ data.Argang }}</p>
+      <div class="spinners">
+        <div class="spinnerContainer">
+          <mat-progress-spinner
+              class="example-margin"
+              color="secondary"
+              [value]="alcohol"
+              aria-label="test"
+              [diameter]="70">
+          </mat-progress-spinner>
+          <h5 class="alcoholSpinnerText">{{data.Alkohol}}%</h5>
+        </div>
+
+        <div class="spinnerContainer">
+          <mat-progress-spinner
+              class="example-margin"
+              color="accent"
+              [value]="volumpercent"
+              aria-label="test"
+              [diameter]="70"
+              >
+          </mat-progress-spinner>
+          <h5 class="volumSpinnerText">{{ volum }}L</h5>
+        </div>
+      </div>
     </div>
     <div class="wineImg">
       <img style="max-height: 300px;" src="{{ data.Vareurl }}" />
     </div>
   </mat-dialog-content>
+
   <hr>
   <mat-dialog-actions class="wineDialogActions">
     <mat-icon class="starIcon" (click)="changeIcon(wineTitle.innerHTML, data.Varenummer)" matTooltip="Lagre i favoritter" [matTooltipPosition]="position">{{ icon }}</mat-icon>

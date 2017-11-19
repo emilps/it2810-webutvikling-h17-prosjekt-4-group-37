@@ -20,6 +20,9 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
   private userLoggedIn = false
 
   result: any;
+  alcohol = 1;
+  volum = 0.75;
+  volumpercent = 0;
 
 
   newFilter: Filter = {
@@ -51,10 +54,15 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
       }
       //this.checkWine();
       //console.log(this.result)
+      this.formatVolume(data["Volum"])
       this.checkWine();
+
     }
 
      async ngOnInit() {
+       setTimeout(() => this.alcohol = ((100/22) * this.data["Alkohol"]), 500);
+       setTimeout(() => this.volumpercent = this.formatVolume(this.data["Volum"]), 500);
+
       await this.userService.fetchUserAsync()
         if (this.userService.isLoggedIn()){
           this.userLoggedIn = true;
@@ -62,8 +70,21 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
         } else {
           this.userLoggedIn = false;
         }
+    }
 
 
+
+  formatVolume(volume){
+    if(volume == 0){
+      this.volum = 0.75
+      return 0.75*20
+    }else if (volume == 1){
+      this.volum = 1.5
+      return 1.5*20
+    }else{
+      this.volum = volume
+      return volume*20;
+    }
   }
 
 
@@ -84,8 +105,7 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
 
   async changeIcon(wine,id){
 
-    //console.log(id)
-
+    await this.userService.fetchUserAsync()
     if(this.userLoggedIn){
 
       if(this.icon == "star"){
@@ -148,7 +168,7 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
 
   updateWine(){
     this.favoriteWineService.updateFavoriteWine(this.newFilter)
-        .subscribe(res => this.result = res);
+        .subscribe(res => console.log(res));
   }
 
 
