@@ -1,0 +1,14 @@
+/*.wineDiv{
+  width: 70%;
+}
+.profile{
+  width:400px;
+}
+.profile-container{
+  display: flex;
+  flex-direction: row;
+
+}*/
+.recommendedWine{
+  width:50%;
+}
