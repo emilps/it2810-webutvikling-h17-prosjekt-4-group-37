@@ -1,0 +1,18 @@
+<div *ngIf="isDataAvailable">
+  <mat-card class="chart">
+    <h1>Din smaksprofil basert på likte viner</h1>
+
+  <div style="display: block">
+    <canvas baseChart
+              [data]="doughnutChartData"
+              [labels]="doughnutChartLabels"
+              [chartType]="doughnutChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"
+              [colors]="chartColors"
+              [options]="options"
+
+              ></canvas>
+  </div>
+</mat-card>
+</div>
