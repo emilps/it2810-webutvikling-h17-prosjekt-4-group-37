@@ -7,6 +7,7 @@ import { FavoriteWineService } from './../services/favoritewine.service';
 import { Filter } from './winefilter';
 import { LoginDialogComponent } from './../login-dialog/login-dialog.component';
 import { ProfileService } from './../services/profile.service';
+import {MessageService} from './../services/message.service';
 
 @Component({
   selector: 'app-single-wine',
@@ -39,6 +40,8 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
     private userService: UserService,
     public dialog: MatDialog,
     public profileService: ProfileService,
+    private MessageService: MessageService
+
 
     ) {
     console.log("this.userservice.user = " + this.userService.user.name)
@@ -121,6 +124,7 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
         this.snackBar.open((wine + " er fjernet fra favoritter"),"OK", {
           duration: 1000,
         });
+        //remove wine here from profilesite, if on that page
       }else{
         this.icon = "star";
         this.newFilter.remove = 0;
@@ -135,6 +139,10 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
     //console.log("result", this.result, " Newfilter ", this.newFilter)
   }
 
+  removeWine(): void {
+      //send ID to be removed to messageservice
+      //this.MessageService.removeWine(this.result);
+  }
 
 
   checkResult(){

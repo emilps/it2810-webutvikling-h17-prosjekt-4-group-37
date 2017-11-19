@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FavoriteWineService } from './../services/favoritewine.service';
 import { UserService } from './../services/users.service';
 import { SingleWineComponent } from './../single-wine/single-wine.component';
 import { MatDialog } from '@angular/material';
+import { Subscription } from 'rxjs/Subscription';
+import { MessageService } from './../services/message.service';
+
 
 
 @Component({
@@ -10,7 +13,9 @@ import { MatDialog } from '@angular/material';
   templateUrl: './users-wines.component.html',
   styleUrls: ['./users-wines.component.css']
 })
-export class UsersWinesComponent implements OnInit {
+export class UsersWinesComponent implements OnInit, OnDestroy {
+
+  private subscription: Subscription;
 
   username = "";
   hasWines= false;
@@ -19,7 +24,15 @@ export class UsersWinesComponent implements OnInit {
     private favoriteWineService: FavoriteWineService,
     public userService: UserService,
     public dialog: MatDialog,
-  ) { }
+    private messageService: MessageService,
+
+
+  ) { 
+
+      this.subscription = this.messageService.receiveID().subscribe(message => {
+        // message is ID: remove that list
+      });
+    }
 
   async ngOnInit() {
     //this.userService.fetchUserAsync().then(data => this.username = data.name);
@@ -29,6 +42,10 @@ export class UsersWinesComponent implements OnInit {
 
     //console.log("This was called: ", this.wines)
 
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   async gatherWines(){
