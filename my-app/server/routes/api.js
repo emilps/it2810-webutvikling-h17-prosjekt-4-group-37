@@ -137,7 +137,7 @@ router.post('/wines', (req, res) => {
 
 router.post('/getfavoritewines', (req, res) => {
     console.log("------TEST------", req.body.username);
-    console.log("------TEST------", req.body.wine);
+    console.log("------TEST------This Is running", req.body.wine);
     connection((db) => {
         db.collection('favoritewines')
             .find({$and: [{"userID": req.body.username}, {"wineID": {$in: [req.body.wine]}}]})
@@ -153,11 +153,11 @@ router.post('/getfavoritewines', (req, res) => {
     });
 });
 
-router.get('/getFavoriteWinesIds', (req,res) =>{
+router.post('/getfavoritewinesids', (req,res) =>{
   var listID=[];
   connection((db) => {
     db.collection('favoritewines')
-    .find({"userID": req.user.name})
+    .find({"userID": req.body.name})
     .toArray()
     .then((winesIds) => {
         console.log(winesIds);
@@ -185,17 +185,16 @@ router.get('/getFavoriteWinesIds', (req,res) =>{
   });
 });
 
-router.get('/getwineslog',(req, res) => {
+router.post('/getwineslog',(req, res) => {
   console.log(", LOG IS WORKING FIRST");
   var listID=[];
   connection((db) => {
     db.collection('log')
-    .find({"userID": req.user.name})
+    .find({"userID": req.body.name})
     .toArray()
     .then((winesIds) => {
         console.log(winesIds);
         listID = winesIds[0].wineID;
-
         //console.log("This is an element of listId: ", listID[0]);
         console.log("THIS IS A TEST FOR LOG DB!  A check of listID CONNECTED TO LOG DB: ", listID)
 
@@ -217,6 +216,23 @@ router.get('/getwineslog',(req, res) => {
     .catch((err) => {
       sendError(err, res);
     });
+  });
+});
+
+router.post('/getrecommendedwine', (req, res) => {
+  console.log("In post getrecommendedwine we get: ",req.body.wineContry, req.body.wineType)
+  connection((db) => {
+    db.collection('wines')
+      .find({$and: [{"Varetype": req.body.wineType}, {"Land": req.body.wineContry}]})
+      .limit(1)
+      .toArray()
+      .then((wines) => {
+        response.data = wines
+        res.json(response)
+      })
+      .catch((err) => {
+        sendError(err, res);
+      });
   });
 });
 
@@ -274,7 +290,6 @@ router.get('/loginstatus', (req,res) =>{
     } else {
         response.data = false;
     }
-
     res.json(response)
 })
 
