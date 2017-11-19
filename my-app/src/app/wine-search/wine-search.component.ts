@@ -26,6 +26,7 @@ export class WineSearchComponent implements OnInit {
     wineFilterValue: "",
     priceSort: 0,
     letterSort: 0,
+    alcSort: 0,
     limit: 12,
     searchValue: "",
   };
@@ -125,7 +126,10 @@ export class WineSearchComponent implements OnInit {
         this.sortLetterDESC()
       }else if(arg.source.value == "LASC"){
         this.sortLetterASC()
-
+      }else if(arg.source.value == "ADESC"){
+        this.sortAlcDESC()
+      }else if(arg.source.value == "AASC"){
+        this.sortAlcASC()
       }else{
         this.noSort()
       }
@@ -158,24 +162,42 @@ export class WineSearchComponent implements OnInit {
   sortLetterASC() {
     this.newFilter.priceSort = 0;
     this.newFilter.letterSort = 1;
+    this.newFilter.alcSort = 0;
     this.sortAndFilter();
   }
 
   sortPriceASC() {
     this.newFilter.priceSort = 1;
     this.newFilter.letterSort = 0;
+    this.newFilter.alcSort = 0;
     this.sortAndFilter();
   }
 
   sortLetterDESC() {
     this.newFilter.priceSort = 0;
     this.newFilter.letterSort = -1;
+    this.newFilter.alcSort = 0;
     this.sortAndFilter();
   }
 
   sortPriceDESC() {
     this.newFilter.priceSort = -1;
     this.newFilter.letterSort = 0;
+    this.newFilter.alcSort = 0;
+    this.sortAndFilter();
+  }
+
+  sortAlcDESC() {
+    this.newFilter.priceSort = 0;
+    this.newFilter.letterSort = 0;
+    this.newFilter.alcSort = -1;
+    this.sortAndFilter();
+  }
+
+  sortAlcASC() {
+    this.newFilter.priceSort = 0;
+    this.newFilter.letterSort = 0;
+    this.newFilter.alcSort = 1;
     this.sortAndFilter();
   }
 
@@ -189,6 +211,7 @@ export class WineSearchComponent implements OnInit {
   noSort() {
     this.newFilter.priceSort = 0;
     this.newFilter.letterSort = 0;
+    this.newFilter.alcSort = 0;
     this.sortAndFilter();
   }
 

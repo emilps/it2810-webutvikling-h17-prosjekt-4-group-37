@@ -91,6 +91,9 @@ router.post('/wines', (req, res) => {
     } else if (req.body.letterSort === 1 || req.body.letterSort === -1) {
       sortName = 'Varenavn';
       sortVariabel = req.body.letterSort;
+    }else if (req.body.alcSort === 1 || req.body.alcSort === -1) {
+      sortName = 'Alkohol';
+      sortVariabel = req.body.alcSort;
     }
 
     if (req.body.wineFilter.length > 0) {

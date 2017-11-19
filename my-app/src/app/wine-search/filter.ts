@@ -5,6 +5,7 @@ export class Filter {
     public wineFilterValue: String,
     public priceSort: Number,
     public letterSort: Number,
+    public alcSort: Number,
     public limit: Number,
     public searchValue: String,
   ){}

@@ -19,7 +19,7 @@
       Sorter vinen
     </mat-panel-title>
     <mat-panel-description>
-      Pris og alfabet
+      Pris, alfabetisk og alcohol
     </mat-panel-description>
   </mat-expansion-panel-header>
   <mat-card class="buttonContainer sortContainer">
@@ -46,6 +46,21 @@
           </mat-option>
           <mat-option  value="LDESC" (onSelectionChange)="checkSelection($event)">
             Å -> A
+          </mat-option>
+          <mat-option  value=" " (onSelectionChange)="checkSelection($event)">
+            Ingen Sortering
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-select placeholder="Sorter etter alcohol" [(ngModel)]="name">
+          <mat-option value="AASC" (onSelectionChange)="checkSelection($event)">
+            Lav -> Høy
+          </mat-option>
+          <mat-option  value="ADESC" (onSelectionChange)="checkSelection($event)">
+            Høy -> Lav
           </mat-option>
           <mat-option  value=" " (onSelectionChange)="checkSelection($event)">
             Ingen Sortering
