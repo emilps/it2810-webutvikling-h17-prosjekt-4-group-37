@@ -23,10 +23,13 @@ export class LogComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log("Shoueld start here first!!_____INIT____")
     this.gatherWinesLog();
+    console.log("This is working:::", this.userService.user)
   }
 
   async gatherWinesLog(){
+    console.log("Gathering of log started________START______")
     this.wines = await this.profileService.getWinesLog()
     if(this.wines.length){
       this.showLog = false;

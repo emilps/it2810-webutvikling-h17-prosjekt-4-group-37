@@ -4,7 +4,7 @@
   <p> Du har ikke sett på noen viner enda...</p>
 </div>
 <ng-template #logWine>
-<mat-card class="logDiv" (click)="openDialog(wine)" *ngFor="let wine of wines">
+<mat-card class="wineLog" (click)="openDialog(wine)" *ngFor="let wine of wines">
   <h3>{{ wine.Varenavn }}</h3>
   <p>{{ wine.Pris }}</p>
   <img src="{{ wine.Vareurl }}" />

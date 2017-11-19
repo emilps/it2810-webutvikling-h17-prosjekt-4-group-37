@@ -153,11 +153,11 @@ router.post('/getfavoritewines', (req, res) => {
     });
 });
 
-router.post('/getfavoritewinesids', (req,res) =>{
+router.get('/getfavoritewinesids', (req,res) =>{
   var listID=[];
   connection((db) => {
     db.collection('favoritewines')
-    .find({"userID": req.body.name})
+    .find({"userID": req.user.name})
     .toArray()
     .then((winesIds) => {
         console.log(winesIds);
@@ -185,15 +185,14 @@ router.post('/getfavoritewinesids', (req,res) =>{
   });
 });
 
-router.post('/getwineslog',(req, res) => {
+router.get('/getwineslog',(req, res) => {
   console.log(", LOG IS WORKING FIRST");
   var listID=[];
   connection((db) => {
     db.collection('log')
-    .find({"userID": req.body.name})
+    .find({"userID": req.user.name})
     .toArray()
     .then((winesIds) => {
-        console.log(winesIds);
         listID = winesIds[0].wineID;
         //console.log("This is an element of listId: ", listID[0]);
         console.log("THIS IS A TEST FOR LOG DB!  A check of listID CONNECTED TO LOG DB: ", listID)

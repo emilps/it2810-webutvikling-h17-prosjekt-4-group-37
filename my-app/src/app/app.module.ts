@@ -114,12 +114,9 @@ export function startupServiceFactory(userService: UserService): Function {
     MatSnackBarModule,
     MatTooltipModule,
     MatTabsModule,
-<<<<<<< HEAD
-    ChartsModule
-=======
     MatTableModule,
-    MatProgressSpinnerModule
->>>>>>> d122bf225e23bf3597c3e4415f7882bbd8d9a095
+    MatProgressSpinnerModule,
+    ChartsModule,
   ],
   entryComponents: [
     SingleWineComponent,
@@ -135,11 +132,8 @@ export function startupServiceFactory(userService: UserService): Function {
     MapWineService,
     NavbarComponent,
     MessageService,
-<<<<<<< HEAD
     FavoriteWineService,
     ProfileService,
-=======
->>>>>>> d122bf225e23bf3597c3e4415f7882bbd8d9a095
     {
       // Provider for APP_INITIALIZER
       provide: APP_INITIALIZER,

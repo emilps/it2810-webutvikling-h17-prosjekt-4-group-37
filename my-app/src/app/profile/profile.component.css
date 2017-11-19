@@ -9,6 +9,15 @@
   flex-direction: row;
 
 }*/
+.profile-container-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .recommendedWine{
   width:50%;
+}
+.chart-container{
+  width: 50%;
 }

@@ -37,24 +37,19 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
     @Inject(MAT_DIALOG_DATA) public data: string,
     public snackBar: MatSnackBar,
     private userService: UserService,
-<<<<<<< HEAD
     public dialog: MatDialog,
     public profileService: ProfileService,
-=======
-    public dialog: MatDialog
->>>>>>> d122bf225e23bf3597c3e4415f7882bbd8d9a095
 
     ) {
     console.log("this.userservice.user = " + this.userService.user.name)
 
 
       try{
-        this.userService.fetchUserAsync()
         this.newFilter.username = this.userService.user.name;
         this.newFilter.wine = data["Varenummer"];
         //console.log("Filter check", this.newFilter)
         this.result = []
-        //this.addToLog();
+        this.addToLog();
       }catch(err){
         //console.log("Note loggeed in")
       }
@@ -78,9 +73,6 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
         }
     }
 
-<<<<<<< HEAD
-  ngOnInit() {
-=======
 
 
   formatVolume(volume){
@@ -94,7 +86,6 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
       this.volum = volume
       return volume*20;
     }
->>>>>>> d122bf225e23bf3597c3e4415f7882bbd8d9a095
   }
 
 
@@ -152,16 +143,6 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
 
   async checkWine(){
     await this.userService.fetchUserAsync()
-<<<<<<< HEAD
-    if(this.userService.isLoggedIn()){
-      await this.favoriteWineService.getFavoriteWine(this.newFilter)
-          .subscribe(res => this.firstCheckIfFavorite(res));
-      console.log("This was called", this.result)
-    }else{
-      this.result = ""
-    }
-
-=======
     if (this.userService.isLoggedIn()) {
     await this.favoriteWineService.getFavoriteWine(this.newFilter)
         .subscribe(res => this.firstCheckIfFavorite(res));
@@ -171,7 +152,6 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
       this.result = ""
     }
     //console.log("This was called", this.result)
->>>>>>> d122bf225e23bf3597c3e4415f7882bbd8d9a095
   }
 
   firstCheckIfFavorite(dbData){

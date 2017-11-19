@@ -1,4 +1,4 @@
-
+<div class= "profile-container-header">
   <mat-card class="recommendedWine">
   <h2>Hei,{{userName}}!</h2>
   <div *ngIf="!statusRcommendation; else generatedResponse">
@@ -18,10 +18,11 @@
     <img src="{{ src }}" />
     </mat-card>
   </ng-template>
-
 </mat-card>
 
-<app-chart></app-chart>
-
+<div class="chart-container">
+  <app-chart></app-chart>
+</div>
+</div>
 <app-users-wines></app-users-wines>
 <app-log></app-log>

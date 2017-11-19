@@ -36,9 +36,9 @@ export class FavoriteWineService {
         .map(result => this.result = result.json().data);
     }
     getFavoriteWines() {
-      this.userService.fetchUserAsync()
-      this.thisUser.name = this.userService.user.name;
-      return this._http.post("api/getfavoritewinesids", this.thisUser)
+      //this.thisUser.name = this.userService.user.name;
+      //console.log("THIS IS THE USER: _____USER:", this.userService.user.name)
+      return this._http.get("api/getfavoritewinesids")
       .map(result => this.result = result.json().data);
     }
 

@@ -26,14 +26,15 @@ export class ProfileService {
   constructor(private _http: Http, private userService: UserService) { }
 
   async getWinesLog(): Promise<void> {
-    this.userService.fetchUserAsync()
-    this.thisUser.name = this.userService.user.name;
-    const response = await this._http.post("api/getwineslog", this.thisUser).toPromise()
+    //this.thisUser.name = this.userService.user.name;
+    //console.log("This is the USER FOR USERLOG", this.thisUser.name)
+    const response = await this._http.get("api/getwineslog").toPromise()
     return response.json().data
   }
 
   //change location to a more apropriate service..
   addToLog(arg){
+    console.log("This arg:", arg)
     return this._http.post("/api/addtolog", arg)
       .map(result => {
         this.result = result.json().data
@@ -41,7 +42,6 @@ export class ProfileService {
   }
 
   async getRecom(filter: Filter){
-    console.log("Running getRecom : ", filter)
     const response = await this._http.post("api/getrecommendedwine", filter).toPromise()
     const recWine=  response.json().data
     return recWine
