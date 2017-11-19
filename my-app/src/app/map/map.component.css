@@ -33,6 +33,17 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.mat-column-name {
+  flex: 0 0 65%;
+}
+.mat-column-country {
+  flex: 0 0 75px;
+}
+.mat-column-price {
+  flex: 0 0 75px;
 }
 
 
