@@ -10,7 +10,7 @@ import { HttpModule } from '@angular/http';
 import { DataService } from './data.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatCheckboxModule, MatExpansionModule, MatSelectModule, MatFormFieldModule, MatInputModule, MatDialogModule, MatButtonToggleModule, MatSnackBarModule, MatTooltipModule, MatTabsModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatCheckboxModule, MatExpansionModule, MatSelectModule, MatFormFieldModule, MatInputModule, MatDialogModule, MatButtonToggleModule, MatSnackBarModule, MatTooltipModule, MatTabsModule, MatTableModule,MatProgressSpinnerModule} from '@angular/material';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WineSearchComponent } from './wine-search/wine-search.component';
 import { LoginComponent } from './login/login.component';
@@ -23,6 +23,9 @@ import { FavoriteWineService } from './services/favoritewine.service';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { MapComponent } from './map/map.component';
 import { SingleWineComponent } from './single-wine/single-wine.component';
+
+
+import { MapWineService } from './services/mapwine.service';
 import { ProfileComponent } from './profile/profile.component';
 import { UsersWinesComponent } from './users-wines/users-wines.component';
 import { MessageService } from './services/message.service';
@@ -31,6 +34,7 @@ import { ProfileService } from './services/profile.service';
 // chart for doughnut
 import { ChartsModule } from 'ng2-charts';
 import { ChartComponent } from './chart/chart.component';
+
 
 
 
@@ -50,6 +54,10 @@ const appRoutes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'map',
+    component: MapComponent
   },
   {
     path: 'profile',
@@ -106,7 +114,12 @@ export function startupServiceFactory(userService: UserService): Function {
     MatSnackBarModule,
     MatTooltipModule,
     MatTabsModule,
+<<<<<<< HEAD
     ChartsModule
+=======
+    MatTableModule,
+    MatProgressSpinnerModule
+>>>>>>> d122bf225e23bf3597c3e4415f7882bbd8d9a095
   ],
   entryComponents: [
     SingleWineComponent,
@@ -118,10 +131,15 @@ export function startupServiceFactory(userService: UserService): Function {
     UserService,
     AuthGuard,
     AuthService,
+    FavoriteWineService,
+    MapWineService,
     NavbarComponent,
     MessageService,
+<<<<<<< HEAD
     FavoriteWineService,
     ProfileService,
+=======
+>>>>>>> d122bf225e23bf3597c3e4415f7882bbd8d9a095
     {
       // Provider for APP_INITIALIZER
       provide: APP_INITIALIZER,

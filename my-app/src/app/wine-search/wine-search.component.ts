@@ -44,7 +44,6 @@ export class WineSearchComponent implements OnInit {
   }
 
   openDialog(arg){
-    console.log(arg)
     let dialogRef = this.dialog.open(SingleWineComponent, {
       //width: '600px',
       data: arg,
@@ -129,7 +128,7 @@ export class WineSearchComponent implements OnInit {
       }else{
         this.noSort()
       }
-      console.log("This list: ",this.newFilter.wineFilter)
+      //console.log("This list: ",this.newFilter.wineFilter)
     }
 
   }

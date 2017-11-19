@@ -41,6 +41,7 @@ export class UserService {
 
     public async fetchUserAsync() {
       try {
+        this.user = false;
         const response = await this._http.get('/api/me').toPromise()
         this.user = response.json()
         return this.user
@@ -63,6 +64,8 @@ export class UserService {
 
     public logOutUser(){
       this._http.get('/api/logout').toPromise()
+      this.user = false;
+
     }
 
 

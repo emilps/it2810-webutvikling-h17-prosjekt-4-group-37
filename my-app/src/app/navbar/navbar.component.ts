@@ -23,8 +23,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   constructor(public dialog: MatDialog,private userService: UserService, private zone: NgZone, private messageService: MessageService){
       // subscribe to home component messages
       this.subscription = this.messageService.getMessage().subscribe(message => {
-        //console.log(message);
-        this.login() });
+        this.loggedInOptions= true;
+      });
    }
 
   async ngOnInit() {
@@ -43,15 +43,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.subscription.unsubscribe();
   }
 
-  public async loggedInNavbar() {
-    await this.userService.fetchUserAsync()
-    if (this.userService.isLoggedIn()) {
-      this.login();
-    } else {
-      this.loggedInOptions = false;
-    }
-
-  }
 
   login(){
     this.loggedInOptions = true;

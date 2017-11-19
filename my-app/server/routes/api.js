@@ -264,7 +264,10 @@ router.post('/updatefavoritewines', (req, res) => {
                 {userID: req.body.username},
                 {$push: {wineID: req.body.wine}},
                 {upsert: true})
-              .then(console.log("Added wine"))
+              .then((data) => {
+                  response.data = data;
+                  res.json(response);
+              })
               .catch((err) => {
                   sendError(err, res);
               });
@@ -275,7 +278,10 @@ router.post('/updatefavoritewines', (req, res) => {
               .update(
                 {userID: req.body.username},
                 {$pull: {wineID: req.body.wine}})
-              .then(console.log("Removed wine"))
+              .then((data) => {
+                  response.data = data;
+                  res.json(response);
+              })
               .catch((err) => {
                   sendError(err, res);
               });
@@ -335,8 +341,6 @@ router.get('/me', (req, res) => {
     req.user ? res.json(req.user) : res.status(200).send()
 });
 router.post('/countries', (req, res) => {
-  console.log("Logging countries: ", req.body);
-
     let filterName = null;
     let filterValue = null;
 
@@ -349,6 +353,7 @@ router.post('/countries', (req, res) => {
     connection((db) => {
         db.collection('wines')
             .find({[filterName]:filterValue})
+            .limit( 25 )
             .toArray()
             .then((wines) => {
                 response.data = wines;

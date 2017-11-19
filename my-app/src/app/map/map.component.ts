@@ -1,10 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
-// Import the DataService
-import { DataService } from './../data.service';
+import { MapWineService } from './../services/mapwine.service';
+import { Observable } from 'rxjs/Observable';
+import { DataSource } from '@angular/cdk/collections';
+
 
 import { MapFilter } from './mapFilter';
+import 'rxjs/add/observable/of';
 
+import { SingleWineComponent } from './../single-wine/single-wine.component';
+import { MatDialog } from '@angular/material';
+import { MatPaginator } from '@angular/material';
 
 @Component({
   selector: 'app-map',
@@ -12,32 +18,58 @@ import { MapFilter } from './mapFilter';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
-
   wines: Array<any>;
 
   newMapFilter: MapFilter = {
     mapFilterValue: "",
   }
-
-  // Create an instance of the DataService through dependency injection
-  constructor(private _dataService: DataService) {
-
-    // Access the Data Service's getWines() method we defined
-    this._dataService.getCountries(this.newMapFilter)
-        .subscribe(res => this.wines = res);
-  }
+  dataSource = new WineDataSource();
+  displayedColumns = ['name', 'country', 'price'];
 
   ngOnInit() {
+    }
+
+  // Create an instance of the DataService through dependency injection
+  constructor(private mapWineService: MapWineService, public dialog: MatDialog) {
+
+     //Access the WineService's geCountriess() method we defined
+     this.mapWineService.getCountries(this.newMapFilter)
+      .subscribe(res => this.loadArray(res));
   }
+
+  loadArray(res){
+    data = res;
+    this.dataSource = new WineDataSource();
+  }
+
 
   countryChange() {
     const illegalCountries = ["Verden", "Afrika", "Europa", "Asia", "Amerika"];
     let country = document.getElementById('regionTitle').innerHTML;
     if(!illegalCountries.includes(country)){
       this.newMapFilter.mapFilterValue = country;
-      this._dataService.getCountries(this.newMapFilter)
-          .subscribe(res => this.wines = res);
+      this.mapWineService.getCountries(this.newMapFilter)
+      .subscribe(res => this.loadArray(res));
     }
   }
-
+  onWineClick(wine){
+    console.log("Pressed wine: " + wine.Varenavn);
+    let dialogRef = this.dialog.open(SingleWineComponent, {data: wine,})
+  }
 }
+
+export interface Wine {
+  Varenavn: string;
+  Land: string;
+  Pris: number;
+}
+
+let data: Wine[];
+
+export class WineDataSource extends DataSource<any> {
+   /** Connect function called by the table to retrieve one stream containing the data to render. */
+   connect(): Observable<Wine[]> {
+    return Observable.of(data);
+    }
+    disconnect() {}
+ }

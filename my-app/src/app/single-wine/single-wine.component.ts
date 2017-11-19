@@ -20,6 +20,9 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
   private userLoggedIn = false
 
   result: any;
+  alcohol = 1;
+  volum = 0.75;
+  volumpercent = 0;
 
 
   newFilter: Filter = {
@@ -34,29 +37,69 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
     @Inject(MAT_DIALOG_DATA) public data: string,
     public snackBar: MatSnackBar,
     private userService: UserService,
+<<<<<<< HEAD
     public dialog: MatDialog,
     public profileService: ProfileService,
+=======
+    public dialog: MatDialog
+>>>>>>> d122bf225e23bf3597c3e4415f7882bbd8d9a095
 
     ) {
-      this.userLoggedIn = this.userService.isLoggedIn();
+    console.log("this.userservice.user = " + this.userService.user.name)
+
+
       try{
         this.userService.fetchUserAsync()
         this.newFilter.username = this.userService.user.name;
         this.newFilter.wine = data["Varenummer"];
-        console.log("Filter check", this.newFilter)
+        //console.log("Filter check", this.newFilter)
         this.result = []
         //this.addToLog();
       }catch(err){
-        console.log("Note loggeed in")
+        //console.log("Note loggeed in")
       }
       //this.checkWine();
       //console.log(this.result)
-
+      this.formatVolume(data["Volum"])
       this.checkWine();
+
     }
 
+     async ngOnInit() {
+       setTimeout(() => this.alcohol = ((100/22) * this.data["Alkohol"]), 500);
+       setTimeout(() => this.volumpercent = this.formatVolume(this.data["Volum"]), 500);
+
+      await this.userService.fetchUserAsync()
+        if (this.userService.isLoggedIn()){
+          this.userLoggedIn = true;
+
+        } else {
+          this.userLoggedIn = false;
+        }
+    }
+
+<<<<<<< HEAD
   ngOnInit() {
+=======
+
+
+  formatVolume(volume){
+    if(volume == 0){
+      this.volum = 0.75
+      return 0.75*20
+    }else if (volume == 1){
+      this.volum = 1.5
+      return 1.5*20
+    }else{
+      this.volum = volume
+      return volume*20;
+    }
+>>>>>>> d122bf225e23bf3597c3e4415f7882bbd8d9a095
   }
+
+
+
+
 
   ngAfterViewInit() {
 
@@ -64,9 +107,9 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
     if(document.querySelector('.starIcon').innerHTML == "star_border"){
       //this.checkWine();
       //this.checkResult();
-      console.log(document.querySelector('.starIcon'))
+      //console.log(document.querySelector('.starIcon'))
       document.querySelector('.starIcon');
-      console.log(this.result)
+      //console.log(this.result)
     }
   }
 
@@ -78,7 +121,6 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
 
   async changeIcon(wine,id){
 
-    console.log(id)
     await this.userService.fetchUserAsync()
     if(this.userLoggedIn){
 
@@ -99,17 +141,18 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
     }else{
       this.openDialog();
     }
-    console.log("result", this.result, " Newfilter ", this.newFilter)
+    //console.log("result", this.result, " Newfilter ", this.newFilter)
   }
 
 
 
   checkResult(){
-    console.log(this.result)
+    //console.log(this.result)
   }
 
   async checkWine(){
     await this.userService.fetchUserAsync()
+<<<<<<< HEAD
     if(this.userService.isLoggedIn()){
       await this.favoriteWineService.getFavoriteWine(this.newFilter)
           .subscribe(res => this.firstCheckIfFavorite(res));
@@ -118,6 +161,17 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
       this.result = ""
     }
 
+=======
+    if (this.userService.isLoggedIn()) {
+    await this.favoriteWineService.getFavoriteWine(this.newFilter)
+        .subscribe(res => this.firstCheckIfFavorite(res));
+    }
+
+    else {
+      this.result = ""
+    }
+    //console.log("This was called", this.result)
+>>>>>>> d122bf225e23bf3597c3e4415f7882bbd8d9a095
   }
 
   firstCheckIfFavorite(dbData){
@@ -125,7 +179,7 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
     if(this.result.length){
       this.icon = "star";
     }
-    console.log("DB_DATA: ", dbData);
+    //console.log("DB_DATA: ", dbData);
   }
 
   openDialog(): void {
@@ -141,7 +195,7 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
 
   updateWine(){
     this.favoriteWineService.updateFavoriteWine(this.newFilter)
-        .subscribe(res => this.result = res);
+        .subscribe(res => console.log(res));
   }
 
 
