@@ -49,7 +49,7 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
         this.newFilter.wine = data["Varenummer"];
         //console.log("Filter check", this.newFilter)
         this.result = []
-        this.addToLog();
+        //this.addToLog();
       }catch(err){
         //console.log("Note loggeed in")
       }

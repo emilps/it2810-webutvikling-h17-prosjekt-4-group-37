@@ -5,6 +5,7 @@ import { UserService} from '../services/users.service';
 import { User } from '../model/user';
 import { MessageService } from './../services/message.service';
 import { Subscription } from 'rxjs/Subscription';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -20,7 +21,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
 
 
-  constructor(public dialog: MatDialog,private userService: UserService, private zone: NgZone, private messageService: MessageService){
+  constructor(private router: Router, public dialog: MatDialog,private userService: UserService, private zone: NgZone, private messageService: MessageService){
       // subscribe to home component messages
       this.subscription = this.messageService.getMessage().subscribe(message => {
         this.loggedInOptions= true;
@@ -51,6 +52,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   logOut(){
     this.userService.logOutUser();
     this.loggedInOptions = false;
+    this.router.navigate(['']);
+
   }
 
   openDialog(): void {
