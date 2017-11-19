@@ -1,8 +1,8 @@
 <div class="mapViewItems">
     <mat-card class="mapCard" (click)="countryChange()">
       <mat-card-title id="mapTitle">Velg kontinent</mat-card-title>
-      <button mat-raised-button color="accent" id="backButton">Tilbake</button>
       <div id="regions_div"></div>
+      <button mat-raised-button color="accent" id="backButton">Tilbake</button>
     </mat-card>
     <mat-card class="listCard">
       <mat-card-title id="regionTitle">Verden</mat-card-title>
@@ -23,5 +23,6 @@
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;" matTooltip="Trykk for mer info" matTooltip="Trykk for mer info" [matTooltipPosition]="position"></mat-row>
       </mat-table>
+      <button mat-raised-button color="accent" id="loadMoreButton">Last flere..</button>
     </mat-card>
 </div>

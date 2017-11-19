@@ -57,6 +57,15 @@
   background-color: #dee1e5;
 }
 
+#loadMoreButton {
+  margin: 10px auto;
+  width: 100%;
+}
+
+#backButton {
+  margin: 10px auto;
+  width: 100%;
+}
 
 #regionTitle {
   text-align: center;
