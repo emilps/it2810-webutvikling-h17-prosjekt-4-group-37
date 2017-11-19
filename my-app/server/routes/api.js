@@ -138,6 +138,21 @@ router.post('/wines', (req, res) => {
     });
 });
 
+router.get('/distinctcountries', (req, res) => {
+  console.log("hello");
+    connection((db) => {
+        db.collection('wines')
+            .distinct("Land")
+            .then((users) => {
+                response.data = users;
+                res.json(response);
+            })
+            .catch((err) => {
+                sendError(err, res);
+            });
+    });
+});
+
 router.post('/getfavoritewines', (req, res) => {
     console.log("------TEST------", req.body.username);
     console.log("------TEST------", req.body.wine);

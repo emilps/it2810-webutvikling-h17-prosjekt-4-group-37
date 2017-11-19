@@ -27,6 +27,11 @@ export class DataService {
       .map(result => this.result = result.json().data);
   }
 
+  getDistinctCountries() {
+    return this._http.get("/api/distinctcountries")
+      .map(result => this.result = result.json().data);
+  }
+
   getRedWines() {
     return this._http.get("/api/winesRed")
       .map(result => this.result = result.json().data);
