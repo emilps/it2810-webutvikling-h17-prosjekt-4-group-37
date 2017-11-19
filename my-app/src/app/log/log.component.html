@@ -1,7 +1,12 @@
 
 <h1>Dine siste søk</h1>
+<div *ngIf="showLog; else logWine">
+  <p> Du har ikke sett på noen viner enda...</p>
+</div>
+<ng-template #logWine>
 <mat-card class="logDiv" (click)="openDialog(wine)" *ngFor="let wine of wines">
   <h3>{{ wine.Varenavn }}</h3>
   <p>{{ wine.Pris }}</p>
   <img src="{{ wine.Vareurl }}" />
 </mat-card>
+</ng-template>
