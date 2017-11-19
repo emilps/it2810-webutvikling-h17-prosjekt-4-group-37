@@ -1,8 +1,4 @@
 <mat-toolbar>
-<<<<<<< HEAD
-
-=======
->>>>>>> 0422a3bd8451fe34ec5653d10df284e8cc07964f
     <span class="logo" routerLink="/">Et Glass med Vin</span>
     <span class="example-spacer"></span>
     <div *ngIf="loggedInOptions; else loginButton"> <button mat-button [matMenuTriggerFor]="appMenu"><mat-icon>account_box</mat-icon> Profil</button></div>
@@ -10,11 +6,12 @@
 </mat-toolbar>
 
 <mat-menu #appMenu="matMenu">
-<<<<<<< HEAD
   <button mat-menu-item routerLink="/map"> Map </button>
   <button mat-menu-item (click)="openDialog()"> Login </button>
-=======
   <button mat-menu-item routerLink="/profile"> Profil </button>
   <button mat-menu-item (click)="logOut()"> Logg ut </button>
->>>>>>> 0422a3bd8451fe34ec5653d10df284e8cc07964f
+  <button mat-menu-item routerLink="/map"> Map </button>
+  <button mat-menu-item (click)="openDialog()"> Login </button>
+  <button mat-menu-item routerLink="/profile"> Profil </button>
+  <button mat-menu-item (click)="logOut()"> Logg ut </button>
 </mat-menu>

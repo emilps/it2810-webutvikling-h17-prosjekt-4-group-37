@@ -23,16 +23,13 @@ import { FavoriteWineService } from './services/favoritewine.service';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { MapComponent } from './map/map.component';
 import { SingleWineComponent } from './single-wine/single-wine.component';
-<<<<<<< HEAD
+
 
 import { MapWineService } from './services/mapwine.service';
-import { HttpClientModule } from '@angular/common/http';
-
-=======
 import { ProfileComponent } from './profile/profile.component';
 import { UsersWinesComponent } from './users-wines/users-wines.component';
 import { MessageService } from './services/message.service';
->>>>>>> 0422a3bd8451fe34ec5653d10df284e8cc07964f
+
 
 const appRoutes: Routes = [
   {
@@ -52,13 +49,12 @@ const appRoutes: Routes = [
     component: RegisterComponent
   },
   {
-<<<<<<< HEAD
     path: 'map',
     component: MapComponent
-=======
+  },
+  {
     path: 'profile',
     component: ProfileComponent
->>>>>>> 0422a3bd8451fe34ec5653d10df284e8cc07964f
   },
   {
     path: '**',
@@ -121,14 +117,10 @@ export function startupServiceFactory(userService: UserService): Function {
     UserService,
     AuthGuard,
     AuthService,
-<<<<<<< HEAD
     FavoriteWineService,
     MapWineService,
-=======
     NavbarComponent,
     MessageService,
-    FavoriteWineService,
->>>>>>> 0422a3bd8451fe34ec5653d10df284e8cc07964f
     {
       // Provider for APP_INITIALIZER
       provide: APP_INITIALIZER,
