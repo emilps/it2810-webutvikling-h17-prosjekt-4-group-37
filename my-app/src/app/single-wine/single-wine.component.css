@@ -1,6 +1,6 @@
 .starIcon, .starIcon:hover {
   font-size: 50px;
-  color: orange;
+  color: #3F51B5;
   cursor: pointer;
   width: 50px;
   height: 50px;
@@ -94,5 +94,5 @@ mat-progress-spinner circle{
 
 .wineDiv {
   max-height: 80vh !important;
-  min-width: 30vw !important;
+  min-width: 35vw !important;
 }
