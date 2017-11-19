@@ -65,8 +65,6 @@ export class UserService {
     public logOutUser(){
       this._http.get('/api/logout').toPromise()
       this.user = false;
-      console.log("logged out")
-      console.log(this.user + "   " + this.isLoggedIn())
 
     }
 
