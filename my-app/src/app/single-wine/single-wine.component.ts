@@ -44,7 +44,7 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
 
 
       try{
-        this.userService.fetchUserAsync()
+        //this.userService.fetchUserAsync()
         this.newFilter.username = this.userService.user.name;
         this.newFilter.wine = data["Varenummer"];
         //console.log("Filter check", this.newFilter)
@@ -156,6 +156,7 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
   }
 
   openDialog(): void {
+    this.thisDialogRef.close("Cancel")
     let dialogRef = this.dialog.open(LoginDialogComponent, {
       width: '500px',
       data: "Test tekst"
