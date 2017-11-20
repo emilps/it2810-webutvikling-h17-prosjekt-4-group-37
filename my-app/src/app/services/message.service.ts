@@ -9,6 +9,7 @@ export class MessageService {
 
 
 
+
     changeButton() {
         this.counter++
         this.subject.next({ value: this.counter });
@@ -17,4 +18,18 @@ export class MessageService {
     getMessage(): Observable<any> {
         return this.subject.asObservable();
     }
+
+
+
+    private receiver = new Subject<any>();
+
+    removeWine(message: string) {
+        this.receiver.next({text: message})
+    }
+
+    receiveID(): Observable<any> {
+        return this.receiver.asObservable();
+    }
+
+
 }
