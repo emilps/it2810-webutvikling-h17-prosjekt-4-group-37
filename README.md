@@ -101,6 +101,20 @@ Vi har laget et REST API for serveren som kommuniserer med databasen over HTTP. 
 ### Skriving lesing og søk mot DB
 *Dere skal demonstrere både skriving og lesing til databasen fra webapplikasjonen inklusive en form for søk (i praksis dynamisk brukerdefinert utvalg av det som skal vises). Generelt er det mye artigere å jobbe med en datamengde som gir et realistisk inntrykk (eksempevis mulig å søke på forskjellige ting og få resultatsett som er forskjellige og har forskjellig antall). Bruk data dere finner på web, eller lag egne data.*
 
+Datasettet vi har valgt å ta i bruk er vinmonopolet.no sine røde og hvite viner.
+
+**Søk** på varenavn kan utføres ved å skrive inn en streng i søkefeltet.
+![Image of wine search field](https://i.imgur.com/B9rAy0m.png)
+
+**Lesing** fra databasen skjer på mange måter, blandt annet:
+* Henting/lesing av viner (sortert eller filtrert på forskjellige måter)
+* Henting/lesing av bruker
+* Henting/lesing av favorittviner
+
+**Skriving** til databasen skjer i hovedsak ved opprettelsen av ny bruker og lagring av favorittviner.
+
+
+
 ### Listebasert visning med Expansion Panel
 *Brukergrensensittet skal ha listebasert visning med få detaljer for hver enhet, og hvor målet er å vise brukeren hva som er i databasen eller hva som er resultatet av et søk. Brukeren skal ha mulighet til å se flere detaljer for hver enhet enten i et eget vindu, eller ved at listen enheten i lista har expand/collpase egenskap.*
 
@@ -127,3 +141,6 @@ Vi har laget et REST API for serveren som kommuniserer med databasen over HTTP. 
 
 ### Godt dokumentert
 *Prosjektet skal være godt dokumentert, slik at det er lett å sette seg inn i for andre.*
+
+## Andre ikke-krevde funksjonaliteter
+Sikker brukerhåndtering med salting og hashing
