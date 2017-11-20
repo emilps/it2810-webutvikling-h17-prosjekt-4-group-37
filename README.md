@@ -37,5 +37,24 @@ En underoppgave til prosjekt 4 var å lage en plan for prosjektet. Vår plan og 
 ## Komponenter og rammeverk
 Beskrivelse og innføring i de største og viktigste komponenter og rammeverk vi har tatt i bruk.
 
+### Angular Material
+Angular Material er google's design components for Angular. Disse har vi benyttet i steden for de kjedelige standardelementene man får i HTML. Vi får da ett gjennomgående design på hele siden vår, med pene elementer. Noen av de viktigste modulene vi har brukt er f.eks:
+* Material Card
+* Material Table
+* Material Expansion Panel
+* Material Button
+* Material Dialog
+* Material Progress Spinner
+* Material Tooltip
+
+Full oversikt og dokumentasjon på Angular Material finnes [her.](https://material.angular.io/)
+
+### Chart.js
+
+### GeoChart
+
+---
+Andre komponenter, moduler og services er god dokumentert i koden.
+
 ## Prosjektkrav
 Punktvis hvordan vi har svart på kravene til prosjektet
