@@ -22,7 +22,6 @@ export class DataService {
   }
 
   getWines(arg:Filter) {
-    console.log(arg)
     return this._http.post("/api/wines", arg)
       .map(result => this.result = result.json().data);
   }
