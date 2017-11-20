@@ -38,11 +38,7 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
     public snackBar: MatSnackBar,
     private userService: UserService,
     public dialog: MatDialog
-
     ) {
-    console.log("this.userservice.user = " + this.userService.user.name)
-
-
       try{
         //this.userService.fetchUserAsync()
         this.newFilter.username = this.userService.user.name;
