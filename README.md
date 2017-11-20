@@ -136,11 +136,22 @@ Datasettet vi har valgt å ta i bruk er vinmonopolet.no sine røde og hvite vine
 ### Fancy alternativ visning
 *Webapplikasjonen skal ha et litt "fancy" alternativ visning av listen f.eks. visning på kart eller visuell grafisk fremstilling av data, ordsky ea.*
 
+Vi har flere forskjellige "fancy" alternative visninger.
+
+#### Vinsortering med trykk på kart (GeoChart)
+Se beskrivelse av "[GeoChart](#geochart)" under "[Komponenter og rammeverk](#komponenter-og-rammeverk)"
+
+#### Favorittviner i sektordiagram
+
+#### Stilig fremstilling av alkoholmål
+
 ### Testet kode
 *Kode skal være testet og funksjonaliteten skal være godt utprøvd og feilfri.*
 
 ### Godt dokumentert
 *Prosjektet skal være godt dokumentert, slik at det er lett å sette seg inn i for andre.*
+
+Om du har lest helt til hit i [README.md](README.md) filen så har du sett at prosjektet er rimelig godt dokumenter på github i hvertfall. Koden er også blitt kommentert for å forklare de ulike delene og funksjonalitetene.
 
 ## Andre ikke-krevde funksjonaliteter
 Sikker brukerhåndtering med salting og hashing
