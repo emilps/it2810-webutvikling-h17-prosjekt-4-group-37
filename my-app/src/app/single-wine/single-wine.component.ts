@@ -125,6 +125,7 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
           duration: 1000,
         });
         //remove wine here from profilesite, if on that page
+        this.removeWine();
       }else{
         this.icon = "star";
         this.newFilter.remove = 0;
@@ -141,8 +142,8 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
 
   removeWine(): void {
       //send ID to be removed to messageservice
-      //this.MessageService.removeWine(this.result);
-  }
+      this.MessageService.removeWine(this.newFilter.wine.toString())
+    }
 
 
   checkResult(){
