@@ -54,6 +54,7 @@ Last ned eller se full dokumentasjon for [ng2-charts her.](https://valor-softwar
 
 ng2-charts
 ![Image of our favourite chart](https://i.imgur.com/bwcZZH4.png)
+
 [//]: # "Skriv mer her Øystein"
 
 ### GeoChart
@@ -106,7 +107,7 @@ Datasettet vi har valgt å ta i bruk er vinmonopolet.no sine røde og hvite vine
 **Søk** på varenavn kan utføres ved å skrive inn en streng i søkefeltet.
 ![Image of wine search field](https://i.imgur.com/B9rAy0m.png)
 
-**Lesing** fra databasen skjer på mange måter, blandt annet:
+**Lesing** fra databasen skjer på mange måter, blant annet:
 * Henting/lesing av viner (sortert eller filtrert på forskjellige måter)
 * Henting/lesing av bruker
 * Henting/lesing av favorittviner
@@ -136,10 +137,10 @@ Datasettet vi har valgt å ta i bruk er vinmonopolet.no sine røde og hvite vine
 ### Fancy alternativ visning
 *Webapplikasjonen skal ha et litt "fancy" alternativ visning av listen f.eks. visning på kart eller visuell grafisk fremstilling av data, ordsky ea.*
 
-Vi har flere forskjellige "fancy" alternative visninger.
+Vi har flere forskjellige "fancy" alternative visninger. Hovedsiden vår sin liste er muligens annerledes og fancy nok til å høre under her. Videre følger uansett noen konkrete eksempler:
 
 #### Vinsortering med trykk på kart (GeoChart)
-Se beskrivelse av "[GeoChart](#geochart)" under "[Komponenter og rammeverk](#komponenter-og-rammeverk)"
+Se beskrivelse av "[GeoChart](#geochart)" under "[Komponenter og rammeverk](#komponenter-og-rammeverk)". Den fancy visningen går ut på at du kan se alle land vi har viner fra i databasen markert med en tydelig farge på kartet. Når du holder musepekeren over ett land vil du få informasjon om antall viner som kommer fra den nasjonen. Om du trykker/velger ett land vil tabellen/lista laste inn og vise 25 viner fra det landet. Om du blar til bunnen av listen kan du laste inn 25 viner til ved å trykke på "Last inn flere.." (dette kan gjentas)
 
 #### Favorittviner i sektordiagram
 
