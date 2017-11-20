@@ -240,16 +240,15 @@ router.get('/me', (req, res) => {
     console.log('Getting logged in user')
     req.user ? res.json(req.user) : res.status(200).send()
 });
+/*Gets wines from the country that is passed with the req.body.mapFilterValue
+if there is one.  */
 router.post('/countries', (req, res) => {
     let filterName = null;
     let filterValue = null;
-
     if (req.body.mapFilterValue.length) {
       filterName = "Land";
       filterValue = req.body.mapFilterValue;
     }
-
-
     connection((db) => {
         db.collection('wines')
             .find({[filterName]:filterValue})

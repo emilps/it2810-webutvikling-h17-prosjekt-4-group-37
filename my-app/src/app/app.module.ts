@@ -1,36 +1,35 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
+//Import Router, Routes and Http modules
 import { RouterModule, Routes } from '@angular/router';
-
-
-import { AppComponent } from './app.component';
-
-// Import the Http Module and our Data Service
 import { HttpModule } from '@angular/http';
-import { DataService } from './data.service';
+//Import our Components
+import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatCheckboxModule, MatExpansionModule, MatSelectModule, MatFormFieldModule, MatInputModule, MatDialogModule, MatButtonToggleModule, MatSnackBarModule, MatTooltipModule, MatTabsModule, MatTableModule,MatProgressSpinnerModule} from '@angular/material';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WineSearchComponent } from './wine-search/wine-search.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthGuard } from './auth-guard.service';
-import { AuthService } from './auth.service';
-import { UserService} from './services/users.service';
-import { FavoriteWineService } from './services/favoritewine.service';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { MapComponent } from './map/map.component';
 import { SingleWineComponent } from './single-wine/single-wine.component';
-
-
-import { MapWineService } from './services/mapwine.service';
 import { ProfileComponent } from './profile/profile.component';
 import { UsersWinesComponent } from './users-wines/users-wines.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+//Import our Services
+import { DataService } from './data.service';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth-guard.service';
+import { UserService} from './services/users.service';
+import { FavoriteWineService } from './services/favoritewine.service';
+import { MapWineService } from './services/mapwine.service';
 import { MessageService } from './services/message.service';
+// Import Form modules
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+//Import all our used Angular Material Modules/Components
+import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatCheckboxModule, MatExpansionModule, MatSelectModule, MatFormFieldModule, MatInputModule, MatDialogModule, MatButtonToggleModule, MatSnackBarModule, MatTooltipModule, MatTabsModule, MatTableModule,MatProgressSpinnerModule} from '@angular/material';
 
-
+//Application Routes
 const appRoutes: Routes = [
   {
     path: '',
