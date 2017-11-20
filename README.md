@@ -2,7 +2,7 @@
 ## Om prosjektet vårt
 Dette er vårt repository for IT2810 Webtvikling prosjekt 4. Vi skal bruke Angular 4, og har valgt å bruke MEAN stakken med MongoDB, Express.js, Angular og Node.js
 
-** Se [Prosjektkrav](#prosjektkrav) for hvordan vi har svart på oppgavekravene **
+**Se [Prosjektkrav](#prosjektkrav) for hvordan vi har svart på oppgavekravene**
 
 ## Dokumentasjon
 * [Kom i gang](#kom-i-gang)
@@ -22,7 +22,7 @@ Beskrivelse og bruksanvisning for å kjøre prosjektet lokalt.
 Eventuelt beskrivelse av hvordan man kan kjøre tester
 
 ## Prosjektplan
-En underoppgave til prosjekt 4 var å lage en plan for prosjektet. Vår plan og svar til oppgaven 4.1: Evaluering av arkitektur finnes i [PROJECTPLAN.md](PROJECTPLAN.md)
+En underoppgave til prosjekt 4 var å lage en plan for prosjektet. Vår plan og svar til oppgaven `4.1: Evaluering av arkitektur` finnes i [PROJECTPLAN.md](PROJECTPLAN.md)
 
 ## Komponenter og rammeverk
 Beskrivelse og innføring i de største og viktigste komponenter og rammeverk vi har tatt i bruk.
