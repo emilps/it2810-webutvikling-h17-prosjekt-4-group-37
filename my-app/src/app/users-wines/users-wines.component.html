@@ -1,14 +1,15 @@
   <h1 class="title_favorite"> Dine favoritter</h1>
-<div class="container">
-
-<div *ngIf="hasWines; else noFavorites">
-  <mat-card class="wineDiv" (click)="openDialog(wine)" *ngFor="let wine of wines">
-    <h3>{{ wine.Varenavn }}</h3>
-    <p>{{ wine.Pris }}</p>
-    <img src="{{ wine.Vareurl }}" />
-  </mat-card>
+<div class="container-favorite-wines">
+  <div *ngIf="hasWines; else noFavorites">
+    <div class="wine-preview">
+    <mat-card class="wineDiv" (click)="openDialog(wine)" *ngFor="let wine of wines">
+      <h3>{{ wine.Varenavn }}</h3>
+      <p>{{ wine.Pris }}</p>
+      <img src="{{ wine.Vareurl }}" />
+    </mat-card>
+  </div>
+  </div>
 </div>
 <ng-template #noFavorites>
   Du har ikke lagt til noen favoritter...
 </ng-template>
-</div>

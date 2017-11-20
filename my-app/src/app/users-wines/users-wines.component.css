@@ -1,32 +1,36 @@
 .wineDiv {
-  width: 300px;
-  height: 80%;
+  width: 50%;
   min-height: 160px;
+  min-width: 20%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin: 10px;
   font-size: 15px;
+  margin-right: 1%;
+  margin-top: 1.5%;
+
 }
 
 
-.container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
+.container-favorite-wines {
   background-color: #333;
-  overflow: auto;
+
   margin-left: 3%;
-  margin-right:3%;
-  padding: 4%;
+  margin-right: 3%;
   height: 400px;
+}
+.wine-preview{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+
 
 }
 
 .wineDiv > img {
-  max-height: 150px;
+  max-height: 300px;
 }
 .title_favorite{
   margin-left: 3%;

@@ -1,28 +1,25 @@
 <div class= "profile-container-header">
-  <mat-card class="recommendedWine">
-  <h2>Hei,{{userName}}!</h2>
-  <div *ngIf="!statusRcommendation; else generatedResponse">
-    <p>Hvis du ønsker å få anbefalinger må du legge til viner i dine favoritter</p>
+  <mat-card class="recommended-wine-container">
+    <h2>Hei,{{userName}}!</h2>
+    <div *ngIf="!statusRcommendation; else generatedResponse">
+      <p>Hvis du ønsker å få anbefalinger må du legge til viner i dine favoritter</p>
+    </div>
+    <ng-template #generatedResponse>
+      <p>Vi ser du er en {{newFilter.wineType.toLowerCase()}}'s elsker. Ettersom du er spesielt glad i viner fra {{newFilter.wineContry}} har vi derfor en anbefaling på lager:</p>
+    </ng-template>
+
+    <div *ngIf="!showWine; else recWine"></div>
+    <ng-template #recWine>
+      <mat-card class="recomended-wine" (click)="openDialog(recommended)">
+      <h3>{{ name }}</h3>
+      <p>{{ price }}</p>
+      <img src="{{ src }}" />
+      </mat-card>
+    </ng-template>
+  </mat-card>
+  <div class="chart-container">
+    <app-chart></app-chart>
   </div>
-  <ng-template #generatedResponse>
-    <p>Vi ser du er en {{newFilter.wineType.toLowerCase()}}'s elsker. Ettersom du er spesielt glad i viner fra {{newFilter.wineContry}} har vi derfor en anbefaling på lager:</p>
-  </ng-template>
-
-
-  <div *ngIf="!showWine; else recWine"></div>
-
-  <ng-template #recWine>
-    <mat-card (click)="openDialog(recommended)">
-    <h3>{{ name }}</h3>
-    <p>{{ price }}</p>
-    <img src="{{ src }}" />
-    </mat-card>
-  </ng-template>
-</mat-card>
-
-<div class="chart-container">
-  <app-chart></app-chart>
-</div>
 </div>
 <app-users-wines></app-users-wines>
 <app-log></app-log>
