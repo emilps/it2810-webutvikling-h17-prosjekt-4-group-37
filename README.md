@@ -66,9 +66,9 @@ Andre komponenter, moduler og services er godt dokumentert i koden.
 ## Prosjektkrav
 Her følger en punktvis beskrivelse av hvordan vi har svart på kravene til prosjektet.
 
-1. [På virtuell maskin, node.js og AngularCLI](#på-virtuell-maskin,-node.js-og-angularcli)
+1. [På virtuell maskin, node.js og AngularCLI](#på-virtuell-maskin-node.js-og-angularcli)
 2. [Backend database](#backend-database)
-3. [Skriving, lesing og søk mot DB](#skriving,-lesing-og-søk-mot-db)
+3. [Skriving, lesing og søk mot DB](#skriving-lesing-og-søk-mot-db)
 4. [Listebasert visning med Expansion Panel](#listebasert-visning-med-expansion-panel)
 5. [Listebasert sortering](#listebasert-sortering)
 6. [Listebasert filtrering](#listebasert-filtrering)
@@ -79,13 +79,13 @@ Her følger en punktvis beskrivelse av hvordan vi har svart på kravene til pros
 11. [Testet kode](#testet-kode)
 12. [Godt dokumentert](#godt-dokumentert)
 
-### På virtuell maskin, node.js og AngularCLI
+### På virtuell maskin node.js og AngularCLI
 *Webapplikasjonen skal kjøres på gruppas virtuelle maskin og bruke node.js på serversiden, og skal være utviklet i Angular (bruk v2 eller v4, https://angular.io ). Det er selvsagt greit å i tillegg bruke andre bibliotek eller løsninger som dere finner hensiktsmessig.*
 
 ### Backend database
 *I webappliksjonen skal det inngå en backend database som kjøres på gruppas virtuelle maskin. Type database og hvordan denne brukes er opp til dere å bestemme, men grensesnittet til databasen skal være godt designet ihht. god praksis (bruk av REST ea).*
 
-### Skriving, lesing og søk mot DB
+### Skriving lesing og søk mot DB
 *Dere skal demonstrere både skriving og lesing til databasen fra webapplikasjonen inklusive en form for søk (i praksis dynamisk brukerdefinert utvalg av det som skal vises). Generelt er det mye artigere å jobbe med en datamengde som gir et realistisk inntrykk (eksempevis mulig å søke på forskjellige ting og få resultatsett som er forskjellige og har forskjellig antall). Bruk data dere finner på web, eller lag egne data.*
 
 ### Listebasert visning med Expansion Panel
