@@ -51,7 +51,10 @@ Full oversikt og dokumentasjon på Angular Material finnes [her.](https://materi
 
 ### Chart.js
 https://valor-software.com/ng2-charts/
+
 ng2-charts
+
+![Image of our favourite chart](https://i.imgur.com/bwcZZH4.png)
 
 ### GeoChart
 GeoChart er en type chart/diagram fra Google Charts. Den lar deg definere områder eller land på ett kart. Du kan tilegne landene egenskaper som folketall eller lignende. Vi har brukt GeoChart for å først la brukeren velge ett kontinent, det zoomes så inn på kontinentet slik at man kan velge ett land. Hvert land har informasjon om antall viner som kommer fra det landet når du holder musepekeren over. Om du trykker på et land vil en liste laste inn viner fra det valge landet.
