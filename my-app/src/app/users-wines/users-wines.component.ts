@@ -31,7 +31,6 @@ export class UsersWinesComponent implements OnInit, OnDestroy {
 
       this.subscription = this.messageService.receiveID().subscribe(message => {
         // message is ID: remove that list
-        console.log(this.wines)
 
 
         let newWines = this.wines.filter(function(item) {
@@ -45,7 +44,6 @@ export class UsersWinesComponent implements OnInit, OnDestroy {
         }*/
 
         this.wines = newWines
-        console.log(this.wines)
       });
     }
 
@@ -74,7 +72,6 @@ export class UsersWinesComponent implements OnInit, OnDestroy {
   }
 
   openDialog(arg){
-    console.log(this.wines)
     let dialogRef = this.dialog.open(SingleWineComponent, {
       //width: '600px',
       data: arg,

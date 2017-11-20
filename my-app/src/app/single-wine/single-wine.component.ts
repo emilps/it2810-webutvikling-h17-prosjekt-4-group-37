@@ -44,15 +44,13 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
 
 
     ) {
-    console.log("this.userservice.user = " + this.userService.user.name)
-
 
       try{
         this.newFilter.username = this.userService.user.name;
         this.newFilter.wine = data["Varenummer"];
         //console.log("Filter check", this.newFilter)
         this.result = []
-        //this.addToLog();
+        this.addToLog();
       }catch(err){
         //console.log("Note loggeed in")
       }
@@ -108,9 +106,10 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
   }
 
   async addToLog(){
-    console.log("AddToLog is working_____Sjekk_____", this.newFilter);
+    console.log("addtolog kjører")
     await this.profileService.addToLog(this.newFilter)
     .subscribe(res => this.result =res);
+    console.log("done")
   }
 
   async changeIcon(wine,id){
