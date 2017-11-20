@@ -50,11 +50,20 @@ Angular Material er google's design components for Angular. Disse har vi benytte
 Full oversikt og dokumentasjon på Angular Material finnes [her.](https://material.angular.io/)
 
 ### Chart.js
+https://valor-software.com/ng2-charts/
+ng2-charts
 
 ### GeoChart
+GeoChart er en type chart/diagram fra Google Charts. Den lar deg definere områder eller land på ett kart. Du kan tilegne landene egenskaper som folketall eller lignende. Vi har brukt GeoChart for å først la brukeren velge ett kontinent, det zoomes så inn på kontinentet slik at man kan velge ett land. Hvert land har informasjon om antall viner som kommer fra det landet når du holder musepekeren over. Om du trykker på et land vil en liste laste inn viner fra det valge landet.
+
+![Image of our GeoChart Map](https://imgur.com/a/yWflA)
+
+Google Charts skal kunne importeres som en Angular Component, men GeoChart fungerer per dags dato ikke. Vi synes kartet og funksjonaliteten var for bra til å ikke implementere. Dermed har vi lagt det til med Javascript.
 
 ---
-Andre komponenter, moduler og services er god dokumentert i koden.
+Andre komponenter, moduler og services er godt dokumentert i koden.
 
 ## Prosjektkrav
-Punktvis hvordan vi har svart på kravene til prosjektet
+Her følger en punktvis beskrivelse av hvordan vi har svart på kravene til prosjektet.
+
+1.
