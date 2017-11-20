@@ -50,11 +50,11 @@ Angular Material er google's design components for Angular. Disse har vi benytte
 Full oversikt og dokumentasjon på Angular Material finnes [her.](https://material.angular.io/)
 
 ### Chart.js
-https://valor-software.com/ng2-charts/
+Last ned eller se full dokumentasjon for [ng2-charts her.](https://valor-software.com/ng2-charts/)
 
 ng2-charts
-
 ![Image of our favourite chart](https://i.imgur.com/bwcZZH4.png)
+[//]: # "Skriv mer her Øystein"
 
 ### GeoChart
 GeoChart er en type chart/diagram fra Google Charts. Den lar deg definere områder eller land på ett kart. Du kan tilegne landene egenskaper som folketall eller lignende. Vi har brukt GeoChart for å først la brukeren velge ett kontinent, det zoomes så inn på kontinentet slik at man kan velge ett land. Hvert land har informasjon om antall viner som kommer fra det landet når du holder musepekeren over. Om du trykker på et land vil en liste laste inn viner fra det valge landet.
@@ -85,8 +85,18 @@ Her følger en punktvis beskrivelse av hvordan vi har svart på kravene til pros
 ### På virtuell maskin node.js og AngularCLI
 *Webapplikasjonen skal kjøres på gruppas virtuelle maskin og bruke node.js på serversiden, og skal være utviklet i Angular (bruk v2 eller v4, https://angular.io ). Det er selvsagt greit å i tillegg bruke andre bibliotek eller løsninger som dere finner hensiktsmessig.*
 
+Vi har brukt [Angular CLI](https://angular.io/guide/quickstart) og i har en version (`ng -v`) på `@angular/cli: 1.4.9` - altså Angular v4 og `node: 7.0.0`. Noen komponenter/moduler er fra Angular v2, men det går fint, da de versionene er kompatible i motsetning til f.eks AngularJS.
+
 ### Backend database
 *I webappliksjonen skal det inngå en backend database som kjøres på gruppas virtuelle maskin. Type database og hvordan denne brukes er opp til dere å bestemme, men grensesnittet til databasen skal være godt designet ihht. god praksis (bruk av REST ea).*
+
+Som vist i [prosjektplanen](PROJECTPLAN.md) vår så har vi valgt å benytte oss av hele MEAN stakken. Det vil si at vår backend database er en MongoDB. Det er en noSQL database som fungerer godt til denne typen prosjekter og bruk. Om vi skulle hatt flere relasjoner mellom data i databasen enn mellom bruker og dens favorittviner ville vi muligens forsøkt å implementere en SQL database med flere muligheter for relasjoner.
+
+![MEAN stack data flow graphic](https://cdn-images-1.medium.com/max/1024/0*Nq9iCe61Aq5IxUGl.png)
+
+Vi har laget et REST API for serveren som kommuniserer med databasen over HTTP. Kommunikasjonen går i JSON format med GET og POST.
+
+[//]: # "Emil/Øystein/Henrik sjekk at jeg ikke har noe feil - fyll ut"
 
 ### Skriving lesing og søk mot DB
 *Dere skal demonstrere både skriving og lesing til databasen fra webapplikasjonen inklusive en form for søk (i praksis dynamisk brukerdefinert utvalg av det som skal vises). Generelt er det mye artigere å jobbe med en datamengde som gir et realistisk inntrykk (eksempevis mulig å søke på forskjellige ting og få resultatsett som er forskjellige og har forskjellig antall). Bruk data dere finner på web, eller lag egne data.*
