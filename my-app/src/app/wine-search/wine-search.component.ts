@@ -25,9 +25,8 @@ export class WineSearchComponent implements OnInit {
     wineFilter: [],
     countryFilter: [],
     wineFilterValue: "",
-    priceSort: 0,
-    letterSort: 0,
-    alcSort: 0,
+    sortKey: "",
+    sortValue: 0,
     limit: 12,
     searchValue: "",
   };
@@ -54,7 +53,7 @@ export class WineSearchComponent implements OnInit {
       data: arg,
     })
 
-    dialogRef.afterClosed().subscribe(result => console.log(result))
+    dialogRef.afterClosed().subscribe()
 
   }
 
@@ -90,7 +89,6 @@ export class WineSearchComponent implements OnInit {
   }
 
   checkboxCountry(arg){
-    console.log("this arg:", arg)
     var obj = JSON.parse(arg.source.value)
 
     if (arg.checked){
@@ -121,24 +119,12 @@ export class WineSearchComponent implements OnInit {
     }
   }
 
-  checkSelection(arg){
+  sortSelection(arg){
     if(arg.source._selected){
-      if(arg.source.value == "ASC"){
-        this.sortPriceASC()
-      }else if(arg.source.value == "DESC"){
-        this.sortPriceDESC()
-      }else if(arg.source.value == "LDESC"){
-        this.sortLetterDESC()
-      }else if(arg.source.value == "LASC"){
-        this.sortLetterASC()
-      }else if(arg.source.value == "ADESC"){
-        this.sortAlcDESC()
-      }else if(arg.source.value == "AASC"){
-        this.sortAlcASC()
-      }else{
-        this.noSort()
-      }
-      //console.log("This list: ",this.newFilter.wineFilter)
+      let key = JSON.parse(arg.source.value);
+      this.newFilter.sortKey = Object.keys(key)[0];
+      this.newFilter.sortValue = key[Object.keys(key)[0]];
+      this.sortAndFilter();
     }
 
   }
@@ -164,60 +150,11 @@ export class WineSearchComponent implements OnInit {
       }
   }
 
-  sortLetterASC() {
-    this.newFilter.priceSort = 0;
-    this.newFilter.letterSort = 1;
-    this.newFilter.alcSort = 0;
-    this.sortAndFilter();
-  }
-
-  sortPriceASC() {
-    this.newFilter.priceSort = 1;
-    this.newFilter.letterSort = 0;
-    this.newFilter.alcSort = 0;
-    this.sortAndFilter();
-  }
-
-  sortLetterDESC() {
-    this.newFilter.priceSort = 0;
-    this.newFilter.letterSort = -1;
-    this.newFilter.alcSort = 0;
-    this.sortAndFilter();
-  }
-
-  sortPriceDESC() {
-    this.newFilter.priceSort = -1;
-    this.newFilter.letterSort = 0;
-    this.newFilter.alcSort = 0;
-    this.sortAndFilter();
-  }
-
-  sortAlcDESC() {
-    this.newFilter.priceSort = 0;
-    this.newFilter.letterSort = 0;
-    this.newFilter.alcSort = -1;
-    this.sortAndFilter();
-  }
-
-  sortAlcASC() {
-    this.newFilter.priceSort = 0;
-    this.newFilter.letterSort = 0;
-    this.newFilter.alcSort = 1;
-    this.sortAndFilter();
-  }
-
   sortAndFilter(){
     this._dataService.getWines(this.newFilter)
         .subscribe(res => this.wines = res);
     this._dataService.getWines(this.newFilter)
         .subscribe(res => this.numberOfWines = res.length);
-  }
-
-  noSort() {
-    this.newFilter.priceSort = 0;
-    this.newFilter.letterSort = 0;
-    this.newFilter.alcSort = 0;
-    this.sortAndFilter();
   }
 
   noFilter() {
@@ -227,13 +164,11 @@ export class WineSearchComponent implements OnInit {
   }
 
   increaseLimit(){
-    console.log("Before Wines: ", this.wines.length, " + ", "limit: ",this.newFilter.limit)
     var limitNumber: Number;
     limitNumber = 12;
 
     this.newFilter.limit =+ +limitNumber + +this.newFilter.limit;
     this.sortAndFilter();
-    console.log("After Wines: ", this.wines.length, " + ", "limit: ",this.newFilter.limit)
     this.numberOfWines = this.wines.length;
   }
 

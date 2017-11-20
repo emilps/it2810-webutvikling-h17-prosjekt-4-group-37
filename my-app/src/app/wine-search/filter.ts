@@ -3,9 +3,8 @@ export class Filter {
     public wineFilter: Array<Object>,
     public countryFilter: Array<Object>,
     public wineFilterValue: String,
-    public priceSort: Number,
-    public letterSort: Number,
-    public alcSort: Number,
+    public sortKey: String,
+    public sortValue: Number,
     public limit: Number,
     public searchValue: String,
   ){}

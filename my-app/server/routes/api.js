@@ -85,15 +85,10 @@ router.post('/wines', (req, res) => {
 
     var liste = [ { Varetype: "Hvitvin" },{ Varetype: "Rødvin" } ]
     console.log(liste)
-    if (req.body.priceSort === 1 || req.body.priceSort === -1 ){
-      sortName = 'Pris';
-      sortVariabel = req.body.priceSort;
-    } else if (req.body.letterSort === 1 || req.body.letterSort === -1) {
-      sortName = 'Varenavn';
-      sortVariabel = req.body.letterSort;
-    }else if (req.body.alcSort === 1 || req.body.alcSort === -1) {
-      sortName = 'Alkohol';
-      sortVariabel = req.body.alcSort;
+
+    if (req.body.sortValue === 1 || req.body.sortValue === -1) {
+      sortName = req.body.sortKey;
+      sortVariabel = req.body.sortValue;
     }
 
     if (req.body.wineFilter.length > 0) {

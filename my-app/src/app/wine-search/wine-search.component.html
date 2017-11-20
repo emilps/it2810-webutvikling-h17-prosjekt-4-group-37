@@ -26,13 +26,13 @@
     <div>
       <mat-form-field>
         <mat-select placeholder="Sorter etter pris" [(ngModel)]="name">
-          <mat-option value="ASC" (onSelectionChange)="checkSelection($event)">
+          <mat-option value='{"Pris":1}' (onSelectionChange)="sortSelection($event)">
             Lav -> Høy
           </mat-option>
-          <mat-option  value="DESC" (onSelectionChange)="checkSelection($event)">
+          <mat-option  value='{"Pris":-1}' (onSelectionChange)="sortSelection($event)">
             Høy -> Lav
           </mat-option>
-          <mat-option  value="{{null}}" (onSelectionChange)="checkSelection($event)">
+          <mat-option  value='{"Pris":0}'(onSelectionChange)="sortSelection($event)">
             Ingen Sortering
           </mat-option>
         </mat-select>
@@ -41,13 +41,13 @@
     <div>
       <mat-form-field>
         <mat-select placeholder="Sorter alfabetisk" [(ngModel)]="name">
-          <mat-option value="LASC" (onSelectionChange)="checkSelection($event)">
+          <mat-option value='{"Varenavn":1}' (onSelectionChange)="sortSelection($event)">
             A -> Å
           </mat-option>
-          <mat-option  value="LDESC" (onSelectionChange)="checkSelection($event)">
+          <mat-option  value='{"Varenavn":-1}' (onSelectionChange)="sortSelection($event)">
             Å -> A
           </mat-option>
-          <mat-option  value=" " (onSelectionChange)="checkSelection($event)">
+          <mat-option  value='{"Varenavn":0}' (onSelectionChange)="sortSelection($event)">
             Ingen Sortering
           </mat-option>
         </mat-select>
@@ -56,13 +56,13 @@
     <div>
       <mat-form-field>
         <mat-select placeholder="Sorter etter alcohol" [(ngModel)]="name">
-          <mat-option value="AASC" (onSelectionChange)="checkSelection($event)">
+          <mat-option value='{"Alkohol":1}' (onSelectionChange)="sortSelection($event)">
             Lav -> Høy
           </mat-option>
-          <mat-option  value="ADESC" (onSelectionChange)="checkSelection($event)">
+          <mat-option  value='{"Alkohol":-1}' (onSelectionChange)="sortSelection($event)">
             Høy -> Lav
           </mat-option>
-          <mat-option  value=" " (onSelectionChange)="checkSelection($event)">
+          <mat-option  value='{"Alkohol":0}' (onSelectionChange)="sortSelection($event)">
             Ingen Sortering
           </mat-option>
         </mat-select>
