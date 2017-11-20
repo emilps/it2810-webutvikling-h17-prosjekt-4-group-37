@@ -30,8 +30,42 @@
 }
 
 .mat-table {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
+.mat-column-name {
+  flex: 0 0 65%;
+}
+
+.mat-column-country {
+  flex: 0 0 20%;
+}
+
+.mat-column-price {
+  flex: 0 0 15%;
+}
+
+.mat-cell:hover {
+
+}
+
+.mat-row:hover {
+  cursor: pointer;
+  background-color: #dee1e5;
+}
+
+#loadMoreButton {
+  margin: 10px auto;
+  width: 100%;
+}
+
+#backButton {
+  margin: 10px auto;
+  width: 100%;
+}
 
 #regionTitle {
   text-align: center;

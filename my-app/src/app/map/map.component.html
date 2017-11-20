@@ -1,7 +1,8 @@
 <div class="mapViewItems">
     <mat-card class="mapCard" (click)="countryChange()">
-      <mat-card-title id="mapTitle">Trykk på ett kontinent for å se viner fra det området</mat-card-title>
+      <mat-card-title id="mapTitle">Velg kontinent</mat-card-title>
       <div id="regions_div"></div>
+      <button mat-raised-button color="accent" id="backButton">Tilbake</button>
     </mat-card>
     <mat-card class="listCard">
       <mat-card-title id="regionTitle">Verden</mat-card-title>
@@ -20,7 +21,8 @@
           </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" matTooltip="Trykk for mer info" matTooltip="Trykk for mer info" [matTooltipPosition]="position"></mat-row>
       </mat-table>
+      <button mat-raised-button color="accent" id="loadMoreButton" (click)="increaseLimit()">Last flere..</button>
     </mat-card>
 </div>

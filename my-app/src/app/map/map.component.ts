@@ -19,9 +19,11 @@ import { MatPaginator } from '@angular/material';
 })
 export class MapComponent implements OnInit {
   wines: Array<any>;
+  public position = 'above';
 
   newMapFilter: MapFilter = {
     mapFilterValue: "",
+    limit: 25,
   }
   dataSource = new WineDataSource();
   displayedColumns = ['name', 'country', 'price'];
@@ -53,9 +55,14 @@ export class MapComponent implements OnInit {
     }
   }
   onWineClick(wine){
-    console.log("Pressed wine: " + wine.Varenavn);
     let dialogRef = this.dialog.open(SingleWineComponent, {data: wine,})
   }
+  increaseLimit(){
+    this.newMapFilter.limit =+ +25 + +this.newMapFilter.limit;
+    this.mapWineService.getCountries(this.newMapFilter)
+      .subscribe(res => this.loadArray(res));
+  }
+
 }
 
 export interface Wine {
