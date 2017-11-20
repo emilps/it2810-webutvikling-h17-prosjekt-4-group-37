@@ -56,7 +56,7 @@ ng2-charts
 ### GeoChart
 GeoChart er en type chart/diagram fra Google Charts. Den lar deg definere områder eller land på ett kart. Du kan tilegne landene egenskaper som folketall eller lignende. Vi har brukt GeoChart for å først la brukeren velge ett kontinent, det zoomes så inn på kontinentet slik at man kan velge ett land. Hvert land har informasjon om antall viner som kommer fra det landet når du holder musepekeren over. Om du trykker på et land vil en liste laste inn viner fra det valge landet.
 
-![Image of our GeoChart Map](https://imgur.com/a/yWflA)
+![Image of our GeoChart Map](https://i.imgur.com/sqDFyVd.png)
 
 Google Charts skal kunne importeres som en Angular Component, men GeoChart fungerer per dags dato ikke. Vi synes kartet og funksjonaliteten var for bra til å ikke implementere. Dermed har vi lagt det til med Javascript.
 
@@ -66,4 +66,51 @@ Andre komponenter, moduler og services er godt dokumentert i koden.
 ## Prosjektkrav
 Her følger en punktvis beskrivelse av hvordan vi har svart på kravene til prosjektet.
 
-1.
+1. [På virtuell maskin, node.js og AngularCLI](#på-virtuell-maskin,-node.js-og-angularcli)
+2. [Backend database](#backend-database)
+3. [Skriving, lesing og søk mot DB](#skriving,-lesing-og-søk-mot-db)
+4. [Listebasert visning med Expansion Panel](#listebasert-visning-med-expansion-panel)
+5. [Listebasert sortering](#listebasert-sortering)
+6. [Listebasert filtrering](#listebasert-filtrering)
+7. [Listebasert dynamisk lasting av data](#listebasert-dynamisk-lasting-av-data)
+8. [Min side funksjonalitet](#min-side-funksjonalitet)
+9. [Sessionhåndtering](#sessionhåndtering)
+10. [Fancy alternativ visning](#fancy-alternativ-visning)
+11. [Testet kode](#testet-kode)
+12. [Godt dokumentert](#godt-dokumentert)
+
+### På virtuell maskin, node.js og AngularCLI
+*Webapplikasjonen skal kjøres på gruppas virtuelle maskin og bruke node.js på serversiden, og skal være utviklet i Angular (bruk v2 eller v4, https://angular.io ). Det er selvsagt greit å i tillegg bruke andre bibliotek eller løsninger som dere finner hensiktsmessig.*
+
+### Backend database
+*I webappliksjonen skal det inngå en backend database som kjøres på gruppas virtuelle maskin. Type database og hvordan denne brukes er opp til dere å bestemme, men grensesnittet til databasen skal være godt designet ihht. god praksis (bruk av REST ea).*
+
+### Skriving, lesing og søk mot DB
+*Dere skal demonstrere både skriving og lesing til databasen fra webapplikasjonen inklusive en form for søk (i praksis dynamisk brukerdefinert utvalg av det som skal vises). Generelt er det mye artigere å jobbe med en datamengde som gir et realistisk inntrykk (eksempevis mulig å søke på forskjellige ting og få resultatsett som er forskjellige og har forskjellig antall). Bruk data dere finner på web, eller lag egne data.*
+
+### Listebasert visning med Expansion Panel
+*Brukergrensensittet skal ha listebasert visning med få detaljer for hver enhet, og hvor målet er å vise brukeren hva som er i databasen eller hva som er resultatet av et søk. Brukeren skal ha mulighet til å se flere detaljer for hver enhet enten i et eget vindu, eller ved at listen enheten i lista har expand/collpase egenskap.*
+
+### Listebasert sortering
+*Den listebaserte visningen skal kunne sorteres på minimum to forskjellge egenskaper. Eksempel: etter at brukeren har fått returnert en liste etter et søk skal brukeren kunne bytte mellom forskjellige sorteringer.*
+
+### Listebasert filtrering
+*Den listebaserte visningen skal kunne filtreres på minimum to forskjellge egenskaper. Eksempel: etter at brukeren har fått returnert en liste etter et søk skal brukeren kunne krysse av på en egenskap for å få begrenset antallet enheter i resultatsettet til kun de som har denne egenskapen.*
+
+### Listebasert dynamisk lasting av data
+*Den listebaserte visningen skal ha dynamisk lasting av data. Eksempel: etter et søk vises de 10 første treffene, men flere lastes når brukeren scroller eller ved blaing i sider.*
+
+### Min side funksjonalitet
+*Webapplikasjonen skal ha "min side" funksjonalitet som i praksis betyr at en bruker skal kunne logge seg på og at det blir registrert noe fra brukerens søkeaktiviteten f.eks. hva brukeren har sett på tidligere eller søkene som brukeren har brukt.*
+
+### Sessionhåndtering
+*Webapplisjonen må implementere "session"-håndtering (som du f.eks. trenger for å implementere dynamisk lasting, min side, og filtrering/sortering som skal fungere med sidevisning).*
+
+### Fancy alternativ visning
+*Webapplikasjonen skal ha et litt "fancy" alternativ visning av listen f.eks. visning på kart eller visuell grafisk fremstilling av data, ordsky ea.*
+
+### Testet kode
+*Kode skal være testet og funksjonaliteten skal være godt utprøvd og feilfri.*
+
+### Godt dokumentert
+*Prosjektet skal være godt dokumentert, slik at det er lett å sette seg inn i for andre.*
