@@ -168,8 +168,12 @@ På både hovedsiden/listen og siden med kartfiltrering vil det vises ett begren
 ### Min side funksjonalitet
 *Webapplikasjonen skal ha "min side" funksjonalitet som i praksis betyr at en bruker skal kunne logge seg på og at det blir registrert noe fra brukerens søkeaktiviteten f.eks. hva brukeren har sett på tidligere eller søkene som brukeren har brukt.*
 
+[//]: # "Øystein"
+
 ### Sessionhåndtering
 *Webapplisjonen må implementere "session"-håndtering (som du f.eks. trenger for å implementere dynamisk lasting, min side, og filtrering/sortering som skal fungere med sidevisning).*
+
+[//]: # "Henrik"
 
 ### Fancy alternativ visning
 *Webapplikasjonen skal ha et litt "fancy" alternativ visning av listen f.eks. visning på kart eller visuell grafisk fremstilling av data, ordsky ea.*
@@ -181,7 +185,17 @@ Se beskrivelse av "[GeoChart](#geochart)" under "[Komponenter og rammeverk](#kom
 
 #### Favorittviner i sektordiagram
 
-#### Stilig fremstilling av alkoholmål
+[//]: # "Øystein"
+
+#### Stilig fremstilling av alkoholprosent og volum
+Om du trykker på en vin i hvilken som helst meny vil du se en **fancy animasjon** som fyller en "progress spinner" basert på alkoholprosent og volum (i liter). Dette er ikke bilder, men fancy, grafisk fremvisning av data. Alkoholprosent "spinneren" går fra 0% til 22% (sterkeste vinen du får på polet) og volum "spinneren" fra 0 liter til 5 liter.
+
+**Vanlig vinflaske**
+![Regular vinebottle image](https://i.imgur.com/mvR2RZm.png)
+
+
+**Kartong**
+![Carton image](https://i.imgur.com/C88gUg2.png)
 
 ### Testet kode
 *Kode skal være testet og funksjonaliteten skal være godt utprøvd og feilfri.*
@@ -193,3 +207,5 @@ Om du har lest helt til hit i [README.md](README.md) filen så har du sett at pr
 
 ## Andre ikke-krevde funksjonaliteter
 Sikker brukerhåndtering med salting og hashing
+
+[//]: # "Henrik"
