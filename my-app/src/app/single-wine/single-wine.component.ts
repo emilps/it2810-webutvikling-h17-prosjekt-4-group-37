@@ -11,7 +11,7 @@ import { UserService } from './../services/users.service';
 import { FavoriteWineService } from './../services/favoritewine.service';
 
 // Filter import
-import { Filter } from './winefilter';
+import { Filter } from './../model/single-wine';
 
 // Components import
 import { LoginDialogComponent } from './../login-dialog/login-dialog.component';
