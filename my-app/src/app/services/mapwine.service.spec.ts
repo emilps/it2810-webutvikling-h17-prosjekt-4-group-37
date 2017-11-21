@@ -1,11 +1,20 @@
 import { TestBed, inject } from '@angular/core/testing';
-
 import { MapWineService } from './mapwine.service';
+
+import { HttpModule } from '@angular/http';
 
 describe('MapWineService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [MapWineService]
+      declarations: [
+
+      ],
+      imports: [
+        HttpModule,
+      ],
+      providers: [
+        MapWineService
+      ],
     });
   });
 
