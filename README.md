@@ -131,8 +131,7 @@ Brukeren vil kunne få opp en ekspandert visning av en vin uansett hvilken under
 ### Listebasert sortering
 *Den listebaserte visningen skal kunne sorteres på minimum to forskjellge egenskaper. Eksempel: etter at brukeren har fått returnert en liste etter et søk skal brukeren kunne bytte mellom forskjellige sorteringer.*
 
-Vinene våre kan sorteres etter:
-
+Vinene våre kan sorteres etter:  
 **Pris**
 * Lav til høy
 * Høy til lav
@@ -143,6 +142,17 @@ Vinene våre kan sorteres etter:
 
 ### Listebasert filtrering
 *Den listebaserte visningen skal kunne filtreres på minimum to forskjellge egenskaper. Eksempel: etter at brukeren har fått returnert en liste etter et søk skal brukeren kunne krysse av på en egenskap for å få begrenset antallet enheter i resultatsettet til kun de som har denne egenskapen.*
+
+Vinene våre kan i hovedlisten sorteres etter:  
+**Vintype**
+* Rødvin
+* Hvitvin
+
+**Land**  
+Frankrike, Italia, Portugal, Spania, Tyskland, Chile, USA, Australia, Sør-Afrika, Østerrike, Ungarn, Argentina, New Zealand, Moldova, Hellas, Georgia, Libanon, Brasil, Makedonia, Slovenia, Marokko, Mexico, Bulgaria, Canada, Romania, Tsjekkia
+
+---
+Vinene kan også sorteres etter land med kartet som beskrevet under "[Fancy alternativ visning](#fancy-alternativ-visning)" i "[Vinsortering med trykk på kart](#vinsortering-med-trykk-på-kart)". Utfyllende beskrivelse finnes også i seksjonen "[GeoChart](#geochart)" under "[Komponenter og rammeverk](#komponenter-og-rammeverk)"
 
 ### Listebasert dynamisk lasting av data
 *Den listebaserte visningen skal ha dynamisk lasting av data. Eksempel: etter et søk vises de 10 første treffene, men flere lastes når brukeren scroller eller ved blaing i sider.*
@@ -158,7 +168,7 @@ Vinene våre kan sorteres etter:
 
 Vi har flere forskjellige "fancy" alternative visninger. Hovedsiden vår sin liste er muligens annerledes og fancy nok til å høre under her. Videre følger uansett noen konkrete eksempler:
 
-#### Vinsortering med trykk på kart (GeoChart)
+#### Vinsortering med trykk på kart
 Se beskrivelse av "[GeoChart](#geochart)" under "[Komponenter og rammeverk](#komponenter-og-rammeverk)". Den fancy visningen går ut på at du kan se alle land vi har viner fra i databasen markert med en tydelig farge på kartet. Når du holder musepekeren over ett land vil du få informasjon om antall viner som kommer fra den nasjonen. Om du trykker/velger ett land vil tabellen/lista laste inn og vise 25 viner fra det landet. Om du blar til bunnen av listen kan du laste inn 25 viner til ved å trykke på "Last inn flere.." (dette kan gjentas)
 
 #### Favorittviner i sektordiagram
