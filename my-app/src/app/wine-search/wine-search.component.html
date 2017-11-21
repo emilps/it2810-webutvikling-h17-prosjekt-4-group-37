@@ -95,7 +95,7 @@
           ng-model="hvit"
           value='{"Land":"{{country}}"}'
           *ngFor="let country of countries"
-          (change)="checkboxCountry($event)">
+          (change)="checkbox($event)">
             {{country}}
         </mat-checkbox>
       </mat-card-content>
