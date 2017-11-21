@@ -59,7 +59,6 @@ export class WineSearchComponent implements OnInit {
 
   checkbox(arg){
     var obj = JSON.parse(arg.source.value)
-    console.log("Object KEY: ",Object.keys(obj)[0])
     if (arg.checked){
       if (Object.keys(obj)[0] == "Varetype"){
         this.newFilter.wineFilter.push(obj)
@@ -70,7 +69,7 @@ export class WineSearchComponent implements OnInit {
       if (Object.keys(obj)[0] == "Varetype"){
         this.checkIfObjectInArray(obj,this.newFilter.wineFilter)
       } else if(Object.keys(obj)[0] == "Land"){
-        this.checkIfObjectInArrayCountry(obj,this.newFilter.countryFilter)
+        this.checkIfObjectInArray(obj,this.newFilter.countryFilter)
       }
 
     }
@@ -104,51 +103,8 @@ export class WineSearchComponent implements OnInit {
         this.newFilter.countryFilter = array
       }
     }
-
-
   }
 
-  checkboxCountry(arg){
-    var obj = JSON.parse(arg.source.value)
-    console.log("Object KEY: ",Object.keys(obj)[0])
-    if (arg.checked){
-      this.newFilter.countryFilter.push(obj)
-    } else if (!arg.checked){
-      this.checkIfObjectInArray(obj,this.newFilter.countryFilter)
-    }
-    this.newFilter.limit = 12;
-    this.sortAndFilter();
-  }
-
-  checkIfObjectInArrayCountry(obj, array){
-    if(Object.keys(obj)[0] == "Varetype"){
-      var newArray = array.map((item) => item.Varetype == obj.Varetype)
-      if(array.length > 0){
-        for(var x = 0; x < newArray.length; x++){
-          if(newArray[x] && array.length == 1){
-            array = []
-          }else if(newArray[x]){
-            array.splice(x,1)
-          }
-        }
-        this.newFilter.wineFilter = array
-      }
-    }else if(Object.keys(obj)[0] == "Land"){
-      var newArray = array.map((item) => item.Land == obj.Land)
-      if(array.length > 0){
-        for(var x = 0; x < newArray.length; x++){
-          if(newArray[x] && array.length == 1){
-            array = []
-          }else if(newArray[x]){
-            array.splice(x,1)
-          }
-        }
-        this.newFilter.countryFilter = array
-      }
-    }
-
-
-  }
 
   sortSelection(arg){
     if(arg.source._selected){
