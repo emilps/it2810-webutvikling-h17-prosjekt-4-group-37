@@ -8,7 +8,7 @@
   font-size: 15px;
   flex-direction: column;
   margin-right: 0.5%;
-  margin-top: 1%;
+
   cursor: pointer;
 }
 
@@ -19,13 +19,17 @@
   margin-bottom: 3%;
 }
 
+
 .wine-preview{
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
+  padding: 0.5%;
+  -moz-box-shadow: inset 0 0 10px #000000;
+   -webkit-box-shadow: inset 0 0 10px #000000;
+   box-shadow: inset 0 0 10px #000000;
 }
 .title_favorite{
   color: white;
