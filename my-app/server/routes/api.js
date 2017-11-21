@@ -253,7 +253,7 @@ router.post('/getrecommendedwine', (req, res) => {
   });
 });
 
-router.post('/addtolog', (req, res) => {
+router.post('/addtolog', loggedIn, (req, res) => {
   console.log("This is the name added to log: ", req.body.username);
   console.log("This is the wineID added to log: ", req.body.wine);
   connection((db) => {
@@ -268,7 +268,7 @@ router.post('/addtolog', (req, res) => {
           console.log(err)
         });
 
-
+    console.log("THis is running_________Awaited")
     db.collection('log')
       .update(
         {userID: req.body.username},
