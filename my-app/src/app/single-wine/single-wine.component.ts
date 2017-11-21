@@ -1,12 +1,13 @@
 import { Component, OnInit, Inject, AfterViewInit } from '@angular/core';
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { MAT_DIALOG_DATA } from '@angular/material';
-import {MatSnackBar} from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { UserService } from './../services/users.service';
 import { FavoriteWineService } from './../services/favoritewine.service';
 import { Filter } from './winefilter';
 import { LoginDialogComponent } from './../login-dialog/login-dialog.component';
-
+import { ProfileService } from './../services/profile.service';
+import { MessageService } from './../services/message.service';
 
 @Component({
   selector: 'app-single-wine',
@@ -37,10 +38,14 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
     @Inject(MAT_DIALOG_DATA) public data: string,
     public snackBar: MatSnackBar,
     private userService: UserService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public profileService: ProfileService,
+    private MessageService: MessageService
+
+
     ) {
+
       try{
-        //this.userService.fetchUserAsync()
         this.newFilter.username = this.userService.user.name;
         this.newFilter.wine = data["Varenummer"];
         //console.log("Filter check", this.newFilter)
@@ -55,6 +60,8 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
 
     }
 
+
+
      async ngOnInit() {
        setTimeout(() => this.alcohol = ((100/22) * this.data["Alkohol"]), 500);
        setTimeout(() => this.volumpercent = this.formatVolume(this.data["Volum"]), 500);
@@ -62,7 +69,8 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
       await this.userService.fetchUserAsync()
         if (this.userService.isLoggedIn()){
           this.userLoggedIn = true;
-
+          console.log("THis is working:_____")
+          this.addToLog();
         } else {
           this.userLoggedIn = false;
         }
@@ -88,6 +96,7 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
 
 
   ngAfterViewInit() {
+
     this.checkResult();
     if(document.querySelector('.starIcon').innerHTML == "star_border"){
       //this.checkWine();
@@ -96,8 +105,16 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
       document.querySelector('.starIcon');
       //console.log(this.result)
     }
+    console.log("Bruker logget inn: ", this.userLoggedIn)
+
+
   }
 
+  async addToLog(){
+    console.log("addtolog kjører")
+    await this.profileService.addToLog(this.newFilter)
+    console.log("done")
+  }
 
   async changeIcon(wine,id){
 
@@ -110,6 +127,8 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
         this.snackBar.open((wine + " er fjernet fra favoritter"),"OK", {
           duration: 1000,
         });
+        //remove wine here from profilesite, if on that page
+        this.removeWine();
       }else{
         this.icon = "star";
         this.newFilter.remove = 0;
@@ -124,6 +143,10 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
     //console.log("result", this.result, " Newfilter ", this.newFilter)
   }
 
+  removeWine(): void {
+      //send ID to be removed to messageservice
+      this.MessageService.removeWine(this.newFilter.wine.toString())
+    }
 
 
   checkResult(){

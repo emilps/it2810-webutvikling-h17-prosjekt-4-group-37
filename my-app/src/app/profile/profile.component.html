@@ -1,2 +1,60 @@
+<div *ngIf="statusRcommendation; else generatedResponse">
+  <div class="profile-container-header">
+    <div class="rec-wine-comp">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Vinforslag til {{userName}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="recommended-wine-container">
+          <div class="info-text-rec">
+            <div *ngIf="!statusRcommendation; else generatedResponse">
+              <p>Hvis du ønsker å få anbefalinger må du legge til viner i dine favoritter</p>
+            </div>
+            <ng-template #generatedResponse>
+              <p class="generated-text">Vi ser du er en {{newFilter.wineType.toLowerCase()}}'s elsker. Ettersom du er spesielt glad i viner fra {{newFilter.wineContry}} har vi derfor en anbefaling på lager:</p>
+            </ng-template>
+          </div>
+          <div *ngIf="!showWine; else recWine"></div>
+          <ng-template #recWine>
+            <mat-card class="recomended-wine" (click)="openDialog(recommended)">
+              <div class="wineDivInside">
+                <h3 class="rec-wine-name">{{ name }}</h3>
+                <img src="{{ src }}" />
+              </div>
+              <hr>
+              <div class="winePrice">
+                <p>{{ price }},-</p>
+              </div>
+              <div class="wineMoreInfo">
+                <p>Trykk her for mer info</p>
+              </div>
+            </mat-card>
+          </ng-template>
+        </div>
+      </mat-expansion-panel>
+    </div>
 
-<h1>{{userName}}</h1>
+    <div class="chart-container">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Antall favorittviner pr. land
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-chart></app-chart>
+      </mat-expansion-panel>
+    </div>
+  </div>
+  <app-users-wines></app-users-wines>
+</div>
+
+<ng-template #generatedResponse>
+  <div class="feedback-container">
+    <mat-card class="feedback-box">
+      <p class="feedback-text">Hei, {{userName}}. Du må legge til viner i favoritter for å få tilgang til flere funksjoner på profilen din🍷</p>
+    </mat-card>
+  </div>
+</ng-template>
+<app-log></app-log>

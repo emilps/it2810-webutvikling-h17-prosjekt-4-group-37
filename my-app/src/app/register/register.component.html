@@ -1,11 +1,19 @@
 <div class="container">
-  <mat-form-field class="searchField">
-    <input type="text" matInput class="form-control" placeholder="Brukernavn" [(ngModel)]="this.newUser.name">
-  </mat-form-field>
-  <mat-form-field class="searchField">
-    <input type="password" matInput class="form-control" placeholder="Passord" [(ngModel)]="this.newUser.password">
-  </mat-form-field>
+	<div class="inputs">
+	  <mat-form-field class="searchField">
+	    <input type="text" (keyup.enter)="insertNewUser()" matInput class="form-control" placeholder="Brukernavn" [(ngModel)]="this.newUser.name">
+	  </mat-form-field>
+	  <div class="passwords">
+		  <mat-form-field class="searchField">
+		    <input type="password" (keyup.enter)="insertNewUser()" matInput class="form-control" placeholder="Passord" [(ngModel)]="this.newUser.password">
+		  </mat-form-field>
+		  <mat-form-field class="searchField">
+		    <input type="password" (keyup.enter)="insertNewUser()" matInput class="form-control" placeholder="Repeat password" [(ngModel)]="this.repeatPassword">
+		  </mat-form-field>
+		</div>
+	</div>
   <div *ngIf="wrongCheck" class="errorMessage">Brukernavn allerede i bruk.</div>
   <div *ngIf="wrongName" class="errorMessage">Alle felter må være fylt inn.</div>
+  <div *ngIf="diffPassword" class="errorMessage">Passord må være like</div>
   <button color="accent" mat-raised-button (click)="insertNewUser()" class="btn btn-default">Registrer ny bruker!</button>
 </div>

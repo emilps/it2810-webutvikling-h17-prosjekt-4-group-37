@@ -5,6 +5,7 @@ import { UserService} from '../services/users.service';
 import { User } from '../model/user';
 import { MessageService } from './../services/message.service';
 import { Subscription } from 'rxjs/Subscription';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -14,19 +15,20 @@ import { Subscription } from 'rxjs/Subscription';
 
 })
 export class NavbarComponent implements OnInit, OnDestroy {
-
+  //State for button to show.
   public loggedInOptions = false;
 
   private subscription: Subscription;
 
 
-  constructor(public dialog: MatDialog,private userService: UserService, private zone: NgZone, private messageService: MessageService){
+  constructor(private router: Router, public dialog: MatDialog,private userService: UserService, private zone: NgZone, private messageService: MessageService){
       // subscribe to home component messages
       this.subscription = this.messageService.getMessage().subscribe(message => {
         this.loggedInOptions= true;
       });
    }
 
+   //Checks if user is logged in. Changes button to correct state.
   async ngOnInit() {
     await this.userService.fetchUserAsync()
     if (this.userService.isLoggedIn()) {
@@ -44,15 +46,18 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
 
+  //Changes state for button
   login(){
     this.loggedInOptions = true;
   }
 
+  //When log out button is pressed user is logged out and button changes back to login button
   logOut(){
     this.userService.logOutUser();
     this.loggedInOptions = false;
+    this.router.navigate(['']);
   }
-
+  //Opens login-dialog component
   openDialog(): void {
     let dialogRef = this.dialog.open(LoginDialogComponent, {
       width: '500px',

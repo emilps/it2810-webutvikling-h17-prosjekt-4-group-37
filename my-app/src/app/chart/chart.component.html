@@ -1,0 +1,10 @@
+<div *ngIf="isDataAvailable; else feedBackMessage">
+  <mat-card class="chart">
+    <div style="display: block">
+      <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)" [colors]="chartColors" [options]="options"></canvas>
+    </div>
+  </mat-card>
+</div>
+<ng-template #feedBackMessage>
+  <p class="message-chart">Du har ikke lagt til noen viner som favoritter enda.</p>
+</ng-template>

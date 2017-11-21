@@ -24,10 +24,14 @@ import { UserService} from './services/users.service';
 import { FavoriteWineService } from './services/favoritewine.service';
 import { MapWineService } from './services/mapwine.service';
 import { MessageService } from './services/message.service';
-// Import Form modules
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-//Import all our used Angular Material Modules/Components
+import { LogComponent } from './log/log.component';
+import { ProfileService } from './services/profile.service';
+// chart for doughnut
+import { ChartsModule } from 'ng2-charts';
+import { ChartComponent } from './chart/chart.component';
+
 import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatCheckboxModule, MatExpansionModule, MatSelectModule, MatFormFieldModule, MatInputModule, MatDialogModule, MatButtonToggleModule, MatSnackBarModule, MatTooltipModule, MatTabsModule, MatTableModule,MatProgressSpinnerModule} from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //Application Routes
 const appRoutes: Routes = [
@@ -53,7 +57,8 @@ const appRoutes: Routes = [
   },
   {
     path: 'profile',
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '**',
@@ -78,7 +83,9 @@ export function startupServiceFactory(userService: UserService): Function {
     MapComponent,
     SingleWineComponent,
     ProfileComponent,
-    UsersWinesComponent
+    UsersWinesComponent,
+    LogComponent,
+    ChartComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -105,7 +112,8 @@ export function startupServiceFactory(userService: UserService): Function {
     MatTooltipModule,
     MatTabsModule,
     MatTableModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ChartsModule,
   ],
   entryComponents: [
     SingleWineComponent,
@@ -121,6 +129,8 @@ export function startupServiceFactory(userService: UserService): Function {
     MapWineService,
     NavbarComponent,
     MessageService,
+    FavoriteWineService,
+    ProfileService,
     {
       // Provider for APP_INITIALIZER
       provide: APP_INITIALIZER,
