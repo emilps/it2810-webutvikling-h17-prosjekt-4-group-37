@@ -12,7 +12,7 @@ export class ChartComponent implements OnInit {
   // Doughnut
   isDataAvailable:boolean = false;
   public chartColors: any[] = [{
-    backgroundColor:["#450027", "#590030", "#6E1739", "#202741", "#3c191d"]
+    backgroundColor:["#264653", "#2A9D8F", "#E9C46A", "#F4A261", "#E76F51"]
       }];
   public options = {
     cutoutPercentage: 75,
@@ -40,7 +40,9 @@ export class ChartComponent implements OnInit {
   async getWineInfo(){
     await this.favoriteWineService.getFavoriteWines().subscribe(res => {
       this.wines = res
-      this.updateChart();
+      if(this.wines.length){
+        this.updateChart();
+      }
     });
 
   }

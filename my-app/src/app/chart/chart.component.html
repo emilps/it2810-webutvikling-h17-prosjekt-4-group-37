@@ -1,7 +1,5 @@
-<div *ngIf="isDataAvailable">
+<div *ngIf="isDataAvailable; else feedBackMessage">
   <mat-card class="chart">
-    <h1>Din smaksprofil basert på likte viner</h1>
-
   <div style="display: block">
     <canvas baseChart
               [data]="doughnutChartData"
@@ -16,3 +14,7 @@
   </div>
 </mat-card>
 </div>
+
+<ng-template #feedBackMessage>
+  <p class="message-chart">Du har ikke lagt til noen viner som favoritter enda.</p>
+</ng-template>

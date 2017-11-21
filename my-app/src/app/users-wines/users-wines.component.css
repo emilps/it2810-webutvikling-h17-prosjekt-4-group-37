@@ -1,23 +1,24 @@
 .wineDiv {
-  width: 50%;
+  width: 300px;
+  height: 100%;
   min-height: 160px;
-  min-width: 20%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   font-size: 15px;
-  margin-right: 1%;
-  margin-top: 1.5%;
-
+  flex-direction: column;
+  margin-right: 0.5%;
+  margin-top: 1%;
+  cursor: pointer;
 }
 
 
 .container-favorite-wines {
-  background-color: #333;
-
   margin-left: 3%;
   margin-right: 3%;
-  height: 400px;
+  margin-bottom: 3%;
 }
+
 .wine-preview{
   display: flex;
   flex-wrap: nowrap;
@@ -25,14 +26,43 @@
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
-
-
-}
-
-.wineDiv > img {
-  max-height: 300px;
 }
 .title_favorite{
+  color: white;
   margin-left: 3%;
-  margin-top: 5%;
+  margin-top: 3%;
+  font-family: roboto, san-serif;
+}
+.wineDivInside > img {
+  display: inline;
+  box-sizing: border-box;
+  max-height: 180px;
+}
+
+.wineDivInside{
+  width: 300px;
+  height: 100%;
+  min-height: 160px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px;
+  font-size: 15px;
+  font-family: 'Playfair Display', serif;
+}
+.winePrice{
+  width: 100%;
+  text-align: center;
+}
+.wineMoreInfo{
+  margin: 5px;
+  font-size: 10px;
+  color: grey;
+}
+.message-favorite{
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  font-family: roboto, san-serif;
 }
