@@ -131,6 +131,16 @@ Brukeren vil kunne få opp en ekspandert visning av en vin uansett hvilken under
 ### Listebasert sortering
 *Den listebaserte visningen skal kunne sorteres på minimum to forskjellge egenskaper. Eksempel: etter at brukeren har fått returnert en liste etter et søk skal brukeren kunne bytte mellom forskjellige sorteringer.*
 
+Vinene våre kan sorteres etter:
+
+**Pris**
+* Lav til høy
+* Høy til lav
+
+**Alfabetisk**
+* A til Å
+* Å til A
+
 ### Listebasert filtrering
 *Den listebaserte visningen skal kunne filtreres på minimum to forskjellge egenskaper. Eksempel: etter at brukeren har fått returnert en liste etter et søk skal brukeren kunne krysse av på en egenskap for å få begrenset antallet enheter i resultatsettet til kun de som har denne egenskapen.*
 
