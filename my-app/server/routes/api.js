@@ -124,7 +124,7 @@ router.post('/wines', (req, res) => {
     newList.unshift({
       $text: search
     })
-    if (req.body.letterSort === 0 && req.body.priceSort === 0) {
+    if (req.body.sortValue === 0) {
       sortName = 'Varenavn';
       sortVariabel = 1;
     }
