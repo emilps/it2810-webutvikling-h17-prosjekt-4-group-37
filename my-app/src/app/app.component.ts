@@ -31,20 +31,7 @@ export class AppComponent implements OnInit {
     */
   }
 
-  async ngOnInit() {
-    await this.userService.fetchUserAsync()
-    if (this.userService.isLoggedIn()) {
-    } else {
-    }
-    this.playSound()
-  }
+  ngOnInit() {
 
-  playSound(){
-    const audio = new Audio();
-    audio.src = '../../assets/lounge.mp3';
-    audio.load();
-    // auto-start
-    audio.play();
-    audio.addEventListener('ended',this.playSound);
   }
 }
