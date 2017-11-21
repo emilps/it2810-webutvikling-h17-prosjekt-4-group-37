@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 
 // Import the DataService
-import { DataService } from './../data.service';
+import { DataService } from './../services/data.service';
 
 // Import the material dialog and the SingleWineComponent thats the dialog
 import { MatDialog } from '@angular/material';

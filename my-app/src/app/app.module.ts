@@ -20,7 +20,7 @@ import { UsersWinesComponent } from './users-wines/users-wines.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Import our Services
-import { DataService } from './data.service';
+import { DataService } from './services/data.service';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
 import { UserService} from './services/users.service';
