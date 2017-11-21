@@ -33,7 +33,6 @@ export class DataService {
 
   getLoginStatus () {
       return this._http.get("/api/loginstatus").map(result => this.result = result.json().data)
-
   }
 
   getCountries(arg) {
