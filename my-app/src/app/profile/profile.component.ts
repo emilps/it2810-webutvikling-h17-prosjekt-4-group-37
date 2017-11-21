@@ -57,7 +57,9 @@ export class ProfileComponent implements OnInit {
   async getWineInfo(){
     await this.favoriteWineService.getFavoriteWines().subscribe(res => {
       this.wines = res
-      this.checkProfile();
+      if(this.wines.length){
+        this.checkProfile();
+      }
     });
 }
 
