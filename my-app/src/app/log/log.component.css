@@ -1,4 +1,4 @@
-.container-log-wines{
+.container-log-wines {
   margin-left: 3%;
   margin-right: 3%;
   margin-bottom: 2%;
@@ -6,22 +6,25 @@
   flex-direction: column;
   justify-content: space-around;
 }
-.message-log{
+
+.message-log {
   text-align: center;
   font-size: 20px;
   font-family: roboto, san-serif;
 }
-.feedback-log-container{
+
+.feedback-log-container {
   display: flex;
   justify-content: center;
   margin-bottom: 3%;
 }
-.feedback-log-box{
+
+.feedback-log-box {
   width: 70%;
   margin-top: 3%;
 }
 
-.wineLog{
+.wineLog {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -29,25 +32,23 @@
   margin-bottom: 0.5%;
 }
 
-.wineLog:hover{
+.wineLog:hover {
   background-color: #dee1e5;
   cursor: pointer;
 }
 
-.wineDivInside{
+.wineDivInside {
   font-family: 'Playfair Display', serif;
   width: 30%;
 }
-.winePrice{
 
-}
-.wineMoreInfo{
+.winePrice {}
 
-}
-.log-header{
+.wineMoreInfo {}
+
+.log-header {
   color: white;
   margin-left: 3%;
   margin-bottom: 1%;
   font-family: Roboto, san-serif;
-
 }

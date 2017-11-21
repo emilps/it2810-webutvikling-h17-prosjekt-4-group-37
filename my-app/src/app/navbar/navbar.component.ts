@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 
 })
 export class NavbarComponent implements OnInit, OnDestroy {
-
+  //State for button to show.
   public loggedInOptions = false;
 
   private subscription: Subscription;
@@ -28,6 +28,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       });
    }
 
+   //Checks if user is logged in. Changes button to correct state.
   async ngOnInit() {
     await this.userService.fetchUserAsync()
     if (this.userService.isLoggedIn()) {
@@ -45,17 +46,18 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
 
+  //Changes state for button
   login(){
     this.loggedInOptions = true;
   }
 
+  //When log out button is pressed user is logged out and button changes back to login button
   logOut(){
     this.userService.logOutUser();
     this.loggedInOptions = false;
     this.router.navigate(['']);
-
   }
-
+  //Opens login-dialog component
   openDialog(): void {
     let dialogRef = this.dialog.open(LoginDialogComponent, {
       width: '500px',

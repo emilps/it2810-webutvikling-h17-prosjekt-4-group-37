@@ -27,7 +27,7 @@ export class UsersWinesComponent implements OnInit, OnDestroy {
     private messageService: MessageService,
 
 
-  ) { 
+  ) {
 
       this.subscription = this.messageService.receiveID().subscribe(message => {
         // message is ID: remove that list
@@ -46,7 +46,7 @@ export class UsersWinesComponent implements OnInit, OnDestroy {
         this.wines = newWines
       });
     }
-
+    //Fetches user runs gathersWines
   async ngOnInit() {
     //this.userService.fetchUserAsync().then(data => this.username = data.name);
     this.userService.fetchUserAsync()
@@ -60,7 +60,7 @@ export class UsersWinesComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
+  //Gathers favorite wines. If the list is not empty changes state to show wines in html.
   async gatherWines(){
     await this.favoriteWineService.getFavoriteWines()
     .subscribe(res => {
@@ -70,7 +70,7 @@ export class UsersWinesComponent implements OnInit, OnDestroy {
       }
     })
   }
-
+  //opens wine dialog
   openDialog(arg){
     let dialogRef = this.dialog.open(SingleWineComponent, {
       //width: '600px',

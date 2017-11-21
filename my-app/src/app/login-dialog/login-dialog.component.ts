@@ -10,6 +10,7 @@ import { RegisterComponent } from './../register/register.component';
 })
 export class LoginDialogComponent implements OnInit {
 
+  //Init of material comp with LoginDialogComponent
   constructor(public dialogRef: MatDialogRef<LoginDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 

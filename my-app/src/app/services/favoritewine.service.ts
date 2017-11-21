@@ -15,35 +15,27 @@ import {UserName} from '../model/userName'
 
 @Injectable()
 export class FavoriteWineService {
-
+    //Used as a temp. atributte for retriveal
     result:any;
-    wineIDS:any;
-    thisUser: UserName = {
-      name : '',
-    };
-
+    //Initializes http and service.
     constructor(private _http: Http, public userService: UserService) { }
-
+    //sends post request for retriving favorites wines from db.
     getFavoriteWine(arg:Filter) {
-      console.log("API runs", arg)
       return this._http.post("/api/getfavoritewines", arg)
         .map(result => this.result = result.json().data);
     }
-
+    //Updates list of favorite wines.
     updateFavoriteWine(arg:Filter) {
-      console.log("API runs", arg)
       return this._http.post("/api/updatefavoritewines", arg)
         .map(result => this.result = result.json().data);
     }
+    //Gathers all wines from a user.
     getFavoriteWines() {
-      //this.thisUser.name = this.userService.user.name;
-      //console.log("THIS IS THE USER: _____USER:", this.userService.user.name)
       return this._http.get("api/getfavoritewinesids")
       .map(result => this.result = result.json().data);
     }
-
+    //return temp. atr.
     getWineInfo(){
-      console.log(this.result)
       return this.result
     }
 
