@@ -104,9 +104,12 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
   }
 
-  // Adds the wine to users log
-  async addToLog(){
-    await this.profileService.addToLog(this.newFilter)
+
+  addToLog(){
+    console.log("addtolog kjører")
+    this.profileService.addToLog(this.newFilter)
+      .subscribe(res => console.log(res));
+    console.log("done")
   }
 
   // Changes the star icon from outlined to full based on the previous state
