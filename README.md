@@ -160,8 +160,10 @@ Vinene kan også filtreres etter land med kartet som beskrevet under "[Fancy alt
 På både hovedsiden/listen og siden med kartfiltrering vil det vises ett begrenset utvalg viner. Hvis søket eller filtreringen din fyller den opprinnelige sideplassen med viner vil det dukke opp en knapp som lar brukeren laste inn flere.
 
 **På hovedsiden**
+![Load more button on main page](https://i.imgur.com/QrRcP1w.png)
 
 **På kartfiltreringssiden**
+![Load more button on map page](https://i.imgur.com/X6P2YlH.png)
 
 ### Min side funksjonalitet
 *Webapplikasjonen skal ha "min side" funksjonalitet som i praksis betyr at en bruker skal kunne logge seg på og at det blir registrert noe fra brukerens søkeaktiviteten f.eks. hva brukeren har sett på tidligere eller søkene som brukeren har brukt.*
