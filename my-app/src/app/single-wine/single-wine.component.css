@@ -96,3 +96,9 @@ mat-progress-spinner circle{
   max-height: 80vh !important;
   min-width: 35vw !important;
 }
+
+@media only screen and (max-width: 500px) {
+    .wineImg {
+        display: none;
+    }
+}

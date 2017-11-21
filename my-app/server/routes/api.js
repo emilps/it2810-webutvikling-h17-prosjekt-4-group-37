@@ -85,12 +85,10 @@ router.post('/wines', (req, res) => {
 
     var liste = [ { Varetype: "Hvitvin" },{ Varetype: "Rødvin" } ]
     console.log(liste)
-    if (req.body.priceSort === 1 || req.body.priceSort === -1 ){
-      sortName = 'Pris';
-      sortVariabel = req.body.priceSort;
-    } else if (req.body.letterSort === 1 || req.body.letterSort === -1) {
-      sortName = 'Varenavn';
-      sortVariabel = req.body.letterSort;
+
+    if (req.body.sortValue === 1 || req.body.sortValue === -1) {
+      sortName = req.body.sortKey;
+      sortVariabel = req.body.sortValue;
     }
 
     if (req.body.wineFilter.length > 0) {
@@ -127,6 +125,21 @@ router.post('/wines', (req, res) => {
             .toArray()
             .then((wines) => {
                 response.data = wines;
+                res.json(response);
+            })
+            .catch((err) => {
+                sendError(err, res);
+            });
+    });
+});
+
+router.get('/distinctcountries', (req, res) => {
+  console.log("hello");
+    connection((db) => {
+        db.collection('wines')
+            .distinct("Land")
+            .then((users) => {
+                response.data = users;
                 res.json(response);
             })
             .catch((err) => {

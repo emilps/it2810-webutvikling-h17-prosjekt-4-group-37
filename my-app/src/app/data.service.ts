@@ -22,8 +22,12 @@ export class DataService {
   }
 
   getWines(arg:Filter) {
-    console.log(arg)
     return this._http.post("/api/wines", arg)
+      .map(result => this.result = result.json().data);
+  }
+
+  getDistinctCountries() {
+    return this._http.get("/api/distinctcountries")
       .map(result => this.result = result.json().data);
   }
 
