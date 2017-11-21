@@ -121,7 +121,6 @@ export function startupServiceFactory(userService: UserService): Function {
     SingleWineComponent,
     LoginDialogComponent
   ],
-
   providers: [
     DataService,
     UserService,
