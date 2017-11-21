@@ -1,6 +1,8 @@
 <h1 class="title_favorite"> Dine favoritter</h1>
 <div class="container-favorite-wines">
   <div *ngIf="hasWines; else noFavorites">
+    <div class="shadow-box-left"></div>
+    <div class="shadow-box-right"></div>
     <div class="wine-preview">
       <mat-card class="wineDiv" (click)="openDialog(wine)" *ngFor="let wine of wines">
         <div class="wineDivInside">
