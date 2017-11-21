@@ -50,7 +50,6 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
         this.newFilter.wine = data["Varenummer"];
         //console.log("Filter check", this.newFilter)
         this.result = []
-        this.addToLog();
       }catch(err){
         //console.log("Note loggeed in")
       }
@@ -61,6 +60,8 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
 
     }
 
+
+
      async ngOnInit() {
        setTimeout(() => this.alcohol = ((100/22) * this.data["Alkohol"]), 500);
        setTimeout(() => this.volumpercent = this.formatVolume(this.data["Volum"]), 500);
@@ -68,7 +69,8 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
       await this.userService.fetchUserAsync()
         if (this.userService.isLoggedIn()){
           this.userLoggedIn = true;
-
+          console.log("THis is working:_____")
+          this.addToLog();
         } else {
           this.userLoggedIn = false;
         }
@@ -103,12 +105,14 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
       document.querySelector('.starIcon');
       //console.log(this.result)
     }
+    console.log("Bruker logget inn: ", this.userLoggedIn)
+
+
   }
 
   async addToLog(){
     console.log("addtolog kjører")
     await this.profileService.addToLog(this.newFilter)
-    .subscribe(res => this.result =res);
     console.log("done")
   }
 

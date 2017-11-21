@@ -36,11 +36,7 @@ export class ProfileService {
   addToLog(arg){
     console.log("This arg:", arg)
     return this._http.post("/api/addtolog", arg)
-      .map(result => {
-        this.result = result.json().data
-
-      });
-
+      
   }
 
   async getRecom(filter: Filter){
