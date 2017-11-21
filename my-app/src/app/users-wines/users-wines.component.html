@@ -3,13 +3,20 @@
   <div *ngIf="hasWines; else noFavorites">
     <div class="wine-preview">
     <mat-card class="wineDiv" (click)="openDialog(wine)" *ngFor="let wine of wines">
-      <h3>{{ wine.Varenavn }}</h3>
-      <p>{{ wine.Pris }}</p>
-      <img src="{{ wine.Vareurl }}" />
+      <div class="wineDivInside">
+        <h3>{{ wine.Varenavn }}</h3>
+        <img src="{{ wine.Vareurl }}" />
+      </div>
+      <div class="winePrice">
+        <p>{{ wine.Pris }},-</p>
+      </div>
+      <div class="wineMoreInfo">
+        <p>Trykk her for mer info</p>
+      </div>
     </mat-card>
   </div>
   </div>
 </div>
 <ng-template #noFavorites>
-  Du har ikke lagt til noen favoritter...
+  <p class="message-favorite">Du har ikke lagt til noen favoritter...</p>
 </ng-template>
