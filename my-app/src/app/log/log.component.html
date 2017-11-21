@@ -1,12 +1,27 @@
 
-<h1>Dine siste søk</h1>
-<div *ngIf="showLog; else logWine">
-  <p> Du har ikke sett på noen viner enda...</p>
+<h1 class="log-header">Dine tre siste besøk</h1>
+  <div class="container-log-wines">
+    <div *ngIf="showLog; else logWine">
+      <div class="feedback-log-container">
+        <mat-card class="feedback-log-box">
+          <p class="message-log"> Du har ikke sett på noen viner enda...</p>
+        </mat-card>
+      </div>
+    </div>
 </div>
+
 <ng-template #logWine>
-<mat-card class="wineLog" (click)="openDialog(wine)" *ngFor="let wine of wines">
-  <h3>{{ wine.Varenavn }}</h3>
-  <p>{{ wine.Pris }}</p>
-  <img src="{{ wine.Vareurl }}" />
-</mat-card>
+
+  <mat-card class="wineLog" (click)="openDialog(wine)" matTooltip="Trykk for mer info.." [matTooltipPosition]="tooltipPosition" *ngFor="let wine of wines">
+    <div class="wineDivInside">
+      <h3>{{ wine.Varenavn }}</h3>
+    </div>
+    <div class="winePrice">
+      <strong>{{ wine.Pris }},-</strong>
+    </div>
+    <div class="wineMoreInfo">
+      <p>{{ wine.Land }}</p>
+    </div>
+  </mat-card>
+
 </ng-template>

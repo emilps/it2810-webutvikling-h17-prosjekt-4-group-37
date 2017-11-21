@@ -13,8 +13,9 @@ import { MatDialog } from '@angular/material';
 })
 export class LogComponent implements OnInit {
 
-  showLog= true;
+  showLog = true;
   wines: any;
+  tooltipPosition = "above";
   constructor(
     private favoriteWineService: FavoriteWineService,
     public userService: UserService,
