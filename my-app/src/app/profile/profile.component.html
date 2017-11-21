@@ -1,7 +1,7 @@
 <div *ngIf="allElements; else generatedResponse">
   <div class="profile-container-header">
     <div class="rec-wine-comp">
-      <mat-expansion-panel>
+      <mat-expansion-panel [expanded]="true">
         <mat-expansion-panel-header>
           <mat-panel-title>
             Vinforslag til {{userName}}
@@ -41,7 +41,7 @@
     </div>
 
     <div class="chart-container">
-      <mat-expansion-panel>
+      <mat-expansion-panel [expanded]="true">
         <mat-expansion-panel-header>
           <mat-panel-title>
             Antall favorittviner pr. land

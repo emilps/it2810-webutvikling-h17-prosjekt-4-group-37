@@ -110,9 +110,10 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
 
   }
 
-  async addToLog(){
+  addToLog(){
     console.log("addtolog kjører")
-    await this.profileService.addToLog(this.newFilter)
+    this.profileService.addToLog(this.newFilter)
+      .subscribe(res => console.log(res));
     console.log("done")
   }
 
