@@ -359,8 +359,8 @@ router.post('/getrecommendedwine', (req, res) => {
 
 // When a wine item dialog is opened, this adds the specific item to the users log in the database
 router.post('/addtolog', (req, res) => {
+  console.log("ADDING TO LOG DB!")
   connection((db) => {
-
     // first removes item from database
     db.collection('log')
       .update({
@@ -385,6 +385,10 @@ router.post('/addtolog', (req, res) => {
         }
       }, {
         upsert: true
+      })
+      .then((data) => {
+        response.data = "Log updated";
+        res.json(response);
       })
       .catch((err) => {
         sendError(err, res);
