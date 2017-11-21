@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { MapwineService } from './mapwine.service';
+import { MapWineService } from './mapwine.service';
 
-describe('MapwineService', () => {
+describe('MapWineService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [MapwineService]
+      providers: [MapWineService]
     });
   });
 
-  it('should be created', inject([MapwineService], (service: MapwineService) => {
+  it('should be created', inject([MapWineService], (service: MapWineService) => {
     expect(service).toBeTruthy();
   }));
 });
