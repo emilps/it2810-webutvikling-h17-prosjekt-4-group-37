@@ -172,7 +172,13 @@ På både hovedsiden/listen og siden med kartfiltrering vil det vises ett begren
 
 [//]: # "Øystein"
 Etter at brukeren har logget seg inn vil man ha mulighet til å besøke
-sin egen profil. På denne siden viser vi viner som har lagt til i dine favoritter og logger de tre siste vinene brukeren har sett på.I tillegg får man opp forslag til vin basert på hva brukeren har i sin favoritt liste. Et doughnut chart viser også hvilke land favoritvinene dine kommer fra. Vi har tatt utgangspunkt i de vansligste vinlandene derav, Italia, Frankrike, Tyskland og Spania. Kommer de fra andre land vil de gå som "annet". Hvis man ikke har viner i favoritter vil det ikke komme opp forslag til vin, chart eller favorittlisten. Det samme gjelder log. Hvis log eller favoritt listene er tomme vil man få tilbakemelding, respektivt.    
+sin egen profil. På denne siden viser vi:
+1. viner som har lagt til i dine favoritter
+2. logger de tre siste vinene brukeren har sett på.
+3. Får opp forslag til vin basert på hva brukeren har i sin favoritt liste.
+5. Et doughnut chart viser også hvilke land favoritvinene dine kommer fra. 
+
+Vi har tatt utgangspunkt i de vansligste vinlandene derav, Italia, Frankrike, Tyskland og Spania. Kommer de fra andre land vil de gå som "annet". Hvis man ikke har viner i favoritter vil det ikke komme opp forslag til vin, chart eller favorittlisten. Det samme gjelder log. Hvis log eller favoritt listene er tomme vil man få tilbakemelding, respektivt.    
 
 ### Sessionhåndtering
 *Webapplisjonen må implementere "session"-håndtering (som du f.eks. trenger for å implementere dynamisk lasting, min side, og filtrering/sortering som skal fungere med sidevisning).*
