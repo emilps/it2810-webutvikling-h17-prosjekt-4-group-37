@@ -1,10 +1,19 @@
+// Angular imports
 import { Component, OnInit, Inject, AfterViewInit } from '@angular/core';
+
+// Design imports from material
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { MatSnackBar } from '@angular/material';
+
+// Service imports
 import { UserService } from './../services/users.service';
 import { FavoriteWineService } from './../services/favoritewine.service';
+
+// Filter import
 import { Filter } from './winefilter';
+
+// Components import
 import { LoginDialogComponent } from './../login-dialog/login-dialog.component';
 import { ProfileService } from './../services/profile.service';
 import { MessageService } from './../services/message.service';
@@ -14,18 +23,22 @@ import { MessageService } from './../services/message.service';
   templateUrl: './single-wine.component.html',
   styleUrls: ['./single-wine.component.css']
 })
-export class SingleWineComponent implements OnInit, AfterViewInit {
 
+export class SingleWineComponent implements OnInit, AfterViewInit {
+  // Defines icon, position of tooltip and the userLoggedIn state
   public icon = 'star_border';
   public position = 'above';
-  private userLoggedIn = false
+  private userLoggedIn = false;
 
+  // Defines result for storing if the wine is favorite
   result: any;
+
+  // Defines basics for the progress spinner
   alcohol = 1;
   volum = 0.75;
   volumpercent = 0;
 
-
+  // Defines filter for checking is the wine is a favorite or it should ad it.
   newFilter: Filter = {
     wine: "",
     username: "",
@@ -41,35 +54,32 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
     public dialog: MatDialog,
     public profileService: ProfileService,
     private MessageService: MessageService
-
-
     ) {
 
-      try{
+      try {
         this.newFilter.username = this.userService.user.name;
         this.newFilter.wine = data["Varenummer"];
-        //console.log("Filter check", this.newFilter)
-        this.result = []
-      }catch(err){
-        //console.log("Note loggeed in")
+        this.result = [];
+      } catch(err) {
+        console.log(err);
       }
-      //this.checkWine();
-      //console.log(this.result)
-      this.formatVolume(data["Volum"])
+
+      this.formatVolume(data["Volum"]);
       this.checkWine();
 
     }
 
 
 
-     async ngOnInit() {
-       setTimeout(() => this.alcohol = ((100/22) * this.data["Alkohol"]), 500);
-       setTimeout(() => this.volumpercent = this.formatVolume(this.data["Volum"]), 500);
+   async ngOnInit() {
+     // Trigger animation after the component is loaded
+     setTimeout(() => this.alcohol = ((100/22) * this.data["Alkohol"]), 500);
+     setTimeout(() => this.volumpercent = this.formatVolume(this.data["Volum"]), 500);
 
-      await this.userService.fetchUserAsync()
+     // Checks if the user is logged in and adds the wine to the log
+     await this.userService.fetchUserAsync()
         if (this.userService.isLoggedIn()){
           this.userLoggedIn = true;
-          console.log("THis is working:_____")
           this.addToLog();
         } else {
           this.userLoggedIn = false;
@@ -77,7 +87,7 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
     }
 
 
-
+  // Transform the liter to a number between 0 - 100
   formatVolume(volume){
     if(volume == 0){
       this.volum = 0.75
@@ -91,36 +101,18 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
     }
   }
 
-
-
-
-
   ngAfterViewInit() {
-
-    this.checkResult();
-    if(document.querySelector('.starIcon').innerHTML == "star_border"){
-      //this.checkWine();
-      //this.checkResult();
-      //console.log(document.querySelector('.starIcon'))
-      document.querySelector('.starIcon');
-      //console.log(this.result)
-    }
-    console.log("Bruker logget inn: ", this.userLoggedIn)
-
-
   }
 
+  // Adds the wine to users log
   async addToLog(){
-    console.log("addtolog kjører")
     await this.profileService.addToLog(this.newFilter)
-    console.log("done")
   }
 
+  // Changes the star icon from outlined to full based on the previous state
   async changeIcon(wine,id){
-
     await this.userService.fetchUserAsync()
     if(this.userLoggedIn){
-
       if(this.icon == "star"){
         this.icon = "star_border";
         this.newFilter.remove = 1;
@@ -138,9 +130,9 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
       }
       this.updateWine();
     }else{
+      // Opens login dialog
       this.openDialog();
     }
-    //console.log("result", this.result, " Newfilter ", this.newFilter)
   }
 
   removeWine(): void {
@@ -148,55 +140,50 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
       this.MessageService.removeWine(this.newFilter.wine.toString())
     }
 
-
-  checkResult(){
-    //console.log(this.result)
-  }
-
+  // Checks if the wine is in users favorite list
   async checkWine(){
     await this.userService.fetchUserAsync()
     if (this.userService.isLoggedIn()) {
     await this.favoriteWineService.getFavoriteWine(this.newFilter)
         .subscribe(res => this.firstCheckIfFavorite(res));
     }
-
     else {
       this.result = ""
     }
-    //console.log("This was called", this.result)
   }
 
+  // Changes the star to full star if the wine is favorited
   firstCheckIfFavorite(dbData){
     this.result = dbData;
-    if(this.result.length){
+    if (this.result.length) {
       this.icon = "star";
     }
-    //console.log("DB_DATA: ", dbData);
   }
 
+  // Opens the login dialog and closes single-wine dialog
   openDialog(): void {
-    this.thisDialogRef.close("Cancel")
+    this.thisDialogRef.close("Cancel");
     let dialogRef = this.dialog.open(LoginDialogComponent, {
       width: '500px',
-      data: "Test tekst"
+      data: ""
     });
   }
 
   openSnackBar() {
-
   }
 
+  // Updates the favoritewine collection with new result
   updateWine(){
     this.favoriteWineService.updateFavoriteWine(this.newFilter)
         .subscribe(res => console.log(res));
   }
 
-
-
+  // Closes the dialog
   onCloseConfirm(){
     this.thisDialogRef.close("Confirm")
   }
 
+  // Closes the dialog
   onCloseCancel(){
     this.thisDialogRef.close("Cancel")
 
