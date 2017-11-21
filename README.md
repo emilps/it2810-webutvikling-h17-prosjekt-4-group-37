@@ -10,6 +10,7 @@ Dette er vårt repository for IT2810 Webtvikling prosjekt 4. Vi skal bruke Angul
 * [Prosjektplan](#prosjektplan)
 * [Komponenter og rammeverk](#komponenter-og-rammeverk)
 * [Prosjektkrav](#prosjektkrav)
+* [Andre ikke krevde funksjonaliteter](#andre-ikke-krevde-funksjonaliteter)
 
 
 ## Kom i gang
@@ -50,11 +51,12 @@ Angular Material er google's design components for Angular. Disse har vi benytte
 Full oversikt og dokumentasjon på Angular Material finnes [her.](https://material.angular.io/)
 
 ### Chart.js
-https://valor-software.com/ng2-charts/
+Last ned eller se full dokumentasjon for [ng2-charts her.](https://valor-software.com/ng2-charts/)
 
 ng2-charts
-
 ![Image of our favourite chart](https://i.imgur.com/bwcZZH4.png)
+
+[//]: # "Skriv mer her Øystein"
 
 ### GeoChart
 GeoChart er en type chart/diagram fra Google Charts. Den lar deg definere områder eller land på ett kart. Du kan tilegne landene egenskaper som folketall eller lignende. Vi har brukt GeoChart for å først la brukeren velge ett kontinent, det zoomes så inn på kontinentet slik at man kan velge ett land. Hvert land har informasjon om antall viner som kommer fra det landet når du holder musepekeren over. Om du trykker på et land vil en liste laste inn viner fra det valge landet.
@@ -85,35 +87,128 @@ Her følger en punktvis beskrivelse av hvordan vi har svart på kravene til pros
 ### På virtuell maskin node.js og AngularCLI
 *Webapplikasjonen skal kjøres på gruppas virtuelle maskin og bruke node.js på serversiden, og skal være utviklet i Angular (bruk v2 eller v4, https://angular.io ). Det er selvsagt greit å i tillegg bruke andre bibliotek eller løsninger som dere finner hensiktsmessig.*
 
+Vi har brukt [Angular CLI](https://angular.io/guide/quickstart) og i har en version (`ng -v`) på `@angular/cli: 1.4.9` - altså Angular v4 og `node: 7.0.0`. Noen komponenter/moduler er fra Angular v2, men det går fint, da de versionene er kompatible i motsetning til f.eks AngularJS.
+
 ### Backend database
 *I webappliksjonen skal det inngå en backend database som kjøres på gruppas virtuelle maskin. Type database og hvordan denne brukes er opp til dere å bestemme, men grensesnittet til databasen skal være godt designet ihht. god praksis (bruk av REST ea).*
+
+Som vist i [prosjektplanen](PROJECTPLAN.md) vår så har vi valgt å benytte oss av hele MEAN stakken. Det vil si at vår backend database er en MongoDB. Det er en noSQL database som fungerer godt til denne typen prosjekter og bruk. Om vi skulle hatt flere relasjoner mellom data i databasen enn mellom bruker og dens favorittviner ville vi muligens forsøkt å implementere en SQL database med flere muligheter for relasjoner.
+
+![MEAN stack data flow graphic](https://cdn-images-1.medium.com/max/1024/0*Nq9iCe61Aq5IxUGl.png)
+
+Vi har laget et REST API for serveren som kommuniserer med databasen over HTTP. Kommunikasjonen går i JSON format med GET og POST.
+
+[//]: # "Emil/Øystein/Henrik sjekk at jeg ikke har noe feil - fyll ut"
 
 ### Skriving lesing og søk mot DB
 *Dere skal demonstrere både skriving og lesing til databasen fra webapplikasjonen inklusive en form for søk (i praksis dynamisk brukerdefinert utvalg av det som skal vises). Generelt er det mye artigere å jobbe med en datamengde som gir et realistisk inntrykk (eksempevis mulig å søke på forskjellige ting og få resultatsett som er forskjellige og har forskjellig antall). Bruk data dere finner på web, eller lag egne data.*
 
+Datasettet vi har valgt å ta i bruk er vinmonopolet.no sine røde og hvite viner.
+
+**Søk** på varenavn kan utføres ved å skrive inn en streng i søkefeltet.
+![Image of wine search field](https://i.imgur.com/B9rAy0m.png)
+
+**Lesing** fra databasen skjer på mange måter, blant annet:
+* Henting/lesing av viner (sortert eller filtrert på forskjellige måter)
+* Henting/lesing av bruker
+* Henting/lesing av favorittviner
+
+**Skriving** til databasen skjer i hovedsak ved opprettelsen av ny bruker og lagring av favorittviner.
+
+
+
 ### Listebasert visning med Expansion Panel
 *Brukergrensensittet skal ha listebasert visning med få detaljer for hver enhet, og hvor målet er å vise brukeren hva som er i databasen eller hva som er resultatet av et søk. Brukeren skal ha mulighet til å se flere detaljer for hver enhet enten i et eget vindu, eller ved at listen enheten i lista har expand/collpase egenskap.*
+
+Brukeren vil kunne få opp en ekspandert visning av en vin uansett hvilken underside eller visning man er i. Trykk på en vin for å få opp ett Material Expansion Panel med `single-wine.component`. Her vil du finne mer utfyllende informasjon om vinen, og også muligheten til å lagre den som favoritt hvis du er logget inn.
+
+**Trykk på en vin i listen**
+![Select wine to show expanded window](https://i.imgur.com/7vbGJS8.png)
+
+**Se detaljer i utvidet visning**
+![Detailed wine window](https://i.imgur.com/Lhgrf2m.png)
+
 
 ### Listebasert sortering
 *Den listebaserte visningen skal kunne sorteres på minimum to forskjellge egenskaper. Eksempel: etter at brukeren har fått returnert en liste etter et søk skal brukeren kunne bytte mellom forskjellige sorteringer.*
 
+Vinene våre kan sorteres etter:  
+**Pris**
+* Lav til høy
+* Høy til lav
+
+**Alfabetisk**
+* A til Å
+* Å til A
+
 ### Listebasert filtrering
-*Den listebaserte visningen skal kunne filtreres på minimum to forskjellge egenskaper. Eksempel: etter at brukeren har fått returnert en liste etter et søk skal brukeren kunne krysse av på en egenskap for å få begrenset antallet enheter i resultatsettet til kun de som har denne egenskapen.*
+*Den listebaserte visningen skal kunne filtreres på minimum to forskjellige egenskaper. Eksempel: etter at brukeren har fått returnert en liste etter et søk skal brukeren kunne krysse av på en egenskap for å få begrenset antallet enheter i resultatsettet til kun de som har denne egenskapen.*
+
+Vinene våre kan i hovedlisten filtreres etter:  
+**Vintype**
+* Rødvin
+* Hvitvin
+
+**Land**  
+Frankrike, Italia, Portugal, Spania, Tyskland, Chile, USA, Australia, Sør-Afrika, Østerrike, Ungarn, Argentina, New Zealand, Moldova, Hellas, Georgia, Libanon, Brasil, Makedonia, Slovenia, Marokko, Mexico, Bulgaria, Canada, Romania, Tsjekkia og "Øvrige"
+
+---
+Vinene kan også filtreres etter land med kartet som beskrevet under "[Fancy alternativ visning](#fancy-alternativ-visning)" i "[Vinsortering med trykk på kart](#vinsortering-med-trykk-på-kart)". Utfyllende beskrivelse finnes også i seksjonen "[GeoChart](#geochart)" under "[Komponenter og rammeverk](#komponenter-og-rammeverk)"
 
 ### Listebasert dynamisk lasting av data
 *Den listebaserte visningen skal ha dynamisk lasting av data. Eksempel: etter et søk vises de 10 første treffene, men flere lastes når brukeren scroller eller ved blaing i sider.*
 
+På både hovedsiden/listen og siden med kartfiltrering vil det vises ett begrenset utvalg viner. Hvis søket eller filtreringen din fyller den opprinnelige sideplassen med viner vil det dukke opp en knapp som lar brukeren laste inn flere.
+
+**På hovedsiden**
+![Load more button on main page](https://i.imgur.com/QrRcP1w.png)
+
+**På kartfiltreringssiden**
+![Load more button on map page](https://i.imgur.com/X6P2YlH.png)
+
 ### Min side funksjonalitet
 *Webapplikasjonen skal ha "min side" funksjonalitet som i praksis betyr at en bruker skal kunne logge seg på og at det blir registrert noe fra brukerens søkeaktiviteten f.eks. hva brukeren har sett på tidligere eller søkene som brukeren har brukt.*
+
+[//]: # "Øystein"
 
 ### Sessionhåndtering
 *Webapplisjonen må implementere "session"-håndtering (som du f.eks. trenger for å implementere dynamisk lasting, min side, og filtrering/sortering som skal fungere med sidevisning).*
 
+[//]: # "Henrik"
+
 ### Fancy alternativ visning
 *Webapplikasjonen skal ha et litt "fancy" alternativ visning av listen f.eks. visning på kart eller visuell grafisk fremstilling av data, ordsky ea.*
+
+Vi har flere forskjellige "fancy" alternative visninger. Hovedsiden vår sin liste er muligens annerledes og fancy nok til å høre under her. Videre følger uansett noen konkrete eksempler:
+
+#### Vinsortering med trykk på kart
+Se beskrivelse av "[GeoChart](#geochart)" under "[Komponenter og rammeverk](#komponenter-og-rammeverk)". Den fancy visningen går ut på at du kan se alle land vi har viner fra i databasen markert med en tydelig farge på kartet. Når du holder musepekeren over ett land vil du få informasjon om antall viner som kommer fra den nasjonen. Om du trykker/velger ett land vil tabellen/lista laste inn og vise 25 viner fra det landet. Om du blar til bunnen av listen kan du laste inn 25 viner til ved å trykke på "Last inn flere.." (dette kan gjentas)
+
+![Image of map sorting](https://i.imgur.com/TIl4Vg5.png)
+
+#### Favorittviner i sektordiagram
+
+[//]: # "Øystein"
+
+#### Stilig fremstilling av alkoholprosent og volum
+Om du trykker på en vin i hvilken som helst meny vil du se en **fancy animasjon** som fyller en "progress spinner" basert på alkoholprosent og volum (i liter). Dette er ikke bilder, men fancy, grafisk fremvisning av data. Alkoholprosent "spinneren" går fra 0% til 22% (sterkeste vinen du får på polet) og volum "spinneren" fra 0 liter til 5 liter.
+
+**Vanlig vinflaske**
+![Regular vinebottle image](https://i.imgur.com/mvR2RZm.png)
+
+
+**Kartong**
+![Carton image](https://i.imgur.com/C88gUg2.png)
 
 ### Testet kode
 *Kode skal være testet og funksjonaliteten skal være godt utprøvd og feilfri.*
 
 ### Godt dokumentert
 *Prosjektet skal være godt dokumentert, slik at det er lett å sette seg inn i for andre.*
+
+Om du har lest helt til hit i [README.md](README.md) filen så har du sett at prosjektet er rimelig godt dokumenter på github i hvertfall. Koden er også blitt kommentert for å forklare de ulike delene og funksjonalitetene.
+
+## Andre ikke krevde funksjonaliteter
+Sikker brukerhåndtering med salting og hashing
+
+[//]: # "Henrik"
