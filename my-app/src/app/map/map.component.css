@@ -1,10 +1,11 @@
+/* Outer div of mapcomponent - flex on cards  */
 .mapViewItems {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
 }
-
+/* Material Card containing the Map  */
 .mapCard {
   height: 45%;
   width: 45%;
@@ -14,13 +15,13 @@
   flex-direction: column;
   align-items: center;
 }
-
+/*  Material Card containing the Table/list */
 .listCard {
   height: 45%;
   width: 45%;
   margin: 10px;
 }
-
+/*  Style for both Material Cards  */
 .mat-card {
   padding: 10px;
   overflow-y: auto;
@@ -28,15 +29,46 @@
   min-height: 30%;
   min-width: 55vh;
 }
-
+/*  Style for the Material Table - flex on tablecontent */
 .mat-table {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
-
-
+/* Style/size of name-column  */
+.mat-column-name {
+  flex: 0 0 65%;
+}
+/*  Style/size of country-column */
+.mat-column-country {
+  flex: 0 0 20%;
+}
+/* Style/size of price-column  */
+.mat-column-price {
+  flex: 0 0 15%;
+}
+/* Displays pointer cursor on row hover and changes background
+to visualize clickability  */
+.mat-row:hover {
+  cursor: pointer;
+  background-color: #dee1e5;
+}
+/* Style for "Last inn flere.. " button  */
+#loadMoreButton {
+  margin: 10px auto;
+  width: 100%;
+}
+/* Style for "Tilbake" button  */
+#backButton {
+  margin: 10px auto;
+  width: 100%;
+}
+/* Style for mat-card-title over the Table  */
 #regionTitle {
   text-align: center;
 }
-
+/* Style for mat-card-title over the Map  */
 #mapTitle {
   text-align: center;
 }

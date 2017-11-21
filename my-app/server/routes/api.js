@@ -91,13 +91,12 @@ router.post('/wines', (req, res) => {
   }, {
     Varetype: "Rødvin"
   }]
-  if (req.body.priceSort === 1 || req.body.priceSort === -1) {
-    sortName = 'Pris';
-    sortVariabel = req.body.priceSort;
-  } else if (req.body.letterSort === 1 || req.body.letterSort === -1) {
-    sortName = 'Varenavn';
-    sortVariabel = req.body.letterSort;
+
+  if (req.body.sortValue === 1 || req.body.sortValue === -1) {
+    sortName = req.body.sortKey;
+    sortVariabel = req.body.sortValue;
   }
+
 
   if (req.body.wineFilter.length > 0) {
     filterName = req.body.wineFilter;
@@ -113,6 +112,10 @@ router.post('/wines', (req, res) => {
       $or: req.body.countryFilter
     })
   }
+
+
+
+
 
   if (req.body.searchValue.length) {
     let search = {
@@ -148,6 +151,22 @@ router.post('/wines', (req, res) => {
   });
 });
 
+// returns all countries from database
+router.get('/distinctcountries', (req, res) => {
+  console.log("hello");
+  connection((db) => {
+    db.collection('wines')
+      .distinct("Land")
+      .then((users) => {
+        response.data = users;
+        res.json(response);
+      })
+      .catch((err) => {
+        sendError(err, res);
+      });
+  });
+});
+
 // Returns wine a user has marked as their favorite
 router.post('/getfavoritewines', (req, res) => {
   connection((db) => {
@@ -172,6 +191,51 @@ router.post('/getfavoritewines', (req, res) => {
       });
   });
 });
+
+// removes or adds a wine to favorite list for a user
+router.post('/updatefavoritewines', (req, res) => {
+  if (!req.body.remove) {
+    connection((db) => {
+      db.collection('favoritewines')
+        .update({
+          userID: req.body.username
+        }, {
+          $push: {
+            wineID: req.body.wine
+          }
+        }, {
+          upsert: true
+        })
+        .then((data) => {
+          response.data = data;
+          res.json(response);
+        })
+        .catch((err) => {
+          sendError(err, res);
+        });
+    });
+  } else {
+    connection((db) => {
+      db.collection('favoritewines')
+        .update({
+          userID: req.body.username
+        }, {
+          $pull: {
+            wineID: req.body.wine
+          }
+        })
+        .then((data) => {
+          response.data = data;
+          res.json(response);
+        })
+        .catch((err) => {
+          sendError(err, res);
+        });
+    });
+  }
+
+});
+
 
 // returns wine IDs for a users favorite wines
 router.get('/getfavoritewinesids', (req, res) => {
@@ -237,7 +301,7 @@ router.get('/getwineslog', (req, res) => {
           .sort({
             $natural: 1
           })
-          .limit(5)
+          .limit(3)
           .toArray()
           .then((wines) => {
             // makes sure the returned list matches the list of IDs.
@@ -264,6 +328,7 @@ router.get('/getwineslog', (req, res) => {
   });
 });
 
+
 // return reccomended wines based on liked wines
 router.post('/getrecommendedwine', (req, res) => {
   console.log("In post getrecommendedwine we get: ", req.body.wineContry, req.body.wineType)
@@ -288,8 +353,10 @@ router.post('/getrecommendedwine', (req, res) => {
   });
 });
 
+
 // When a wine item dialog is opened, this adds the specific item to the users log in the database
-router.post('/addtolog', loggedIn, (req, res) => {
+router.post('/addtolog', (req, res) => {
+  console.log("hqeqweqweqwe2")
   connection((db) => {
 
     db.collection('log')
@@ -324,49 +391,6 @@ router.post('/addtolog', loggedIn, (req, res) => {
   })
 });
 
-// removes or adds a wine to favorite list for a user
-router.post('/updatefavoritewines', (req, res) => {
-  if (!req.body.remove) {
-    connection((db) => {
-      db.collection('favoritewines')
-        .update({
-          userID: req.body.username
-        }, {
-          $push: {
-            wineID: req.body.wine
-          }
-        }, {
-          upsert: true
-        })
-        .then((data) => {
-          response.data = data;
-          res.json(response);
-        })
-        .catch((err) => {
-          sendError(err, res);
-        });
-    });
-  } else {
-    connection((db) => {
-      db.collection('favoritewines')
-        .update({
-          userID: req.body.username
-        }, {
-          $pull: {
-            wineID: req.body.wine
-          }
-        })
-        .then((data) => {
-          response.data = data;
-          res.json(response);
-        })
-        .catch((err) => {
-          sendError(err, res);
-        });
-    });
-  }
-
-});
 
 // returns login status
 router.get('/loginstatus', (req, res) => {
@@ -422,7 +446,11 @@ router.get('/me', (req, res) => {
   console.log('Getting logged in user')
   req.user ? res.json(req.user) : res.status(200).send()
 });
+
+/*Gets wines from the country that is passed with the req.body.mapFilterValue
+if there is one.  */
 router.post('/countries', (req, res) => {
+
   let filterName = null;
   let filterValue = null;
 
@@ -432,12 +460,13 @@ router.post('/countries', (req, res) => {
   }
 
 
+
   connection((db) => {
     db.collection('wines')
       .find({
         [filterName]: filterValue
       })
-      .limit(25)
+      .limit(req.body.limit)
       .toArray()
       .then((wines) => {
         response.data = wines;

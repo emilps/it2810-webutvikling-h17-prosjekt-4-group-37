@@ -23,7 +23,7 @@ export class ProfileService {
 	//Add wine to wine log.
 	addToLog(arg) {
 		console.log("This arg:", arg)
-		return this._http.post("/api/addtolog", arg)
+		this._http.post("/api/addtolog", arg).subscribe()
 	}
   //Gahters recommendation of wine.
 	async getRecom(filter: Filter) {

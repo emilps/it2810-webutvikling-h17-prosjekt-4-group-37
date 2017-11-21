@@ -19,13 +19,14 @@ export class WineSearchComponent implements OnInit {
 
   // Define a users property to hold our user data
   wines: Array<any>;
+  countries: Array<any>;
 
   newFilter: Filter = {
     wineFilter: [],
     countryFilter: [],
     wineFilterValue: "",
-    priceSort: 0,
-    letterSort: 0,
+    sortKey: "",
+    sortValue: 0,
     limit: 12,
     searchValue: "",
   };
@@ -41,6 +42,9 @@ export class WineSearchComponent implements OnInit {
     this._dataService.getWines(this.newFilter)
         .subscribe(res => this.wines = res);
 
+    this._dataService.getDistinctCountries()
+        .subscribe(res => this.countries = res);
+
   }
 
   openDialog(arg){
@@ -48,7 +52,8 @@ export class WineSearchComponent implements OnInit {
       //width: '600px',
       data: arg,
     })
-    dialogRef.afterClosed().subscribe(result => console.log(result))
+
+    dialogRef.afterClosed().subscribe()
 
   }
 
@@ -114,21 +119,12 @@ export class WineSearchComponent implements OnInit {
     }
   }
 
-  checkSelection(arg){
+  sortSelection(arg){
     if(arg.source._selected){
-      if(arg.source.value == "ASC"){
-        this.sortPriceASC()
-      }else if(arg.source.value == "DESC"){
-        this.sortPriceDESC()
-      }else if(arg.source.value == "LDESC"){
-        this.sortLetterDESC()
-      }else if(arg.source.value == "LASC"){
-        this.sortLetterASC()
-
-      }else{
-        this.noSort()
-      }
-      //console.log("This list: ",this.newFilter.wineFilter)
+      let key = JSON.parse(arg.source.value);
+      this.newFilter.sortKey = Object.keys(key)[0];
+      this.newFilter.sortValue = key[Object.keys(key)[0]];
+      this.sortAndFilter();
     }
 
   }
@@ -154,41 +150,11 @@ export class WineSearchComponent implements OnInit {
       }
   }
 
-  sortLetterASC() {
-    this.newFilter.priceSort = 0;
-    this.newFilter.letterSort = 1;
-    this.sortAndFilter();
-  }
-
-  sortPriceASC() {
-    this.newFilter.priceSort = 1;
-    this.newFilter.letterSort = 0;
-    this.sortAndFilter();
-  }
-
-  sortLetterDESC() {
-    this.newFilter.priceSort = 0;
-    this.newFilter.letterSort = -1;
-    this.sortAndFilter();
-  }
-
-  sortPriceDESC() {
-    this.newFilter.priceSort = -1;
-    this.newFilter.letterSort = 0;
-    this.sortAndFilter();
-  }
-
   sortAndFilter(){
     this._dataService.getWines(this.newFilter)
         .subscribe(res => this.wines = res);
     this._dataService.getWines(this.newFilter)
         .subscribe(res => this.numberOfWines = res.length);
-  }
-
-  noSort() {
-    this.newFilter.priceSort = 0;
-    this.newFilter.letterSort = 0;
-    this.sortAndFilter();
   }
 
   noFilter() {
@@ -198,13 +164,11 @@ export class WineSearchComponent implements OnInit {
   }
 
   increaseLimit(){
-    console.log("Before Wines: ", this.wines.length, " + ", "limit: ",this.newFilter.limit)
     var limitNumber: Number;
     limitNumber = 12;
 
     this.newFilter.limit =+ +limitNumber + +this.newFilter.limit;
     this.sortAndFilter();
-    console.log("After Wines: ", this.wines.length, " + ", "limit: ",this.newFilter.limit)
     this.numberOfWines = this.wines.length;
   }
 

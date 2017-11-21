@@ -175,6 +175,7 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
   }
 
   openDialog(): void {
+    this.thisDialogRef.close("Cancel")
     let dialogRef = this.dialog.open(LoginDialogComponent, {
       width: '500px',
       data: "Test tekst"
