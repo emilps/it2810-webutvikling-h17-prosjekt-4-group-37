@@ -119,6 +119,15 @@ Datasettet vi har valgt å ta i bruk er vinmonopolet.no sine røde og hvite vine
 ### Listebasert visning med Expansion Panel
 *Brukergrensensittet skal ha listebasert visning med få detaljer for hver enhet, og hvor målet er å vise brukeren hva som er i databasen eller hva som er resultatet av et søk. Brukeren skal ha mulighet til å se flere detaljer for hver enhet enten i et eget vindu, eller ved at listen enheten i lista har expand/collpase egenskap.*
 
+Brukeren vil kunne få opp en ekspandert visning av en vin uansett hvilken underside eller visning man er i. Trykk på en vin for å få opp ett Material Expansion Panel med `single-wine.component`. Her vil du finne mer utfyllende informasjon om vinen, og også muligheten til å lagre den som favoritt hvis du er logget inn.
+
+**Trykk på en vin i listen**
+![Select wine to show expanded window](https://i.imgur.com/7vbGJS8.png)
+
+**Se detaljer i utvidet visning**
+![Detailed wine window](https://i.imgur.com/Lhgrf2m.png)
+
+
 ### Listebasert sortering
 *Den listebaserte visningen skal kunne sorteres på minimum to forskjellge egenskaper. Eksempel: etter at brukeren har fått returnert en liste etter et søk skal brukeren kunne bytte mellom forskjellige sorteringer.*
 
