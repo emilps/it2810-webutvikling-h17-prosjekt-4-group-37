@@ -188,17 +188,41 @@ router.get('/getwineslog',(req, res) => {
     .toArray()
     .then((winesIds) => {
         listID = winesIds[0].wineID;
-        //console.log("This is an element of listId: ", listID[0]);
-        console.log("THIS IS A TEST FOR LOG DB!  A check of listID CONNECTED TO LOG DB: ", listID)
+        //console.log("Before reverse: ", listID)
+
+        listID.reverse();
+
+        listID = listID.filter(function(item, pos) {
+          return listID.indexOf(item) == pos;
+        })
+
+        console.log("After reverse: ", listID)
 
         db.collection('wines')
         .find({"Varenummer": {$in: listID}})
-        .sort({$natural: -1})
-        .limit(10)
+        .sort({$natural: 1})
+        .limit(5)
         .toArray()
         .then((wines) => {
-        //console.log("____&LOG&____: Wines: LOG", wines);
-        response.data = wines;
+        //console.log("Wines used", wines);
+        //sort wines
+        let returnList = []
+
+        console.log(listID.length, wines.length)
+        for ( i = 0; i < listID.length; i++) {
+          for ( j = 0; j < wines.length; j++)  {
+            console.log (listID[i],wines[j].Varenummer)
+            if (wines[j].Varenummer === listID[i]){
+              returnList.push(wines[j]);
+            }
+          }
+        }
+
+        console.log(returnList)
+
+
+        //response.data = wines;
+        response.data = returnList;
         res.json(response);
 
         })
@@ -233,6 +257,18 @@ router.post('/addtolog', (req, res) => {
   console.log("This is the name added to log: ", req.body.username);
   console.log("This is the wineID added to log: ", req.body.wine);
   connection((db) => {
+
+    db.collection('log')
+      .update(
+        {userID: req.body.username},
+        {$pull: {wineID: req.body.wine}})
+        .then(console.log("Removed to be added again"))
+        .catch((err) => {
+          sendError(err, res);
+          console.log(err)
+        });
+
+
     db.collection('log')
       .update(
         {userID: req.body.username},
@@ -287,7 +323,7 @@ router.get('/loginstatus', (req,res) =>{
     if (req.user) {
     response.data = true;
     } else {
-        response.data = false;
+    response.data = false;
     }
     res.json(response)
 })

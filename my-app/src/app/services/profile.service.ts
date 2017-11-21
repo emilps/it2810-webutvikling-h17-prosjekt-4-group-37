@@ -38,7 +38,9 @@ export class ProfileService {
     return this._http.post("/api/addtolog", arg)
       .map(result => {
         this.result = result.json().data
+
       });
+
   }
 
   async getRecom(filter: Filter){
