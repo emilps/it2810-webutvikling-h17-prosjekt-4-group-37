@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 // Filter imports
-import { Filter } from './../wine-search/filter';
+import { Filter } from './../model/wine-filter';
 
 @Injectable()
 export class DataService {

@@ -9,7 +9,7 @@ import { MatDialog } from '@angular/material';
 import { SingleWineComponent } from './../single-wine/single-wine.component';
 
 // Import Filter
-import { Filter } from './filter';
+import { Filter } from './../model/wine-filter';
 
 @Component({
   selector: 'app-wine-search',
