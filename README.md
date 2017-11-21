@@ -183,6 +183,8 @@ Vi har flere forskjellige "fancy" alternative visninger. Hovedsiden vår sin lis
 #### Vinsortering med trykk på kart
 Se beskrivelse av "[GeoChart](#geochart)" under "[Komponenter og rammeverk](#komponenter-og-rammeverk)". Den fancy visningen går ut på at du kan se alle land vi har viner fra i databasen markert med en tydelig farge på kartet. Når du holder musepekeren over ett land vil du få informasjon om antall viner som kommer fra den nasjonen. Om du trykker/velger ett land vil tabellen/lista laste inn og vise 25 viner fra det landet. Om du blar til bunnen av listen kan du laste inn 25 viner til ved å trykke på "Last inn flere.." (dette kan gjentas)
 
+![Image of map sorting](https://i.imgur.com/TIl4Vg5.png)
+
 #### Favorittviner i sektordiagram
 
 [//]: # "Øystein"
