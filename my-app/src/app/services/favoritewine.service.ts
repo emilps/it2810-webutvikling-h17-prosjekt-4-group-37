@@ -9,8 +9,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 import { Filter } from './../single-wine/winefilter';
-import { UserService} from '../services/users.service';
-import {UserName} from '../model/userName'
+import { UserService } from '../services/users.service';
+import { UserName } from '../model/userName'
 
 
 @Injectable()

@@ -7,7 +7,7 @@ import { FavoriteWineService } from './../services/favoritewine.service';
 import { Filter } from './winefilter';
 import { LoginDialogComponent } from './../login-dialog/login-dialog.component';
 import { ProfileService } from './../services/profile.service';
-import {MessageService} from './../services/message.service';
+import { MessageService } from './../services/message.service';
 
 @Component({
   selector: 'app-single-wine',

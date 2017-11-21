@@ -313,10 +313,8 @@ router.get('/getwineslog', (req, res) => {
                 }
               }
             }
-
             response.data = returnList;
             res.json(response);
-
           })
           .catch((err) => {
             sendError(err, res);
@@ -356,9 +354,9 @@ router.post('/getrecommendedwine', (req, res) => {
 
 // When a wine item dialog is opened, this adds the specific item to the users log in the database
 router.post('/addtolog', (req, res) => {
-  console.log("hqeqweqweqwe2")
   connection((db) => {
 
+    // first removes item from database
     db.collection('log')
       .update({
         userID: req.body.username
@@ -367,12 +365,12 @@ router.post('/addtolog', (req, res) => {
           wineID: req.body.wine
         }
       })
-      .then(console.log("Removed to be added again"))
       .catch((err) => {
         sendError(err, res);
         console.log(err)
       });
 
+    // adds it again for it to be at the right position
     db.collection('log')
       .update({
         userID: req.body.username
@@ -383,7 +381,6 @@ router.post('/addtolog', (req, res) => {
       }, {
         upsert: true
       })
-      .then(console.log("Added to log"))
       .catch((err) => {
         sendError(err, res);
         console.log(err)
@@ -404,7 +401,6 @@ router.get('/loginstatus', (req, res) => {
 
 // logs out use
 router.get('/logout', function(req, res) {
-  console.log("wowow: ");
   req.logout();
   res.redirect('/');
 });
