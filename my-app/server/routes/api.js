@@ -33,7 +33,6 @@ let response = {
 //Gives access only to users logged in
 global.loggedIn = (req, res, next) => {
     if (req.user) {
-        console.log('User is logged in')
         next()
     } else {
         console.log('Protected route access attempted by a not logged in user')
@@ -58,7 +57,6 @@ router.get('/users', (req, res) => {
 });
 
 router.get('/wines', (req, res) => {
-  console.log("hello");
     connection((db) => {
         db.collection('wines')
             .find()
@@ -84,7 +82,6 @@ router.post('/wines', (req, res) => {
     let filterVariable = null;
 
     var liste = [ { Varetype: "Hvitvin" },{ Varetype: "Rødvin" } ]
-    console.log(liste)
     if (req.body.priceSort === 1 || req.body.priceSort === -1 ){
       sortName = 'Pris';
       sortVariabel = req.body.priceSort;
@@ -105,9 +102,7 @@ router.post('/wines', (req, res) => {
     }
 
     if(req.body.searchValue.length){
-      console.log(req.body.searchValue)
       let search = { $search: ('\"' + req.body.searchValue + '\"') }
-      console.log(search);
       newList.unshift({ $text: search })
       if (req.body.letterSort === 0 && req.body.priceSort === 0) {
         sortName = 'Varenavn';
@@ -115,7 +110,6 @@ router.post('/wines', (req, res) => {
       }
     }
 
-    console.log(newList)
 
 
 
@@ -200,10 +194,10 @@ router.get('/getwineslog',(req, res) => {
         db.collection('wines')
         .find({"Varenummer": {$in: listID}})
         .sort({$natural: -1})
-        .limit(3)
+        .limit(10)
         .toArray()
         .then((wines) => {
-        console.log("____&LOG&____: Wines: LOG", wines);
+        //console.log("____&LOG&____: Wines: LOG", wines);
         response.data = wines;
         res.json(response);
 

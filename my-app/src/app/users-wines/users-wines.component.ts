@@ -31,6 +31,19 @@ export class UsersWinesComponent implements OnInit, OnDestroy {
 
       this.subscription = this.messageService.receiveID().subscribe(message => {
         // message is ID: remove that list
+
+
+        let newWines = this.wines.filter(function(item) {
+        //console.log(item.varenummer,message.text)
+
+          return item.Varenummer !== message.text
+        })
+
+        /*for (let i= 0; i > this.wines.length; i++){
+           if (this.wines[i].varenummer ==)
+        }*/
+
+        this.wines = newWines
       });
     }
 
@@ -59,12 +72,10 @@ export class UsersWinesComponent implements OnInit, OnDestroy {
   }
 
   openDialog(arg){
-    console.log(arg)
     let dialogRef = this.dialog.open(SingleWineComponent, {
       //width: '600px',
       data: arg,
     })
     dialogRef.afterClosed().subscribe(result => console.log(result))
-
   }
 }

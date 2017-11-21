@@ -1,9 +1,9 @@
 <div class="container">
   <mat-form-field class="searchField">
-    <input type="text" matInput class="form-control" placeholder="Brukernavn" [(ngModel)]="this.newUser.name">
+    <input type="text" (keyup.enter)="insertNewUser()" matInput class="form-control" placeholder="Brukernavn" [(ngModel)]="this.newUser.name">
   </mat-form-field>
   <mat-form-field class="searchField">
-    <input type="password" matInput class="form-control" placeholder="Passord" [(ngModel)]="this.newUser.password">
+    <input type="password" (keyup.enter)="insertNewUser()" matInput class="form-control" placeholder="Passord" [(ngModel)]="this.newUser.password">
   </mat-form-field>
   <div *ngIf="wrongCheck" class="errorMessage">Brukernavn allerede i bruk.</div>
   <div *ngIf="wrongName" class="errorMessage">Alle felter må være fylt inn.</div>
