@@ -20,7 +20,7 @@ export class MapComponent implements OnInit {
   wines: Array<any>;
   //Tooltip position
   public position = 'above';
-
+  numberOfWines = 25;
   //The new MapFilter instance to be used and changed for DB calls
   newMapFilter: MapFilter = {
     mapFilterValue: "",
@@ -44,6 +44,7 @@ export class MapComponent implements OnInit {
   the new wines */
   loadArray(res){
     data = res;
+    this.numberOfWines = res.length;
     this.dataSource = new WineDataSource();
   }
 
@@ -57,6 +58,7 @@ export class MapComponent implements OnInit {
       this.mapWineService.getCountries(this.newMapFilter)
       .subscribe(res => this.loadArray(res));
     }
+    this.newMapFilter.limit = 25;
   }
   //Opens a dialog with more info on the wine clicked in the Table
   onWineClick(wine){

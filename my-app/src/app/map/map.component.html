@@ -23,6 +23,6 @@
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;" matTooltip="Trykk for mer info" matTooltip="Trykk for mer info" [matTooltipPosition]="position"></mat-row>
       </mat-table>
-      <button mat-raised-button color="accent" id="loadMoreButton" (click)="increaseLimit()">Last inn flere..</button>
+      <button *ngIf="numberOfWines >= newMapFilter.limit" mat-raised-button color="accent" id="loadMoreButton" (click)="increaseLimit()">Last inn flere..</button>
     </mat-card>
 </div>
