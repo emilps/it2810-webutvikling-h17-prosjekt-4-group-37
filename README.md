@@ -10,6 +10,7 @@ Dette er vårt repository for IT2810 Webtvikling prosjekt 4. Vi skal bruke Angul
 * [Prosjektplan](#prosjektplan)
 * [Komponenter og rammeverk](#komponenter-og-rammeverk)
 * [Prosjektkrav](#prosjektkrav)
+* [Andre ikke krevde funksjonaliteter](#andre-ikke-krevde-funksjonaliteter)
 
 
 ## Kom i gang
@@ -207,7 +208,7 @@ Om du trykker på en vin i hvilken som helst meny vil du se en **fancy animasjon
 
 Om du har lest helt til hit i [README.md](README.md) filen så har du sett at prosjektet er rimelig godt dokumenter på github i hvertfall. Koden er også blitt kommentert for å forklare de ulike delene og funksjonalitetene.
 
-## Andre ikke-krevde funksjonaliteter
+## Andre ikke krevde funksjonaliteter
 Sikker brukerhåndtering med salting og hashing
 
 [//]: # "Henrik"
