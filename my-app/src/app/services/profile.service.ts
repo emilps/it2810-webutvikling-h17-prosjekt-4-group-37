@@ -4,8 +4,8 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { UserService } from '../services/users.service';
 import { User } from '../model/user';
-import { UserName } from '../model/userName'
-import { Filter } from './../profile/filter'
+import { UserName } from '../model/userName';
+import { Filter } from './../model/profile';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
