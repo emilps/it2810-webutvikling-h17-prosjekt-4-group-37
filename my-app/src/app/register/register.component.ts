@@ -15,10 +15,12 @@ export class RegisterComponent implements OnInit {
   state = false;
   wrongCheck= false;
   wrongName=false;
+  diffPassword=false;
   newUser: User= {
     name:"",
-    password:""
+    password:"",
   };
+  repeatPassword=""
 
   constructor(
     private userService: UserService,
@@ -34,11 +36,18 @@ export class RegisterComponent implements OnInit {
   async insertNewUser() {
     if(this.newUser.name == "" || this.newUser.password == ""){
       this.wrongName = true;
-    }else{
+      this.diffPassword = false;
+      this.wrongCheck = false;
+    } else if (this.newUser.password !== this.repeatPassword){
+      this.diffPassword = true;
+      this.wrongCheck = false;
+      this.wrongName = false;
+    } else{
     this.state = await this.userService.insertNewUserAsync(this.newUser);
     if(!this.state){
       this.wrongName= false;
       this.wrongCheck = true;
+      this.diffPassword = false;
     }else{
       this.snackBar.open(this.newUser.name + ' er registrert. Du kan nå logge inn.', ' ', {
         duration: 3000

@@ -4,3 +4,14 @@
 .container{
   padding: 10px;
 }
+
+.inputs {
+	display:flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.passwords {
+	display: flex;
+	flex-direction: column;
+}
