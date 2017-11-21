@@ -4,18 +4,17 @@ const User = require('../model/user')
 
 module.exports = function(passport) {
 
+
   ////////////////////////////////////////////////////////////
-  // PASSPORT SESSION SETUP
-  // required in order to keep persistent sessions
-  // Passport also needs ability to serialize and deserialize users from session
+  // SESSIONS
   ////////////////////////////////////////////////////////////
 
-  // used to serialize the user for the session
+  // Serialize
   passport.serializeUser(function(user, done) {
     done(null, user._id)
   })
 
-  // used to deserialize the user
+  // Deserialize
   passport.deserializeUser(function(id, done) {
     User.findById(id, function(err, user) {
       done(err, user)
@@ -23,9 +22,7 @@ module.exports = function(passport) {
   })
 
   ////////////////////////////////////////////////////////////
-  // LOCAL SIGNUP
-  // we are using named strategies since we have one for login and one for signup
-  // by default, if there was no name, it would just be called 'local'
+  // REGISTERING
   ////////////////////////////////////////////////////////////
 
   passport.use('local-signup', new LocalStrategy({
@@ -34,8 +31,6 @@ module.exports = function(passport) {
       passReqToCallback: true
     },
     function(req, name, password, done) {
-      // find a user whose username is the same as the forms username
-      // we are checking to see if the user trying to login already exists
       User.findOne({
         'name': name
       }, function(err, user) {
@@ -71,7 +66,7 @@ module.exports = function(passport) {
     }))
 
   ////////////////////////////////////////////////////////////
-  // LOCAL LOGIN
+  // LOGIN
   ////////////////////////////////////////////////////////////
 
   passport.use('local-login', new LocalStrategy({
@@ -81,7 +76,7 @@ module.exports = function(passport) {
       passReqToCallback: true
     },
     function(req, name, password, done) {
-      // find a user whose email is the same as the forms email
+      // find a user whose username is the same as the forms email
       // we are checking to see if the user trying to login already exists
       User.findOne({
         'name': name

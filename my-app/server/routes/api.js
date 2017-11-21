@@ -58,6 +58,7 @@ router.get('/users', (req, res) => {
   });
 });
 
+//return wines
 router.get('/wines', (req, res) => {
   connection((db) => {
     db.collection('wines')
@@ -74,9 +75,11 @@ router.get('/wines', (req, res) => {
   });
 });
 
+// Search for wines
 router.post('/wines', (req, res) => {
   //console.log(req.body.searchValue);
 
+  // setup variables for filtering and sorting
   let sortName = '$natural';
   let sortVariabel = 1;
 
@@ -124,9 +127,7 @@ router.post('/wines', (req, res) => {
     }
   }
 
-
-
-
+  // connects to the database and makes a search based on the filters
   connection((db) => {
     db.collection('wines')
       .find({
@@ -147,9 +148,8 @@ router.post('/wines', (req, res) => {
   });
 });
 
+// Returns wine a user has marked as their favorite
 router.post('/getfavoritewines', (req, res) => {
-  console.log("------TEST------", req.body.username);
-  console.log("------TEST------This Is running", req.body.wine);
   connection((db) => {
     db.collection('favoritewines')
       .find({
@@ -173,8 +173,10 @@ router.post('/getfavoritewines', (req, res) => {
   });
 });
 
+// returns wine IDs for a users favorite wines
 router.get('/getfavoritewinesids', (req, res) => {
   var listID = [];
+
   connection((db) => {
     db.collection('favoritewines')
       .find({
@@ -184,8 +186,6 @@ router.get('/getfavoritewinesids', (req, res) => {
       .then((winesIds) => {
         console.log(winesIds);
         listID = winesIds[0].wineID;
-
-        //console.log("This is an element of listId: ", listID[0]);
 
         db.collection('wines')
           .find({
@@ -212,7 +212,6 @@ router.get('/getfavoritewinesids', (req, res) => {
 });
 
 router.get('/getwineslog', (req, res) => {
-  console.log(", LOG IS WORKING FIRST");
   var listID = [];
   connection((db) => {
     db.collection('log')
@@ -222,15 +221,12 @@ router.get('/getwineslog', (req, res) => {
       .toArray()
       .then((winesIds) => {
         listID = winesIds[0].wineID;
-        //console.log("Before reverse: ", listID)
 
+        // List has to be reversed and duplicates removed in order for it to work
         listID.reverse();
-
         listID = listID.filter(function(item, pos) {
           return listID.indexOf(item) == pos;
         })
-
-        console.log("After reverse: ", listID)
 
         db.collection('wines')
           .find({
@@ -244,24 +240,16 @@ router.get('/getwineslog', (req, res) => {
           .limit(5)
           .toArray()
           .then((wines) => {
-            //console.log("Wines used", wines);
-            //sort wines
+            // makes sure the returned list matches the list of IDs.
             let returnList = []
-
-            console.log(listID.length, wines.length)
             for (i = 0; i < listID.length; i++) {
               for (j = 0; j < wines.length; j++) {
-                console.log(listID[i], wines[j].Varenummer)
                 if (wines[j].Varenummer === listID[i]) {
                   returnList.push(wines[j]);
                 }
               }
             }
 
-            console.log(returnList)
-
-
-            //response.data = wines;
             response.data = returnList;
             res.json(response);
 
@@ -276,6 +264,7 @@ router.get('/getwineslog', (req, res) => {
   });
 });
 
+// return reccomended wines based on liked wines
 router.post('/getrecommendedwine', (req, res) => {
   console.log("In post getrecommendedwine we get: ", req.body.wineContry, req.body.wineType)
   connection((db) => {
@@ -299,9 +288,8 @@ router.post('/getrecommendedwine', (req, res) => {
   });
 });
 
+// When a wine item dialog is opened, this adds the specific item to the users log in the database
 router.post('/addtolog', loggedIn, (req, res) => {
-  console.log("This is the name added to log: ", req.body.username);
-  console.log("This is the wineID added to log: ", req.body.wine);
   connection((db) => {
 
     db.collection('log')
@@ -318,7 +306,6 @@ router.post('/addtolog', loggedIn, (req, res) => {
         console.log(err)
       });
 
-    console.log("THis is running_________Awaited")
     db.collection('log')
       .update({
         userID: req.body.username
@@ -337,10 +324,8 @@ router.post('/addtolog', loggedIn, (req, res) => {
   })
 });
 
-
+// removes or adds a wine to favorite list for a user
 router.post('/updatefavoritewines', (req, res) => {
-  console.log("------TEST------", req.body.username);
-  console.log("------TEST------", req.body.remove);
   if (!req.body.remove) {
     connection((db) => {
       db.collection('favoritewines')
@@ -383,6 +368,7 @@ router.post('/updatefavoritewines', (req, res) => {
 
 });
 
+// returns login status
 router.get('/loginstatus', (req, res) => {
   if (req.user) {
     response.data = true;
@@ -392,6 +378,7 @@ router.get('/loginstatus', (req, res) => {
   res.json(response)
 })
 
+// logs out use
 router.get('/logout', function(req, res) {
   console.log("wowow: ");
   req.logout();
