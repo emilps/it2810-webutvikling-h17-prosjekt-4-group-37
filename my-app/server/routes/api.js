@@ -301,7 +301,6 @@ router.get('/getwineslog', (req, res) => {
           .sort({
             $natural: 1
           })
-          .limit(3)
           .toArray()
           .then((wines) => {
             // makes sure the returned list matches the list of IDs.
@@ -311,6 +310,12 @@ router.get('/getwineslog', (req, res) => {
                 if (wines[j].Varenummer === listID[i]) {
                   returnList.push(wines[j]);
                 }
+                if (returnList.length === 3) {
+                  break;
+                }
+              }
+              if (returnList.length === 3) {
+                break;
               }
             }
             response.data = returnList;
