@@ -7,8 +7,7 @@
   </mat-card-content>
   <mat-card-content *ngIf="searchVisible">
     <p>
-      <span class="searchBold">Viser søk etter: </span>
-      {{newFilter.searchValue}}
+      <span class="searchBold">Viser søk etter: </span> {{newFilter.searchValue}}
     </p>
   </mat-card-content>
 </mat-card>
@@ -29,10 +28,10 @@
           <mat-option value='{"Pris":1}' (onSelectionChange)="sortSelection($event)">
             Lav -> Høy
           </mat-option>
-          <mat-option  value='{"Pris":-1}' (onSelectionChange)="sortSelection($event)">
+          <mat-option value='{"Pris":-1}' (onSelectionChange)="sortSelection($event)">
             Høy -> Lav
           </mat-option>
-          <mat-option  value='{"Pris":0}'(onSelectionChange)="sortSelection($event)">
+          <mat-option value='{"Pris":0}' (onSelectionChange)="sortSelection($event)">
             Ingen Sortering
           </mat-option>
         </mat-select>
@@ -44,10 +43,10 @@
           <mat-option value='{"Varenavn":1}' (onSelectionChange)="sortSelection($event)">
             A -> Å
           </mat-option>
-          <mat-option  value='{"Varenavn":-1}' (onSelectionChange)="sortSelection($event)">
+          <mat-option value='{"Varenavn":-1}' (onSelectionChange)="sortSelection($event)">
             Å -> A
           </mat-option>
-          <mat-option  value='{"Varenavn":0}' (onSelectionChange)="sortSelection($event)">
+          <mat-option value='{"Varenavn":0}' (onSelectionChange)="sortSelection($event)">
             Ingen Sortering
           </mat-option>
         </mat-select>
@@ -59,10 +58,10 @@
           <mat-option value='{"Alkohol":1}' (onSelectionChange)="sortSelection($event)">
             Lav -> Høy
           </mat-option>
-          <mat-option  value='{"Alkohol":-1}' (onSelectionChange)="sortSelection($event)">
+          <mat-option value='{"Alkohol":-1}' (onSelectionChange)="sortSelection($event)">
             Høy -> Lav
           </mat-option>
-          <mat-option  value='{"Alkohol":0}' (onSelectionChange)="sortSelection($event)">
+          <mat-option value='{"Alkohol":0}' (onSelectionChange)="sortSelection($event)">
             Ingen Sortering
           </mat-option>
         </mat-select>
@@ -90,13 +89,8 @@
     <mat-card class="buttonContainer">
       <mat-card-content class="countryFilter">
         <mat-card-title>Land</mat-card-title>
-        <mat-checkbox
-          class="checkbox-margin"
-          ng-model="hvit"
-          value='{"Land":"{{country}}"}'
-          *ngFor="let country of countries"
-          (change)="checkbox($event)">
-            {{country}}
+        <mat-checkbox class="checkbox-margin" ng-model="hvit" value='{"Land":"{{country}}"}' *ngFor="let country of countries" (change)="checkbox($event)">
+          {{country}}
         </mat-checkbox>
       </mat-card-content>
     </mat-card>
@@ -111,7 +105,7 @@
   <mat-card class="wineDiv" (click)="openDialog(wine)" *ngFor="let wine of wines">
     <div class="wineDivInside">
       <h3>{{ wine.Varenavn }}</h3>
-        <img src="{{ wine.Vareurl }}" />
+      <img src="{{ wine.Vareurl }}" />
     </div>
     <hr>
     <div class="winePrice">
@@ -124,5 +118,5 @@
 </div>
 
 <div class="buttonContainer">
- <button *ngIf="numberOfWines >= newFilter.limit" mat-raised-button color="accent" (click)="increaseLimit()">Last inn flere..</button>
+  <button *ngIf="numberOfWines >= newFilter.limit" mat-raised-button color="accent" (click)="increaseLimit()">Last inn flere..</button>
 </div>
