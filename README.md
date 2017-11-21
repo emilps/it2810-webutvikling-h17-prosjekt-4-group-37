@@ -141,21 +141,27 @@ Vinene våre kan sorteres etter:
 * Å til A
 
 ### Listebasert filtrering
-*Den listebaserte visningen skal kunne filtreres på minimum to forskjellge egenskaper. Eksempel: etter at brukeren har fått returnert en liste etter et søk skal brukeren kunne krysse av på en egenskap for å få begrenset antallet enheter i resultatsettet til kun de som har denne egenskapen.*
+*Den listebaserte visningen skal kunne filtreres på minimum to forskjellige egenskaper. Eksempel: etter at brukeren har fått returnert en liste etter et søk skal brukeren kunne krysse av på en egenskap for å få begrenset antallet enheter i resultatsettet til kun de som har denne egenskapen.*
 
-Vinene våre kan i hovedlisten sorteres etter:  
+Vinene våre kan i hovedlisten filtreres etter:  
 **Vintype**
 * Rødvin
 * Hvitvin
 
 **Land**  
-Frankrike, Italia, Portugal, Spania, Tyskland, Chile, USA, Australia, Sør-Afrika, Østerrike, Ungarn, Argentina, New Zealand, Moldova, Hellas, Georgia, Libanon, Brasil, Makedonia, Slovenia, Marokko, Mexico, Bulgaria, Canada, Romania, Tsjekkia
+Frankrike, Italia, Portugal, Spania, Tyskland, Chile, USA, Australia, Sør-Afrika, Østerrike, Ungarn, Argentina, New Zealand, Moldova, Hellas, Georgia, Libanon, Brasil, Makedonia, Slovenia, Marokko, Mexico, Bulgaria, Canada, Romania, Tsjekkia og "Øvrige"
 
 ---
-Vinene kan også sorteres etter land med kartet som beskrevet under "[Fancy alternativ visning](#fancy-alternativ-visning)" i "[Vinsortering med trykk på kart](#vinsortering-med-trykk-på-kart)". Utfyllende beskrivelse finnes også i seksjonen "[GeoChart](#geochart)" under "[Komponenter og rammeverk](#komponenter-og-rammeverk)"
+Vinene kan også filtreres etter land med kartet som beskrevet under "[Fancy alternativ visning](#fancy-alternativ-visning)" i "[Vinsortering med trykk på kart](#vinsortering-med-trykk-på-kart)". Utfyllende beskrivelse finnes også i seksjonen "[GeoChart](#geochart)" under "[Komponenter og rammeverk](#komponenter-og-rammeverk)"
 
 ### Listebasert dynamisk lasting av data
 *Den listebaserte visningen skal ha dynamisk lasting av data. Eksempel: etter et søk vises de 10 første treffene, men flere lastes når brukeren scroller eller ved blaing i sider.*
+
+På både hovedsiden/listen og siden med kartfiltrering vil det vises ett begrenset utvalg viner. Hvis søket eller filtreringen din fyller den opprinnelige sideplassen med viner vil det dukke opp en knapp som lar brukeren laste inn flere.
+
+**På hovedsiden**
+
+**På kartfiltreringssiden**
 
 ### Min side funksjonalitet
 *Webapplikasjonen skal ha "min side" funksjonalitet som i praksis betyr at en bruker skal kunne logge seg på og at det blir registrert noe fra brukerens søkeaktiviteten f.eks. hva brukeren har sett på tidligere eller søkene som brukeren har brukt.*
