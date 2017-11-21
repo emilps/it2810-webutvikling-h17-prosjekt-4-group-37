@@ -9,9 +9,19 @@ let Schema = mongoose.Schema
 
 // define the schema for our user model
 let User = new Schema({
-  name: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  date: { type: Date, default: Date.now }
+  name: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  date: {
+    type: Date,
+    default: Date.now
+  }
 })
 
 // generating a hash
