@@ -223,7 +223,16 @@ Om du trykker på en vin i hvilken som helst meny vil du se en **fancy animasjon
 ### Testet kode
 *Kode skal være testet og funksjonaliteten skal være godt utprøvd og feilfri.*
 
+Vi har selv testet koden under utvikling. Både vår egen og hverandres. Parprogrammering er en arbeidsmetode vi drar nytte av både for å løse problemer og se feil tidlig. Mot slutten av prosjektet har vi delt linken med venner for å få innspill og informasjon om potensielle bugs. Samtidig har vi stress-testet så godt vi klarte. I tillegg har vi hatt en liten mini-brukertest med to frivillige, en med relevant bakgrunn, og en uten.
+
+Det er vanskelig å lage tester når man koder i ett helt nytt språk, og vi har i tillegg ett utrolig stort prosjekt. Vi har allikevel prøvd oss på litt forskjellig testing og er fornøyde med hva vi har fått til på en så stor, ny og litt avansert kodebase.
+
 #### Enhets/component tester
+
+Testrammeverkene "Karma" og "Jasmine" følger med Angular CLI. Vi har laget tester som sjekker at alle moduler, komponenter services, dependencies osv lastes inn korrekt til hver komponent og service som bruker de. Samt om komponenten eller servicen så kan bygges/"creates". Dette er utrolig nyttig for oss og tester noe av det viktigste, da vi tar i bruk veldig mange Angular Material moduler og egenlagde "Services".
+
+**Test av alle komponenter og services**
+![karma unit test image](https://i.imgur.com/W3nmNAi.png)
 
 #### Continous Integration
 Siden dag en av prosjektet, før vi begynte å bygge applikasjonen vår, la vi til TravisCI på github repoet vårt. Med riktig konfigurasjon har Travis satt opp og bygget koden vår på en virtuell maskin. Dette har skjedd ved hver eneste push og pull request. På den måten har vi "testet" at prosjektet/applikasjonen er byggbar og klar til produksjon før vi har merget med master.
