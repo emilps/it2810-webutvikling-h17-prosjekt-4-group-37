@@ -142,4 +142,11 @@ describe('NavbarComponent', () => {
     let el = de.nativeElement;
     expect(el.textContent).toContain('Logg inn');
   });
+  it('should create change loginbutton to profilebutton', () => {
+    component.loggedInOptions = true;
+    fixture.detectChanges();
+    let de = fixture.debugElement.query(By.css('.profilebutton'));
+    let el = de.nativeElement;
+    expect(el.textContent).toContain('Profil');
+  });
 });

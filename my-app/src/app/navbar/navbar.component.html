@@ -2,7 +2,7 @@
     <span class="logo" routerLink="/">Et Glass</span>
     <span class="spacer"></span>
     <button class="mapbutton" mat-button routerLink="/map"><mat-icon>map</mat-icon>Vinkart</button>
-    <div *ngIf="loggedInOptions; else loginButton"> <button mat-button [matMenuTriggerFor]="appMenu"><mat-icon>account_box</mat-icon> Profil</button></div>
+    <div *ngIf="loggedInOptions; else loginButton"> <button class="profilebutton" mat-button [matMenuTriggerFor]="appMenu"><mat-icon>account_box</mat-icon> Profil</button></div>
     <ng-template #loginButton><button class="loginbutton" color="basic" mat-button (click)="openDialog()">Logg inn <mat-icon>lock_open</mat-icon></button></ng-template>
 </mat-toolbar>
 
