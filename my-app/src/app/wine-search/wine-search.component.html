@@ -3,7 +3,7 @@
     <mat-form-field class="searchField">
       <input #search (keyup.enter)="onEnter(search.value)" (keyup)="updateSearch(search.value)" matInput placeholder="Søk etter vin">
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="onEnter(search.value)">Søk</button>
+    <button class="searchbutton" mat-raised-button color="primary" (click)="onEnter(search.value)">Søk</button>
   </mat-card-content>
   <mat-card-content *ngIf="searchVisible">
     <p>
