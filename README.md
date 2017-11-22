@@ -19,7 +19,7 @@ Om du kun ønsker å se og teste funksjonalitet på siden vår, følg disse enkl
 2. Besøk [IT2810 Grupppe 37 - Prosjekt 4](http://it2810-37.idi.ntnu.no:8084/)
 
 ## Kjør prosjektet på egen maskin
-Prosjektet kan lastes ned og kjøres lokalt:
+**Prosjektet kan lastes ned og kjøres lokalt:**
 
 *(Må være på NTNU nettverk og ha `npm` installert)*
 
@@ -30,7 +30,9 @@ Prosjektet kan lastes ned og kjøres lokalt:
 5. Åpne ny terminal/kommandovindu på samme lokasjon. Start server: `npm run server`
 6. Naviger til `localhost:4200` i nettleseren din
 
-[//]: # "Eventuel beskrivelse av hvordan man kan kjøre tester"
+**Kjøre testene**
+ 1. Følg trinnene over til og med punkt 3.
+ 2. `npm test`
 
 ## Prosjektplan
 En underoppgave til prosjekt 4 var å lage en plan for prosjektet. Vår plan og svar til oppgaven `4.1: Evaluering av arkitektur` finnes i [PROJECTPLAN.md](PROJECTPLAN.md)
@@ -221,7 +223,7 @@ Det er vanskelig å lage tester når man koder i ett helt nytt språk, og vi har
 
 Testrammeverkene "Karma" og "Jasmine" følger med Angular CLI. Vi har laget tester som sjekker at alle moduler, komponenter, services, dependencies osv lastes inn korrekt til hver komponent og service som bruker de. Samt om komponenten eller servicen så kan bygges/"creates". Dette er utrolig nyttig for oss og tester noe av det viktigste, da vi tar i bruk veldig mange Angular Material moduler og egenlagde "Services".
 
-**Test av alle komponenter og services**
+**Test av alle komponenter og services**  
 ![karma unit test image](https://i.imgur.com/W3nmNAi.png)
 
 #### Continous Integration
