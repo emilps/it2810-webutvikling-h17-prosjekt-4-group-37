@@ -15,7 +15,6 @@ import { MatDialog } from '@angular/material';
 	styleUrls: ['./log.component.css']
 })
 export class LogComponent implements OnInit {
-
   //State based on if there are wines in the log
 	showLog = true;
   //List of wines from log.
@@ -35,9 +34,8 @@ export class LogComponent implements OnInit {
 	ngOnInit() {
 		this.gatherWinesLog();
 	}
-
-  // gathers wines based on log.
-  //If list is not empty changes showLog state.
+  /* Gathers wines based on log.
+  	If list is not empty changes showLog state. */
 	async gatherWinesLog() {
 		this.wines = await this.profileService.getWinesLog()
 		if (this.wines.length) {
@@ -48,7 +46,6 @@ export class LogComponent implements OnInit {
 	openDialog(arg) {
 		console.log(arg)
 		let dialogRef = this.dialog.open(SingleWineComponent, {
-			//width: '600px',
 			data: arg,
 		})
 		dialogRef.afterClosed().subscribe(result => console.log(result))

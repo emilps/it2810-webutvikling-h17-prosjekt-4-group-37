@@ -1,12 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+//Import our SinglewWineComponent
+import { SingleWineComponent } from './../single-wine/single-wine.component';
+//Import our Services
 import { FavoriteWineService } from './../services/favoritewine.service';
 import { UserService } from './../services/users.service';
-import { SingleWineComponent } from './../single-wine/single-wine.component';
-import { MatDialog } from '@angular/material';
-import { Subscription } from 'rxjs/Subscription';
 import { MessageService } from './../services/message.service';
-
-
+//Import Angular Material Dialog
+import { MatDialog } from '@angular/material';
+//Import subscription to listen to service
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-users-wines',
@@ -14,49 +16,30 @@ import { MessageService } from './../services/message.service';
   styleUrls: ['./users-wines.component.css']
 })
 export class UsersWinesComponent implements OnInit, OnDestroy {
-
   private subscription: Subscription;
-
   username = "";
-  hasWines= false;
+  hasWines = false;
   wines: any;
   constructor(
     private favoriteWineService: FavoriteWineService,
     public userService: UserService,
     public dialog: MatDialog,
     private messageService: MessageService,
-
-
   ) {
-
+      //Removes duplicates to ensure only unique wines
       this.subscription = this.messageService.receiveID().subscribe(message => {
-        // message is ID: remove that list
+
         this.gatherWines();
         console.log(this.wines)
 
-
-        /*let newWines = this.wines.filter(function(item) {
-        //console.log(item.varenummer,message.text)
-
-          return item.Varenummer !== message.text
-        })
-
-
-
-        this.wines = newWines*/
       });
     }
-    //Fetches user runs gathersWines
+  //Fetches user runs gathersWines
   async ngOnInit() {
-    //this.userService.fetchUserAsync().then(data => this.username = data.name);
     this.userService.fetchUserAsync()
     this.username = this.userService.user.name;
     await this.gatherWines();
-
-    //console.log("This was called: ", this.wines)
-
   }
-
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
@@ -73,10 +56,9 @@ export class UsersWinesComponent implements OnInit, OnDestroy {
 
     })
   }
-  //opens wine dialog
+  //Opens SinleWine dialog with Material Expansion Panel
   openDialog(arg){
     let dialogRef = this.dialog.open(SingleWineComponent, {
-      //width: '600px',
       data: arg,
     })
     dialogRef.afterClosed().subscribe()
