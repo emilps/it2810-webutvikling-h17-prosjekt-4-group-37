@@ -223,13 +223,25 @@ Om du trykker på en vin i hvilken som helst meny vil du se en **fancy animasjon
 ### Testet kode
 *Kode skal være testet og funksjonaliteten skal være godt utprøvd og feilfri.*
 
+#### Enhets/component tester
+
+#### Continous Integration
+Siden dag en av prosjektet, før vi begynte å bygge applikasjonen vår, la vi til TravisCI på github repoet vårt. Med riktig konfigurasjon har Travis satt opp og bygget koden vår på en virtuell maskin. Dette har skjedd ved hver eneste push og pull request. På den måten har vi "testet" at prosjektet/applikasjonen er byggbar og klar til produksjon før vi har merget med master.
+
+Dette hjelper oss også å være sikker på riktig pakking og håndtering av moduler og tillegg. Ofte kan det hende at ett prosjekt fungerer lokalt hos deg selv, men noe så simpelt som å glemme `--save` på slutten av installsjonskommandoen kan gjøre at andre brukere ikke har en fungerende side. Travis CI sjekker dette for oss, og gir oss beskjed rett i github før en eventuell merge til masterbranchen.
+
+
+
 ### Godt dokumentert
 *Prosjektet skal være godt dokumentert, slik at det er lett å sette seg inn i for andre.*
 
 Om du har lest helt til hit i [README.md](README.md) filen så har du sett at prosjektet er rimelig godt dokumenter på github i hvertfall. Koden er også blitt kommentert for å forklare de ulike delene og funksjonalitetene.
 
 ## Andre ikke krevde funksjonaliteter
-**Sikker brukerhåndtering med salting og hashing**
+Vi har brukt utrolig mange timer i arbeid med dette prosjektet. Ingen av gruppemedlemmene har jobbet med Angular/Express eller MongoDB fra før. I denne seksjonen har vi laget en liten oversikt over noen av de tingene vi har implementert som ikke var en del av oppgavekravene. Kall det gjerne *ikke-funksjonelle krav*.
+
+
+**Sikker brukerhåndtering med salting og hashing**   
 Når en bruker registreres via API til passport.js sikrer vi passordet godt. Vi bruker bcrypt-nodejs til å hashe og salte passordet. Passordet lagres derfor aldri i klartekst og den eneste måten å finne korrekt passord er gjennom sende riktig verdi til serveren som sitter på disse funksjonene.
 
 [//]: # "Henrik"
