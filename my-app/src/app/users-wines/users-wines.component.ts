@@ -31,19 +31,19 @@ export class UsersWinesComponent implements OnInit, OnDestroy {
 
       this.subscription = this.messageService.receiveID().subscribe(message => {
         // message is ID: remove that list
+        this.gatherWines();
+        console.log(this.wines)
 
 
-        let newWines = this.wines.filter(function(item) {
+        /*let newWines = this.wines.filter(function(item) {
         //console.log(item.varenummer,message.text)
 
           return item.Varenummer !== message.text
         })
 
-        /*for (let i= 0; i > this.wines.length; i++){
-           if (this.wines[i].varenummer ==)
-        }*/
 
-        this.wines = newWines
+
+        this.wines = newWines*/
       });
     }
     //Fetches user runs gathersWines
@@ -67,7 +67,10 @@ export class UsersWinesComponent implements OnInit, OnDestroy {
       this.wines = res
       if(this.wines.length){
         this.hasWines = true;
+      } else {
+        this.hasWines = false;
       }
+
     })
   }
   //opens wine dialog
@@ -76,6 +79,6 @@ export class UsersWinesComponent implements OnInit, OnDestroy {
       //width: '600px',
       data: arg,
     })
-    dialogRef.afterClosed().subscribe(result => console.log(result))
+    dialogRef.afterClosed().subscribe()
   }
 }

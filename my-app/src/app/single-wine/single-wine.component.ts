@@ -123,7 +123,6 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
           duration: 1000,
         });
         //remove wine here from profilesite, if on that page
-        this.removeWine();
       }else{
         this.icon = "star";
         this.newFilter.remove = 0;
@@ -132,6 +131,7 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
         });
       }
       this.updateWine();
+      this.removeWine();
     }else{
       // Opens login dialog
       this.openDialog();
@@ -178,7 +178,7 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
   // Updates the favoritewine collection with new result
   updateWine(){
     this.favoriteWineService.updateFavoriteWine(this.newFilter)
-        .subscribe(res => console.log(res));
+        .subscribe();
   }
 
   // Closes the dialog
