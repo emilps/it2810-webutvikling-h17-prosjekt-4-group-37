@@ -30,7 +30,7 @@ Om du kun ønsker å se og teste funksjonalitet på siden vår, følg disse enkl
 5. Åpne ny terminal/kommandovindu på samme lokasjon. Start server: `npm run server`
 6. Naviger til `localhost:4200` i nettleseren din
 
-**Kjøre testene**
+**Kjøre testene:**
  1. Følg trinnene over til og med punkt 3.
  2. `npm test`
 
@@ -52,7 +52,7 @@ Angular Material er google's design components for Angular. Disse har vi benytte
 
 Full oversikt og dokumentasjon på Angular Material finnes [her.](https://material.angular.io/)
 
-### Chart.js
+### Chartjs
 Last ned eller se full dokumentasjon for [ng2-charts her.](https://valor-software.com/ng2-charts/)
 
 ng2-charts
@@ -160,10 +160,10 @@ Vinene kan også filtreres etter land med kartet som beskrevet under "[Fancy alt
 
 På både hovedsiden/listen og siden med kartfiltrering vil det vises ett begrenset utvalg viner. Hvis søket eller filtreringen din fyller den opprinnelige sideplassen med viner vil det dukke opp en knapp som lar brukeren laste inn flere.
 
-**På hovedsiden**
+**På hovedsiden**  
 ![Load more button on main page](https://i.imgur.com/QrRcP1w.png)
 
-**På kartfiltreringssiden**
+**På kartfiltreringssiden**  
 ![Load more button on map page](https://i.imgur.com/X6P2YlH.png)
 
 ### Min side funksjonalitet
@@ -171,9 +171,9 @@ På både hovedsiden/listen og siden med kartfiltrering vil det vises ett begren
 
 Etter at brukeren har logget seg inn vil man ha mulighet til å besøke
 sin egen profil. På denne siden viser vi:
-1. viner som har lagt til i dine favoritter
-2. logger de tre siste vinene brukeren har sett på.
-3. Får opp forslag til vin basert på hva brukeren har i sin favoritt liste.
+1. Viner som er lagt til i dine favoritter
+2. Logg av de tre siste vinene brukeren har sett på.
+3. Forslag til vin basert på hva brukeren har i sin favorittliste.
 5. Et doughnut chart viser også hvilke land favoritvinene dine kommer fra.
 
 Vi har tatt utgangspunkt i de vansligste vinlandene derav, Italia, Frankrike, Tyskland og Spania. Kommer de fra andre land vil de gå som "annet". Hvis man ikke har viner i favoritter vil det ikke komme opp forslag til vin, chart eller favorittlisten. Det samme gjelder log. Hvis log eller favoritt listene er tomme vil man få tilbakemelding, respektivt.    
@@ -181,7 +181,7 @@ Vi har tatt utgangspunkt i de vansligste vinlandene derav, Italia, Frankrike, Ty
 ### Sessionhåndtering
 *Webapplisjonen må implementere "session"-håndtering (som du f.eks. trenger for å implementere dynamisk lasting, min side, og filtrering/sortering som skal fungere med sidevisning).*
 
-**Passport**
+**Passport**  
 For å håndtere sessions brukes passport.js, middleware for autentisering. Det er et bibliotek som enkelt lar deg håndtere registrering, innlogging av brukere og holder de innlogget mellom øktene. Samtidig kan API knyttes opp mot passport og begrense adgang.
 
 I config/passport.js settes opp såkalte strategier som kalles på fra APIet. Vi har strategier for registrering og innlogging, men dette kan enkelt utvides og man kan inkludere Google, Facebook osv. Ved innlogging og registrering sendes brukernavn og passord med en post request til routes/api.js. Deretter gjøres et kall til passport.js med den samme dataen og brukeren blir så autentisert eller gitt relevant tilbakemelding.
@@ -200,7 +200,7 @@ Se beskrivelse av "[GeoChart](#geochart)" under "[Komponenter og rammeverk](#kom
 
 #### Favorittviner i sektordiagram
 For å få inn en spennende fremvisning av vindata ordnet vi en chart.
-Denne er av typen doughnut basert på chart.js. Hvis man holder musepekeren over de fargede områdene vil man få opp antall viner fra valgt land. Trykker man på land-navnene vil man ha mulighet til å fjerne land fra charten. Se [Chart.js][#chart.js]
+Denne er av typen doughnut basert på chart.js. Hvis man holder musepekeren over de fargede områdene vil man få opp antall viner fra valgt land. Trykker man på land-navnene vil man ha mulighet til å fjerne land fra charten. Se [Chart.js][#chartjs]
 
 #### Stilig fremstilling av alkoholprosent og volum
 Om du trykker på en vin i hvilken som helst meny vil du se en **fancy animasjon** som fyller en "progress spinner" basert på alkoholprosent og volum (i liter). Dette er ikke bilder, men fancy, grafisk fremvisning av data. Alkoholprosent "spinneren" går fra 0% til 22% (sterkeste vinen du får på polet) og volum "spinneren" fra 0 liter til 5 liter.
