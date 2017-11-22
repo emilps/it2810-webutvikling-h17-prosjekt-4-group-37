@@ -18,7 +18,7 @@ describe('User', function() {
 
   beforeEach(function(done) {
     var user = new User({
-      name: '1234567',
+      name: '1234567_raonadbuannnn',
       password: 'testing123'
     });
 
@@ -31,9 +31,9 @@ describe('User', function() {
 
   it('find a user by username', function(done) {
     User.findOne({
-      name: '1234567'
+      name: '1234567_raonadbuannnn'
     }, function(err, user) {
-      user.name.should.eql('1234567');
+      user.name.should.eql('1234567_raonadbuannnn');
       console.log("   name: ", user.name)
       done();
     });
