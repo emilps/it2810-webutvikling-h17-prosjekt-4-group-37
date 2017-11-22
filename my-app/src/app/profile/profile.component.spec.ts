@@ -1,4 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
+
 import { ProfileComponent } from './profile.component';
 //Import Router, Routes and Http modules
 import { HttpModule } from '@angular/http';
@@ -66,6 +69,8 @@ const appRoutes: Routes = [
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
   let fixture: ComponentFixture<ProfileComponent>;
+  let debugElement:      DebugElement;
+  let htmlElement:      HTMLElement;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
@@ -118,12 +123,46 @@ describe('ProfileComponent', () => {
     .compileComponents();
   }));
   beforeEach(() => {
-
     fixture = TestBed.createComponent(ProfileComponent);
     component = fixture.componentInstance;
+    component.name = "wine"
+    component.newFilter.wineType = "Rødvin";
+    component.newFilter.wineContry= "Tyskland";
     fixture.detectChanges();
+
   });
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('Should display an empty username', () =>{
+    const empty= ' '
+    expect(component.userName).toEqual(empty);
+  })
+  it('should display name, wine', () =>{
+    component.showWine = true;
+    component.allElements = true;
+    fixture.detectChanges();
+    debugElement = fixture.debugElement.query(By.css('.rec-wine-name'))
+    htmlElement = debugElement.nativeElement;
+    expect(component.name).toEqual(htmlElement.textContent);
+  })
+  it('Validates allElements, showWine and statusRcommendation to true',() => {
+    component.allElements = false;
+    component.wines = [0,0,0]
+    component.checkProfile()
+    fixture.detectChanges();
+    expect(component.allElements).toEqual(true);
+    expect(component.showWine).not.toEqual(false);
+    expect(component.statusRcommendation).toEqual(true);
+  })
+  it("Validates allElements to true, but showWine and statusRcommendation to false", () => {
+    component.allElements = false;
+    component.wines = [0,0]
+    component.checkProfile()
+    fixture.detectChanges();
+    expect(component.allElements).toEqual(true);
+    expect(component.showWine).not.toEqual(true);
+    expect(component.statusRcommendation).toEqual(false);
+  })
+
 });
