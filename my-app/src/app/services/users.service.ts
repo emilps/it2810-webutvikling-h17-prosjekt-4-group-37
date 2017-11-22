@@ -1,10 +1,13 @@
-import { Component, Injectable } from '@angular/core'; //added input to EventEmitter
+import { Component, Injectable } from '@angular/core';
+//Import Http and URL SearchParamenters
 import { Http, URLSearchParams } from '@angular/http';
+//Import our NavbarComponent
+import { NavbarComponent } from './../navbar/navbar.component';
+//Import needed data types
 import { Subject } from 'rxjs/Subject';
 import { User } from '../model/user';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { NavbarComponent } from './../navbar/navbar.component';
 
 @Injectable()
 export class UserService {
@@ -65,8 +68,5 @@ export class UserService {
     public logOutUser(){
       this._http.get('/api/logout').toPromise()
       this.user = false;
-
     }
-
-
 }
