@@ -53,7 +53,7 @@ export class WineSearchComponent implements OnInit {
         .subscribe(res => this.wines = res);
 
     this._dataService.getDistinctCountries()
-        .subscribe(res => this.countries = res);
+        .subscribe(res => this.countries = res.sort());
 
   }
 

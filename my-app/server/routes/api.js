@@ -418,7 +418,12 @@ router.get('/logout', function(req, res) {
 
 router.post('/register', passport.authenticate('local-signup'),
   function(req, res) {
-    req.user ? res.send(req.user) : res.status(200).send()
+    if (req.user) {
+      res.send(req.user);
+      passport.authenticate('local-login')
+    }
+    res.status(200).send()
+
   }
 );
 
