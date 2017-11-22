@@ -146,6 +146,10 @@ Vinene våre kan sorteres etter:
 * A til Å
 * Å til A
 
+**Alkoholprosent**
+* Lav til høy
+* Høy til lav
+
 ### Listebasert filtrering
 *Den listebaserte visningen skal kunne filtreres på minimum to forskjellige egenskaper. Eksempel: etter at brukeren har fått returnert en liste etter et søk skal brukeren kunne krysse av på en egenskap for å få begrenset antallet enheter i resultatsettet til kun de som har denne egenskapen.*
 
