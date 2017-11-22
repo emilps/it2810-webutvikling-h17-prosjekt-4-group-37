@@ -15,8 +15,9 @@ import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { MapComponent } from './map/map.component';
 import { SingleWineComponent } from './single-wine/single-wine.component';
 import { ProfileComponent } from './profile/profile.component';
+import { LogComponent } from './log/log.component';
 import { UsersWinesComponent } from './users-wines/users-wines.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ChartComponent } from './chart/chart.component';
 //Import our Services
 import { DataService } from './data.service';
 import { AuthService } from './auth.service';
@@ -25,17 +26,16 @@ import { UserService} from './services/users.service';
 import { FavoriteWineService } from './services/favoritewine.service';
 import { MapWineService } from './services/mapwine.service';
 import { MessageService } from './services/message.service';
-import { LogComponent } from './log/log.component';
 import { ProfileService } from './services/profile.service';
-// chart for doughnut
+//Import Chart for doughnut/pie chart
 import { ChartsModule } from 'ng2-charts';
-import { ChartComponent } from './chart/chart.component';
-
+//Import Angular Material Modules, Forms and Animations
 import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatCheckboxModule, MatExpansionModule, MatSelectModule, MatFormFieldModule, MatInputModule, MatDialogModule, MatButtonToggleModule, MatSnackBarModule, MatTooltipModule, MatTabsModule, MatTableModule,MatProgressSpinnerModule} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+//Import Base URL
 import { APP_BASE_HREF } from '@angular/common';
-
+//Application Routes
 const appRoutes: Routes = [
   {
     path: '',
@@ -68,7 +68,7 @@ const appRoutes: Routes = [
   },
 
 ];
-
+/* Test setup and execution */
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
