@@ -12,8 +12,6 @@ import { MatDialogRef } from '@angular/material';
 import { LoginDialogComponent } from './../login-dialog/login-dialog.component';
 
 
-
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -30,17 +28,12 @@ export class RegisterComponent implements OnInit {
   errorText = "";
   showError = false;
 
-
   constructor(
     private userService: UserService,
     private router: Router,
     public snackBar: MatSnackBar,
     private MessageService: MessageService,
     public dialogRef: MatDialogRef<LoginDialogComponent>,
-
-
-
-
   ) { }
 
   ngOnInit() {
@@ -51,10 +44,7 @@ export class RegisterComponent implements OnInit {
 		this.MessageService.changeButton();
 	}
 
-
   async insertNewUser() {
-    console.log("HEHQHWQEHQWEHEQWHEQWH")
-
     if (this.newUser.name == "" || this.newUser.password == "") {
       this.errorText = "Fyll ut alle felter";
       this.showError= true;
@@ -73,13 +63,11 @@ export class RegisterComponent implements OnInit {
       this.errorText = "Bruker finnes allerede";
       this.showError = true;
     } else {
-
       this.snackBar.open(this.newUser.name + ' er registrert og du ble automatisk logget inn.', ' ', {
         duration: 3000
       })
       this.changeButton();
       this.dialogRef.close('Closed!');
-
     }
     }
   };
