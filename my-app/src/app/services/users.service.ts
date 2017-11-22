@@ -23,7 +23,7 @@ export class UserService {
       return this._http.post("/api/login", user).map(result => this.user = result.json())
     }
 
-
+    // Login user
     public async loginAsync(user: User) {
       try {
         const response = await this._http.post('/api/login', user).toPromise()
@@ -33,6 +33,7 @@ export class UserService {
       }
     }
 
+    // Fetch user to update login status front-end
     public async fetchUserAsync() {
       try {
         this.user = false;
@@ -43,6 +44,7 @@ export class UserService {
       }
     }
 
+    // Register user
     public async insertNewUserAsync(user: User) {
       try {
         const response = await this._http.post("/api/register", user).toPromise()
@@ -52,10 +54,12 @@ export class UserService {
       }
     }
 
+    // Returns login status
     public isLoggedIn(): boolean {
       return this.user ? true : false
     }
 
+    // Logs out user
     public logOutUser(){
       this._http.get('/api/logout').toPromise()
       this.user = false;
