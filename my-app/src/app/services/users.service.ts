@@ -1,10 +1,13 @@
-import { Component, Injectable } from '@angular/core'; //added input to EventEmitter
+import { Component, Injectable } from '@angular/core';
+//Import Http and URL SearchParamenters
 import { Http, URLSearchParams } from '@angular/http';
+//Import our NavbarComponent
+import { NavbarComponent } from './../navbar/navbar.component';
+//Import needed data types
 import { Subject } from 'rxjs/Subject';
 import { User } from '../model/user';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { NavbarComponent } from './../navbar/navbar.component';
 
 @Injectable()
 export class UserService {
@@ -14,31 +17,23 @@ export class UserService {
 
     insertNewUser(user:User){
       return this._http.post("/api/register", user)
-        //.map((res:any) =>{
-          //return res.json();
-        //})
-        //.catch((error:any) => {
-        //  return Observable.throw(error.json ? error.json().error : error || 'server error');
-        //})
     }
 
-    getUser(user:User){
-      return this._http.post("/api/getUser", user).map(result => this.user = result.json())
+    login(user:User){
+      return this._http.post("/api/login", user).map(result => this.user = result.json())
     }
 
-    //getUsers() {
-      //return this._http.get("/api/getUser")
-        //.map(result => this.result = result.json().data);
-    //}
-    public async getUserAsync(user: User) {
+    // Login user
+    public async loginAsync(user: User) {
       try {
-        const response = await this._http.post('/api/getUser', user).toPromise()
+        const response = await this._http.post('/api/login', user).toPromise()
         this.user = response.json()
         return this.user
       } catch (err) {
       }
     }
 
+    // Fetch user to update login status front-end
     public async fetchUserAsync() {
       try {
         this.user = false;
@@ -49,6 +44,7 @@ export class UserService {
       }
     }
 
+    // Register user
     public async insertNewUserAsync(user: User) {
       try {
         const response = await this._http.post("/api/register", user).toPromise()
@@ -58,15 +54,14 @@ export class UserService {
       }
     }
 
+    // Returns login status
     public isLoggedIn(): boolean {
       return this.user ? true : false
     }
 
+    // Logs out user
     public logOutUser(){
       this._http.get('/api/logout').toPromise()
       this.user = false;
-
     }
-
-
 }

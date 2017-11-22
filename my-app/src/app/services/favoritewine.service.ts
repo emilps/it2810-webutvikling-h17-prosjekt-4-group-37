@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-
+//Import Http and SearchParamenters
 import { Http, URLSearchParams } from '@angular/http';
+//Import our Service
+import { UserService } from '../services/users.service';
+//Import needed data types
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
-
-import { User } from '../model/user';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-
-import { Filter } from './../model/single-wine';
-import { UserService } from '../services/users.service';
+//Import models/filters
+import { User } from '../model/user';
 import { UserName } from '../model/userName'
-
+import { Filter } from './../model/single-wine';
 
 @Injectable()
 export class FavoriteWineService {
@@ -38,7 +38,4 @@ export class FavoriteWineService {
     getWineInfo(){
       return this.result
     }
-
-
-
 }

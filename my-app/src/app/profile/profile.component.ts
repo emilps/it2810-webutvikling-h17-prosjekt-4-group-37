@@ -1,19 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-
-//Import of services
+//Import Router
+import { Router } from '@angular/router'
+//Import our SingleWineComponent
+import { SingleWineComponent } from './../single-wine/single-wine.component';
+//Import or Services
 import { UserService } from '../services/users.service';
 import { ProfileService } from './../services/profile.service';
 import { FavoriteWineService } from './../services/favoritewine.service';
-//Import of filters
+//Import of models/filters
 import { User } from '../model/user';
 import { Filter } from './../model/profile';
-//Import of material design
+//Import of Angular Material design item
 import { MatDialog } from '@angular/material';
-
-//components import
-import { SingleWineComponent } from './../single-wine/single-wine.component';
-import { Router } from '@angular/router';
-
 
 @Component({
 	selector: 'app-profile',
@@ -21,7 +19,6 @@ import { Router } from '@angular/router';
 	styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
 	//Init services ad material ui type.
 	constructor(
 		private userService: UserService,
@@ -98,10 +95,8 @@ export class ProfileComponent implements OnInit {
 	}
   //Gathers a recommendation based on filter. Changes data showed as text in html.
 	async recommendation() {
-		console.log(this.newFilter)
 		await this.profileService.getRecom(this.newFilter)
 			.then(res => {
-				console.log(res)
 				this.recommended = res
 				this.name = res.Varenavn;
 				this.price = res.Pris;
@@ -161,6 +156,4 @@ export class ProfileComponent implements OnInit {
 
     }
 	}
-
-
 }

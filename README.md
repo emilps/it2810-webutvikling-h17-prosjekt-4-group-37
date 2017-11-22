@@ -229,6 +229,7 @@ Om du trykker på en vin i hvilken som helst meny vil du se en **fancy animasjon
 Om du har lest helt til hit i [README.md](README.md) filen så har du sett at prosjektet er rimelig godt dokumenter på github i hvertfall. Koden er også blitt kommentert for å forklare de ulike delene og funksjonalitetene.
 
 ## Andre ikke krevde funksjonaliteter
-Sikker brukerhåndtering med salting og hashing
+**Sikker brukerhåndtering med salting og hashing**
+Når en bruker registreres via API til passport.js sikrer vi passordet godt. Vi bruker bcrypt-nodejs til å hashe og salte passordet. Passordet lagres derfor aldri i klartekst og den eneste måten å finne korrekt passord er gjennom sende riktig verdi til serveren som sitter på disse funksjonene.
 
 [//]: # "Henrik"
