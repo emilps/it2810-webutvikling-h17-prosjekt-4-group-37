@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
+//Import Http and URL SearchParamenters
 import { Http, URLSearchParams } from '@angular/http';
+//Import our Service(s)
+import { UserService } from '../services/users.service';
+//Import needed data types
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
-import { UserService } from '../services/users.service';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+//Import models/filters
 import { User } from '../model/user';
 import { UserName } from '../model/userName';
 import { Filter } from './../model/profile';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class ProfileService {
@@ -19,7 +23,6 @@ export class ProfileService {
 		const response = await this._http.get("api/getwineslog").toPromise()
 		return response.json().data
 	}
-
 	//Add wine to wine log.
 	addToLog(arg){
 		console.log("This arg:", arg)
