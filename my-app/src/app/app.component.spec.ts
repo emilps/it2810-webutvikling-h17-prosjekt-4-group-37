@@ -127,12 +127,12 @@ describe('AppComponent', () => {
       ],
     }).compileComponents();
   }));
-  it('should create the app', async(() => {
+  it('Tests if application component creates', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
-  it(`should create navbar`, async(() => {
+  it(`Tests if the navbar gets created in app`, async(() => {
     const fixture = TestBed.createComponent(NavbarComponent);
     const navbar = fixture.componentInstance;
     fixture.detectChanges();

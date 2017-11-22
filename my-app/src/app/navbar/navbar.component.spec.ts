@@ -124,25 +124,25 @@ describe('NavbarComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-  it('should create navbar', () => {
+  it('Tests if the navbar gets created', () => {
     expect(component).toBeTruthy();
   });
-  it('should create title', () => {
+  it('Tests if the title in the navbar exists after creation', () => {
     let de = fixture.debugElement.query(By.css('.logo'));
     let el = de.nativeElement;
     expect(el.textContent).toContain('Et Glass');
   });
-  it('should create map button', () => {
+  it('Tests if the Vinkart button in the navbar exists after creation', () => {
     let de = fixture.debugElement.query(By.css('.mapbutton'));
     let el = de.nativeElement;
     expect(el.textContent).toContain('Vinkart');
   });
-  it('should create login button', () => {
+  it('Tests if the logg inn button in the navbar exists after creation', () => {
     let de = fixture.debugElement.query(By.css('.loginbutton'));
     let el = de.nativeElement;
     expect(el.textContent).toContain('Logg inn');
   });
-  it('should create change loginbutton to profilebutton', () => {
+  it('Tests if the logg inn button changes to the profil button when user is logged in', () => {
     component.loggedInOptions = true;
     fixture.detectChanges();
     let de = fixture.debugElement.query(By.css('.profilebutton'));

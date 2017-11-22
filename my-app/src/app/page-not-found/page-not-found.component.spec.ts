@@ -17,15 +17,15 @@ describe('PageNotFoundComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-  it('should create 404 page', () => {
+  it('Tests if the PageNotFoundComponent gets created', () => {
     expect(component).toBeTruthy();
   });
-  it('should create 404 text', () => {
+  it('Tests if the 404 text get created', () => {
     let de = fixture.debugElement.query(By.css('.front'));
     let el = de.nativeElement;
     expect(el.textContent).toContain('404');
   });
-  it('Image should load', () => {
+  it('Tests if the Image loads', () => {
     let de = fixture.debugElement.query(By.css('img'));
     let el = de.nativeElement;
     expect(el.alt).toContain('drunk404');

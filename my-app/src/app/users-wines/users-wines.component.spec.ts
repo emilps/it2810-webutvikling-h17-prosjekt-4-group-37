@@ -45,7 +45,7 @@ describe('UsersWinesComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-  it('should create', () => {
+  it('Test if the users wines loads correctly', () => {
     expect(component).toBeTruthy();
   });
 });

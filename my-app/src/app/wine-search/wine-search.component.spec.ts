@@ -106,7 +106,7 @@ describe('WineSearchComponent', () => {
     //component = fixture.debugElement.componentInstance;
     //fixture.detectChanges();
   });
-  it('should create', () => {
+  it('Tests if the wine-search component are true', () => {
 
     //let de = fixture.debugElement.query(By.css('.searchbutton'));
     //let el = de.nativeElement;
