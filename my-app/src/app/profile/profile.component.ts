@@ -1,10 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+
+//Import of services
 import { UserService } from '../services/users.service';
-import { User } from '../model/user';
 import { ProfileService } from './../services/profile.service';
 import { FavoriteWineService } from './../services/favoritewine.service';
+//Import of filters
+import { User } from '../model/user';
 import { Filter } from './../model/profile';
+//Import of material design
 import { MatDialog } from '@angular/material';
+
+//components import
 import { SingleWineComponent } from './../single-wine/single-wine.component';
 
 
@@ -85,12 +91,14 @@ export class ProfileComponent implements OnInit {
 	}
   //Gathers a recommendation based on filter. Changes data showed as text in html.
 	async recommendation() {
+		console.log(this.newFilter)
 		await this.profileService.getRecom(this.newFilter)
 			.then(res => {
-				this.recommended = res[0]
-				this.name = res[0].Varenavn;
-				this.price = res[0].Pris;
-				this.src = res[0].Vareurl;
+				console.log(res)
+				this.recommended = res
+				this.name = res.Varenavn;
+				this.price = res.Pris;
+				this.src = res.Vareurl;
 			});
 	}
   //Checks type of wines in favorite wine list. Checks only wine type and contry.
@@ -115,10 +123,8 @@ export class ProfileComponent implements OnInit {
 				contry[0] += 1
 			} else if (this.wines[i].Land == 'Tyskland') {
 				contry[1] += 1
-
 			} else if (this.wines[i].Land == 'Spania') {
 				contry[2] += 1
-
 			} else if (this.wines[i].Land == 'Frankrike') {
 				contry[3] += 1
 			} else{
@@ -143,6 +149,7 @@ export class ProfileComponent implements OnInit {
 		} else if (index == 3) {
 			this.newFilter.wineContry = "Frankrike"
 		}else{
+			this.newFilter.wineContry = "Frankrike"
       this.isContry = false;
 
     }
