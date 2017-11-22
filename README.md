@@ -228,8 +228,10 @@ Det er vanskelig å lage tester når man koder i ett helt nytt språk, og vi har
 **Enhets/component tester**  
 Testrammeverkene "Karma" og "Jasmine" følger med Angular CLI. Vi har laget tester som sjekker at alle moduler, komponenter, services, dependencies osv lastes inn korrekt til hver komponent og service som bruker de. Samt om komponenten eller servicen så kan bygges/"creates". Dette er utrolig nyttig for oss og tester noe av det viktigste, da vi tar i bruk veldig mange Angular Material moduler og egenlagde "Services".
 
+For en god del av våre viktigste komponenter har vi også testet flere funksjonaliteter og mye av innholdet - se bildet under.
+
 **Test av alle komponenter og services**  
-![karma unit test image](https://i.imgur.com/W3nmNAi.png)
+![karma unit test image](https://i.imgur.com/e5ve2kt.png)
 
 #### Back-end-tester
 På backend kjører vi express for å kommunisere med MongoDB databasen vår. Datasettet med viner er hentet fra vinmonopolet og statisk, men brukerdata kan opprettes og endres. Derfor har vi brukt tid på å få testet dette. Vi har brukt mocha for å sette opp en forbindelse til databasen. Da kan vi teste om en bruker opprettes riktig i databasen.
