@@ -28,6 +28,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   constructor(private router: Router, public dialog: MatDialog,private userService: UserService, private zone: NgZone, private messageService: MessageService){
       // subscribe to home component messages
       this.subscription = this.messageService.changeButtonAlert().subscribe(message => {
+        this.userService.fetchUserAsync();
         this.loggedInOptions= true;
       });
    }
