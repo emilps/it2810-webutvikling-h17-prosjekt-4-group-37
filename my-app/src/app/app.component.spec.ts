@@ -41,14 +41,12 @@ const appRoutes: Routes = [
     path: '',
     component: WineSearchComponent,
   },
-
   {
     path: 'navbar',
     component: NavbarComponent,
     canActivate: [AuthGuard]
     //Not full functional yet. Make it async maybe?
   },
-
   {
     path: 'register',
     component: RegisterComponent
@@ -66,7 +64,6 @@ const appRoutes: Routes = [
     path: '**',
     component: PageNotFoundComponent
   },
-
 ];
 /* Test setup and execution */
 describe('AppComponent', () => {
