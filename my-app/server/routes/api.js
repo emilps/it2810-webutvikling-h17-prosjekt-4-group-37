@@ -225,7 +225,12 @@ router.get('/getfavoritewinesids', (req, res) => {
         })
         .toArray()
         .then((winesIds) => {
-          listID = winesIds[0].wineID;
+          try {
+            listID = winesIds[0].wineID;
+          } catch (e) {
+            listID = [];
+          }
+
 
           db.collection('wines')
             .find({
@@ -260,7 +265,11 @@ router.get('/getwineslog', (req, res) => {
         })
         .toArray()
         .then((winesIds) => {
-          listID = winesIds[0].wineID;
+          try {
+            listID = winesIds[0].wineID;
+          } catch (e) {
+            listID = [];
+          }
 
           // List has to be reversed and duplicates removed in order for it to work
           listID.reverse();
