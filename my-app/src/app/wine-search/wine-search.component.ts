@@ -47,8 +47,6 @@ export class WineSearchComponent implements OnInit {
   // Create an instance of the DataService through dependency injection
   constructor(private _dataService: DataService, public dialog: MatDialog) {
 
-    // Access the Data Service's getUsers() method we defined
-
     this._dataService.getWines(this.newFilter)
         .subscribe(res => this.wines = res);
 

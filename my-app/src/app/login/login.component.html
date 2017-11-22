@@ -1,11 +1,11 @@
 <div class="container">
   <mat-form-field class="searchField">
-    <input type="text" (keyup.enter)="getUser()" class="form-control" id="username" matInput placeholder="Brukernavn" [(ngModel)]="this.newUser.name">
+    <input type="text" (keyup.enter)="login()" class="form-control" id="username" matInput placeholder="Brukernavn" [(ngModel)]="this.newUser.name">
   </mat-form-field>
   <mat-form-field class="searchField">
-    <input type="password" (keyup.enter)="getUser()" class="form-control" id="password" matInput placeholder="Passord" [(ngModel)]="this.newUser.password">
+    <input type="password" (keyup.enter)="login()" class="form-control" id="password" matInput placeholder="Passord" [(ngModel)]="this.newUser.password">
   </mat-form-field>
   <div *ngIf="wrongCheck" class="errorMessage">Feil brukernavn eller passord, prøv igjen.</div>
   <div *ngIf="wrongName" class="errorMessage">Brukernavn eller passord mangler.</div>
-  <button color="accent" mat-raised-button (click)="getUser()" class="btn btn-default">Logg inn!</button>
+  <button color="accent" mat-raised-button (click)="login()" class="btn btn-default">Logg inn!</button>
 </div>

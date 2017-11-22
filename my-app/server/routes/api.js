@@ -428,7 +428,7 @@ router.post('/register', passport.authenticate('local-signup'),
 );
 
 //Will eventually be renamed login (and all beloning references)
-router.post('/getUser', passport.authenticate('local-login'),
+router.post('/login', passport.authenticate('local-login'),
   function(req, res) {
     console.log("Message ");
     console.log('User: ' + req.user)

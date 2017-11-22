@@ -53,11 +53,11 @@ export class LoginComponent implements OnInit {
   //Checks if user is in db. If not changes state for error message
   //based on type of error
   //If input is correct shows snackbar, closes dialog and changes button.
-	async getUser() {
+	async login() {
 		if (this.newUser.name == "" || this.newUser.password == "") {
 			this.wrongName = true;
 		} else {
-			this.state = await this.userService.getUserAsync(this.newUser);
+			this.state = await this.userService.loginAsync(this.newUser);
 			if (!this.state) {
 				this.wrongCheck = true;
 				this.wrongName = false;

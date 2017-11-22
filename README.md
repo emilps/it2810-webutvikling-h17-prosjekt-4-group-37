@@ -19,7 +19,7 @@ Om du kun ønsker å se og teste funksjonalitet på siden vår, følg disse enkl
 2. Besøk [IT2810 Grupppe 37 - Prosjekt 4](http://it2810-37.idi.ntnu.no:8084/)
 
 ## Kjør prosjektet på egen maskin
-**Prosjektet kan lastes ned og kjøres lokalt:**
+Prosjektet kan lastes ned og kjøres lokalt:
 
 *(Må være på NTNU nettverk og ha `npm` installert)*
 
@@ -30,9 +30,7 @@ Om du kun ønsker å se og teste funksjonalitet på siden vår, følg disse enkl
 5. Åpne ny terminal/kommandovindu på samme lokasjon. Start server: `npm run server`
 6. Naviger til `localhost:4200` i nettleseren din
 
-**Kjøre testene**
-1. Følg trinnene over til og med punkt 3.
-2. `npm test`
+[//]: # "Eventuel beskrivelse av hvordan man kan kjøre tester"
 
 ## Prosjektplan
 En underoppgave til prosjekt 4 var å lage en plan for prosjektet. Vår plan og svar til oppgaven `4.1: Evaluering av arkitektur` finnes i [PROJECTPLAN.md](PROJECTPLAN.md)
@@ -231,6 +229,7 @@ Om du trykker på en vin i hvilken som helst meny vil du se en **fancy animasjon
 Om du har lest helt til hit i [README.md](README.md) filen så har du sett at prosjektet er rimelig godt dokumenter på github i hvertfall. Koden er også blitt kommentert for å forklare de ulike delene og funksjonalitetene.
 
 ## Andre ikke krevde funksjonaliteter
-Sikker brukerhåndtering med salting og hashing
+**Sikker brukerhåndtering med salting og hashing**
+Når en bruker registreres via API til passport.js sikrer vi passordet godt. Vi bruker bcrypt-nodejs til å hashe og salte passordet. Passordet lagres derfor aldri i klartekst og den eneste måten å finne korrekt passord er gjennom sende riktig verdi til serveren som sitter på disse funksjonene.
 
 [//]: # "Henrik"
