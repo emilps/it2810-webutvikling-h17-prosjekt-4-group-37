@@ -57,7 +57,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   //Opens login-dialog component
   openDialog(): void {
     let dialogRef = this.dialog.open(LoginDialogComponent, {
-      width: '500px',
+      //width: '500px',
       data: "Test tekst"
     })
   }
