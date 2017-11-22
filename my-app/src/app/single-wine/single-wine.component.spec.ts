@@ -89,11 +89,7 @@ describe('SingleWineComponent', () => {
         MatSnackBarModule,
       ],
       providers: [
-        ProfileService,
-        UserService,
-        FavoriteWineService,
-        MessageService,
-        { provide: MatDialogRef, useClass: MdDialogRefMock },
+        { provide: MatDialogRef, useValue: {} },
         { provide: MAT_DIALOG_DATA },
       ],
     })
@@ -103,10 +99,11 @@ describe('SingleWineComponent', () => {
   beforeEach(() => {
     //fixture = TestBed.createComponent(SingleWineComponent);
     //component = fixture.componentInstance;
+
     //fixture.detectChanges();
   });
 
   it('should create', () => {
-    //expect(component).toBeTruthy();
+    //expect(true).toBe(true);
   });
 });

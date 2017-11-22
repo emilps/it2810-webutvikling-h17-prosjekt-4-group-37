@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
 import { NavbarComponent } from './navbar.component';
 //Import Router, Routes and Http modules
 import { HttpModule } from '@angular/http';
@@ -122,7 +124,22 @@ describe('NavbarComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-  it('should create', () => {
+  it('should create navbar', () => {
     expect(component).toBeTruthy();
+  });
+  it('should create title', () => {
+    let de = fixture.debugElement.query(By.css('.logo'));
+    let el = de.nativeElement;
+    expect(el.textContent).toContain('Et Glass');
+  });
+  it('should create map button', () => {
+    let de = fixture.debugElement.query(By.css('.mapbutton'));
+    let el = de.nativeElement;
+    expect(el.textContent).toContain('Vinkart');
+  });
+  it('should create login button', () => {
+    let de = fixture.debugElement.query(By.css('.loginbutton'));
+    let el = de.nativeElement;
+    expect(el.textContent).toContain('Logg inn');
   });
 });
