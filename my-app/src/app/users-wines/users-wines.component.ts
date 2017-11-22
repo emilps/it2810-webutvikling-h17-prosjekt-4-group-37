@@ -28,7 +28,6 @@ export class UsersWinesComponent implements OnInit, OnDestroy {
   ) {
       //Removes duplicates to ensure only unique wines
       this.subscription = this.messageService.receiveID().subscribe(message => {
-
         this.gatherWines();
         console.log(this.wines)
 
