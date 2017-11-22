@@ -1,13 +1,13 @@
+// Angular imports
 import { Injectable } from '@angular/core';
-
 import { Http, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-
-import { Filter } from './wine-search/filter';
+// Filter imports
+import { Filter } from './../model/wine-filter';
 
 @Injectable()
 export class DataService {
@@ -31,40 +31,8 @@ export class DataService {
       .map(result => this.result = result.json().data);
   }
 
-  getRedWines() {
-    return this._http.get("/api/winesRed")
-      .map(result => this.result = result.json().data);
-  }
-
-  getWhiteWines() {
-    return this._http.get("/api/winesWhite")
-      .map(result => this.result = result.json().data);
-  }
-
-  getSortedWinesASC() {
-    return this._http.get("/api/winesASC")
-      .map(result => this.result = result.json().data);
-  }
-
-  getSortedWinesPriceASC() {
-    return this._http.get("/api/winesPriceASC")
-      .map(result => this.result = result.json().data);
-  }
-
-  getSortedWinesDESC() {
-    return this._http.get("/api/winesDESC")
-      .map(result => this.result = result.json().data);
-  }
-
-  getSortedWinesPriceDESC() {
-    return this._http.get("/api/winesPriceDESC")
-      .map(result => this.result = result.json().data);
-  }
-
-
   getLoginStatus () {
       return this._http.get("/api/loginstatus").map(result => this.result = result.json().data)
-
   }
 
   getCountries(arg) {

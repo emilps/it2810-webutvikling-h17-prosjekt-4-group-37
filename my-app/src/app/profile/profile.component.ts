@@ -3,7 +3,7 @@ import { UserService } from '../services/users.service';
 import { User } from '../model/user';
 import { ProfileService } from './../services/profile.service';
 import { FavoriteWineService } from './../services/favoritewine.service';
-import { Filter } from './filter';
+import { Filter } from './../model/profile';
 import { MatDialog } from '@angular/material';
 import { SingleWineComponent } from './../single-wine/single-wine.component';
 

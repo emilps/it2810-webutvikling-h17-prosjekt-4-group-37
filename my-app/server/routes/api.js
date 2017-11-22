@@ -79,44 +79,41 @@ router.get('/wines', (req, res) => {
 router.post('/wines', (req, res) => {
   //console.log(req.body.searchValue);
 
-  // setup variables for filtering and sorting
+  // setup variables for sorting
   let sortName = '$natural';
   let sortVariabel = 1;
 
-  let filterName = null;
-  let filterVariable = null;
-
+  // Creates standard filter for regular search
   var liste = [{
     Varetype: "Hvitvin"
   }, {
     Varetype: "Rødvin"
   }]
 
+  // Checks if it needs to sort and adds the Key and value
   if (req.body.sortValue === 1 || req.body.sortValue === -1) {
     sortName = req.body.sortKey;
     sortVariabel = req.body.sortValue;
   }
 
-
+  // Checks if the user will filter on red or white whine
   if (req.body.wineFilter.length > 0) {
-    filterName = req.body.wineFilter;
-    filterVariable = req.body.wineFilterValue;
     liste = req.body.wineFilter
   }
 
+  // Creates new filterlist and adds the winefilter
   var newList = [{
     $or: liste
   }]
+
+  // Checks if the user will filter on country, adds this to the list after the winefilter
   if (req.body.countryFilter.length > 0) {
     newList.push({
       $or: req.body.countryFilter
     })
   }
 
-
-
-
-
+  // adds the search text to $search, adds \" on both sides for correct search.
   if (req.body.searchValue.length) {
     let search = {
       $search: ('\"' + req.body.searchValue + '\"')
@@ -270,8 +267,6 @@ router.get('/getfavoritewinesids', (req, res) => {
       .catch((err) => {
         sendError(err, res);
       });
-
-
   });
 });
 
@@ -463,8 +458,6 @@ router.post('/countries', (req, res) => {
     filterName = "Land";
     filterValue = req.body.mapFilterValue;
   }
-
-
 
   connection((db) => {
     db.collection('wines')
