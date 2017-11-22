@@ -71,7 +71,6 @@ export class MapComponent implements OnInit {
     this.mapWineService.getCountries(this.newMapFilter)
       .subscribe(res => this.loadArray(res));
   }
-
 }
 
 //Structure of Wines in data

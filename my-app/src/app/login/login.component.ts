@@ -1,12 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../model/user';
-import { UserService } from '../services/users.service';
+//Import Router
 import { Router } from '@angular/router';
+//Import our Components
 import { NavbarComponent } from './../navbar/navbar.component';
+import { LoginDialogComponent } from './../login-dialog/login-dialog.component';
+//Import our Services
+import { MessageService } from './../services/message.service';
+import { UserService } from '../services/users.service';
+//Import model/filter
+import { User } from '../model/user';
+//Import Angular Material items
 import { MatSnackBar } from '@angular/material';
 import { MatDialogRef } from '@angular/material';
-import { LoginDialogComponent } from './../login-dialog/login-dialog.component';
-import { MessageService } from './../services/message.service';
+
 
 @Component({
 	selector: 'app-login',
