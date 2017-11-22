@@ -3,9 +3,9 @@ import { DataService } from './data.service';
 //Import Http Module
 import { HttpModule } from '@angular/http';
 //Import our Services
-import { ProfileService } from './services/profile.service';
-import { FavoriteWineService } from './services/favoritewine.service';
-import { UserService} from './services/users.service';
+import { ProfileService } from './profile.service';
+import { FavoriteWineService } from './favoritewine.service';
+import { UserService} from './users.service';
 /* Test setup and execution */
 describe('DataService', () => {
   beforeEach(() => {

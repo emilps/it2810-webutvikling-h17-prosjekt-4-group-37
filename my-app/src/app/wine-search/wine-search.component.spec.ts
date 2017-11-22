@@ -21,7 +21,7 @@ import { FavoriteWineService } from './../services/favoritewine.service';
 import { UserService} from './../services/users.service';
 import { AuthGuard } from './../auth-guard.service';
 import { MessageService } from './../services/message.service';
-import { DataService } from './../data.service';
+import { DataService } from './../services/data.service';
 //Import Chart for doughnut/pie chart
 import { ChartsModule } from 'ng2-charts';
 //Import Angular Material Modules, Forms and Animations
