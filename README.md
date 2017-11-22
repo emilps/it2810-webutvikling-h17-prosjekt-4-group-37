@@ -56,7 +56,6 @@ Last ned eller se full dokumentasjon for [ng2-charts her.](https://valor-softwar
 ng2-charts
 ![Image of our favourite chart](https://i.imgur.com/bwcZZH4.png)
 
-[//]: # "Skriv mer her Øystein"
 Chart.js er en modul vi brukte for å vise frem date på en litt fancy måte. Den lot oss definere en chart type og hva slags tekst og data som skulle vises. Selve utførelsen skjer med canvas hvor vi har tilført dens egenskaper vi følte passet med prosjektet.
 
 ### GeoChart
@@ -98,8 +97,6 @@ Som vist i [prosjektplanen](PROJECTPLAN.md) vår så har vi valgt å benytte oss
 ![MEAN stack data flow graphic](https://cdn-images-1.medium.com/max/1024/0*Nq9iCe61Aq5IxUGl.png)
 
 Vi har laget et REST API for serveren som kommuniserer med databasen over HTTP. Kommunikasjonen går i JSON format med GET og POST.
-
-[//]: # "Emil/Øystein/Henrik sjekk at jeg ikke har noe feil - fyll ut"
 
 ### Skriving lesing og søk mot DB
 *Dere skal demonstrere både skriving og lesing til databasen fra webapplikasjonen inklusive en form for søk (i praksis dynamisk brukerdefinert utvalg av det som skal vises). Generelt er det mye artigere å jobbe med en datamengde som gir et realistisk inntrykk (eksempevis mulig å søke på forskjellige ting og få resultatsett som er forskjellige og har forskjellig antall). Bruk data dere finner på web, eller lag egne data.*
@@ -170,7 +167,6 @@ På både hovedsiden/listen og siden med kartfiltrering vil det vises ett begren
 ### Min side funksjonalitet
 *Webapplikasjonen skal ha "min side" funksjonalitet som i praksis betyr at en bruker skal kunne logge seg på og at det blir registrert noe fra brukerens søkeaktiviteten f.eks. hva brukeren har sett på tidligere eller søkene som brukeren har brukt.*
 
-[//]: # "Øystein"
 Etter at brukeren har logget seg inn vil man ha mulighet til å besøke
 sin egen profil. På denne siden viser vi:
 1. viner som har lagt til i dine favoritter
@@ -190,10 +186,6 @@ I config/passport.js settes opp såkalte strategier som kalles på fra APIet. Vi
 
 Så lenge brukeren er logget inn returneres et user-object til nettleseren slik at redirecting og visning av informasjon blir korrekt. Det er viktig å påpeke at opprettelse av et kunstig, men korrekt, user-object frontend ikke vil gi uvedkommende mulighet til å gjøre endringer eller lese data relatert til brukeren fra server.
 
-
-
-[//]: # "Henrik"
-
 ### Fancy alternativ visning
 *Webapplikasjonen skal ha et litt "fancy" alternativ visning av listen f.eks. visning på kart eller visuell grafisk fremstilling av data, ordsky ea.*
 
@@ -205,10 +197,8 @@ Se beskrivelse av "[GeoChart](#geochart)" under "[Komponenter og rammeverk](#kom
 ![Image of map sorting](https://i.imgur.com/TIl4Vg5.png)
 
 #### Favorittviner i sektordiagram
-
-[//]: # "Øystein"
 For å få inn en spennende fremvisning av vindata ordnet vi en chart.
-Denne er av typen doughnut basert på chart.js. Hvis man holder musepekeren over de fargede områdene vil man få opp antall viner fra valgt land. Trykker man på land-navnene vil man ha mulighet til å fjerne land fra charten.
+Denne er av typen doughnut basert på chart.js. Hvis man holder musepekeren over de fargede områdene vil man få opp antall viner fra valgt land. Trykker man på land-navnene vil man ha mulighet til å fjerne land fra charten. Se [Chart.js][#chart.js]
 
 #### Stilig fremstilling av alkoholprosent og volum
 Om du trykker på en vin i hvilken som helst meny vil du se en **fancy animasjon** som fyller en "progress spinner" basert på alkoholprosent og volum (i liter). Dette er ikke bilder, men fancy, grafisk fremvisning av data. Alkoholprosent "spinneren" går fra 0% til 22% (sterkeste vinen du får på polet) og volum "spinneren" fra 0 liter til 5 liter.
@@ -229,7 +219,7 @@ Det er vanskelig å lage tester når man koder i ett helt nytt språk, og vi har
 
 #### Enhets/component tester
 
-Testrammeverkene "Karma" og "Jasmine" følger med Angular CLI. Vi har laget tester som sjekker at alle moduler, komponenter services, dependencies osv lastes inn korrekt til hver komponent og service som bruker de. Samt om komponenten eller servicen så kan bygges/"creates". Dette er utrolig nyttig for oss og tester noe av det viktigste, da vi tar i bruk veldig mange Angular Material moduler og egenlagde "Services".
+Testrammeverkene "Karma" og "Jasmine" følger med Angular CLI. Vi har laget tester som sjekker at alle moduler, komponenter, services, dependencies osv lastes inn korrekt til hver komponent og service som bruker de. Samt om komponenten eller servicen så kan bygges/"creates". Dette er utrolig nyttig for oss og tester noe av det viktigste, da vi tar i bruk veldig mange Angular Material moduler og egenlagde "Services".
 
 **Test av alle komponenter og services**
 ![karma unit test image](https://i.imgur.com/W3nmNAi.png)
@@ -256,5 +246,3 @@ Vi har brukt utrolig mange timer i arbeid med dette prosjektet. Ingen av gruppem
 
 **Sikker brukerhåndtering med salting og hashing**   
 Når en bruker registreres via API til passport.js sikrer vi passordet godt. Vi bruker bcrypt-nodejs til å hashe og salte passordet. Passordet lagres derfor aldri i klartekst og den eneste måten å finne korrekt passord er gjennom sende riktig verdi til serveren som sitter på disse funksjonene.
-
-[//]: # "Henrik"
