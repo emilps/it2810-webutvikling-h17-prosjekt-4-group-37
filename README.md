@@ -183,7 +183,7 @@ sin egen profil. På denne siden viser vi:
 1. Viner som er lagt til i dine favoritter
 2. Logg av de tre siste vinene brukeren har sett på.
 3. Forslag til vin basert på hva brukeren har i sin favorittliste.
-5. Et doughnut chart viser også hvilke land favoritvinene dine kommer fra.
+4. Et doughnut chart viser også hvilke land favoritvinene dine kommer fra.
 
 Vi har tatt utgangspunkt i de vansligste vinlandene derav, Italia, Frankrike, Tyskland og Spania. Kommer de fra andre land vil de gå som "annet". Hvis man ikke har viner i favoritter vil det ikke komme opp forslag til vin, chart eller favorittlisten. Det samme gjelder log. Hvis log eller favoritt listene er tomme vil man få tilbakemelding, respektivt.    
 
