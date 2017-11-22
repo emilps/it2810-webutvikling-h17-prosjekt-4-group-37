@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 //Import Router
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 //Import our SingleWineComponent
 import { SingleWineComponent } from './../single-wine/single-wine.component';
 //Import or Services
