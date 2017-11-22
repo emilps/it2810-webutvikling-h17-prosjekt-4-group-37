@@ -1,22 +1,18 @@
 // Angular imports
 import { Component, OnInit, Inject, AfterViewInit } from '@angular/core';
-
+// Components import
+import { LoginDialogComponent } from './../login-dialog/login-dialog.component';
+// Service imports
+import { UserService } from './../services/users.service';
+import { FavoriteWineService } from './../services/favoritewine.service';
+import { ProfileService } from './../services/profile.service';
+import { MessageService } from './../services/message.service';
 // Design imports from material
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { MatSnackBar } from '@angular/material';
-
-// Service imports
-import { UserService } from './../services/users.service';
-import { FavoriteWineService } from './../services/favoritewine.service';
-
 // Filter import
 import { Filter } from './../model/single-wine';
-
-// Components import
-import { LoginDialogComponent } from './../login-dialog/login-dialog.component';
-import { ProfileService } from './../services/profile.service';
-import { MessageService } from './../services/message.service';
 
 @Component({
   selector: 'app-single-wine',
@@ -29,7 +25,6 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
   public icon = 'star_border';
   public position = 'above';
   private userLoggedIn = false;
-
   // Defines result for storing if the wine is favorite
   result: any;
 
@@ -55,7 +50,6 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
     public profileService: ProfileService,
     private MessageService: MessageService
     ) {
-
       try {
         this.newFilter.username = this.userService.user.name;
         this.newFilter.wine = data["Varenummer"];
@@ -63,13 +57,9 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
       } catch(err) {
         console.log(err);
       }
-
       this.formatVolume(data["Volum"]);
       this.checkWine();
-
     }
-
-
 
    async ngOnInit() {
      // Trigger animation after the component is loaded
@@ -142,7 +132,6 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
       //send ID to be removed to messageservice
       this.MessageService.removeWine(this.newFilter.wine.toString())
     }
-
   // Checks if the wine is in users favorite list
   async checkWine(){
     await this.userService.fetchUserAsync()
@@ -189,7 +178,5 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
   // Closes the dialog
   onCloseCancel(){
     this.thisDialogRef.close("Cancel")
-
   }
-
 }
