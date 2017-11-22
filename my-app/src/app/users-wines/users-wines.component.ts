@@ -28,10 +28,10 @@ export class UsersWinesComponent implements OnInit, OnDestroy {
   ) {
       //Removes duplicates to ensure only unique wines
       this.subscription = this.messageService.receiveID().subscribe(message => {
-        let newWines = this.wines.filter(function(item) {
-          return item.Varenummer !== message.text
-        })
-        this.wines = newWines
+
+        this.gatherWines();
+        console.log(this.wines)
+
       });
     }
   //Fetches user runs gathersWines
@@ -50,7 +50,10 @@ export class UsersWinesComponent implements OnInit, OnDestroy {
       this.wines = res
       if(this.wines.length){
         this.hasWines = true;
+      } else {
+        this.hasWines = false;
       }
+
     })
   }
   //Opens SinleWine dialog with Material Expansion Panel
@@ -58,6 +61,6 @@ export class UsersWinesComponent implements OnInit, OnDestroy {
     let dialogRef = this.dialog.open(SingleWineComponent, {
       data: arg,
     })
-    dialogRef.afterClosed().subscribe(result => console.log(result))
+    dialogRef.afterClosed().subscribe()
   }
 }

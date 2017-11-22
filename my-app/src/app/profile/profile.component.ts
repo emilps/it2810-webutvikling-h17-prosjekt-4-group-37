@@ -95,10 +95,8 @@ export class ProfileComponent implements OnInit {
 	}
   //Gathers a recommendation based on filter. Changes data showed as text in html.
 	async recommendation() {
-		console.log(this.newFilter)
 		await this.profileService.getRecom(this.newFilter)
 			.then(res => {
-				console.log(res)
 				this.recommended = res
 				this.name = res.Varenavn;
 				this.price = res.Pris;
