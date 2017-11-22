@@ -6,11 +6,10 @@
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.config.json",
     "build": "ng build",
-    "test": "ng test",
+    "test": "make test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "server": "nodemon ./server.js",
-    "test": "make test"
+    "server": "nodemon ./server.js"
   },
   "private": true,
   "dependencies": {
