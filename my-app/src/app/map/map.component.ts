@@ -6,7 +6,7 @@ import 'rxjs/add/observable/of';
 //Import Service, Filter and other used component(s)
 import { MapWineService } from './../services/mapwine.service';
 import { SingleWineComponent } from './../single-wine/single-wine.component';
-import { MapFilter } from './mapFilter';
+import { MapFilter } from './../model/mapFilter';
 //Import Angular Material Components
 import { MatDialog, MatPaginator } from '@angular/material';
 
