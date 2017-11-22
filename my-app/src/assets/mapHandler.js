@@ -9,6 +9,7 @@ let myInterval = setInterval(checkForMap, 1000);
 document.onclick = myClickHandler;
     function myClickHandler() {
       if (!document.getElementById("regions_div")){
+        clearInterval(myInterval);
         myInterval = setInterval(checkForMap, 1000);
       }
     }

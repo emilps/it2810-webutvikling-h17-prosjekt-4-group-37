@@ -63,6 +63,7 @@ router.get('/wines', (req, res) => {
 router.post('/wines', (req, res) => {
   //console.log(req.body.searchValue);
 
+
   // setup variables for sorting
   let sortName = '$natural';
   let sortVariabel = 1;
@@ -97,17 +98,16 @@ router.post('/wines', (req, res) => {
     })
   }
 
-  // adds the search text to $search, adds \" on both sides for correct search.
-  if (req.body.searchValue.length) {
-    let search = {
-      $search: ('\"' + req.body.searchValue + '\"')
-    }
-    newList.unshift({
-      $text: search
-    })
-    if (req.body.sortValue === 0) {
-      sortName = 'Varenavn';
-      sortVariabel = 1;
+  // adds the search text to a regex that will check the Varenavn
+  if (req.body.searchArray.length) {
+    if ( !req.body.searchValue == "" ) {
+      for (var index = 0; index < req.body.searchArray.length; index++) {
+        newList.push({Varenavn: {$regex:  req.body.searchArray[index], $options: 'i'}})
+      }
+      if (req.body.sortValue === 0) {
+        sortName = 'Varenavn';
+        sortVariabel = 1;
+      }
     }
   }
 
@@ -428,7 +428,7 @@ router.post('/register', passport.authenticate('local-signup'),
 );
 
 //Will eventually be renamed login (and all beloning references)
-router.post('/getUser', passport.authenticate('local-login'),
+router.post('/login', passport.authenticate('local-login'),
   function(req, res) {
     console.log("Message ");
     console.log('User: ' + req.user)

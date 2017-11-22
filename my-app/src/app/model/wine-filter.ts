@@ -6,6 +6,7 @@ export class Filter {
     public sortKey: String,
     public sortValue: Number,
     public limit: Number,
+    public searchArray: Array<String>,
     public searchValue: String,
   ){}
 }

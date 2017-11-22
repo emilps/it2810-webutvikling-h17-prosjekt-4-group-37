@@ -1,35 +1,28 @@
 import { Injectable } from '@angular/core';
+//Import needed data types
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class MessageService {
+
     private subject = new Subject<any>();
-    private counter = 0;
 
-
-
-
+    // Trigger function
     changeButton() {
-        this.counter++
-        this.subject.next({ value: this.counter });
+        this.subject.next({});
     }
-
-    getMessage(): Observable<any> {
+    // Tells the listener that changeButton has been triggered
+    changeButtonAlert(): Observable<any> {
         return this.subject.asObservable();
     }
 
-
-
-    private receiver = new Subject<any>();
-
-    removeWine(message: string) {
-        this.receiver.next({text: message})
+    // Trigger function. Sends the ID as well for debugging/validation purposes
+    updateFavoriteWines(message: string) {
+        this.subject.next({text: message})
     }
-
-    receiveID(): Observable<any> {
-        return this.receiver.asObservable();
+    // Tells the listener that favorite wines has been updated
+    receiveUpdateAlert(): Observable<any> {
+        return this.subject.asObservable();
     }
-
-
 }

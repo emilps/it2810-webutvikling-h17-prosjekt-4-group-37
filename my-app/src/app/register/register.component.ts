@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../model/user';
-import { UserService} from '../services/users.service';
-//Routing imports
+//Routing import
 import { Router } from '@angular/router';
-//Design inports
+//Import our Service(s)
+import { UserService} from '../services/users.service';
+//Import model/filter
+import { User } from '../model/user';
+//Import Angular Material item
 import { MatSnackBar } from '@angular/material';
 import { MessageService } from './../services/message.service';
 import { MatDialogRef } from '@angular/material';
 import { LoginDialogComponent } from './../login-dialog/login-dialog.component';
-
 
 
 
@@ -21,14 +22,14 @@ import { LoginDialogComponent } from './../login-dialog/login-dialog.component';
 })
 export class RegisterComponent implements OnInit {
   state = false;
-  wrongCheck= false;
-  wrongName=false;
-  diffPassword=false;
-  newUser: User= {
-    name:"",
-    password:"",
+  wrongCheck = false;
+  wrongName = false;
+  diffPassword = false;
+  newUser: User = {
+    name: "",
+    password: "",
   };
-  repeatPassword=""
+  repeatPassword = "";
 
   constructor(
     private userService: UserService,
@@ -76,11 +77,4 @@ export class RegisterComponent implements OnInit {
     }
     }
   };
-
-  /*async getUser() {
-    this.state = await this.userService.getUserAsync(this.newUser);
-    this.state ? this.router.navigate(['/navbar']) : this.router.navigate(['/register']);
-  }*/
-
-
 }

@@ -9,10 +9,9 @@ import { FavoriteWineService } from './../services/favoritewine.service';
 	styleUrls: ['./chart.component.css']
 })
 export class ChartComponent implements OnInit {
-
-	// state changing if chart data is uppdated
+	//State changing if chart data is uppdated
 	isDataAvailable: boolean = false;
-  //chart colors
+  //Chart colors
 	public chartColors: any[] = [{
 		backgroundColor: ["#264653", "#2A9D8F", "#E9C46A", "#F4A261", "#E76F51"]
 	}];
@@ -25,7 +24,7 @@ export class ChartComponent implements OnInit {
 	public doughnutChartLabels: string[] = ['Italia', 'Tyskland', 'Spania', 'Frankrike', 'Annet'];
   //data of each contry.
   public doughnutChartData: number[] = [0, 0, 0, 0, 0];
-  //declares type of chart to, doughnut
+  //Declares type of chart to doughnut
 	public doughnutChartType: string = 'doughnut';
   //List of favorites wines.
 	public wines: any;
