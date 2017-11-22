@@ -174,6 +174,15 @@ På både hovedsiden/listen og siden med kartfiltrering vil det vises ett begren
 ### Sessionhåndtering
 *Webapplisjonen må implementere "session"-håndtering (som du f.eks. trenger for å implementere dynamisk lasting, min side, og filtrering/sortering som skal fungere med sidevisning).*
 
+**Passport**
+For å håndtere sessions brukes passport.js. Det er et bibliotek som enkelt lar deg håndtere registrering, innlogging av brukere og holder de innlogget mellom øktene. Samtidig kan API knyttes opp mot passport og begrense adgang.
+
+Ved innlogging og registrering sendes brukernavn og passord med en post request til routes/api.js. Deretter gjøres et kall config/passport.js med den samme dataen og brukeren blir så autentisert eller gitt relevant tilbakemelding.
+
+I API har vi en funksjon global.loggedIn som kan legges inn som parameter i funksjonene i APIet og begrenser adgang til innloggede brukere. Denne kan også utvides til å gi brukere spesielle tilganger, som feks administrator.
+
+
+
 [//]: # "Henrik"
 
 ### Fancy alternativ visning
