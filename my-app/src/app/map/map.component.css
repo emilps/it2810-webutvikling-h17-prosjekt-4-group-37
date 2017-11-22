@@ -54,6 +54,10 @@ to visualize clickability  */
   cursor: pointer;
   background-color: #dee1e5;
 }
+/* Displays pointer cursor on map hover to visualize clickability */
+#regions_div:hover {
+  cursor: pointer;
+}
 /* Style for "Last inn flere.. " button  */
 #loadMoreButton {
   margin: 10px auto;
@@ -63,6 +67,7 @@ to visualize clickability  */
 #backButton {
   margin: 10px auto;
   width: 100%;
+  visibility: hidden;
 }
 /* Style for mat-card-title over the Table  */
 #regionTitle {

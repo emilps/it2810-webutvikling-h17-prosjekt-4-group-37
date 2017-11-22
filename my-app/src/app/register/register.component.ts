@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user';
 import { UserService} from '../services/users.service';
 import { Router } from '@angular/router';
-import {MatSnackBar} from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 
 
 @Component({

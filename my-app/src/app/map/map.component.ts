@@ -55,6 +55,7 @@ export class MapComponent implements OnInit {
     let country = document.getElementById('regionTitle').innerHTML;
     if(!illegalCountries.includes(country)){
       this.newMapFilter.mapFilterValue = country;
+      this.newMapFilter.limit = 25;
       this.mapWineService.getCountries(this.newMapFilter)
       .subscribe(res => this.loadArray(res));
     }

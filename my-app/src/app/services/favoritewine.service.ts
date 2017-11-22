@@ -8,7 +8,7 @@ import { User } from '../model/user';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { Filter } from './../single-wine/winefilter';
+import { Filter } from './../model/single-wine';
 import { UserService } from '../services/users.service';
 import { UserName } from '../model/userName'
 

@@ -1,11 +1,21 @@
+// Angular imports
 import { Component, OnInit, OnDestroy, NgZone} from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { LoginDialogComponent } from './../login-dialog/login-dialog.component';
-import { UserService} from '../services/users.service';
-import { User } from '../model/user';
-import { MessageService } from './../services/message.service';
-import { Subscription } from 'rxjs/Subscription';
 import { Router } from '@angular/router';
+
+// Dialog imports
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { LoginDialogComponent } from './../login-dialog/login-dialog.component';
+
+// Service import
+import { UserService} from '../services/users.service';
+import { MessageService } from './../services/message.service';
+
+// Filter import
+import { User } from '../model/user';
+
+// Subscription import
+import { Subscription } from 'rxjs/Subscription';
+
 
 @Component({
   selector: 'app-navbar',
