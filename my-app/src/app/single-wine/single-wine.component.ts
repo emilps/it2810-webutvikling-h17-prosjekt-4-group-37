@@ -96,10 +96,8 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
 
 
   addToLog(){
-    console.log("addtolog kjører")
     this.profileService.addToLog(this.newFilter)
-      .subscribe(res => console.log(res));
-    console.log("done")
+      .subscribe();
   }
 
   // Changes the star icon from outlined to full based on the previous state

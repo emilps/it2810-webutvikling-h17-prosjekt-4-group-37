@@ -25,7 +25,6 @@ export class ProfileService {
 	}
 	//Add wine to wine log.
 	addToLog(arg){
-		console.log("This arg:", arg)
 		return this._http.post("api/addtolog", arg)
       .map(result => this.result = result.json().data)
 	}

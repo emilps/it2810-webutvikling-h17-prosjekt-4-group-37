@@ -35,7 +35,6 @@ global.loggedIn = (req, res, next) => {
   if (req.user) {
     next()
   } else {
-    console.log('Protected route access attempted by a not logged in user')
     res.status(200).json({
       authorization: 'Must be logged in'
     })
@@ -61,9 +60,6 @@ router.get('/wines', (req, res) => {
 
 // Search for wines
 router.post('/wines', (req, res) => {
-  //console.log(req.body.searchValue);
-
-
   // setup variables for sorting
   let sortName = '$natural';
   let sortVariabel = 1;
@@ -134,7 +130,6 @@ router.post('/wines', (req, res) => {
 
 // returns all countries from database
 router.get('/distinctcountries', (req, res) => {
-  console.log("hello");
   connection((db) => {
     db.collection('wines')
       .distinct("Land")
@@ -230,7 +225,6 @@ router.get('/getfavoritewinesids', (req, res) => {
         })
         .toArray()
         .then((winesIds) => {
-          console.log(winesIds);
           listID = winesIds[0].wineID;
 
           db.collection('wines')
@@ -318,7 +312,6 @@ router.get('/getwineslog', (req, res) => {
 // return reccomended wines based on liked wines
 router.post('/getrecommendedwine', (req, res) => {
   const rand = Math.floor(Math.random() * 20)
-  console.log("In post getrecommendedwine we get: ", req.body.wineContry, req.body.wineType)
   connection((db) => {
     db.collection('wines')
       .find({
@@ -331,7 +324,6 @@ router.post('/getrecommendedwine', (req, res) => {
       .limit(20)
       .toArray()
       .then((wines) => {
-        console.log("This is the recommended wine", wines)
         response.data = wines[rand]
         res.json(response)
       })
@@ -344,7 +336,6 @@ router.post('/getrecommendedwine', (req, res) => {
 
 // When a wine item dialog is opened, this adds the specific item to the users log in the database
 router.post('/addtolog', (req, res) => {
-  console.log("ADDING TO LOG DB!")
   connection((db) => {
     // first removes item from database
     db.collection('log')
@@ -399,23 +390,6 @@ router.get('/logout', function(req, res) {
   res.redirect('/');
 });
 
-//Handles input from client. Insert register input after password is secured with salt and hash.
-/*router.post('/register', (req, res) => {
-    user = new User({
-      name: req.body.name
-    })
-    console.log(user)
-    user.password = user.generateHash(req.body.password)
-    user.save().then((user) => {
-      //console.log(`User ID: ${user._id}`)
-      User.findById(user.id).then((user) => {
-        console.log(user)
-      })
-    }).catch((err) => {
-      console.error(err)
-    })
-  })*/
-
 router.post('/register', passport.authenticate('local-signup'),
   function(req, res) {
     if (req.user) {
@@ -430,15 +404,12 @@ router.post('/register', passport.authenticate('local-signup'),
 //Will eventually be renamed login (and all beloning references)
 router.post('/login', passport.authenticate('local-login'),
   function(req, res) {
-    console.log("Message ");
-    console.log('User: ' + req.user)
     req.user ? res.send(req.user) : res.send(200, {
       "result": false
     })
   });
 
 router.get('/me', (req, res) => {
-  console.log('Getting logged in user')
   req.user ? res.json(req.user) : res.status(200).send()
 });
 
