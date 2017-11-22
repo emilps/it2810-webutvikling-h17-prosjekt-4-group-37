@@ -1,7 +1,7 @@
-<div *ngIf="statusRcommendation; else generatedResponse">
+<div *ngIf="allElements; else generatedResponse">
   <div class="profile-container-header">
     <div class="rec-wine-comp">
-      <mat-expansion-panel>
+      <mat-expansion-panel [expanded]="true">
         <mat-expansion-panel-header>
           <mat-panel-title>
             Vinforslag til {{userName}}
@@ -10,10 +10,14 @@
         <div class="recommended-wine-container">
           <div class="info-text-rec">
             <div *ngIf="!statusRcommendation; else generatedResponse">
-              <p>Hvis du ønsker å få anbefalinger må du legge til viner i dine favoritter</p>
+              <p>Hvis du ønsker å få anbefalinger må du legge til tre eller flere viner til dine favoritter</p>
             </div>
             <ng-template #generatedResponse>
-              <p class="generated-text">Vi ser du er en {{newFilter.wineType.toLowerCase()}}'s elsker. Ettersom du er spesielt glad i viner fra {{newFilter.wineContry}} har vi derfor en anbefaling på lager:</p>
+              <p class="generated-text">Vi ser du er en {{newFilter.wineType.toLowerCase()}}'s elsker.</p>
+                <div class="generated-text" *ngIf="isContry; else noContry">Ettersom du er spesielt glad i viner fra {{newFilter.wineContry}} har vi derfor en anbefaling på lager:</div>
+                <ng-template #noContry>
+                  Vi har derfor en anbefaling på lager:
+                </ng-template>
             </ng-template>
           </div>
           <div *ngIf="!showWine; else recWine"></div>
@@ -37,7 +41,7 @@
     </div>
 
     <div class="chart-container">
-      <mat-expansion-panel>
+      <mat-expansion-panel [expanded]="true">
         <mat-expansion-panel-header>
           <mat-panel-title>
             Antall favorittviner pr. land

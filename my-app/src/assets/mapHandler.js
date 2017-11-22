@@ -71,6 +71,8 @@ function checkForMap() {
                   options['resolution'] = 'countries';
                   //Changes Map Card Title to indicate new expected user behavior
                   mapTitle.innerHTML = "Velg land for å se nasjonens viner";
+                  //Makes "Tilbake" button appear to let user return to continent view
+                  document.getElementById('backButton').style.visibility = 'visible';
                   //Draws new Map with the set options
                   chart.draw(data, options);
             });
@@ -175,6 +177,7 @@ function checkForMap() {
       backButton.addEventListener("click",function(e){
         options['region'] = 'world';
         options['resolution'] = 'continents';
+        backButton.style.visibility = 'hidden';
         chart.draw(data, options);
         mapTitle.innerHTML = "Velg kontinent";
         addListeners();

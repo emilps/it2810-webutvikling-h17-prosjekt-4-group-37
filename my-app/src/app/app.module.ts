@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
+
 //Import Router, Routes and Http modules
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
+
 //Import our Components
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -15,9 +17,10 @@ import { MapComponent } from './map/map.component';
 import { SingleWineComponent } from './single-wine/single-wine.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UsersWinesComponent } from './users-wines/users-wines.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 //Import our Services
-import { DataService } from './data.service';
+import { DataService } from './services/data.service';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
 import { UserService} from './services/users.service';
@@ -26,10 +29,12 @@ import { MapWineService } from './services/mapwine.service';
 import { MessageService } from './services/message.service';
 import { LogComponent } from './log/log.component';
 import { ProfileService } from './services/profile.service';
+
 // chart for doughnut
 import { ChartsModule } from 'ng2-charts';
 import { ChartComponent } from './chart/chart.component';
 
+// Material imports
 import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatSidenavModule, MatCheckboxModule, MatExpansionModule, MatSelectModule, MatFormFieldModule, MatInputModule, MatDialogModule, MatButtonToggleModule, MatSnackBarModule, MatTooltipModule, MatTabsModule, MatTableModule,MatProgressSpinnerModule} from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -39,14 +44,12 @@ const appRoutes: Routes = [
     path: '',
     component: WineSearchComponent,
   },
-
   {
     path: 'navbar',
     component: NavbarComponent,
     canActivate: [AuthGuard]
     //Not full functional yet. Make it async maybe?
   },
-
   {
     path: 'register',
     component: RegisterComponent
@@ -64,7 +67,6 @@ const appRoutes: Routes = [
     path: '**',
     component: PageNotFoundComponent
   },
-
 ];
 
 export function startupServiceFactory(userService: UserService): Function {
@@ -119,7 +121,6 @@ export function startupServiceFactory(userService: UserService): Function {
     SingleWineComponent,
     LoginDialogComponent
   ],
-
   providers: [
     DataService,
     UserService,

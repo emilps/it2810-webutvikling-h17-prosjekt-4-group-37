@@ -4,14 +4,14 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { UserService } from '../services/users.service';
 import { User } from '../model/user';
-import { UserName } from '../model/userName'
-import { Filter } from './../profile/filter'
+import { UserName } from '../model/userName';
+import { Filter } from './../model/profile';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class ProfileService {
-
+  result: any;
   //Initializes http and service
 	constructor(private _http: Http, private userService: UserService) { }
   //Gathers wine log from user.
@@ -21,9 +21,10 @@ export class ProfileService {
 	}
 
 	//Add wine to wine log.
-	addToLog(arg) {
+	addToLog(arg){
 		console.log("This arg:", arg)
-		this._http.post("/api/addtolog", arg).subscribe()
+		return this._http.post("api/addtolog", arg)
+      .map(result => this.result = result.json().data)
 	}
   //Gahters recommendation of wine.
 	async getRecom(filter: Filter) {

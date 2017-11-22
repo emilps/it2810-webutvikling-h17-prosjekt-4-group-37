@@ -3,7 +3,7 @@ import { UserService } from '../services/users.service';
 import { User } from '../model/user';
 import { ProfileService } from './../services/profile.service';
 import { FavoriteWineService } from './../services/favoritewine.service';
-import { Filter } from './filter';
+import { Filter } from './../model/profile';
 import { MatDialog } from '@angular/material';
 import { SingleWineComponent } from './../single-wine/single-wine.component';
 
@@ -26,8 +26,11 @@ export class ProfileComponent implements OnInit {
 	userName = " ";
 	//List of favorite wines
 	wines: any;
-	//state based on if there is wines in favorite list. Used to give feedback to user
-	statusRcommendation = false;
+	//state based on wine.length. Used to give feedback to user
+  allElements = false
+  isContry = true;
+  //state change for all elements if there is wines in favorite list
+  statusRcommendation = false;
 	// A wine object for recommendation
 	recommended: any;
 	//Filter used to send query to db.
@@ -71,9 +74,13 @@ export class ProfileComponent implements OnInit {
 	checkProfile() {
 		this.updateUsersWineProfile();
 		if (this.newFilter.wineType != " " || this.newFilter.wineContry != " ") {
-			this.statusRcommendation = true;
-			this.recommendation();
-			this.showWine = true;
+			this.allElements = true;
+      if(this.wines.length >= 3){
+        this.recommendation();
+  			this.showWine = true;
+        this.statusRcommendation = true
+      }
+
 		}
 	}
   //Gathers a recommendation based on filter. Changes data showed as text in html.
@@ -102,7 +109,7 @@ export class ProfileComponent implements OnInit {
 		} else {
 			this.newFilter.wineType = "Hvitvin"
 		}
-		var contry = [0, 0, 0, 0];
+		var contry = [0, 0, 0, 0, 0];
 		for (var i = 0; i < this.wines.length; i++) {
 			if (this.wines[i].Land == 'Italia') {
 				contry[0] += 1
@@ -114,7 +121,9 @@ export class ProfileComponent implements OnInit {
 
 			} else if (this.wines[i].Land == 'Frankrike') {
 				contry[3] += 1
-			}
+			} else{
+        contry[4] += 1
+      }
 		}
 		var current = 0;
 		var index = 0
@@ -133,7 +142,10 @@ export class ProfileComponent implements OnInit {
 			this.newFilter.wineContry = "Spania"
 		} else if (index == 3) {
 			this.newFilter.wineContry = "Frankrike"
-		}
+		}else{
+      this.isContry = false;
+
+    }
 	}
 
 
