@@ -1,12 +1,13 @@
 var should = require("should");
 var mongoose = require('mongoose');
-var User = require("../models/user.js");
+var User = require("./../server/model/user");
 var db;
 
 describe('User', function() {
 
   before(function(done) {
-    db = mongoose.connect('mongodb://localhost/test');
+    mongoose.Promise = global.Promise;
+    db = mongoose.connect('mongodb://emilps:testpass@129.241.97.47:27017/mydb', {useMongoClient: true});
     done();
   });
 
@@ -17,7 +18,7 @@ describe('User', function() {
 
   beforeEach(function(done) {
     var user = new User({
-      username: '1234567',
+      name: '1234567_raonadbuannnn',
       password: 'testing123'
     });
 
@@ -30,10 +31,10 @@ describe('User', function() {
 
   it('find a user by username', function(done) {
     User.findOne({
-      username: '1234567'
+      name: '1234567_raonadbuannnn'
     }, function(err, user) {
-      user.username.should.eql('1234567');
-      console.log("   username: ", user.username)
+      user.name.should.eql('1234567_raonadbuannnn');
+      console.log("   name: ", user.name)
       done();
     });
   });
