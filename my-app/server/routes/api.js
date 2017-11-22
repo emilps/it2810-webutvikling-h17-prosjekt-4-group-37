@@ -111,10 +111,6 @@ router.post('/wines', (req, res) => {
     }
   }
 
-
-
-  console.log(newList)
-
   // connects to the database and makes a search based on the filters
   connection((db) => {
     db.collection('wines')
