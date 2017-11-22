@@ -127,20 +127,15 @@ describe('AppComponent', () => {
       ],
     }).compileComponents();
   }));
-  it('should create the app', async(() => {
+  it('Tests if application component creates', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
-  it(`should have as title 'app'`, async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    //expect(app.title).toEqual('Et Glass med Vin');
-  }));
-  it('should render title in a h1 tag', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
+  it(`Tests if the navbar gets created in app`, async(() => {
+    const fixture = TestBed.createComponent(NavbarComponent);
+    const navbar = fixture.componentInstance;
     fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    //expect(compiled.querySelector('h1').textContent).toContain('Our MongoDB is Workings!');
+    expect(navbar).toBeTruthy();
   }));
 });

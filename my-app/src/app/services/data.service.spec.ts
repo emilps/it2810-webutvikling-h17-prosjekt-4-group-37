@@ -19,7 +19,7 @@ describe('DataService', () => {
       ],
     });
   });
-  it('should be created', inject([DataService], (service: DataService) => {
+  it('Tests if the service works', inject([DataService], (service: DataService) => {
     expect(service).toBeTruthy();
   }));
 });

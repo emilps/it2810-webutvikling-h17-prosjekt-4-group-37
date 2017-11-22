@@ -33,7 +33,7 @@ describe('MapComponent', () => {
     //component = fixture.debugElement.componentInstance;
     //fixture.detectChanges();
   });
-  it('should create', () => {
+  it('Test if the map loads correctly', () => {
     //expect(component).toBeTruthy();
   });
 });

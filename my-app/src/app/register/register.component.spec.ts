@@ -122,7 +122,7 @@ describe('RegisterComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-  it('should create', () => {
+  it('Test if the register loads correctly', () => {
     expect(component).toBeTruthy();
   });
 });
