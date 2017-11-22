@@ -1,17 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
-
+//Import Router, Routes and Http modules
+import { HttpModule } from '@angular/http';
+import { RouterModule, Routes } from '@angular/router';
+//Import our Components
 import { LoginDialogComponent } from './../login-dialog/login-dialog.component';
 import { RegisterComponent } from './../register/register.component';
-
-import { ProfileService } from './../services/profile.service';
-import { FavoriteWineService } from './../services/favoritewine.service';
-import { UserService} from './../services/users.service';
-import { HttpModule } from '@angular/http';
-
-import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
-
 import { NavbarComponent } from './../navbar/navbar.component';
 import { PageNotFoundComponent } from './../page-not-found/page-not-found.component';
 import { WineSearchComponent } from './../wine-search/wine-search.component';
@@ -20,32 +14,36 @@ import { MapComponent } from './../map/map.component';
 import { SingleWineComponent } from './../single-wine/single-wine.component';
 import { ProfileComponent } from './../profile/profile.component';
 import { UsersWinesComponent } from './../users-wines/users-wines.component';
-import { AuthGuard } from './../auth-guard.service';
 import { ChartComponent } from './../chart/chart.component';
-
-import { ChartsModule } from 'ng2-charts';
-import { APP_BASE_HREF } from '@angular/common';
+//Import our Services
+import { ProfileService } from './../services/profile.service';
+import { FavoriteWineService } from './../services/favoritewine.service';
+import { UserService} from './../services/users.service';
+import { AuthGuard } from './../auth-guard.service';
 import { MessageService } from './../services/message.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+//Import Chart for doughnut/pie chart
+import { ChartsModule } from 'ng2-charts';
+//Import Angular Material Modules
 import { MatCardModule, MatTooltipModule , MatDialogModule, MatDialogRef, MAT_DIALOG_DATA, MatMenuModule, MatExpansionModule, MatCheckboxModule, MatFormFieldModule, MatTableModule, MatProgressSpinnerModule, MatSnackBarModule, MatSelectModule, MatInputModule } from '@angular/material';
-
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//Import Base URL
+import { APP_BASE_HREF } from '@angular/common';
+//MatDialogRef Mock
 class MdDialogRefMock {
 }
-
+//Application Routes
 const appRoutes: Routes = [
   {
     path: '',
     component: WineSearchComponent,
   },
-
   {
     path: 'navbar',
     component: NavbarComponent,
     canActivate: [AuthGuard]
     //Not full functional yet. Make it async maybe?
   },
-
   {
     path: 'register',
     component: RegisterComponent
@@ -63,13 +61,11 @@ const appRoutes: Routes = [
     path: '**',
     component: PageNotFoundComponent
   },
-
 ];
-
+/* Test setup and execution */
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
@@ -121,13 +117,11 @@ describe('LoginComponent', () => {
     })
     .compileComponents();
   }));
-
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
   it('should create', () => {
     expect(component).toBeTruthy();
   });
