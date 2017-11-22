@@ -38,6 +38,7 @@ export class WineSearchComponent implements OnInit {
     sortKey: "",
     sortValue: 0,
     limit: 12,
+    searchArray: [],
     searchValue: "",
   };
 
@@ -127,9 +128,10 @@ export class WineSearchComponent implements OnInit {
 
   }
 
-  // Sets the searchValue and calls the db.
+  // Sets the searchValue and splits the value into an array and calls the db.
   onEnter(value){
-      this.newFilter.searchValue = value
+      this.newFilter.searchArray = value.split(" ");
+      this.newFilter.searchValue = value;
       this.newFilter.limit = 12;
       this.sortAndFilter();
 
@@ -143,7 +145,8 @@ export class WineSearchComponent implements OnInit {
   // Checks if the searchField is empty and then resets the search
   updateSearch(value){
       if(!value.length){
-        this.newFilter.searchValue = value
+        this.newFilter.searchArray = value.split(" ");
+        this.newFilter.searchValue = value;
         this.newFilter.limit = 12;
         this.sortAndFilter();
         this.searchVisible = false;
