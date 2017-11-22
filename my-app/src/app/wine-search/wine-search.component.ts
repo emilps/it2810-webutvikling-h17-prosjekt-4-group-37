@@ -130,7 +130,7 @@ export class WineSearchComponent implements OnInit {
 
   }
 
-  // Sets the searchValue and calls the db.
+  // Sets the searchValue and splits the value into an array and calls the db.
   onEnter(value){
       this.newFilter.searchArray = value.split(" ");
       this.newFilter.searchValue = value;
