@@ -146,6 +146,10 @@ Vinene våre kan sorteres etter:
 * A til Å
 * Å til A
 
+**Alkoholprosent**
+* Lav til høy
+* Høy til lav
+
 ### Listebasert filtrering
 *Den listebaserte visningen skal kunne filtreres på minimum to forskjellige egenskaper. Eksempel: etter at brukeren har fått returnert en liste etter et søk skal brukeren kunne krysse av på en egenskap for å få begrenset antallet enheter i resultatsettet til kun de som har denne egenskapen.*
 
@@ -179,9 +183,9 @@ sin egen profil. På denne siden viser vi:
 1. Viner som er lagt til i dine favoritter
 2. Logg av de tre siste vinene brukeren har sett på.
 3. Forslag til vin basert på hva brukeren har i sin favorittliste.
-5. Et doughnut chart viser også hvilke land favoritvinene dine kommer fra.
+4. Et doughnut chart viser også hvilke land favoritvinene dine kommer fra.
 
-Vi har tatt utgangspunkt i de vansligste vinlandene derav, Italia, Frankrike, Tyskland og Spania. Kommer de fra andre land vil de gå som "annet". Hvis man ikke har viner i favoritter vil det ikke komme opp forslag til vin, chart eller favorittlisten. Det samme gjelder log. Hvis log eller favoritt listene er tomme vil man få tilbakemelding, respektivt.    
+Vi har tatt utgangspunkt i de vanligste vinlandene derav, Italia, Frankrike, Tyskland og Spania. Kommer de fra andre land vil de gå som "annet". Hvis man ikke har viner i favoritter vil det ikke komme opp forslag til vin, chart eller favorittlisten. Det samme gjelder log. Hvis log eller favorittlistene er tomme vil man få tilbakemelding, respektivt.    
 
 ### Sessionhåndtering
 *Webapplisjonen må implementere "session"-håndtering (som du f.eks. trenger for å implementere dynamisk lasting, min side, og filtrering/sortering som skal fungere med sidevisning).*
@@ -228,11 +232,13 @@ Det er vanskelig å lage tester når man koder i ett helt nytt språk, og vi har
 **Enhets/component tester**  
 Testrammeverkene "Karma" og "Jasmine" følger med Angular CLI. Vi har laget tester som sjekker at alle moduler, komponenter, services, dependencies osv lastes inn korrekt til hver komponent og service som bruker de. Samt om komponenten eller servicen så kan bygges/"creates". Dette er utrolig nyttig for oss og tester noe av det viktigste, da vi tar i bruk veldig mange Angular Material moduler og egenlagde "Services".
 
+For en god del av våre viktigste komponenter har vi også testet flere funksjonaliteter og mye av innholdet - se bildet under.
+
 **Test av alle komponenter og services**  
-![karma unit test image](https://i.imgur.com/W3nmNAi.png)
+![karma unit test image](https://i.imgur.com/e5ve2kt.png)
 
 #### Back-end-tester
-På backend kjører vi express for å kommunisere med MongoDB databasen vår. Datasettet med viner er hentet fra vinmonopolet og statisk, men brukerdata kan opprettes og endres. Derfor har vi brukt tid på å få testet dette. Vi har brukt mocha for å sette opp en forbindelse til databasen. Da kan vi teste om en bruker opprettes riktig i databasen.
+På backend kjører vi express for å kommunisere med MongoDB databasen vår. Datasettet med viner er hentet fra vinmonopolet og statisk, men brukerdata kan opprettes og endres. Derfor har vi brukt tid på å få testet dette. Vi har brukt mocha for å sette opp en forbindelse til databasen. Med dette tester vi blant annet om en bruker opprettes riktig i databasen.
 
 ![Mocha make file test image](https://i.imgur.com/6WY7x6o.png)
 
