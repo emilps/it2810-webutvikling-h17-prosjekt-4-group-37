@@ -230,7 +230,11 @@ Siden dag en av prosjektet, før vi begynte å bygge applikasjonen vår, la vi t
 
 Dette hjelper oss også å være sikker på riktig pakking og håndtering av moduler og tillegg. Ofte kan det hende at ett prosjekt fungerer lokalt hos deg selv, men noe så simpelt som å glemme `--save` på slutten av installsjonskommandoen kan gjøre at andre brukere ikke har en fungerende side. Travis CI sjekker dette for oss, og gir oss beskjed rett i github før en eventuell merge til masterbranchen.
 
+**Travis checks på pullrequest**
+![travis on pullrequest image](https://i.imgur.com/vm7aVHH.png)
 
+**Travis byggehistorikk (går tilbake til prosjektets start)**
+![travis build history image](https://i.imgur.com/VepF9Nt.png)
 
 ### Godt dokumentert
 *Prosjektet skal være godt dokumentert, slik at det er lett å sette seg inn i for andre.*
