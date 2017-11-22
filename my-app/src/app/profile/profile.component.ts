@@ -6,6 +6,7 @@ import { FavoriteWineService } from './../services/favoritewine.service';
 import { Filter } from './../model/profile';
 import { MatDialog } from '@angular/material';
 import { SingleWineComponent } from './../single-wine/single-wine.component';
+import { Router } from '@angular/router'
 
 
 @Component({
@@ -21,6 +22,7 @@ export class ProfileComponent implements OnInit {
 		private profileService: ProfileService,
 		private favoriteWineService: FavoriteWineService,
 		public dialog: MatDialog,
+		private router: Router,
 	) { }
 	//Username
 	userName = " ";
@@ -48,7 +50,12 @@ export class ProfileComponent implements OnInit {
 	//On init fetches user.
 	//runs getWineInfo
 	ngOnInit() {
-		this.userService.fetchUserAsync().then(data => this.userName = data.name);
+		this.userService.fetchUserAsync().then(data => {
+			if (!data){
+			this.userService.logOutUser();
+				this.router.navigate([''])
+			}
+			this.userName = data.name});
 		this.getWineInfo();
 	}
 	ngAfterViewInit() {}

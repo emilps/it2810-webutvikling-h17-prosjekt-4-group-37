@@ -26,7 +26,6 @@ export class AuthGuard implements CanActivate {
     const isLoggedIn = this.userService.isLoggedIn()
     console.log(isLoggedIn)
     if (isLoggedIn) {
-      console.log("er logget inn");
       return true;
     }
 
@@ -36,6 +35,7 @@ export class AuthGuard implements CanActivate {
 
     // Navigate to the login page with extras
     this.router.navigate(['']);
+
     return false;
   }
 }

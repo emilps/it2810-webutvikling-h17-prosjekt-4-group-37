@@ -236,94 +236,98 @@ router.post('/updatefavoritewines', (req, res) => {
 
 // returns wine IDs for a users favorite wines
 router.get('/getfavoritewinesids', (req, res) => {
-  var listID = [];
+  if (req.user) {
+    var listID = [];
 
-  connection((db) => {
-    db.collection('favoritewines')
-      .find({
-        "userID": req.user.name
-      })
-      .toArray()
-      .then((winesIds) => {
-        console.log(winesIds);
-        listID = winesIds[0].wineID;
+    connection((db) => {
+      db.collection('favoritewines')
+        .find({
+          "userID": req.user.name
+        })
+        .toArray()
+        .then((winesIds) => {
+          console.log(winesIds);
+          listID = winesIds[0].wineID;
 
-        db.collection('wines')
-          .find({
-            "Varenummer": {
-              $in: listID
-            }
-          })
-          .toArray()
-          .then((wines) => {
-            response.data = wines;
-            res.json(response);
+          db.collection('wines')
+            .find({
+              "Varenummer": {
+                $in: listID
+              }
+            })
+            .toArray()
+            .then((wines) => {
+              response.data = wines;
+              res.json(response);
 
-          })
-          .catch((err) => {
-            sendError(err, res);
-          })
-      })
-      .catch((err) => {
-        sendError(err, res);
-      });
-  });
+            })
+            .catch((err) => {
+              sendError(err, res);
+            })
+        })
+        .catch((err) => {
+          sendError(err, res);
+        });
+    });
+  }
 });
 
 router.get('/getwineslog', (req, res) => {
-  var listID = [];
-  connection((db) => {
-    db.collection('log')
-      .find({
-        "userID": req.user.name
-      })
-      .toArray()
-      .then((winesIds) => {
-        listID = winesIds[0].wineID;
-
-        // List has to be reversed and duplicates removed in order for it to work
-        listID.reverse();
-        listID = listID.filter(function(item, pos) {
-          return listID.indexOf(item) == pos;
+  if (req.user) {
+    var listID = [];
+    connection((db) => {
+      db.collection('log')
+        .find({
+          "userID": req.user.name
         })
+        .toArray()
+        .then((winesIds) => {
+          listID = winesIds[0].wineID;
 
-        db.collection('wines')
-          .find({
-            "Varenummer": {
-              $in: listID
-            }
+          // List has to be reversed and duplicates removed in order for it to work
+          listID.reverse();
+          listID = listID.filter(function(item, pos) {
+            return listID.indexOf(item) == pos;
           })
-          .sort({
-            $natural: 1
-          })
-          .toArray()
-          .then((wines) => {
-            // makes sure the returned list matches the list of IDs.
-            let returnList = []
-            for (i = 0; i < listID.length; i++) {
-              for (j = 0; j < wines.length; j++) {
-                if (wines[j].Varenummer === listID[i]) {
-                  returnList.push(wines[j]);
+
+          db.collection('wines')
+            .find({
+              "Varenummer": {
+                $in: listID
+              }
+            })
+            .sort({
+              $natural: 1
+            })
+            .toArray()
+            .then((wines) => {
+              // makes sure the returned list matches the list of IDs.
+              let returnList = []
+              for (i = 0; i < listID.length; i++) {
+                for (j = 0; j < wines.length; j++) {
+                  if (wines[j].Varenummer === listID[i]) {
+                    returnList.push(wines[j]);
+                  }
+                  if (returnList.length === 3) {
+                    break;
+                  }
                 }
                 if (returnList.length === 3) {
                   break;
                 }
               }
-              if (returnList.length === 3) {
-                break;
-              }
-            }
-            response.data = returnList;
-            res.json(response);
-          })
-          .catch((err) => {
-            sendError(err, res);
-          })
-      })
-      .catch((err) => {
-        sendError(err, res);
-      });
-  });
+              response.data = returnList;
+              res.json(response);
+            })
+            .catch((err) => {
+              sendError(err, res);
+            })
+        })
+        .catch((err) => {
+          sendError(err, res);
+        });
+    });
+  }
 });
 
 
