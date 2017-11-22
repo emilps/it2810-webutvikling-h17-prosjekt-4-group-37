@@ -16,7 +16,7 @@
               <p class="generated-text">Vi ser du er en {{newFilter.wineType.toLowerCase()}}'s elsker.</p>
                 <div class="generated-text" *ngIf="isContry; else noContry">Ettersom du er spesielt glad i viner fra {{newFilter.wineContry}} har vi derfor en anbefaling på lager:</div>
                 <ng-template #noContry>
-                  Vi har derfor en anbefaling på lager:
+                  <div class="generated-text">Vi har derfor en anbefaling på lager:</div>
                 </ng-template>
             </ng-template>
           </div>
