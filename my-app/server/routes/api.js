@@ -32,7 +32,6 @@ let response = {
 
 //Gives access only to users logged in
 global.loggedIn = (req, res, next) => {
-  console.log("kjører")
   if (req.user) {
     next()
   } else {
