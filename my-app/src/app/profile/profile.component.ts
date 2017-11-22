@@ -71,7 +71,7 @@ export class ProfileComponent implements OnInit {
 			//width: '600px',
 			data: arg,
 		})
-		dialogRef.afterClosed().subscribe(result => console.log(result))
+		dialogRef.afterClosed().subscribe()
 	}
 	// retrives favorites wines. If the list is not empty runs checkProfile
 	async getWineInfo() {

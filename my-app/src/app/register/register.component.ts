@@ -5,6 +5,12 @@ import { UserService} from '../services/users.service';
 import { Router } from '@angular/router';
 //Design inports
 import { MatSnackBar } from '@angular/material';
+import { MessageService } from './../services/message.service';
+import { MatDialogRef } from '@angular/material';
+import { LoginDialogComponent } from './../login-dialog/login-dialog.component';
+
+
+
 
 
 @Component({
@@ -27,13 +33,23 @@ export class RegisterComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private MessageService: MessageService,
+    public dialogRef: MatDialogRef<LoginDialogComponent>,
+
+
 
 
   ) { }
 
   ngOnInit() {
   }
+
+  changeButton(): void {
+		// send message to subscribers via observable subject
+		this.MessageService.changeButton();
+	}
+
 
   async insertNewUser() {
     if(this.newUser.name == "" || this.newUser.password == ""){
@@ -51,10 +67,12 @@ export class RegisterComponent implements OnInit {
       this.wrongCheck = true;
       this.diffPassword = false;
     }else{
-      this.snackBar.open(this.newUser.name + ' er registrert. Du kan nå logge inn.', ' ', {
+      this.snackBar.open(this.newUser.name + ' er registrert og du ble automatisk logget inn.', ' ', {
         duration: 3000
       })
-      this.state ? this.router.navigate(['/']) : this.router.navigate(['/register']);
+      this.changeButton();
+      this.dialogRef.close('Closed!');
+
     }
     }
   };
