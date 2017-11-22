@@ -317,6 +317,7 @@ router.get('/getwineslog', (req, res) => {
 
 // return reccomended wines based on liked wines
 router.post('/getrecommendedwine', (req, res) => {
+  const rand = Math.floor(Math.random() * 20)
   console.log("In post getrecommendedwine we get: ", req.body.wineContry, req.body.wineType)
   connection((db) => {
     db.collection('wines')
@@ -327,10 +328,11 @@ router.post('/getrecommendedwine', (req, res) => {
           "Land": req.body.wineContry
         }]
       })
-      .limit(1)
+      .limit(20)
       .toArray()
       .then((wines) => {
-        response.data = wines
+        console.log("This is the recommended wine", wines)
+        response.data = wines[rand]
         res.json(response)
       })
       .catch((err) => {

@@ -5,6 +5,13 @@ Script that loads the clickable GeoChart Map in the map.component
 /* Sets a interval and checks if the div that should contain the Map
 excists, to avoid errors */
 let myInterval = setInterval(checkForMap, 1000);
+//Restarts the interval if navigated to a page not containing the div
+document.onclick = myClickHandler;
+    function myClickHandler() {
+      if (!document.getElementById("regions_div")){
+        myInterval = setInterval(checkForMap, 1000);
+      }
+    }
 function checkForMap() {
   //Checks if the current page cointains the div for the Map to load in
   if (document.getElementById("regions_div")) {

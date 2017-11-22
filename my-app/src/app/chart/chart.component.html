@@ -1,7 +1,7 @@
 <div *ngIf="isDataAvailable; else feedBackMessage">
   <mat-card class="chart">
     <div style="display: block">
-      <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)" [colors]="chartColors" [options]="options"></canvas>
+      <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)" [colors]="chartColors" [options]="options"></canvas>
     </div>
   </mat-card>
 </div>

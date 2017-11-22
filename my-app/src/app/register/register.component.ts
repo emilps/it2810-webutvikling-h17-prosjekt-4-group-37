@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user';
 import { UserService} from '../services/users.service';
+//Routing imports
 import { Router } from '@angular/router';
+//Design inports
 import { MatSnackBar } from '@angular/material';
 import { MessageService } from './../services/message.service';
 import { MatDialogRef } from '@angular/material';
