@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+//Import of services
 import { FavoriteWineService } from './../services/favoritewine.service';
 import { UserService } from './../services/users.service';
 import { ProfileService } from './../services/profile.service';
+//Import of component
 import { SingleWineComponent } from './../single-wine/single-wine.component';
+//Import of design from material UI
 import { MatDialog } from '@angular/material';
 
 
