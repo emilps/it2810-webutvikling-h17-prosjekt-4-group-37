@@ -42,22 +42,6 @@ global.loggedIn = (req, res, next) => {
   }
 }
 
-// Get users
-router.get('/users', (req, res) => {
-  connection((db) => {
-    db.collection('users')
-      .find()
-      .toArray()
-      .then((users) => {
-        response.data = users;
-        res.json(response);
-      })
-      .catch((err) => {
-        sendError(err, res);
-      });
-  });
-});
-
 //return wines
 router.get('/wines', (req, res) => {
   connection((db) => {

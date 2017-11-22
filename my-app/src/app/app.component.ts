@@ -20,15 +20,7 @@ export class AppComponent implements OnInit {
     private _dataService: DataService,
     private userService: UserService
   ) {
-
-    // Access the Data Service's getUsers() method we defined
-    /*
-    this._dataService.getUsers()
-        .subscribe(res => this.users = res);
-
-    this._dataService.getWines()
-        .subscribe(res => this.wines = res);
-    */
+    
   }
 
   ngOnInit() {
