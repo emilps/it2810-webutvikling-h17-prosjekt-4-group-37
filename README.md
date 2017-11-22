@@ -30,9 +30,14 @@ Om du kun ønsker å se og teste funksjonalitet på siden vår, følg disse enkl
 5. Åpne ny terminal/kommandovindu på samme lokasjon. Start server: `npm run server`
 6. Naviger til `localhost:4200` i nettleseren din
 
-**Kjøre testene:**
- 1. Følg trinnene over til og med punkt 3.
- 2. `npm test`
+**Kjøre testene:**  
+Følg trinnene over til og med punkt 3 og så kjør:
+
+**Front-end-tests**  
+`npm test`  
+
+**Back-end-tests**  
+`make test`
 
 ## Prosjektplan
 En underoppgave til prosjekt 4 var å lage en plan for prosjektet. Vår plan og svar til oppgaven `4.1: Evaluering av arkitektur` finnes i [PROJECTPLAN.md](PROJECTPLAN.md)
@@ -219,12 +224,17 @@ Vi har selv testet koden under utvikling. Både vår egen og hverandres. Parprog
 
 Det er vanskelig å lage tester når man koder i ett helt nytt språk, og vi har i tillegg ett utrolig stort prosjekt. Vi har allikevel prøvd oss på litt forskjellig testing og er fornøyde med hva vi har fått til på en så stor, ny og litt avansert kodebase.
 
-#### Enhets/component tester
-
+#### Front-end-tester
+**Enhets/component tester**  
 Testrammeverkene "Karma" og "Jasmine" følger med Angular CLI. Vi har laget tester som sjekker at alle moduler, komponenter, services, dependencies osv lastes inn korrekt til hver komponent og service som bruker de. Samt om komponenten eller servicen så kan bygges/"creates". Dette er utrolig nyttig for oss og tester noe av det viktigste, da vi tar i bruk veldig mange Angular Material moduler og egenlagde "Services".
 
 **Test av alle komponenter og services**  
 ![karma unit test image](https://i.imgur.com/W3nmNAi.png)
+
+#### Back-end-tester
+På backend kjører vi express for å kommunisere med MongoDB databasen vår. Datasettet med viner er hentet fra vinmonopolet og statisk, men brukerdata kan opprettes og endres. Derfor har vi brukt tid på å få testet dette. Vi har brukt mocha for å sette opp en forbindelse til databasen. Da kan vi teste om en bruker opprettes riktig i databasen.
+
+![Mocha make file test image](https://i.imgur.com/6WY7x6o.png)
 
 #### Continous Integration
 Siden dag en av prosjektet, før vi begynte å bygge applikasjonen vår, la vi til TravisCI på github repoet vårt. Med riktig konfigurasjon har Travis satt opp og bygget koden vår på en virtuell maskin. Dette har skjedd ved hver eneste push og pull request. På den måten har vi "testet" at prosjektet/applikasjonen er byggbar og klar til produksjon før vi har merget med master.
