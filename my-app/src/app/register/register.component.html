@@ -12,8 +12,7 @@
 		  </mat-form-field>
 		</div>
 	</div>
-  <div *ngIf="wrongCheck" class="errorMessage">Brukernavn allerede i bruk.</div>
-  <div *ngIf="wrongName" class="errorMessage">Alle felter må være fylt inn.</div>
-  <div *ngIf="diffPassword" class="errorMessage">Passord må være like</div>
+	<div *ngIf="showError" class="errorMessage">{{errorText}}</div>
+
   <button color="accent" mat-raised-button (click)="insertNewUser()" class="btn btn-default">Registrer ny bruker!</button>
 </div>

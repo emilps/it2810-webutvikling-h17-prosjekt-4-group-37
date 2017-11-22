@@ -106,7 +106,7 @@ describe('SingleWineComponent', () => {
     //fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Test if the single wine loads correctly', () => {
     //expect(component).toBeTruthy();
   });
 });

@@ -122,7 +122,7 @@ describe('LoginComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-  it('should create', () => {
+  it('Test if the login works correctly', () => {
     expect(component).toBeTruthy();
   });
 });

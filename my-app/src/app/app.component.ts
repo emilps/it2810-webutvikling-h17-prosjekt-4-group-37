@@ -10,17 +10,12 @@ import { UserService } from './services/users.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  // Define a users property to hold our user data
-  /*users: Array<any>;
-  wines: Array<any>;
-  */
-
   // Create an instance of the DataService through dependency injection
   constructor(
     private _dataService: DataService,
     private userService: UserService
   ) {
-    
+
   }
 
   ngOnInit() {

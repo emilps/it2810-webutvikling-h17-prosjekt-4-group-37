@@ -17,7 +17,6 @@ export class AuthService {
 	isLoggedIn = this.checkStatus()
 
 	checkStatus () {
-		console.log(this._http.get("/api/loginstatus").map(result => this.result))
 		return this._http.get("/api/loginstatus").map(result => this.result = result.json().data)
 	}
 }

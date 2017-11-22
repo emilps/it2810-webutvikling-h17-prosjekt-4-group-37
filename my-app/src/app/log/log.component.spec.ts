@@ -36,7 +36,7 @@ describe('LogComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-  it('should create', () => {
+  it('Test if the log component loads correctly', () => {
     expect(component).toBeTruthy();
   });
 });

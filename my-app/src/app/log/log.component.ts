@@ -44,10 +44,9 @@ export class LogComponent implements OnInit {
 	}
   //Opens material dialog type SingleWineComponent
 	openDialog(arg) {
-		console.log(arg)
 		let dialogRef = this.dialog.open(SingleWineComponent, {
 			data: arg,
 		})
-		dialogRef.afterClosed().subscribe(result => console.log(result))
+		dialogRef.afterClosed().subscribe()
 	}
 }
