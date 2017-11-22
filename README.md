@@ -185,7 +185,7 @@ sin egen profil. På denne siden viser vi:
 3. Forslag til vin basert på hva brukeren har i sin favorittliste.
 4. Et doughnut chart viser også hvilke land favoritvinene dine kommer fra.
 
-Vi har tatt utgangspunkt i de vansligste vinlandene derav, Italia, Frankrike, Tyskland og Spania. Kommer de fra andre land vil de gå som "annet". Hvis man ikke har viner i favoritter vil det ikke komme opp forslag til vin, chart eller favorittlisten. Det samme gjelder log. Hvis log eller favoritt listene er tomme vil man få tilbakemelding, respektivt.    
+Vi har tatt utgangspunkt i de vanligste vinlandene derav, Italia, Frankrike, Tyskland og Spania. Kommer de fra andre land vil de gå som "annet". Hvis man ikke har viner i favoritter vil det ikke komme opp forslag til vin, chart eller favorittlisten. Det samme gjelder log. Hvis log eller favorittlistene er tomme vil man få tilbakemelding, respektivt.    
 
 ### Sessionhåndtering
 *Webapplisjonen må implementere "session"-håndtering (som du f.eks. trenger for å implementere dynamisk lasting, min side, og filtrering/sortering som skal fungere med sidevisning).*
@@ -238,7 +238,7 @@ For en god del av våre viktigste komponenter har vi også testet flere funksjon
 ![karma unit test image](https://i.imgur.com/e5ve2kt.png)
 
 #### Back-end-tester
-På backend kjører vi express for å kommunisere med MongoDB databasen vår. Datasettet med viner er hentet fra vinmonopolet og statisk, men brukerdata kan opprettes og endres. Derfor har vi brukt tid på å få testet dette. Vi har brukt mocha for å sette opp en forbindelse til databasen. Da kan vi teste om en bruker opprettes riktig i databasen.
+På backend kjører vi express for å kommunisere med MongoDB databasen vår. Datasettet med viner er hentet fra vinmonopolet og statisk, men brukerdata kan opprettes og endres. Derfor har vi brukt tid på å få testet dette. Vi har brukt mocha for å sette opp en forbindelse til databasen. Med dette tester vi blant annet om en bruker opprettes riktig i databasen.
 
 ![Mocha make file test image](https://i.imgur.com/6WY7x6o.png)
 
