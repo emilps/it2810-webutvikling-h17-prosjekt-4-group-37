@@ -200,7 +200,7 @@ Se beskrivelse av "[GeoChart](#geochart)" under "[Komponenter og rammeverk](#kom
 
 #### Favorittviner i sektordiagram
 For å få inn en spennende fremvisning av vindata ordnet vi en chart.
-Denne er av typen doughnut basert på chart.js. Hvis man holder musepekeren over de fargede områdene vil man få opp antall viner fra valgt land. Trykker man på land-navnene vil man ha mulighet til å fjerne land fra charten. Se [Chart.js][#chartjs]
+Denne er av typen doughnut basert på chart.js. Hvis man holder musepekeren over de fargede områdene vil man få opp antall viner fra valgt land. Trykker man på land-navnene vil man ha mulighet til å fjerne land fra charten. Se [Chart.js](#chartjs)
 
 #### Stilig fremstilling av alkoholprosent og volum
 Om du trykker på en vin i hvilken som helst meny vil du se en **fancy animasjon** som fyller en "progress spinner" basert på alkoholprosent og volum (i liter). Dette er ikke bilder, men fancy, grafisk fremvisning av data. Alkoholprosent "spinneren" går fra 0% til 22% (sterkeste vinen du får på polet) og volum "spinneren" fra 0 liter til 5 liter.
