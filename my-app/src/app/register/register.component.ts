@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../model/user';
-import { UserService} from '../services/users.service';
-//Routing imports
+//Routing import
 import { Router } from '@angular/router';
-//Design inports
+//Import our Service(s)
+import { UserService} from '../services/users.service';
+//Import model/filter
+import { User } from '../model/user';
+//Import Angular Material item
 import { MatSnackBar } from '@angular/material';
-
 
 @Component({
   selector: 'app-register',
@@ -15,21 +16,19 @@ import { MatSnackBar } from '@angular/material';
 })
 export class RegisterComponent implements OnInit {
   state = false;
-  wrongCheck= false;
-  wrongName=false;
-  diffPassword=false;
-  newUser: User= {
-    name:"",
-    password:"",
+  wrongCheck = false;
+  wrongName = false;
+  diffPassword = false;
+  newUser: User = {
+    name: "",
+    password: "",
   };
-  repeatPassword=""
+  repeatPassword = "";
 
   constructor(
     private userService: UserService,
     private router: Router,
     public snackBar: MatSnackBar
-
-
   ) { }
 
   ngOnInit() {
@@ -58,11 +57,4 @@ export class RegisterComponent implements OnInit {
     }
     }
   };
-
-  /*async getUser() {
-    this.state = await this.userService.getUserAsync(this.newUser);
-    this.state ? this.router.navigate(['/navbar']) : this.router.navigate(['/register']);
-  }*/
-
-
 }
