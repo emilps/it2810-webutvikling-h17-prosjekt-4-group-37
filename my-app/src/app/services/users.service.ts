@@ -17,25 +17,16 @@ export class UserService {
 
     insertNewUser(user:User){
       return this._http.post("/api/register", user)
-        //.map((res:any) =>{
-          //return res.json();
-        //})
-        //.catch((error:any) => {
-        //  return Observable.throw(error.json ? error.json().error : error || 'server error');
-        //})
     }
 
-    getUser(user:User){
-      return this._http.post("/api/getUser", user).map(result => this.user = result.json())
+    login(user:User){
+      return this._http.post("/api/login", user).map(result => this.user = result.json())
     }
 
-    //getUsers() {
-      //return this._http.get("/api/getUser")
-        //.map(result => this.result = result.json().data);
-    //}
-    public async getUserAsync(user: User) {
+
+    public async loginAsync(user: User) {
       try {
-        const response = await this._http.post('/api/getUser', user).toPromise()
+        const response = await this._http.post('/api/login', user).toPromise()
         this.user = response.json()
         return this.user
       } catch (err) {

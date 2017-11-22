@@ -121,16 +121,16 @@ export class SingleWineComponent implements OnInit, AfterViewInit {
         });
       }
       this.updateWine();
-      this.removeWine();
+      this.updateFavoriteWines();
     }else{
       // Opens login dialog
       this.openDialog();
     }
   }
 
-  removeWine(): void {
+  updateFavoriteWines(): void {
       //send ID to be removed to messageservice
-      this.MessageService.removeWine(this.newFilter.wine.toString())
+      this.MessageService.updateFavoriteWines(this.newFilter.wine.toString())
     }
   // Checks if the wine is in users favorite list
   async checkWine(){
