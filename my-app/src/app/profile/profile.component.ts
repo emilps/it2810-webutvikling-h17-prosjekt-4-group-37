@@ -12,7 +12,7 @@ import { MatDialog } from '@angular/material';
 
 //components import
 import { SingleWineComponent } from './../single-wine/single-wine.component';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 
 
 @Component({
