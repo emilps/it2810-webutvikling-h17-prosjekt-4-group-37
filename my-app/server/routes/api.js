@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 
 const connection = (closure) => {
-  return MongoClient.connect('mongodb://winedb:Lordoftherings1@ds117758.mlab.com:17758/mean-demo', (err, db) => {
+  return MongoClient.connect('mongodb://localhost:27017/wineDB', (err, db) => {
     if (err) return console.log(err);
 
     closure(db);
