@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const DB_EXTERNAL = 'mongodb://localhost:27017/winedb'
+const DB_EXTERNAL = 'mongodb://chrisnyv:Lordoftherings1@35.224.199.3:27017/winedb'
 const DB_LOCAL = 'mongodb://127.0.0.1:27017/mydb'
 
 mongoose.Promise = global.Promise
